@@ -13,6 +13,8 @@ Version 1.0 - Original Version
 Version 1.1 - Added WooCommerce support and Delete User support
 Version 1.2 - Added Mailchimp Group support
 Version 1.3 - Fixed Sequential Add
+Version 2a - Tidy up.
+Version 2.01 - Clean up the code being output to the screen.
 */
 
 /* WP Version Check */
@@ -39,7 +41,7 @@ function twpw_custommc_admin_register_head() {
 add_action('admin_head', 'twpw_custommc_admin_register_head');
 
 function showmcapi1($id,$levels) {
-	$debug=true;
+	$debug=false;
 	ob_start();
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];	
@@ -210,7 +212,7 @@ function showmcapi2($id) {
 
 	//get the user object so we can grab their details to add to Mailchimp
 	/* Find the appropriate MC Settings from the database */
-	$debug=true;
+	$debug=false;
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];
 	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
@@ -254,7 +256,7 @@ function showmcapi2($id) {
 			'send_goodbye' => $send_goodbye,
 			'send_notify' => $send_notify
 		));	
-		var_dump($result);
+		//var_dump($result);
 		//die();
 		if ($debug) {
 			if ($mailchimp->errorCode){
@@ -333,7 +335,7 @@ function showmcapi3($id,$levels) {
 			'replace_interests' => $replace_interests,
 			'send_welcome' => $send_welcome
 		));
-		$debug="on";
+		$debug="off";
 		if ($debug == "on") {
     		if ($mailchimp->errorCode){
     			$msg1 = "Unable to load listUnsubscribe()!\n";
