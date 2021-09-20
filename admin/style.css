@@ -1,0 +1,26 @@
+/*Global CSS*/
+.twpw-wrap { margin-top: 25px; margin-bottom: 15px; width: auto; border: 8px solid #143A15; background: #fff; }
+.twpw-wrap a { color: #143A15; }
+.twpw-admin-header {  }
+.twpw-admin-content { padding: 0 20px 20px 20px; }
+.twpw-admin-lists { list-style-type: square; margin-left: 25px; margin-top: 7px;}
+
+/*Main Navigation CSS*/
+.twpw-admin-navigation { padding: 7px 10px; background: #909090; font-size: 14px; overflow: auto;}
+.twpw-admin-navigation ul { margin: 0; padding: 0; list-style-type: none; overflow: hidden; }
+.twpw-admin-navigation ul li { display: inline; }
+.twpw-admin-navigation ul li a {  margin-right: 15px; text-decoration: none; color: #000; padding: 10px 7px; }
+.twpw-admin-navigation ul li a:hover {  text-decoration: underline; }
+
+/*Sub-Navigation CSS*/
+.twpw-admin-tab-nav { text-align: right; padding: 7px 10px; overflow: auto; clear: both; background: #cfd0d2; }
+.twpw-admin-tab-nav ul { margin: 0; padding: 0; list-style-type: none; }
+.twpw-admin-tab-nav ul li { display: inline; }
+.twpw-admin-tab-nav ul li a {  margin-right: 15px; text-decoration: none; color: #000; }
+.twpw-admin-tab-nav ul li a:hover {  text-decoration: underline; }
+
+/*Registration Tab CSS*/
+.twpw-css-boxes { width: 500px; height: 300px; margin-bottom: 25px; }
+
+/*Documentation Tab CSS*/
+.twpw-doc-subtitles { font-size: 14px; font-weight: bold; text-decoration: underline; }
