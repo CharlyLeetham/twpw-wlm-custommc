@@ -140,19 +140,17 @@ function showmcapi1($id,$levels) {
 					
 			wp_mail('charly@askcharlyleetham.com','new test data',$useremail);
 			
-			if ( $debug ) {
-				$result = $mailchimp->call( '/lists/subscribe', array(
-					'apikey' => $mcapikey,
-					'id' => $mclistid,
-					'email' => array('email' => $useremail),
-					'merge_vars' => $merge_vars,
-					'email_type' => $email_type,
-					'double_optin' => $double_optin,
-					'update_existing' => $update_existing,
-					'replace_interests' => $replace_interests,
-					'send_welcome' => $send_welcome
-				));
-			}
+			$result = $mailchimp->call( '/lists/subscribe', array(
+				'apikey' => $mcapikey,
+				'id' => $mclistid,
+				'email' => array('email' => $useremail),
+				'merge_vars' => $merge_vars,
+				'email_type' => $email_type,
+				'double_optin' => $double_optin,
+				'update_existing' => $update_existing,
+				'replace_interests' => $replace_interests,
+				'send_welcome' => $send_welcome
+			));
 									
 			if ( $debug ) {
 				if ($mailchimp->errorCode){
