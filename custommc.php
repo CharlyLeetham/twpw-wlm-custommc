@@ -58,9 +58,6 @@ function showmcapi1($id,$levels) {
 		echo "\r\n\r\n";
 		var_dump( $levels );
 		echo "\r\n\r\n";
-		$logfile = fopen( LOGPATH."mcvarlog.log", "a" );
-		$out =ob_get_clean();
-		fwrite($logfile, $out);	
 	}
 	
 	$debug=true;
@@ -221,6 +218,7 @@ function showmcapi1($id,$levels) {
 			}
 		}
 		if($no_repeat) break; 
+		
 		if( $debug ) {
 			$logfile = fopen( LOGPATH."/mcintlog.log", "a" );
 			$out =ob_get_clean();
@@ -233,10 +231,10 @@ function showmcapi1($id,$levels) {
 	}
 	return $result;
 }
-// add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
+add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
 add_action ('wishlistmember_add_user_levels','showmcapi1',30,2);
 // add_action ('wishlistmember_approve_user_levels','showmcapi1',100,2);
-add_action ('wishlistmember_after_registration','showmcapi1',100,2);
+// add_action ('wishlistmember_after_registration','showmcapi1',100,2);
 
 
 function showmcapi2($id) {
