@@ -41,7 +41,7 @@ function twpw_custommc_admin_register_head() {
 add_action('admin_head', 'twpw_custommc_admin_register_head');
 
 function showmcapi1($id,$levels) {
-	$debug=true;
+	$debug=false;
 	ob_start();
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];	
@@ -60,7 +60,7 @@ function showmcapi1($id,$levels) {
 		echo "\r\n\r\n";
 	}
 	
-	$debug=true;
+	$debug=false;
 	//get the user object so we can grab their details to add to Mailchimp
 	$user = get_user_by('id',$id);
 	$firstname = $user->user_firstname;
