@@ -53,8 +53,9 @@ function showmcapi1($id,$levels) {
 		echo "Levels: ";
 		var_dump($levels);
 		echo "\r\n\r\n";
-		$logfile = fopen("mcintlog.log", "w");
-        fwrite($logfile, ob_get_clean());
+		$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcintlog.log", "a");
+		$out =ob_get_clean();
+        fwrite($logfile, $out);
         fclose($logfile);
 	}
 	
@@ -81,7 +82,7 @@ function showmcapi1($id,$levels) {
 			echo "On Level: ".$level;
 			echo "\r\n\r\n";
 			echo "Repeat: ";
-			var_dump($no_repeat);
+			// var_dump($no_repeat);
 		}
 	
 		/* Find the appropriate MC Settings from the database */
