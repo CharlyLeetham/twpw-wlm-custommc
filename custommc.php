@@ -45,6 +45,7 @@ function showmcapi1($id,$levels) {
 	ob_start();
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];	
+	$logpath = dirname( __FILE__ ) . '/logs/' );	
 	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
 	
 	if ($debug) {
@@ -55,7 +56,7 @@ function showmcapi1($id,$levels) {
 		// echo "Levels: ";
 		// var_export($levels);
 		echo "\r\n\r\n";
-		$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcvarlog.log", "a");
+		$logfile = fopen( $logpath."mcvarlog.log", "a" );
 		$out =ob_get_clean();
 		fwrite($logfile, $out);	
 		wp_die();
@@ -228,20 +229,21 @@ function showmcapi1($id,$levels) {
 		}
 		if($no_repeat) break; 
 		if( $debug ) {
-			$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcintlog.log", "a");
+			$logfile = fopen( $logpath."/mcintlog.log", "a" );
 			$out =ob_get_clean();
-			fwrite($logfile, $out);
-			fclose($logfile);
-			$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcintlog-1.log", "a");
-            fwrite($logfile, $msg1);
-            fclose($logfile);
+			fwrite( $logfile, $out );
+			fclose( $logfile );
+			$logfile = fopen( $logpath."mcintlog-1.log", "a" );
+            fwrite( $logfile, $msg1 );
+            fclose( $logfile );
 		}
 	}
 	return $result;
 }
-add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
-add_action ('wishlistmember_add_user_levels','showmcapi1',30,2);
-add_action ('wishlistmember_approve_user_levels','showmcapi1',100,2);
+// add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
+// add_action ('wishlistmember_add_user_levels','showmcapi1',30,2);
+// add_action ('wishlistmember_approve_user_levels','showmcapi1',100,2);
+add_action ('wishlistmember_after_registration ','showmcapi1',100,2);
 
 
 function showmcapi2($id) {
