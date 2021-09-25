@@ -236,7 +236,7 @@ function showmcapi1($id,$levels) {
 // add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
 add_action ('wishlistmember_add_user_levels','showmcapi1',30,2);
 // add_action ('wishlistmember_approve_user_levels','showmcapi1',100,2);
-// add_action ('wishlistmember_after_registration','showmcapi1',100,2);
+add_action ('wishlistmember_after_registration','showmcapi1',100,2);
 
 
 function showmcapi2($id) {
