@@ -116,10 +116,13 @@ function showmcapi1($id,$levels) {
 		$replace_interests = TRUE;	
 		$delete_member = FALSE;
 		
+		$debug = true;
+		
 		if ( $debug ) {
 			echo "\r\n\r\n";
 			echo "Post: ";
 			var_dump($_POST);			
+			wp_die();
 		}
 
 		// Assign $action based on the WLM call used
