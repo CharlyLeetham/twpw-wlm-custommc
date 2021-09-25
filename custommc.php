@@ -48,13 +48,17 @@ function showmcapi1($id,$levels) {
 	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
 	
 	if ($debug) {
-		var_dump ($_POST);
-		wp_die();
+		// $output = var_export( $_POST,true );
+		var_dump( $_POST );
 		echo "User ID: " .$id;
 		echo "\r\n\r\n";
-		echo "Levels: ";
-		var_dump($levels);
+		// echo "Levels: ";
+		// var_export($levels);
 		echo "\r\n\r\n";
+		$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcintlog.log", "a");
+		$out =ob_get_clean();
+		fwrite($logfile, $out);	
+		wp_die();
 	}
 	
 	$debug=true;
