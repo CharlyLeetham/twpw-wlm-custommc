@@ -53,7 +53,9 @@ function showmcapi1($id,$levels) {
 		echo "Levels: ";
 		var_dump($levels);
 		echo "\r\n\r\n";
-		wp_mail('charly@askcharlyleetham.com','test data',ob_get_clean());		
+		$logfile = fopen("mcintlog.log", "w");
+        fwrite($logfile, ob_get_clean());
+        fclose($logfile);
 	}
 	
 	//get the user object so we can grab their details to add to Mailchimp
@@ -223,7 +225,7 @@ function showmcapi1($id,$levels) {
 		if($no_repeat) break; 
 		if( $debug ) {
 			wp_mail('charly@askcharlyleetham.com','test data',ob_get_clean());
-    		$logfile = fopen("/home/kaf2728/mcintlog.log", "w");
+    		$logfile = fopen("mcintlog.log", "w");
             fwrite($logfile, $msg1);
             fclose($logfile);
 		}
