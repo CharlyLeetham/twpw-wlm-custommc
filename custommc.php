@@ -142,6 +142,9 @@ function showmcapi1($id,$levels) {
 
 		foreach ( $filtered as $k3 => $v3 ) { //Loop through $filtered and find the members who require approval. If they require approval, skip.
 			$levstatus = $v3->Status;
+			
+			var_dump($levstatus);
+			wp_die();
 			if ( $levstatus[0] == 'For Approval' ) {
 				return;
 			}
