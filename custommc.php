@@ -116,26 +116,26 @@ function showmcapi1($id,$levels) {
 		
 		$debug = false;
 		
-		if ( $debug ) {
-			echo "\r\n\r\n";
-			echo "Post: ";
-			var_dump($_POST);
-			echo '<br />';
-			var_dump ($level);
-			wp_die();
-		}
+		// if ( $debug ) {
+			// echo "\r\n\r\n";
+			// echo "Post: ";
+			// var_dump($_POST);
+			// echo '<br />';
+			// var_dump ($level);
+			// wp_die();
+		// }
 		
  
 		
-		foreach ( $levels as $k2=>$v2 ) { // Because get_member_levels pulls back all levels a member is in, we're going to filter for only the level we're looking.
-			$filtered = array_filter(
-				$levels,
-				function ($k2) use ($allowed) {
-						return in_array($k2, $allowed);
-					},
-				ARRAY_FILTER_USE_KEY
-			);	
-		}
+		// foreach ( $levels as $k2=>$v2 ) { // Because get_member_levels pulls back all levels a member is in, we're going to filter for only the level we're looking.
+			// $filtered = array_filter(
+				// $levels,
+				// function ($k2) use ($allowed) {
+						// return in_array($k2, $allowed);
+					// },
+				// ARRAY_FILTER_USE_KEY
+			// );	
+		// }
 
 		// Now we have an array ($filtered) that has the members we're looking for and only the details of the membership level we're working with.
 
