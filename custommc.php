@@ -45,7 +45,7 @@ function showmcapi1($id,$levels) {
 	ob_start();
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];	
-	$logpath = dirname( __FILE__ ) . '/logs/' );	
+	$logpath = dirname( __FILE__ ) . '/logs/';	
 	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
 	
 	if ($debug) {
