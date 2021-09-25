@@ -48,18 +48,19 @@ function showmcapi1($id,$levels) {
 	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
 	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
 	
+	
+	$levels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
+	
 	if ($debug) {
 		// $output = var_export( $_POST,true );
 		var_dump( $_POST );
 		echo "User ID: " .$id;
 		echo "\r\n\r\n";
-		// echo "Levels: ";
-		// var_export($levels);
+		var_dump( $levels );
 		echo "\r\n\r\n";
 		$logfile = fopen( LOGPATH."mcvarlog.log", "a" );
 		$out =ob_get_clean();
 		fwrite($logfile, $out);	
-		wp_die();
 	}
 	
 	$debug=true;
@@ -81,14 +82,6 @@ function showmcapi1($id,$levels) {
 			$no_repeat = true;
 		}
 		
-		if ($debug) {
-			echo "\r\n\r\n";
-			echo "On Level: ".$level;
-			echo "\r\n\r\n";
-			echo "Repeat: ";
-			// var_dump($no_repeat);
-		}
-	
 		/* Find the appropriate MC Settings from the database */
 
 		$mclistid = (empty($settings[$level]['mclistid']))?false:$settings[$level]['mclistid'];
@@ -135,7 +128,7 @@ function showmcapi1($id,$levels) {
 			wp_die();
 		}
 		
-		$levels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval. 
+ 
 		
 		foreach ( $levels as $k2=>$v2 ) { // Because get_member_levels pulls back all levels a member is in, we're going to filter for only the level we're looking.
 			$filtered = array_filter(
