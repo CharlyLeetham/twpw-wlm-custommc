@@ -53,7 +53,7 @@ function showmcapi1($id,$levels) {
 		echo "Levels: ";
 		var_dump($levels);
 		echo "\r\n\r\n";
-		wp_die();
+		wp_mail('charly@askcharlyleetham.com','test data',ob_get_clean());		
 	}
 	
 	//get the user object so we can grab their details to add to Mailchimp
