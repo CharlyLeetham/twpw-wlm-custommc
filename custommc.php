@@ -41,7 +41,7 @@ function twpw_custommc_admin_register_head() {
 add_action('admin_head', 'twpw_custommc_admin_register_head');
 
 function showmcapi1($id,$levels) {
-	$debug=false;
+	$debug=true;
 	ob_start();
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];	
@@ -53,6 +53,7 @@ function showmcapi1($id,$levels) {
 		echo "Levels: ";
 		var_dump($levels);
 		echo "\r\n\r\n";
+		wp_die();
 	}
 	
 	//get the user object so we can grab their details to add to Mailchimp
@@ -129,8 +130,6 @@ function showmcapi1($id,$levels) {
 		
 		$levels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval. 
 		
-		var_dump($levels);
-		wp_die();
 		foreach ( $levels as $k2=>$v2 ) { // Because get_member_levels pulls back all levels a member is in, we're going to filter for only the level we're looking.
 			$filtered = array_filter(
 				$levels,
@@ -145,13 +144,10 @@ function showmcapi1($id,$levels) {
 
 		foreach ( $filtered as $k3 => $v3 ) { //Loop through $filtered and find the members who require approval. If they require approval, skip.
 			$levstatus = $v3->Status;
-			
-			var_dump($levstatus);
-			wp_die();
-			
-			if ( $levstatus[0] == 'For Approval' ) {
-				return;
-			}
+					
+			// if ( $levstatus[0] == 'For Approval' ) {
+				// return;
+			// }
 		}		
 
 		// Assign $action based on the WLM call used
