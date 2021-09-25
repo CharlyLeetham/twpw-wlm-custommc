@@ -121,7 +121,9 @@ function showmcapi1($id,$levels) {
 		if ( $debug ) {
 			echo "\r\n\r\n";
 			echo "Post: ";
-			var_dump($_POST);			
+			var_dump($_POST);
+			echo '<br />';
+			var_dump ($level);
 			wp_die();
 		}
 
