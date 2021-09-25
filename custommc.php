@@ -55,7 +55,7 @@ function showmcapi1($id,$levels) {
 		// echo "Levels: ";
 		// var_export($levels);
 		echo "\r\n\r\n";
-		$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcintlog.log", "a");
+		$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcvarlog.log", "a");
 		$out =ob_get_clean();
 		fwrite($logfile, $out);	
 		wp_die();
