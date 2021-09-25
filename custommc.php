@@ -48,17 +48,16 @@ function showmcapi1($id,$levels) {
 	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
 	
 	if ($debug) {
+		var_dump ($_POST);
+		wp_die();
 		echo "User ID: " .$id;
 		echo "\r\n\r\n";
 		echo "Levels: ";
 		var_dump($levels);
 		echo "\r\n\r\n";
-		$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcintlog.log", "a");
-		$out =ob_get_clean();
-        fwrite($logfile, $out);
-        fclose($logfile);
 	}
 	
+	$debug=true;
 	//get the user object so we can grab their details to add to Mailchimp
 	$user = get_user_by('id',$id);
 	$firstname = $user->user_firstname;
@@ -225,8 +224,11 @@ function showmcapi1($id,$levels) {
 		}
 		if($no_repeat) break; 
 		if( $debug ) {
-			wp_mail('charly@askcharlyleetham.com','test data',ob_get_clean());
-    		$logfile = fopen("mcintlog.log", "w");
+			$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcintlog.log", "a");
+			$out =ob_get_clean();
+			fwrite($logfile, $out);
+			fclose($logfile);
+			$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcintlog-1.log", "a");
             fwrite($logfile, $msg1);
             fclose($logfile);
 		}
@@ -376,9 +378,9 @@ function showmcapi3($id,$levels) {
     			$msg1 = 'Success';
     			/*die();*/
     		}
-    		$logfile = fopen("/home/askcharl/mcintlog.log", "w");
-            fwrite($logfile, $msg1);
-            fclose($logfile);
+		$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcintlog-1.log", "a");
+        fwrite($logfile, $msg1);
+        fclose($logfile);
 		}
 	}
 	return $result;
