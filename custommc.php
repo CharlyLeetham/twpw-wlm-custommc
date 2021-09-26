@@ -61,10 +61,10 @@ function showmcapi1($id,$levels) {
 		echo "\r\n\r\n";
 		echo "----------";
 		echo "\r\n\r\n";		
-		// $logfile = fopen( LOGPATH."mcintlog.log", "a" );
-		// $out =ob_get_clean();
-		// fwrite( $logfile, $out );
-		// fclose( $logfile );		
+		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+		$out =ob_get_clean();
+		fwrite( $logfile, $out );
+		fclose( $logfile );		
 	}
 	
 	//get the user object so we can grab their details to add to Mailchimp
@@ -85,13 +85,13 @@ function showmcapi1($id,$levels) {
 			$no_repeat = true;
 		}
 		
-		if ($_POST['wpm_action']) {
-			$action = $_POST['wpm_action'];
-		} elseif ($_POST['action']) {
-			$action = $_POST['action'];
-		} else {
-			$action = 'wpm_add_membership';
-		}		
+		// if ($_POST['wpm_action']) {
+			// $action = $_POST['wpm_action'];
+		// } elseif ($_POST['action']) {
+			// $action = $_POST['action'];
+		// } else {
+			// $action = 'wpm_add_membership';
+		// }		
 		
 		
 		if ($debug) {
