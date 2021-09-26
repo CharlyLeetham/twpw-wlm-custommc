@@ -125,6 +125,7 @@ function showmcapi1($id,$levels) {
 		$delete_member = FALSE;
 				
 		if ( $debug ) {
+			echo "Second part:";
 			echo "\r\n\r\n";
 			echo "Post: ";
 			var_dump($_POST);
