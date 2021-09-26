@@ -168,13 +168,13 @@ function showmcapi1($id,$levels) {
 		if( $debug ) {
 			echo 'Here we are: ';
 			echo "\r\n\r\n";			
-			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
-			$out =ob_get_clean();
-			fwrite( $logfile, $out );
-			fclose( $logfile );
-			$logfile = fopen( LOGPATH."mcintlog-1.log", "a" );
-            fwrite( $logfile, $msg1 );
-            fclose( $logfile );
+			// $logfile = fopen( LOGPATH."mcintlog.log", "a" );
+			// $out =ob_get_clean();
+			// fwrite( $logfile, $out );
+			// fclose( $logfile );
+			// $logfile = fopen( LOGPATH."mcintlog-1.log", "a" );
+            // fwrite( $logfile, $msg1 );
+            // fclose( $logfile );
 		}		
 
 		//Add or Remove from Mailchimp list based on WLM action and Mailchimp settings
