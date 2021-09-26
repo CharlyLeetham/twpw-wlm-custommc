@@ -140,14 +140,6 @@ function showmcapi1($id,$levels) {
 			$action = 'wpm_add_membership';
 		}
 
-		if ($debug) {
-			echo "\r\n\r\n";
-			echo "Action: ". $action;
-			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
-			$out =ob_get_clean();
-			fwrite( $logfile, $out );
-			fclose( $logfile );		
-		}
 		//Add or Remove from Mailchimp list based on WLM action and Mailchimp settings
 		if ( $action=='wpm_add_membership' || $action == 'wpm_register' || $action=='wpm_change_membership' || $action=='admin_actions' || $action=='schedule_user_level' ) {
 					
@@ -176,8 +168,8 @@ function showmcapi1($id,$levels) {
 					
 				} else {
 					echo "\r\n\r\n";
-					echo 'Success';
-					$msg1 .= 'Success'."\n";					
+					echo 'Add to Mailchimp Success';
+					$msg1 .= 'Add Success'."\n";					
 				}
 			}
 		} elseif ($action == 'wpm_del_membership' && $unsub == true) {
@@ -200,8 +192,8 @@ function showmcapi1($id,$levels) {
 					$msg1 .= "\tMsg=".$mailchimp->errorMessage."\n";					
 				} else {
 					echo "\r\n\r\n";
-					echo 'Success';					
-					$msg1 .= 'Success'."\n";
+					echo 'Del from Mailchimp Success';					
+					$msg1 .= 'Del Success'."\n";
 				}
 			}
 		}
