@@ -118,14 +118,14 @@ function showmcapi1($id,$levels) {
 		}
 		
 		
-		$double_optin = (empty($settings[$level]['dblopt']))?true:false;
+		$double_optin = (empty($settings[$levid]['dblopt']))?true:false;
 		$unsub = (empty($settings[$level]['unsub']))?false:true;
-		$send_welcome = (empty($settings[$level]['sendwel']))?false:true;
-		$send_goodbye = (empty($settings[$level]['sendbye']))?false:true;
-		$send_notify = (empty($settings[$level]['sendnotify']))?false:true;
+		$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
+		$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
+		$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
 		$groupings = array(); // create groupings array
-		if( !empty( $settings[$level]['mcgroup'] ) ) { // if there are groups
-			foreach( $settings[$level]['mcgroup'] as $group ) { // go through each group that's been set
+		if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
+			foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
 				$group = explode('::',$group); // divide the group as top id and bottom name
 				$groups[$group[0]][] = $group[1]; 
 			}
@@ -141,7 +141,7 @@ function showmcapi1($id,$levels) {
 							 'LNAME' => $lastname,
 							 'GROUPINGS' => $groupings,
 							);
-		$merge_vars = array_merge($merge_vars, $settings[$level]['merge_vars']);
+		$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
 		// For PDT ONLY
 		$merge_vars['JOINED'] = current_time('Y-m-d');
 		$email_type = 'html';
@@ -155,7 +155,7 @@ function showmcapi1($id,$levels) {
 			echo "Post: ";
 			var_dump($_POST);
 			echo '<br />';
-			var_dump ($level);
+			var_dump ($levid);
 		}
 		
 		// Assign $action based on the WLM call used
