@@ -90,13 +90,14 @@ function showmcapi1($id,$levels) {
 		echo 'MCListID: ';
 		echo "\r\n\r\n";
 		var_dump ($mclistid);
+		echo "\r\n\r\n";		
 		
 		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
 		$out =ob_get_clean();
 		fwrite( $logfile, $out );
 		fclose( $logfile );		
 		
-		if ($mclistid==false) { /*echo "No List";*/ break; } else { /*echo "List: " . $mclistid;*/ }
+		if ($mclistid==false) { echo "No List"; continue; } else { echo "List: " . $mclistid; }
 		
 		$double_optin = (empty($settings[$level]['dblopt']))?true:false;
 		$unsub = (empty($settings[$level]['unsub']))?false:true;
@@ -236,7 +237,7 @@ function showmcapi1($id,$levels) {
 add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
 add_action ('wishlistmember_add_user_levels','showmcapi1',30,2);
 add_action ('wishlistmember_approve_user_levels','showmcapi1',30,2);
-// add_action ('wishlistmember_after_registration','showmcapi1',100,2);
+add_action ('wishlistmember_after_registration','showmcapi1',100,2);
 
 
 function showmcapi2($id) {
