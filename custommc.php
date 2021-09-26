@@ -103,7 +103,10 @@ function showmcapi1($id,$levels) {
 		echo "\r\n\r\n";
 		echo '------++++++------';
 		echo "\r\n\r\n";		
-		
+		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+		$out =ob_get_clean();
+		fwrite( $logfile, $out );
+		fclose( $logfile );
 	
 		
 		if ($mclistid==false) { echo "No List"; echo "\r\n\r\n"; continue; } else { echo "List: " . $mclistid; echo "\r\n\r\n"; }
