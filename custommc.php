@@ -143,6 +143,8 @@ function showmcapi1($id,$levels) {
 		
 		
 		if( $debug ) {
+			echo 'Here we are: ';
+			echo "\r\n\r\n";			
 			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
 			$out =ob_get_clean();
 			fwrite( $logfile, $out );
