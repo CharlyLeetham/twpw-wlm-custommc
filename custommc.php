@@ -198,7 +198,6 @@ function showmcapi1($id,$levels) {
 				}
 			}
 		}
-		if($no_repeat) break; 
 		
 		if( $debug ) {
 			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
@@ -209,6 +208,8 @@ function showmcapi1($id,$levels) {
             fwrite( $logfile, $msg1 );
             fclose( $logfile );
 		}
+		
+		if($no_repeat) break; 		
 	}
 	return $result;
 }
