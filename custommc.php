@@ -41,7 +41,7 @@ function twpw_custommc_admin_register_head() {
 add_action('admin_head', 'twpw_custommc_admin_register_head');
 
 function showmcapi1($id,$levels) {
-	$debug=false;
+	$debug=true;
 	ob_start();
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];	
@@ -99,7 +99,9 @@ function showmcapi1($id,$levels) {
 			echo "Level: ". $level;
 			echo "\r\n\r\n";
 			echo "Action: ".$action;
-			echo "\r\n\r\n";			
+			echo "\r\n\r\n";
+			echo "----------";
+			echo "\r\n\r\n";	
 			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
 			$out =ob_get_clean();
 			fwrite( $logfile, $out );
@@ -141,9 +143,7 @@ function showmcapi1($id,$levels) {
 		$update_existing = TRUE;
 		$replace_interests = TRUE;	
 		$delete_member = FALSE;
-		
-		$debug = true;
-		
+				
 		if ( $debug ) {
 			echo "\r\n\r\n";
 			echo "Post: ";
