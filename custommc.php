@@ -87,6 +87,10 @@ function showmcapi1($id,$levels) {
 
 		$mclistid = (empty($settings[$level]['mclistid']))?false:$settings[$level]['mclistid'];
 		
+		echo 'Level: ';
+		echo "\r\n\r\n";
+		var_dump ($level);
+		echo "\r\n\r\n";		
 		echo 'MCListID: ';
 		echo "\r\n\r\n";
 		var_dump ($mclistid);
@@ -97,7 +101,8 @@ function showmcapi1($id,$levels) {
 		fwrite( $logfile, $out );
 		fclose( $logfile );		
 		
-		if ($mclistid==false) { echo "No List"; continue; } else { echo "List: " . $mclistid; }
+		if ($mclistid==false) { echo "No List"; echo "\r\n\r\n"; continue; } else { echo "List: " . $mclistid; echo "\r\n\r\n"; }
+		
 		
 		$double_optin = (empty($settings[$level]['dblopt']))?true:false;
 		$unsub = (empty($settings[$level]['unsub']))?false:true;
