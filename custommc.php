@@ -41,7 +41,7 @@ function twpw_custommc_admin_register_head() {
 add_action('admin_head', 'twpw_custommc_admin_register_head');
 
 function showmcapi1($id,$levels) {
-	$debug=true;
+	$debug=false;
 	ob_start();
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];	
@@ -119,7 +119,9 @@ function showmcapi1($id,$levels) {
 		$update_existing = TRUE;
 		$replace_interests = TRUE;	
 		$delete_member = FALSE;
-				
+		
+		$debug = true;
+		
 		if ( $debug ) {
 			echo "\r\n\r\n";
 			echo "Post: ";
@@ -140,6 +142,10 @@ function showmcapi1($id,$levels) {
 		if ($debug) {
 			echo "\r\n\r\n";
 			echo "Action: ". $action;
+			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+			$out =ob_get_clean();
+			fwrite( $logfile, $out );
+			fclose( $logfile )			
 		}
 		//Add or Remove from Mailchimp list based on WLM action and Mailchimp settings
 		if ( $action=='wpm_add_membership' || $action == 'wpm_register' || $action=='wpm_change_membership' || $action=='admin_actions' ) {
