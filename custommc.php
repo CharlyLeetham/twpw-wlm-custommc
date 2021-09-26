@@ -87,7 +87,14 @@ function showmcapi1($id,$levels) {
 
 		$mclistid = (empty($settings[$level]['mclistid']))?false:$settings[$level]['mclistid'];
 		
+		echo 'MCListID: ';
+		echo "\r\n\r\n";
 		var_dump $mclistid;
+		
+		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+		$out =ob_get_clean();
+		fwrite( $logfile, $out );
+		fclose( $logfile );		
 		
 		if ($mclistid==false) { /*echo "No List";*/ break; } else { /*echo "List: " . $mclistid;*/ }
 		
