@@ -203,8 +203,8 @@ function showmcapi1($id,$levels) {
 					
 				} else {
 					echo "\r\n\r\n";
-					echo 'Add to Mailchimp Success';
-					$msg1 .= 'Add Success'."\n";					
+					echo 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success <br />';
+					$msg1 .= 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'."\n";					
 				}
 			}
 		} elseif ($action == 'wpm_del_membership' && $unsub == true) {
@@ -227,8 +227,8 @@ function showmcapi1($id,$levels) {
 					$msg1 .= "\tMsg=".$mailchimp->errorMessage."\n";					
 				} else {
 					echo "\r\n\r\n";
-					echo 'Del from Mailchimp Success';					
-					$msg1 .= 'Del Success'."\n";
+					echo 'Del '.$firstname .'('.$id.') from Mailchimp List: '.$mclistid.'<br />';					
+					$msg1 .= 'Del '.$firstname .'('.$id.') from Mailchimp List: '.$mclistid."\n";
 				}
 			}
 		}
