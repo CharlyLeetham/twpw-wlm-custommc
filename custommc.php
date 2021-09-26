@@ -139,12 +139,22 @@ function showmcapi1($id,$levels) {
 		} else {
 			$action = 'wpm_add_membership';
 		}
+		
+		
+		
+		if( $debug ) {
+			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+			$out =ob_get_clean();
+			fwrite( $logfile, $out );
+			fclose( $logfile );
+			$logfile = fopen( LOGPATH."mcintlog-1.log", "a" );
+            fwrite( $logfile, $msg1 );
+            fclose( $logfile );
+		}		
 
 		//Add or Remove from Mailchimp list based on WLM action and Mailchimp settings
 		if ( $action=='wpm_add_membership' || $action == 'wpm_register' || $action=='wpm_change_membership' || $action=='admin_actions' || $action=='schedule_user_level' ) {
-					
-			wp_mail('charly@askcharlyleetham.com','new test data',$useremail);
-			
+							
 			$result = $mailchimp->call( '/lists/subscribe', array(
 				'apikey' => $mcapikey,
 				'id' => $mclistid,
