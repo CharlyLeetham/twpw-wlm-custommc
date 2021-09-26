@@ -185,7 +185,7 @@ function showmcapi1($id,$levels) {
 					
 				} else {
 					echo "\r\n\r\n";
-					echo 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success <br />';
+					echo 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'. "\n";
 					$msg1 .= 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'."\n";					
 				}
 			}
@@ -209,7 +209,7 @@ function showmcapi1($id,$levels) {
 					$msg1 .= "\tMsg=".$mailchimp->errorMessage."\n";					
 				} else {
 					echo "\r\n\r\n";
-					echo 'Del '.$firstname .'('.$id.') from Mailchimp List: '.$mclistid.'<br />';					
+					echo 'Del '.$firstname .'('.$id.') from Mailchimp List: '.$mclistid."\n";					
 					$msg1 .= 'Del '.$firstname .'('.$id.') from Mailchimp List: '.$mclistid."\n";
 				}
 			}
