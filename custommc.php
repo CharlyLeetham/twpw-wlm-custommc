@@ -130,10 +130,12 @@ function showmcapi1($id,$levels) {
 		}
 		
 		// Assign $action based on the WLM call used
-		if ($_POST['wpm_action']) {
+		if ( $_POST['wpm_action'] ) {
 			$action = $_POST['wpm_action'];
-		} elseif ($_POST['action']) {
+		} elseif ( $_POST['action'] ) {
 			$action = $_POST['action'];
+		} elseif ( $_POST['WishListMemberAction'] ){
+			$action = $_POST['WishListMemberAction'];
 		} else {
 			$action = 'wpm_add_membership';
 		}
@@ -147,7 +149,7 @@ function showmcapi1($id,$levels) {
 			fclose( $logfile );		
 		}
 		//Add or Remove from Mailchimp list based on WLM action and Mailchimp settings
-		if ( $action=='wpm_add_membership' || $action == 'wpm_register' || $action=='wpm_change_membership' || $action=='admin_actions' ) {
+		if ( $action=='wpm_add_membership' || $action == 'wpm_register' || $action=='wpm_change_membership' || $action=='admin_actions' || $action=='schedule_user_level' ) {
 					
 			wp_mail('charly@askcharlyleetham.com','new test data',$useremail);
 			
