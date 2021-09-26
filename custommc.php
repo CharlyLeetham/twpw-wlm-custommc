@@ -74,6 +74,8 @@ function showmcapi1($id,$levels) {
 	//Using the POST variable, find the level that the member was added to
 
 	foreach($levels as $level) {
+		
+		$levid = $level->Level_ID;
 
 		if($_POST['wpm_membership_to']) {
 			$level = $_POST['wpm_membership_to'];
@@ -87,12 +89,12 @@ function showmcapi1($id,$levels) {
 		
 		/* Find the appropriate MC Settings from the database */
 
-		$mclistid = (empty($settings[$level]['mclistid']))?false:$settings[$level]['mclistid'];
+		$mclistid = (empty($settings[$levid]['mclistid']))?false:$settings[$levid]['mclistid'];
 		
 		echo 'Level: ';
 		echo "\r\n\r\n";
 		$levexp = var_export ( $level, true );
-		echo $levexp;
+		echo $levid;
 		echo "\r\n\r\n";		
 		echo 'MCListID: ';
 		echo "\r\n\r\n";
