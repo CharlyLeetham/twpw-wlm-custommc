@@ -60,11 +60,7 @@ function showmcapi1($id,$levels) {
 		var_dump( $levels );
 		echo "\r\n\r\n";
 		echo "----------";
-		echo "\r\n\r\n";		
-		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
-		$out = ob_get_clean();
-		fwrite( $logfile, $out );
-		fclose( $logfile );		
+		echo "\r\n\r\n";				
 	}
 	
 	//get the user object so we can grab their details to add to Mailchimp
@@ -84,6 +80,13 @@ function showmcapi1($id,$levels) {
 			$level = $_POST['wpm_id'];
 			$no_repeat = true;
 		}
+
+		echo 'And first we are here: ';
+		echo "\r\n\r\n";		
+		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+		$out = ob_get_clean();
+		fwrite( $logfile, $out );
+		fclose( $logfile );
 		
 		/* Find the appropriate MC Settings from the database */
 
