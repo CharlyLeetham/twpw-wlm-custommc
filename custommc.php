@@ -57,10 +57,13 @@ function showmcapi1($id,$levels) {
 		echo "User ID: " .$id;
 		echo "\r\n\r\n";
 		var_dump( $levels );
-		echo "\r\n\r\n";
+		echo "\r\n\r\n";	
+		// $logfile = fopen( LOGPATH."mcintlog.log", "a" );
+		// $out =ob_get_clean();
+		// fwrite( $logfile, $out );
+		// fclose( $logfile );		
 	}
 	
-	$debug=false;
 	//get the user object so we can grab their details to add to Mailchimp
 	$user = get_user_by('id',$id);
 	$firstname = $user->user_firstname;
@@ -195,7 +198,7 @@ function showmcapi1($id,$levels) {
 		if($no_repeat) break; 
 		
 		if( $debug ) {
-			$logfile = fopen( LOGPATH."/mcintlog.log", "a" );
+			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
 			$out =ob_get_clean();
 			fwrite( $logfile, $out );
 			fclose( $logfile );
