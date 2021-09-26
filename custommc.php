@@ -84,9 +84,7 @@ function showmcapi1($id,$levels) {
 			$level = $_POST['wpm_id'];
 			$no_repeat = true;
 		}
-
-		/* We get here */
-		
+	
 		/* Find the appropriate MC Settings from the database */
 
 		$mclistid = (empty($settings[$levid]['mclistid']))?false:$settings[$levid]['mclistid'];
@@ -103,10 +101,7 @@ function showmcapi1($id,$levels) {
 		echo "\r\n\r\n";
 		echo '------++++++------';
 		echo "\r\n\r\n";		
-		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
-		$out =ob_get_clean();
-		fwrite( $logfile, $out );
-		fclose( $logfile );
+
 	
 		
 		if ($mclistid==false) { echo "No List"; echo "\r\n\r\n"; continue; } else { echo "List: " . $mclistid; echo "\r\n\r\n"; }
@@ -164,33 +159,20 @@ function showmcapi1($id,$levels) {
 		}
 		
 		
-		
-		if( $debug ) {
-			echo 'Here we are: ';
-			echo "\r\n\r\n";			
-			// $logfile = fopen( LOGPATH."mcintlog.log", "a" );
-			// $out =ob_get_clean();
-			// fwrite( $logfile, $out );
-			// fclose( $logfile );
-			// $logfile = fopen( LOGPATH."mcintlog-1.log", "a" );
-            // fwrite( $logfile, $msg1 );
-            // fclose( $logfile );
-		}		
-
 		//Add or Remove from Mailchimp list based on WLM action and Mailchimp settings
 		if ( $action=='wpm_add_membership' || $action == 'wpm_register' || $action=='wpm_change_membership' || $action=='admin_actions' || $action=='schedule_user_level' ) {
 							
-			// $result = $mailchimp->call( '/lists/subscribe', array(
-				// 'apikey' => $mcapikey,
-				// 'id' => $mclistid,
-				// 'email' => array('email' => $useremail),
-				// 'merge_vars' => $merge_vars,
-				// 'email_type' => $email_type,
-				// 'double_optin' => $double_optin,
-				// 'update_existing' => $update_existing,
-				// 'replace_interests' => $replace_interests,
-				// 'send_welcome' => $send_welcome
-			// ));
+			$result = $mailchimp->call( '/lists/subscribe', array(
+				'apikey' => $mcapikey,
+				'id' => $mclistid,
+				'email' => array('email' => $useremail),
+				'merge_vars' => $merge_vars,
+				'email_type' => $email_type,
+				'double_optin' => $double_optin,
+				'update_existing' => $update_existing,
+				'replace_interests' => $replace_interests,
+				'send_welcome' => $send_welcome
+			));
 									
 			if ( $debug ) {
 				if ($mailchimp->errorCode){
