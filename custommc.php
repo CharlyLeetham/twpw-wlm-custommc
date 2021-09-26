@@ -94,6 +94,8 @@ function showmcapi1($id,$levels) {
 		echo 'MCListID: ';
 		echo "\r\n\r\n";
 		var_dump ($mclistid);
+		echo "\r\n\r\n";
+		echo '------++++++------';
 		echo "\r\n\r\n";		
 		
 		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
