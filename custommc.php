@@ -63,12 +63,6 @@ function showmcapi1($id,$levels) {
 		echo "\r\n\r\n";
 		echo "----------";
 		echo "\r\n\r\n";
-
-		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
-		$out =ob_get_clean();
-		fwrite( $logfile, $out );
-		fclose( $logfile );	
-		wp_die();
 	}
 	
 	//get the user object so we can grab their details to add to Mailchimp
@@ -183,17 +177,17 @@ function showmcapi1($id,$levels) {
 		//Add or Remove from Mailchimp list based on WLM action and Mailchimp settings
 		if ( $action=='wpm_add_membership' || $action == 'wpm_register' || $action=='wpm_change_membership' || $action=='admin_actions' || $action=='schedule_user_level' ) {
 							
-			$result = $mailchimp->call( '/lists/subscribe', array(
-				'apikey' => $mcapikey,
-				'id' => $mclistid,
-				'email' => array('email' => $useremail),
-				'merge_vars' => $merge_vars,
-				'email_type' => $email_type,
-				'double_optin' => $double_optin,
-				'update_existing' => $update_existing,
-				'replace_interests' => $replace_interests,
-				'send_welcome' => $send_welcome
-			));
+			// $result = $mailchimp->call( '/lists/subscribe', array(
+				// 'apikey' => $mcapikey,
+				// 'id' => $mclistid,
+				// 'email' => array('email' => $useremail),
+				// 'merge_vars' => $merge_vars,
+				// 'email_type' => $email_type,
+				// 'double_optin' => $double_optin,
+				// 'update_existing' => $update_existing,
+				// 'replace_interests' => $replace_interests,
+				// 'send_welcome' => $send_welcome
+			// ));
 									
 			if ( $debug ) {
 				if ($mailchimp->errorCode){
