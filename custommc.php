@@ -58,10 +58,10 @@ function showmcapi1($id,$levels) {
 		echo "\r\n\r\n";
 		var_dump( $levels );
 		echo "\r\n\r\n";	
-		// $logfile = fopen( LOGPATH."mcintlog.log", "a" );
-		// $out =ob_get_clean();
-		// fwrite( $logfile, $out );
-		// fclose( $logfile );		
+		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+		$out =ob_get_clean();
+		fwrite( $logfile, $out );
+		fclose( $logfile );		
 	}
 	
 	//get the user object so we can grab their details to add to Mailchimp
