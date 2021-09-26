@@ -62,7 +62,7 @@ function showmcapi1($id,$levels) {
 		echo "----------";
 		echo "\r\n\r\n";		
 		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
-		$out =ob_get_clean();
+		$out = ob_get_clean();
 		fwrite( $logfile, $out );
 		fclose( $logfile );		
 	}
@@ -84,29 +84,6 @@ function showmcapi1($id,$levels) {
 			$level = $_POST['wpm_id'];
 			$no_repeat = true;
 		}
-		
-		// if ($_POST['wpm_action']) {
-			// $action = $_POST['wpm_action'];
-		// } elseif ($_POST['action']) {
-			// $action = $_POST['action'];
-		// } else {
-			// $action = 'wpm_add_membership';
-		// }		
-		
-		
-		if ($debug) {
-			echo "\r\n\r\n";
-			echo "Level: ". $level;
-			echo "\r\n\r\n";
-			echo "Action: ".$action;
-			echo "\r\n\r\n";
-			echo "----------";
-			echo "\r\n\r\n";	
-			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
-			$out =ob_get_clean();
-			fwrite( $logfile, $out );
-			fclose( $logfile );		
-		}		
 		
 		/* Find the appropriate MC Settings from the database */
 
