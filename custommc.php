@@ -41,7 +41,7 @@ function twpw_custommc_admin_register_head() {
 add_action('admin_head', 'twpw_custommc_admin_register_head');
 
 function showmcapi1($id,$levels) {
-	$debug=false;
+	$debug=true;
 	ob_start();
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];	
@@ -113,40 +113,15 @@ function showmcapi1($id,$levels) {
 		$update_existing = TRUE;
 		$replace_interests = TRUE;	
 		$delete_member = FALSE;
+				
+		if ( $debug ) {
+			echo "\r\n\r\n";
+			echo "Post: ";
+			var_dump($_POST);
+			echo '<br />';
+			var_dump ($level);
+		}
 		
-		$debug = false;
-		
-		// if ( $debug ) {
-			// echo "\r\n\r\n";
-			// echo "Post: ";
-			// var_dump($_POST);
-			// echo '<br />';
-			// var_dump ($level);
-			// wp_die();
-		// }
-		
- 
-		
-		// foreach ( $levels as $k2=>$v2 ) { // Because get_member_levels pulls back all levels a member is in, we're going to filter for only the level we're looking.
-			// $filtered = array_filter(
-				// $levels,
-				// function ($k2) use ($allowed) {
-						// return in_array($k2, $allowed);
-					// },
-				// ARRAY_FILTER_USE_KEY
-			// );	
-		// }
-
-		// Now we have an array ($filtered) that has the members we're looking for and only the details of the membership level we're working with.
-
-		foreach ( $filtered as $k3 => $v3 ) { //Loop through $filtered and find the members who require approval. If they require approval, skip.
-			$levstatus = $v3->Status;
-					
-			// if ( $levstatus[0] == 'For Approval' ) {
-				// return;
-			// }
-		}		
-
 		// Assign $action based on the WLM call used
 		if ($_POST['wpm_action']) {
 			$action = $_POST['wpm_action'];
