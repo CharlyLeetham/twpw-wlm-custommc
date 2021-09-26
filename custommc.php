@@ -81,18 +81,16 @@ function showmcapi1($id,$levels) {
 			$no_repeat = true;
 		}
 
-		echo 'And first we are here: ';
-		echo "\r\n\r\n";		
-		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
-		$out = ob_get_clean();
-		fwrite( $logfile, $out );
-		fclose( $logfile );
+		/* We get here */
 		
 		/* Find the appropriate MC Settings from the database */
 
 		$mclistid = (empty($settings[$level]['mclistid']))?false:$settings[$level]['mclistid'];
 		
+		var_dump $mclistid;
+		
 		if ($mclistid==false) { /*echo "No List";*/ break; } else { /*echo "List: " . $mclistid;*/ }
+		
 		$double_optin = (empty($settings[$level]['dblopt']))?true:false;
 		$unsub = (empty($settings[$level]['unsub']))?false:true;
 		$send_welcome = (empty($settings[$level]['sendwel']))?false:true;
