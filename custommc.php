@@ -104,7 +104,18 @@ function showmcapi1($id,$levels) {
 
 	
 		
-		if ($mclistid==false) { echo "No List"; echo "\r\n\r\n"; continue; } else { echo "List: " . $mclistid; echo "\r\n\r\n"; }
+		if ($mclistid==false) { 
+			echo "No List"; 
+			echo "\r\n\r\n"; 
+			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+			$out =ob_get_clean();
+			fwrite( $logfile, $out );
+			fclose( $logfile );			
+			continue; 
+		} else { 
+			echo "List: " . $mclistid; 
+			echo "\r\n\r\n"; 
+		}
 		
 		
 		$double_optin = (empty($settings[$level]['dblopt']))?true:false;
