@@ -55,9 +55,11 @@ function showmcapi1($id,$levels) {
 		// $output = var_export( $_POST,true );
 		echo "User ID: " .$id;
 		echo "\r\n\r\n";
-		var_dump( $_POST );
+		$postexp = var_export( $_POST, true );
+		echo $postexp;
 		echo "\r\n\r\n";		
-		var_dump( $levels );
+		$levexp = var_export( $levels, true );
+		echo $levexp;
 		echo "\r\n\r\n";
 		echo "----------";
 		echo "\r\n\r\n";				
@@ -89,11 +91,13 @@ function showmcapi1($id,$levels) {
 		
 		echo 'Level: ';
 		echo "\r\n\r\n";
-		var_dump ($level);
+		$levexp = var_export ( $level, true );
+		echo $levexp;
 		echo "\r\n\r\n";		
 		echo 'MCListID: ';
 		echo "\r\n\r\n";
-		var_dump ($mclistid);
+		$mclistexp = var_export ( $mclistid, true );
+		echo $mclistexp;
 		echo "\r\n\r\n";
 		echo '------++++++------';
 		echo "\r\n\r\n";		
@@ -489,49 +493,6 @@ function twpw_create_merge_vars_feilds($level_id,$settings) {
 ?>
 </tr></table></td>
 <?php	/**/
-}
-
-if (!function_exists('twpw_verify_api')) {
-	function twpw_verify_api() {
-	global $twpw_wlm_api;	
-	if (isset($twpw_wlm_api)) {
-		return $twpw_wlm_api;
-	}
-	global $wpdb;
-	$wlmapikey =  $wpdb->get_results("SELECT `option_value` FROM `{$wpdb->prefix}wlm_options` WHERE `option_name` = 'WLMAPIKey'",ARRAY_N);
-	$wlmapikey = $wlmapikey[0][0];
-	$wlmapiset = 'no';
-	if ($wlmapiset) {
-		$x = WP_PLUGIN_DIR.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__));
-		$x = $x.'/includes/wlmapiclass.php';
-		if (!file_exists(trim($x))) {
-			return 'No File';
-		} else {
-			/* include the class */
-			if (!class_exists('wlmapiclass')) {
-				include ($x);
-			}
-			if (get_option('wlposturl')) {
-				$siteurl = get_option('wlposturl');
-			} else {
-				$siteurl = get_bloginfo('url'); // get the site url 
-			}		
-			$siteurl = str_replace('https:','http:',$siteurl);
-			$siteurl = $siteurl.'/'; // append a / to the end of the url 
-			$twpw_wlm_api = new wlmapiclass($siteurl,$wlmapikey); // initialise the api
-			$twpw_wlm_api->return_format = 'php';			// set the return format to php	
-			$levelid = '/levels/';
-			$alllevels = $twpw_wlm_api->get($levelid);
-			$alllevels = unserialize($alllevels);
-			if ($alllevels['success'] === 0) {
-			// Check if the api is authenticated
-				return 'No Auth';
-			} else {
-				return $twpw_wlm_api;
-			} //end authentication test
-		} // (end file_exists)
-	} // End Function twpw_get_mem_levels
-}
 }
 
 function gethere() {
