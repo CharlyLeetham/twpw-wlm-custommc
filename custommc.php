@@ -42,18 +42,25 @@ function twpw_custommc_admin_register_head() {
 add_action('admin_head', 'twpw_custommc_admin_register_head');
 
 function showmcapi1($id,$levels) {
-	$debug=true;
 	ob_start();
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];	
 	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
+	date_default_timezone_set("US/Hawaii");
+	$logging = true;
+	$debug=true;
+
+
+	// if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
 	
 	
 	$levels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
 	
-	if ($debug) {
-		// $output = var_export( $_POST,true );
+	if ( $debug ) {
+		$output = var_export( $_POST,true );
+		echo 'Post: '. "\r\n\r\n";
+		echo $output."\r\n\r\n";
+		echo 'Date: '. date("m/d/Y H:i:s (O)").' GMT<br />';
 		echo "User ID: " .$id;
 		echo "\r\n\r\n";
 		$postexp = var_export( $_POST, true );
@@ -61,8 +68,6 @@ function showmcapi1($id,$levels) {
 		echo "\r\n\r\n";		
 		$levexp = var_export( $levels, true );
 		echo $levexp;
-		echo "\r\n\r\n";
-		echo "----------";
 		echo "\r\n\r\n";
 	}
 	
@@ -75,7 +80,6 @@ function showmcapi1($id,$levels) {
 	//Using the POST variable, find the level that the member was added to
 
 	foreach($levels as $level) {
-		
 		$levid = $level->Level_ID;
 
 		if($_POST['wpm_membership_to']) {
@@ -90,35 +94,41 @@ function showmcapi1($id,$levels) {
 
 		$mclistid = (empty($settings[$levid]['mclistid']))?false:$settings[$levid]['mclistid'];
 		
-		echo 'Level: ';
-		echo "\r\n\r\n";
-		$levexp = var_export ( $level, true );
-		echo $levid;
-		echo "\r\n\r\n";		
-		echo 'MCListID: ';
-		echo "\r\n\r\n";
-		$mclistexp = var_export ( $mclistid, true );
-		echo $mclistexp;
-		echo "\r\n\r\n";
-		echo '------++++++------';
-		echo "\r\n\r\n";		
-
-	
 		
-		if ($mclistid==false) { 
-			echo "No List"; 
-			echo "\r\n\r\n"; 
+		if ($debug) {
+			echo 'Level: ';
+			echo "\r\n\r\n";
+			$levexp = var_export ( $level, true );
+			echo $levid;
+			echo "\r\n\r\n";		
+			echo 'MCListID: ';
+			echo "\r\n\r\n";
+			$mclistexp = var_export ( $mclistid, true );
+			echo $mclistexp;
+			echo "\r\n\r\n";
+			echo '------++++++------';
+			echo "\r\n\r\n";		
+		}
+
+		$debug = false;
+		
+		if ($mclistid==false) {
+			if ( $debug ) {
+				echo "No List"; 
+				echo "\r\n\r\n"; 
+			}
 			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
 			$out =ob_get_clean();
 			fwrite( $logfile, $out );
 			fclose( $logfile );			
 			continue; 
 		} else { 
-			echo "List: " . $mclistid; 
-			echo "\r\n\r\n"; 
+			if ( $debug ) {
+				echo "List: " . $mclistid; 
+				echo "\r\n\r\n"; 
+			}
 		}
-		
-		
+
 		$double_optin = (empty($settings[$levid]['dblopt']))?true:false;
 		$unsub = (empty($settings[$level]['unsub']))?false:true;
 		$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
@@ -149,14 +159,24 @@ function showmcapi1($id,$levels) {
 		$update_existing = TRUE;
 		$replace_interests = TRUE;	
 		$delete_member = FALSE;
-				
+		
+		$debug = true;
+		
 		if ( $debug ) {
-			echo "Second part:";
-			echo "\r\n\r\n";
-			echo "Post: ";
-			var_dump($_POST);
-			echo '<br />';
-			var_dump ($levid);
+			$myarray = array(
+				'apikey' => $mcapikey,
+				'id' => $mclistid,
+				'email' => array('email' => $useremail),
+				'merge_vars' => $merge_vars,
+				'email_type' => $email_type,
+				'double_optin' => $double_optin,
+				'update_existing' => $update_existing,
+				'replace_interests' => $replace_interests,
+				'send_welcome' => $send_welcome
+			);
+			$myarr = var_export ( $myarray, true );
+			echo 'Mailchimp settings: '."\r\n\r\n";
+			echo $myarr;
 		}
 		
 		// Assign $action based on the WLM call used
@@ -170,23 +190,24 @@ function showmcapi1($id,$levels) {
 			$action = 'wpm_add_membership';
 		}
 		
+		$live = false;
 		
 		//Add or Remove from Mailchimp list based on WLM action and Mailchimp settings
 		if ( $action=='wpm_add_membership' || $action == 'wpm_register' || $action=='wpm_change_membership' || $action=='admin_actions' || $action=='schedule_user_level' ) {
-							
-			$result = $mailchimp->call( '/lists/subscribe', array(
-				'apikey' => $mcapikey,
-				'id' => $mclistid,
-				'email' => array('email' => $useremail),
-				'merge_vars' => $merge_vars,
-				'email_type' => $email_type,
-				'double_optin' => $double_optin,
-				'update_existing' => $update_existing,
-				'replace_interests' => $replace_interests,
-				'send_welcome' => $send_welcome
-			));
-									
-			if ( $debug ) {
+			
+			if ( $live ) {
+				$result = $mailchimp->call( '/lists/subscribe', array(
+					'apikey' => $mcapikey,
+					'id' => $mclistid,
+					'email' => array('email' => $useremail),
+					'merge_vars' => $merge_vars,
+					'email_type' => $email_type,
+					'double_optin' => $double_optin,
+					'update_existing' => $update_existing,
+					'replace_interests' => $replace_interests,
+					'send_welcome' => $send_welcome
+				));
+										
 				if ($mailchimp->errorCode){
 					echo "Unable to load listUnsubscribe()!\n";
 					echo "\tCode=".$mailchimp->errorCode."\n";
@@ -200,18 +221,22 @@ function showmcapi1($id,$levels) {
 					echo 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'. "\n";
 					$msg1 .= 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'."\n";					
 				}
+			} elseif ( $debug ) {
+				echo 'Call made: $mailchimp->call( /lists/subscribe, .' $myarr .')';
+				echo "\r\n\r\n";
 			}
 		} elseif ($action == 'wpm_del_membership' && $unsub == true) {
 			
-			$result = $mailchimp->call( '/lists/unsubscribe', array(
-				'apikey' => $mcapikey,
-				'id' => $mclistid,
-				'email' => array('email' => $useremail),
-				'delete_member' => $delete_member,
-				'send_goodbye' => $send_goodbye,
-				'send_notify' => $send_notify
-			));	
-			if ($debug) {
+			if ( $live ) {
+			
+				$result = $mailchimp->call( '/lists/unsubscribe', array(
+					'apikey' => $mcapikey,
+					'id' => $mclistid,
+					'email' => array('email' => $useremail),
+					'delete_member' => $delete_member,
+					'send_goodbye' => $send_goodbye,
+					'send_notify' => $send_notify
+				));	
 				if ($mailchimp->errorCode){
 					echo "Unable to load listUnsubscribe()!\n";
 					echo "\tCode=".$mailchimp->errorCode."\n";
@@ -224,10 +249,14 @@ function showmcapi1($id,$levels) {
 					echo 'Del '.$firstname .'('.$id.') from Mailchimp List: '.$mclistid."\n";					
 					$msg1 .= 'Del '.$firstname .'('.$id.') from Mailchimp List: '.$mclistid."\n";
 				}
+			} else {
+				echo 'Call made: $mailchimp->call( /lists/unsubscribe, .' $myarr .')';
+				echo "\r\n\r\n";
 			}
 		}
 		
-		if( $debug ) {
+		
+		if( $logging ) {
 			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
 			$out =ob_get_clean();
 			fwrite( $logfile, $out );
@@ -244,153 +273,6 @@ function showmcapi1($id,$levels) {
 add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
 add_action ('wishlistmember_add_user_levels','showmcapi1',30,2);
 add_action ('wishlistmember_approve_user_levels','showmcapi1',30,2);
-
-
-function showmcapi2($id) {
-
-	//get the user object so we can grab their details to add to Mailchimp
-	/* Find the appropriate MC Settings from the database */
-	$debug=false;
-	$settings = get_option('twpw_custommc',false);
-	$mcapikey = $settings['mcapikey'];
-	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
-	$mailchimp = new Mailchimp ( $mcapikey );
-		
-	$wlmapi = twpw_verify_api();		
-	$user = get_user_by('id',$id);
-	$firstname = $user->user_firstname;
-	$lastname = $user->user_lastname;
-	$useremail = $user->user_email;
-
-	$levels = unserialize($wlmapi->get('/members/'.$id));
-	$levels = $levels['member'][0]['Levels'];
-	$levels = array_keys($levels);
-	
-	foreach ($levels as $level) {
-		$mclistid = (empty($settings[$level]['mclistid']))?false:$settings[$level]['mclistid'];
-			if ($mclistid==false) { break; }
-		$unsub = (empty($settings[$level]['unsub']))?false:true;
-		$send_goodbye = (empty($settings[$level]['sendbye']))?false:true;
-		$send_notify = (empty($settings[$level]['sendnotify']))?false:true;
-	
-		// Setup the array to send to Mailchimp
-		$merge_vars = array (
-							 'FNAME' => $firstname,
-							 'LNAME' => $lastname,
-							);									
-		$email_type = 'html';
-		$update_existing = TRUE;
-		$replace_interests = TRUE;	
-		$delete_member = FALSE;
-		
-		//echo $mcapikey.' '.$mclistid.' |'.$useremail.'| '.$delete_member.' '.$send_goodbye.' '.$send_notify;
-
-
-		$result = $mailchimp->call( '/lists/unsubscribe', array(
-			'apikey' => $mcapikey,
-			'id' => $mclistid,
-			'email' => array('email' => $useremail),
-			'delete_member' => $delete_member,
-			'send_goodbye' => $send_goodbye,
-			'send_notify' => $send_notify
-		));	
-		//var_dump($result);
-		//die();
-		if ($debug) {
-			if ($mailchimp->errorCode){
-				echo "Unable to load listUnsubscribe()!\n";
-				echo "\tCode=".$mailchimp->errorCode."\n";
-				echo "\tMsg=".$mailchimp->errorMessage."\n";
-			} else {
-				echo 'Success';
-			}
-			die();
-		}
-		
-	}
-	return $result;
-
-}
-//add_action( 'delete_user', 'showmcapi2' );
-
-//For Woo Commerce / WLM integration
-function showmcapi3($id,$levels) {
-	$debug=false;
-	$settings = get_option('twpw_custommc',false);
-	$mcapikey = $settings['mcapikey'];	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
-
-
-	$mailchimp = new Mailchimp ( $mcapikey );		
-
-	//get the user object so we can grab their details to add to Mailchimp
-	$user = get_user_by('id',$id);
-	$firstname = $user->user_firstname;
-	$lastname = $user->user_lastname;
-	$useremail = $user->user_email;
-	
-	
-	
-	/* Find the appropriate MC Settings from the database */
-
-	foreach ($levels as $level) {	
-		$mclistid = (empty($settings[$level]['mclistid']))?false:$settings[$level]['mclistid'];
-			if ($mclistid==false) { return; }
-		$double_optin = (empty($settings[$level]['dblopt']))?true:false;
-		$unsub = (empty($settings[$level]['unsub']))?false:true;
-		$send_welcome = (empty($settings[$level]['sendwel']))?false:true;
-		$send_goodbye = (empty($settings[$level]['sendbye']))?false:true;
-		$send_notify = (empty($settings[$level]['sendnotify']))?false:true;
-		
-		$groupings = array(); // create groupings array
-		if( !empty( $settings[$level]['mcgroup'] ) ) { // if there are groups
-			foreach( $settings[$level]['mcgroup'] as $group ) { // go through each group that's been set
-				$group = explode('::',$group); // divide the group as top id and bottom name
-				$groups[$group[0]][] = $group[1]; 
-			}
-			foreach($groups as $group_id => $group) {
-				$groupings[] = array('id'=>$group_id, 'groups' => implode(',',$group));
-			}
-		}
-		// Setup the array to send to Mailchimp
-		$merge_vars = array (
-							 'FNAME' => $firstname,
-							 'LNAME' => $lastname,
-							 'GROUPINGS' => $groupings,
-							);
-											
-		$email_type = 'html';
-		$update_existing = TRUE;
-		$replace_interests = TRUE;	 
-
-		$result = $mailchimp->call( '/lists/subscribe', array(
-			'apikey' => $mcapikey,
-			'id' => $mclistid,
-			'email' => array('email' => $useremail),
-			'merge_vars' => $merge_vars,
-			'email_type' => $email_type,
-			'double_optin' => $double_optin,
-			'update_existing' => $update_existing,
-			'replace_interests' => $replace_interests,
-			'send_welcome' => $send_welcome
-		));
-		$debug="off";
-		if ($debug == "on") {
-    		if ($mailchimp->errorCode){
-    			$msg1 = "Unable to load listUnsubscribe()!\n";
-    			$msg1 .= "\tCode=".$mailchimp->errorCode."\n";
-    			$msg1 .= "\tMsg=".$mailchimp->errorMessage."\n";
-    			/*die();*/
-    		} else {
-    			$msg1 = 'Success';
-    			/*die();*/
-    		}
-		$logfile = fopen("/home/ad747432/public_html/pdt/wp-content/plugins/twpw-wlm-custommc/mcintlog-1.log", "a");
-        fwrite($logfile, $msg1);
-        fclose($logfile);
-		}
-	}
-	return $result;
-}
 
 
 function get_mailchimp_lists($mclistid,$wlmlevelid) {
@@ -490,11 +372,6 @@ function twpw_create_merge_vars_feilds($level_id,$settings) {
 <?php	/**/
 }
 
-function gethere() {
-	var_dump($_POST);
-	die();
-}
-//add_action('init','gethere');
 
 
 ?>
