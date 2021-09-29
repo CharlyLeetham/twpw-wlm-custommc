@@ -222,7 +222,7 @@ function showmcapi1($id,$levels) {
 					$msg1 .= 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'."\n";					
 				}
 			} elseif ( $debug ) {
-				echo 'Call made: $mailchimp->call( /lists/subscribe, .' $myarr .')';
+				echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
 				echo "\r\n\r\n";
 			}
 		} elseif ($action == 'wpm_del_membership' && $unsub == true) {
@@ -250,7 +250,7 @@ function showmcapi1($id,$levels) {
 					$msg1 .= 'Del '.$firstname .'('.$id.') from Mailchimp List: '.$mclistid."\n";
 				}
 			} else {
-				echo 'Call made: $mailchimp->call( /lists/unsubscribe, .' $myarr .')';
+				echo 'Call made: $mailchimp->call( /lists/unsubscribe, '. $myarr .')';
 				echo "\r\n\r\n";
 			}
 		}
