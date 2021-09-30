@@ -67,17 +67,15 @@ function showmcapi1($id,$levels) {
 	$levels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
 	
 	if ( $debug ) {
-		$output = var_export( $_POST,true );
-		echo 'Post: '. "\r\n\r\n";
-		echo $output."\r\n\r\n";
 		echo 'Date: '. date("m/d/Y H:i:s (O)").' GMT'."\r\n\r\n";
 		echo "User ID: " .$id;
-		echo "\r\n\r\n";
+		echo "\r\n\r\n";		
+		echo 'Post: ';
 		$postexp = var_export( $_POST, true );
 		echo $postexp;
 		echo "\r\n\r\n";		
 		$levexp = var_export( $levels, true );
-		echo $levexp;
+		echo 'Levels: '.$levexp;
 		echo "\r\n\r\n";
 	}
 	
