@@ -49,6 +49,16 @@ function showmcapi1($id,$levels) {
 	date_default_timezone_set("US/Hawaii");
 	$logging = true;
 	$debug=true;
+	
+	/* Setup Logging */
+	if (!file_exists(dirname( __FILE__ ).'/logs')) {
+		mkdir(dirname( __FILE__ ).'/logs', 0775, true);
+	}
+	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+	define ( 'LOGFILE', 'mcintlog.log' );
+	$logfile = LOGPATH.LOGFILE;
+	
+	/* End logging setup */
 
 
 	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
@@ -60,7 +70,7 @@ function showmcapi1($id,$levels) {
 		$output = var_export( $_POST,true );
 		echo 'Post: '. "\r\n\r\n";
 		echo $output."\r\n\r\n";
-		echo 'Date: '. date("m/d/Y H:i:s (O)").' GMT<br />';
+		echo 'Date: '. date("m/d/Y H:i:s (O)").' GMT'."\r\n\r\n";
 		echo "User ID: " .$id;
 		echo "\r\n\r\n";
 		$postexp = var_export( $_POST, true );
@@ -176,7 +186,7 @@ function showmcapi1($id,$levels) {
 			);
 			$myarr = var_export ( $myarray, true );
 			echo 'Mailchimp settings: '."\r\n\r\n";
-			echo $myarr;
+			echo $myarr."\r\n";
 		}
 		
 		// Assign $action based on the WLM call used
@@ -209,17 +219,17 @@ function showmcapi1($id,$levels) {
 				));
 										
 				if ($mailchimp->errorCode){
-					echo "Unable to load listUnsubscribe()!\n";
-					echo "\tCode=".$mailchimp->errorCode."\n";
-					echo "\tMsg=".$mailchimp->errorMessage."\n";
-					$msg1 .= "Unable to load listUnsubscribe()!\n";
-					$msg1 .= "\tCode=".$mailchimp->errorCode."\n";
-					$msg1 .= "\tMsg=".$mailchimp->errorMessage."\n";					
+					echo "Unable to load listUnsubscribe()!\n\r";
+					echo "\tCode=".$mailchimp->errorCode."\n\r";
+					echo "\tMsg=".$mailchimp->errorMessage."\n\r";
+					$msg1 .= "Unable to load listUnsubscribe()!\n\r";
+					$msg1 .= "\tCode=".$mailchimp->errorCode."\n\r";
+					$msg1 .= "\tMsg=".$mailchimp->errorMessage."\n\r";					
 					
 				} else {
 					echo "\r\n\r\n";
-					echo 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'. "\n";
-					$msg1 .= 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'."\n";					
+					echo 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
+					$msg1 .= 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'."\n\r";					
 				}
 			} elseif ( $debug ) {
 				echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
@@ -257,7 +267,7 @@ function showmcapi1($id,$levels) {
 		
 		
 		if( $logging ) {
-			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+			$logfile = fopen( LOGFILE, "a" );
 			$out =ob_get_clean();
 			fwrite( $logfile, $out );
 			fclose( $logfile );
