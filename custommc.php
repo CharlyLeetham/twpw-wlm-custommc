@@ -265,6 +265,7 @@ function showmcapi1($id,$levels) {
 			}
 		}
 		
+		echo '---***---'."\r\n\r\n";
 		
 		if( $logging ) {
 			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
