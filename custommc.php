@@ -283,7 +283,7 @@ function showmcapi1($id,$levels) {
 }
 add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
 add_action ('wishlistmember_add_user_levels','showmcapi1',30,2);
-add_action ('wishlistmember_approve_user_levels','showmcapi1',30,2);
+// add_action ('wishlistmember_approve_user_levels','showmcapi1',30,2);
 
 
 function get_mailchimp_lists($mclistid,$wlmlevelid) {
