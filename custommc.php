@@ -51,7 +51,7 @@ function showmcapi1($id,$levels) {
 	$debug=true;
 
 
-	// if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
+	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
 	
 	
 	$levels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
