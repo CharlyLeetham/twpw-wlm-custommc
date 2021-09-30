@@ -56,7 +56,7 @@ function showmcapi1($id,$levels) {
 	}
 	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
 	define ( 'LOGFILE', 'mcintlog.log' );
-	$logfile = LOGPATH.LOGFILE;
+
 	
 	/* End logging setup */
 
@@ -267,7 +267,7 @@ function showmcapi1($id,$levels) {
 		
 		
 		if( $logging ) {
-			$logfile = fopen( LOGFILE, "a" );
+			$logfile = fopen( LOGPATH."mcintlog.log", "a" );
 			$out =ob_get_clean();
 			fwrite( $logfile, $out );
 			fclose( $logfile );
