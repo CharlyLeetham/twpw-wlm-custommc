@@ -205,7 +205,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 			}
 			
 			if ( $logging ) {
-				$logger .= date("m/d/Y H:i:s (O)").' GMT: Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
+				$logger .= date("m/d/Y H:i:s (O GMT)").': Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
 			}			
 		}
 	}
