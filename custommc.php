@@ -206,7 +206,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 			$logger1 = 'User Meta updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];			
 		} else {
 			echo 'User Meta not updated from '.$previous_join_date."\r\n\r\n";
-			$logger1 = 'User Meta not updated from '. var_export ( $previous_join_date, true);
+			$logger1 = 'User Meta not updated from '.$previous_join_date[0];
 		}
 
 		$email_type = 'html';
