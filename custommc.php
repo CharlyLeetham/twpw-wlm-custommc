@@ -41,14 +41,18 @@ function twpw_custommc_admin_register_head() {
 
 add_action('admin_head', 'twpw_custommc_admin_register_head');
 
-function acl_wlm_test( $id, $levels ) {
-	
+function acl_wlm_test( $id, $levels ) {	
 	ob_start();
 	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
 	date_default_timezone_set("US/Hawaii");
 	$logging = true;
 	$debug = true;
 	$logger = '';
+	
+	$postexp1 = var_export( $_POST, true );
+	$logfile = fopen( LOGPATH."moving.log", "a" );
+	fwrite( $logfile, $postexp1 );
+	fclose( $logfile );	
 	
 	$settings = get_option("twpw_custommc");
 	$api_key = $settings['mcapikey'];	
