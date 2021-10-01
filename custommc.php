@@ -77,6 +77,9 @@ function acl_wlm_approve_user( $id, $levels ) {
 		$levexp = var_export ( $wlmlevels, true );
 		echo 'WLM Levels: '.$levexp;
 		echo "\r\n\r\n";
+		$sett = var_export ( $settings, true );
+		echo 'TWPW CustomMC:';
+		echo $sett."\r\n\r\n";
 	}
 
 	//get the user object so we can grab their details to add to Mailchimp
