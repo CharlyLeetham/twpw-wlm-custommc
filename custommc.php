@@ -199,9 +199,14 @@ function acl_wlm_approve_user( $id, $levels ) {
 		if ( empty ( $previous_join_date ) ) {
 			add_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
 			echo 'User Meta added with join date: '.$merge_vars['JOINED']."\r\n\r\n";
+			$logger1 = 'User Meta added with join date: '.$merge_vars['JOINED'];
 		} elseif ( $settings[$level[$levid]]['update_join_date'] == 'yes' ) {
 			update_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
 			echo 'User Meta updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n\r\n";			
+			$logger1 = 'User Meta updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];			
+		} else {
+			echo 'User Meta not updated from '.$previous_join_date."\r\n\r\n";
+			$logger1 = 'User Meta not updated from '.$previous_join_date;
 		}
 
 		$email_type = 'html';
@@ -248,7 +253,9 @@ function acl_wlm_approve_user( $id, $levels ) {
 				
 			} else {
 				if ( $logging ) {
-					$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction. "\n\r";
+					$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction;
+					$logger .= $logger.' '.$logger1;
+					$logger .= "\n\r";
 				}
 			}
 		} else {
@@ -258,7 +265,9 @@ function acl_wlm_approve_user( $id, $levels ) {
 			}
 			
 			if ( $logging ) {
-				$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction. "\n\r";
+				$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction; 
+				$logger .= $logger.' '.$logger1;				
+				$logger .= "\n\r";
 			}			
 		}
 	}
