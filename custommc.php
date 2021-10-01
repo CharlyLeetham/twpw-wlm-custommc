@@ -65,7 +65,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 	$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
 
 	if ( $debug ) {
-		echo 'Date: '. date("m/d/Y H:i:s (O)").' GMT'."\r\n\r\n";
+		echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
 		echo "User ID: " .$id;
 		echo "\r\n\r\n";		
 		echo 'Post: ';
@@ -248,7 +248,7 @@ function acl_wlm_add_user( $id, $levels ) {
 	$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
 
 	if ( $debug ) {
-		echo 'Date: '. date("m/d/Y H:i:s (O)").' GMT'."\r\n\r\n";
+		echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
 		echo "User ID: " .$id;
 		echo "\r\n\r\n";		
 		echo 'Post: ';
