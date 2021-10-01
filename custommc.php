@@ -72,6 +72,11 @@ function acl_wlm_test( $id, $levels ) {
 	$logger .= 'Added by: ';
 	$logger .= $_POST['WishListMemberAction'];
 	$logger .= "\r\n\r\n";	
+	$userdata = get_user_meta( $id );	
+	$userexp = var_export ( $userdata, true);
+	$logger .= 'User Array: '.$userexp;
+	$logger .= "\r\n\r\n";
+	$logger .= "***  ***  ***\r\n\r\n";	
 	
 	$logfile = fopen( LOGPATH."moving.log", "a" );
 	fwrite( $logfile, $logger );
@@ -189,7 +194,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 		$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
 
 		// For PDT ONLY
-		$merge_vars['JOINED'] = current_time('Y-m-d');
+		$merge_vars['JOINED'] = current_time('Y-m-d');	
 
 		$email_type = 'html';
 		$update_existing = TRUE;
@@ -263,8 +268,8 @@ function acl_wlm_approve_user( $id, $levels ) {
 		fclose( $logfile );		
 	}
 }
-add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
-add_action ( 'wishlistmember_add_user_levels', 'acl_wlm_approve_user', 30, 2 );
+// add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
+// add_action ( 'wishlistmember_add_user_levels', 'acl_wlm_approve_user', 30, 2 );
 
 function acl_wlm_add_user( $id, $levels ) {
 	
