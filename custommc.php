@@ -91,9 +91,13 @@ function acl_wlm_approve_user( $id, $levels ) {
 	foreach( $levels as $level ) {
 		$levid = $level->Level_ID;
 
-		$mclistid = (empty($settings[$levid]['mclistid']))?false:$settings[$levid]['mclistid'];
+		if ( ( $settings[$levid]['mclistid'] ) ) {
+			$mclistid = $settings[$levid]['mclistid'];
+		} else {
+			$mclistid = false;
+		}
 		
-		if ($mclistid==false) {
+		if ( $mclistid == false ) {
 			if ( $debug ) {
 				echo "No List"; 
 				echo "\r\n\r\n"; 
@@ -104,13 +108,15 @@ function acl_wlm_approve_user( $id, $levels ) {
 			}
 			
 			if ( $logging ) {
-				echo $firstname.' '.$lastname.'('.$id.') not added to Mailchimp.';
+				echo $firstname.' '.$lastname.'('.$id.' '.$levid.') not added to Mailchimp.'."\r\n\r\n";
 				$logfile = fopen( LOGPATH."approvemember.log", "a" );
 				$out =ob_get_clean();
 				fwrite( $logfile, $out );
 				fclose( $logfile );				
 			}
+			
 			continue; 			
+			
 		} else { 
 			if ( $debug ) {
 				echo "List: " . $mclistid; 
