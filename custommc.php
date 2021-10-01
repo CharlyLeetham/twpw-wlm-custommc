@@ -195,7 +195,6 @@ function acl_wlm_approve_user( $id, $levels ) {
 				
 			} else {
 				if ( $logging ) {
-					$logger .= "\r\n\r\n";
 					$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
 				}
 			}
@@ -206,7 +205,6 @@ function acl_wlm_approve_user( $id, $levels ) {
 			}
 			
 			if ( $logging ) {
-				$logger .= "\r\n\r\n";
 				$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
 			}			
 		}
