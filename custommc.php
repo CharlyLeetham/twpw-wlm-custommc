@@ -198,15 +198,15 @@ function acl_wlm_approve_user( $id, $levels ) {
 		$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
 		if ( empty ( $previous_join_date ) ) {
 			add_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
-			echo 'User Meta added with join date: '.$merge_vars['JOINED']."\r\n\r\n";
-			$logger1 = 'User Meta added with join date: '.$merge_vars['JOINED'];
+			echo 'join date of '.$merge_vars['JOINED'].' added'."\r\n\r\n";
+			$logger1 = 'join date of '.$merge_vars['JOINED'].' added';
 		} elseif ( $settings[$level[$levid]]['update_join_date'] == 'yes' ) {
 			update_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
-			echo 'User Meta updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n\r\n";			
-			$logger1 = 'User Meta updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];			
+			echo 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n\r\n";			
+			$logger1 = 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];			
 		} else {
-			echo 'User Meta not updated from '.$previous_join_date."\r\n\r\n";
-			$logger1 = 'User Meta not updated from '.$previous_join_date[0];
+			echo 'join date not updated from '.$previous_join_date."\r\n\r\n";
+			$logger1 = 'join date not updated from '.$previous_join_date[0];
 		}
 
 		$email_type = 'html';
@@ -261,13 +261,13 @@ function acl_wlm_approve_user( $id, $levels ) {
 		} else {
 			if ( $debug ) {
 				echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
-				echo "\r\n\r\n";
+				echo "\r\n";
 			}
 			
 			if ( $logging ) {
 				$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction; 
 				$logger .= ' '.$logger1;				
-				$logger .= "\n\r\n\r";
+				$logger .= "\n\r";
 			}			
 		}
 	}
