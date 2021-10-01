@@ -41,7 +41,13 @@ function twpw_custommc_admin_register_head() {
 
 add_action('admin_head', 'twpw_custommc_admin_register_head');
 
-function showmcapi1($id,$levels) {
+function showmcapi1( $id, $levels ) {
+	
+	// We only care if this is an 'add function'.  Approvals are done seperately.  NOTE: Maybe we just need to set a flag so it only runs once?? This way could be easier / cleaner though
+	if ( $_POST['level_action'] == 'approve_user_level' ) { 
+		return;
+	}
+	
 	ob_start();
 	$settings = get_option('twpw_custommc',false);
 	$mcapikey = $settings['mcapikey'];	
