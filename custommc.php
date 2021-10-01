@@ -187,19 +187,19 @@ function acl_wlm_approve_user( $id, $levels ) {
 			));
 									
 			if ($mailchimp->errorCode){
-				echo "Unable to load listUnsubscribe()!\n\r";
-				echo "\tCode=".$mailchimp->errorCode."\n\r";
-				echo "\tMsg=".$mailchimp->errorMessage."\n\r";
-				$msg1 .= "Unable to load listUnsubscribe()!\n\r";
-				$msg1 .= "\tCode=".$mailchimp->errorCode."\n\r";
-				$msg1 .= "\tMsg=".$mailchimp->errorMessage."\n\r";					
+				if ( $logging ) {
+					echo "Unable to load listUnsubscribe()!\n\r";
+					echo "\tCode=".$mailchimp->errorCode."\n\r";
+					echo "\tMsg=".$mailchimp->errorMessage."\n\r";				
+				}
 				
 			} else {
-				echo "\r\n\r\n";
-				echo 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
-				$msg1 .= 'Added '.$firstname .'('.$id.') to Mailchimp List: '.$mclistid. ' Success'."\n\r";					
+				if ( $logging ) {
+					echo "\r\n\r\n";
+					echo 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
+				}
 			}
-		} elseif ( $debug ) {
+		} else {
 			echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
 			echo "\r\n\r\n";
 		}
@@ -212,7 +212,14 @@ function acl_wlm_approve_user( $id, $levels ) {
 		$out =ob_get_clean();
 		fwrite( $logfile, $out );
 		fclose( $logfile );
-	}	
+	}
+
+	if ( $debug ) {
+		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+		$out =ob_get_clean();
+		fwrite( $logfile, $out );
+		fclose( $logfile );		
+	}
 }
 add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
 
