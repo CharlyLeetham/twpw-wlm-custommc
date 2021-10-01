@@ -286,7 +286,7 @@ function showmcapi1( $id, $levels ) {
 	return $result;
 }
 add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
-add_action ('wishlistmember_add_user_levels','showmcapi1',30,2);
+
 
 
 function acl_wlm_approve_user( $id, $levels ) {
@@ -331,7 +331,58 @@ function acl_wlm_approve_user( $id, $levels ) {
 			fclose( $logfile );
 		}	
 }
-add_action ('wishlistmember_approve_user_levels','acl_wlm_approve_user',30,2);
+add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
+
+
+function acl_wlm_add_user( $id, $levels ) {
+	
+	// We only care if this is an 'add function'.  Approvals are done seperately.  NOTE: Maybe we just need to set a flag so it only runs once?? This way could be easier / cleaner though
+	if ( $_POST['level_action'] == 'approve_user_level' ) { 
+		return;
+	}
+	
+	ob_start();
+	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+	date_default_timezone_set("US/Hawaii");
+	$logging = true;
+	$debug = true;
+	
+	/* Setup Logging */
+	if (!file_exists(dirname( __FILE__ ).'/logs')) {
+		mkdir(dirname( __FILE__ ).'/logs', 0775, true);
+	}
+	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+	define ( 'LOGFILE', 'approvemember.log' );
+	/* End logging setup */
+	
+	$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
+
+	if ( $debug ) {
+		echo 'Date: '. date("m/d/Y H:i:s (O)").' GMT'."\r\n\r\n";
+		echo "User ID: " .$id;
+		echo "\r\n\r\n";		
+		echo 'Post: ';
+		$postexp = var_export( $_POST, true );
+		echo $postexp;
+		echo "\r\n\r\n";		
+		$levexp = var_export( $levels, true );
+		echo 'Levels: '.$levexp;
+		echo "\r\n\r\n";
+		$levexp = var_export ( $wlmlevels, true );
+		echo 'WLM Levels: '.$levexp;
+		echo "\r\n\r\n";
+	}	
+
+		echo '---***---'."\r\n\r\n";
+		
+		if( $logging ) {
+			$logfile = fopen( LOGPATH."addmember.log", "a" );
+			$out =ob_get_clean();
+			fwrite( $logfile, $out );
+			fclose( $logfile );
+		}	
+}
+add_action ( 'wishlistmember_add_user_levels', 'acl_wlm_add_user', 30, 2 );
 
 
 function get_mailchimp_lists($mclistid,$wlmlevelid) {
