@@ -50,6 +50,9 @@ function acl_wlm_approve_user( $id, $levels ) {
 	$logging = true;
 	$debug = true;
 	
+	$settings = get_option("twpw_custommc");
+	$api_key = $settings['mcapikey'];	
+	
 	/* Setup Logging */
 	if (!file_exists(dirname( __FILE__ ).'/logs')) {
 		mkdir(dirname( __FILE__ ).'/logs', 0775, true);
