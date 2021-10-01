@@ -269,7 +269,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 						$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
 					}
 					$logger .= ' '.$logger1;				
-					$logger .= "\n\r---\n\r";
+					$logger .= "\r\n---\r\n";
 				}			
 			}
 		
