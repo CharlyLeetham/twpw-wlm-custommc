@@ -205,7 +205,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 			}
 			
 			if ( $logging ) {
-				$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) : Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
+				$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
 			}			
 		}
 	}
@@ -227,16 +227,15 @@ add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2
 
 function acl_wlm_add_user( $id, $levels ) {
 	
-	// We only care if this is an 'add function'.  Approvals are done seperately.  NOTE: Maybe we just need to set a flag so it only runs once?? This way could be easier / cleaner though
-	if ( $_POST['level_action'] == 'approve_user_level' ) { 
-		return;
-	}
-	
 	ob_start();
 	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
 	date_default_timezone_set("US/Hawaii");
 	$logging = true;
 	$debug = true;
+	$logger = '';
+	
+	$settings = get_option("twpw_custommc");
+	$api_key = $settings['mcapikey'];	
 	
 	/* Setup Logging */
 	if (!file_exists(dirname( __FILE__ ).'/logs')) {
@@ -262,16 +261,150 @@ function acl_wlm_add_user( $id, $levels ) {
 		$levexp = var_export ( $wlmlevels, true );
 		echo 'WLM Levels: '.$levexp;
 		echo "\r\n\r\n";
-	}	
+		$sett = var_export ( $settings, true );
+		echo 'TWPW CustomMC:';
+		echo $sett."\r\n\r\n";
+	}
 
-		echo '---***---'."\r\n\r\n";
+	//get the user object so we can grab their details to add to Mailchimp
+	$user = get_user_by( 'id', $id );
+	$firstname = $user->user_firstname;
+	$lastname = $user->user_lastname;
+	$useremail = $user->user_email;
+
+	foreach( $levels as $k => $levid ) {
+
+		if ( ( $settings[$levid]['mclistid'] ) ) {
+			$mclistid = $settings[$levid]['mclistid'];
+		} else {
+			$mclistid = false;
+		}
 		
-		if( $logging ) {
-			$logfile = fopen( LOGPATH."addmember.log", "a" );
-			$out =ob_get_clean();
-			fwrite( $logfile, $out );
-			fclose( $logfile );
-		}	
+		if ( $mclistid == false ) {
+			if ( $debug ) {
+				echo "No List"; 
+				echo "\r\n\r\n"; 
+				$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+				$out =ob_get_clean();
+				fwrite( $logfile, $out );
+				fclose( $logfile );			
+			}
+			
+			if ( $logging ) {
+				$logger .= $firstname.' '.$lastname.'('.$id.' '.$levid.') not added to Mailchimp.'."\r\n\r\n";
+				$logfile = fopen( LOGPATH."approvemember.log", "a" );
+				fwrite( $logfile, $logger );
+				fclose( $logfile );				
+			}
+			
+			continue; 			
+			
+		} else { 
+			if ( $debug ) {
+				echo "List: " . $mclistid; 
+				echo "\r\n\r\n"; 
+			}
+		}
+
+		$double_optin = (empty($settings[$levid]['dblopt']))?true:false;
+		$unsub = (empty($settings[$level]['unsub']))?false:true;
+		$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
+		$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
+		$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
+		$groupings = array(); // create groupings array
+		if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
+			foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
+				$group = explode('::',$group); // divide the group as top id and bottom name
+				$groups[$group[0]][] = $group[1]; 
+			}
+			foreach($groups as $group_id => $group) {
+				$groupings[] = array('id'=>$group_id, 'groups' => $group);
+			}
+		}
+		// Setup the array to send to Mailchimp
+		global $wpdb;
+		//$mailchimp = new Mailchimp ( $mcapikey );
+		$merge_vars = array (
+							 'FNAME' => $firstname,
+							 'LNAME' => $lastname,
+							 'GROUPINGS' => $groupings,
+							);
+		$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
+
+		// For PDT ONLY
+		$merge_vars['JOINED'] = current_time('Y-m-d');
+
+		$email_type = 'html';
+		$update_existing = TRUE;
+		$replace_interests = TRUE;	
+		$delete_member = FALSE;
+				
+		if ( $debug ) {
+			$myarray = array(
+				'apikey' => $mcapikey,
+				'id' => $mclistid,
+				'email' => array('email' => $useremail),
+				'merge_vars' => $merge_vars,
+				'email_type' => $email_type,
+				'double_optin' => $double_optin,
+				'update_existing' => $update_existing,
+				'replace_interests' => $replace_interests,
+				'send_welcome' => $send_welcome
+			);
+			$myarr = var_export ( $myarray, true );
+			echo 'Mailchimp settings: '."\r\n\r\n";
+			echo $myarr."\r\n";
+		}
+		
+		if ( $live ) {
+			$result = $mailchimp->call( '/lists/subscribe', array(
+				'apikey' => $mcapikey,
+				'id' => $mclistid,
+				'email' => array('email' => $useremail),
+				'merge_vars' => $merge_vars,
+				'email_type' => $email_type,
+				'double_optin' => $double_optin,
+				'update_existing' => $update_existing,
+				'replace_interests' => $replace_interests,
+				'send_welcome' => $send_welcome
+			));
+									
+			if ($mailchimp->errorCode){
+				if ( $logging ) {
+					$logger .= "Unable to load listUnsubscribe()!\n\r";
+					$logger .= "\tCode=".$mailchimp->errorCode."\n\r";
+					$logger .= "\tMsg=".$mailchimp->errorMessage."\n\r";				
+				}
+				
+			} else {
+				if ( $logging ) {
+					$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
+				}
+			}
+		} else {
+			if ( $debug ) {
+				echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
+				echo "\r\n\r\n";
+			}
+			
+			if ( $logging ) {
+				$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
+			}			
+		}
+	}
+	
+	if( $logging ) {
+		$logfile = fopen( LOGPATH."approvemember.log", "a" );
+		fwrite( $logfile, $logger );
+		fclose( $logfile );
+	}
+
+	if ( $debug ) {
+		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+		$out =ob_get_clean();
+		fwrite( $logfile, $out );
+		fclose( $logfile );		
+	}	
 }
 add_action ( 'wishlistmember_add_user_levels', 'acl_wlm_add_user', 30, 2 );
 
