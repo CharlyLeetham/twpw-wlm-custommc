@@ -358,7 +358,7 @@ class twpw_custom_mc {
 				}
 				
 				if ( $logging ) {
-					$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not added to Mailchimp.'."\r\n";
+					$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not removed from Mailchimp.'."\r\n";
 					$logfile = fopen( LOGPATH."removemember.log", "a" );
 					fwrite( $logfile, $logger );
 					fclose( $logfile );				
