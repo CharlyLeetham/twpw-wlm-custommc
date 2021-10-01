@@ -71,6 +71,7 @@ function acl_wlm_test( $id, $levels ) {
 	echo $postexp;
 	echo "\r\n\r\n";
 }
+
 add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
 add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
 
@@ -255,7 +256,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 		fclose( $logfile );		
 	}
 }
-add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
+// add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
 
 function acl_wlm_add_user( $id, $levels ) {
 	
@@ -438,7 +439,7 @@ function acl_wlm_add_user( $id, $levels ) {
 		fclose( $logfile );		
 	}	
 }
-add_action ( 'wishlistmember_add_user_levels', 'acl_wlm_add_user', 30, 2 );
+// add_action ( 'wishlistmember_add_user_levels', 'acl_wlm_add_user', 30, 2 );
 
 function acl_mc_add( $id, $level) {
 
