@@ -137,7 +137,8 @@ global $twpw_custommc_mcapi;
 			echo '$settings: ';
 			var_dump($settings);
 			echo '<br>';
-		}		
+		}
+		
 		$newsettings['mcapikey']=$settings['mcapikey'];
 		if (get_option('twpw_custommc_debug', 'no') == 'yes') {
 			echo '$newsettings: ';
@@ -160,7 +161,7 @@ global $twpw_custommc_mcapi;
 				<td><strong>Membership Level</strong></td>
 				<td><strong>Mailchimp List</strong></td>
 				<td><strong>Interest Group</strong></td>
-				<td><strong>Merge Vars</strong></td>
+				<td><strong>Update Join Date?</strong></td>
 				<td><strong>Disable Double Optin?</strong></td>
 				<td><strong>Send Welcome Email</strong></td>
 				<td><strong>Unsubscribe on remove?</strong></td>
@@ -249,9 +250,14 @@ global $twpw_custommc_mcapi;
 					</td>
 					
 					
-					<?php twpw_create_merge_vars_feilds($level['id'],$settings); ?>
+					<?php // twpw_create_merge_vars_feilds($level['id'],$settings); ?>
 					
-					
+					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][update_join_date]" value="yes" 
+						<?php 
+							if ($settings[$level['id']]['update_join_date'] == 'yes') { echo ' checked="checked" '; } 
+						?>
+					/>
+					</td>					
 					
 					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][dblopt]" value="yes" 
 						<?php 
