@@ -63,17 +63,21 @@ function acl_wlm_test( $id, $levels ) {
 	
 	$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
 	
-	echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
-	echo "User ID: " .$id;
-	echo "\r\n\r\n";		
-	echo 'Post: ';
+	$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
+	$logger .= "User ID: " .$id;
+	$logger .= "\r\n\r\n";		
+	$logger .= 'Post: ';
 	$postexp = var_export( $_POST, true );
-	echo $postexp;
-	echo "\r\n\r\n";
+	$logger .= $postexp;
+	$logger .= "\r\n\r\n";
+	
+	$logfile = fopen( LOGPATH."approvemember.log", "a" );
+	fwrite( $logfile, $logger );
+	fclose( $logfile );	
 }
 
-add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
-add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
+add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_test', 30, 2 );
+add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_test', 30, 2 );
 
 function acl_wlm_approve_user( $id, $levels ) {
 	
