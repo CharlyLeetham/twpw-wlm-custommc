@@ -88,8 +88,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 	$lastname = $user->user_lastname;
 	$useremail = $user->user_email;
 
-	foreach( $levels as $level ) {
-		$levid = $level->Level_ID;
+	foreach( $levels as $k => $levid ) {
 
 		if ( ( $settings[$levid]['mclistid'] ) ) {
 			$mclistid = $settings[$levid]['mclistid'];
