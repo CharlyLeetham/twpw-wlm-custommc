@@ -41,6 +41,38 @@ function twpw_custommc_admin_register_head() {
 
 add_action('admin_head', 'twpw_custommc_admin_register_head');
 
+function acl_wlm_test( $id, $levels ) {
+	
+	ob_start();
+	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+	date_default_timezone_set("US/Hawaii");
+	$logging = true;
+	$debug = true;
+	$logger = '';
+	
+	$settings = get_option("twpw_custommc");
+	$api_key = $settings['mcapikey'];	
+	
+	/* Setup Logging */
+	if (!file_exists(dirname( __FILE__ ).'/logs')) {
+		mkdir(dirname( __FILE__ ).'/logs', 0775, true);
+	}
+	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+	define ( 'LOGFILE', 'approvemember.log' );
+	/* End logging setup */
+	
+	$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
+	
+	echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
+	echo "User ID: " .$id;
+	echo "\r\n\r\n";		
+	echo 'Post: ';
+	$postexp = var_export( $_POST, true );
+	echo $postexp;
+	echo "\r\n\r\n";
+}
+add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
+add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
 
 function acl_wlm_approve_user( $id, $levels ) {
 	
