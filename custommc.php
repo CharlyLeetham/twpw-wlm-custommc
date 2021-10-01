@@ -988,7 +988,7 @@ function showmcapi1( $id, $levels ) {
 	}
 	return $result;
 }
-add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
+// add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
 
 
 
