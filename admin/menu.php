@@ -248,10 +248,7 @@ global $twpw_custommc_mcapi;
 						}
 						?>
 					</td>
-					
-					
-					<?php // twpw_create_merge_vars_feilds($level['id'],$settings); ?>
-					
+										
 					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][update_join_date]" value="yes" 
 						<?php 
 							if ($settings[$level['id']]['update_join_date'] == 'yes') { echo ' checked="checked" '; } 
