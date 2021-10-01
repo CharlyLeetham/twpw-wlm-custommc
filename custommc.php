@@ -197,10 +197,10 @@ function acl_wlm_approve_user( $id, $levels ) {
 				$logger1 = 'join date of '.$merge_vars['JOINED'].' added';
 			} elseif ( $settings[$level[$levid]]['update_join_date'] == 'yes' ) {
 				update_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
-				echo 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n\r\n";			
+				echo 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n";			
 				$logger1 = 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];			
 			} else {
-				echo 'join date not updated from '.$previous_join_date."\r\n\r\n";
+				echo 'join date not updated from '.$previous_join_date."\r\n";
 				$logger1 = 'join date not updated from '.$previous_join_date[0];
 			}
 
