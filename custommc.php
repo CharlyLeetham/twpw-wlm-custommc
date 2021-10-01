@@ -215,6 +215,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 
 	if ( $debug ) {
 		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+		echo $logger."\r\n\r\n";
 		$out =ob_get_clean();
 		fwrite( $logfile, $out );
 		fclose( $logfile );		
