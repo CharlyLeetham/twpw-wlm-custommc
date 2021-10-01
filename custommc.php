@@ -70,6 +70,9 @@ function acl_wlm_test( $id, $levels ) {
 	$postexp = var_export( $_POST, true );
 	$logger .= $postexp;
 	$logger .= "\r\n\r\n";
+	$logger .= 'Added by: ';
+	$logger .= $_POST['WishListMemberAction'];
+	$logger .= "\r\n\r\n";	
 	
 	$logfile = fopen( LOGPATH."approvemember.log", "a" );
 	fwrite( $logfile, $logger );
