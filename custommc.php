@@ -152,7 +152,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 			}
 			
 			if ( $logging ) {
-				$logger = $firstname.' '.$lastname.'('.$id.' '.$levid.') not added to Mailchimp.'."\r\n";
+				$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not added to Mailchimp.'."\r\n";
 				$logfile = fopen( LOGPATH."approvemember.log", "a" );
 				fwrite( $logfile, $logger );
 				fclose( $logfile );				
@@ -248,9 +248,10 @@ function acl_wlm_approve_user( $id, $levels ) {
 					
 				} else {
 					if ( $logging ) {
-						$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction;
-						$logger .= $logger.' '.$logger1;
-						$logger .= "\n\r\n\r";
+						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction."\r\n";
+						$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
+						$logger .= ' '.$logger1;
+						$logger .= "\n\r---\n\r";
 					}
 				}
 			} else {
@@ -260,9 +261,10 @@ function acl_wlm_approve_user( $id, $levels ) {
 				}
 				
 				if ( $logging ) {
-					$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction; 
+					$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction."\r\n";
+					$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
 					$logger .= ' '.$logger1;				
-					$logger .= "\n\r";
+					$logger .= "\n\r---\n\r";
 				}			
 			}
 		
