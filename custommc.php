@@ -194,7 +194,12 @@ function acl_wlm_approve_user( $id, $levels ) {
 		$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
 
 		// For PDT ONLY
-		$merge_vars['JOINED'] = current_time('Y-m-d');	
+		$merge_vars['JOINED'] = current_time('Y-m-d');
+		$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
+		if ( empty ( $previous_join_date ) ) {
+			add_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
+			echo 'User Meta updated with join date: '.$merge_vars['JOINED']."\r\n\r\n";
+		} 
 
 		$email_type = 'html';
 		$update_existing = TRUE;
@@ -268,8 +273,8 @@ function acl_wlm_approve_user( $id, $levels ) {
 		fclose( $logfile );		
 	}
 }
-// add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
-// add_action ( 'wishlistmember_add_user_levels', 'acl_wlm_approve_user', 30, 2 );
+add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
+add_action ( 'wishlistmember_add_user_levels', 'acl_wlm_approve_user', 30, 2 );
 
 function acl_wlm_add_user( $id, $levels ) {
 	
