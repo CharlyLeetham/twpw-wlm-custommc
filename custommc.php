@@ -49,6 +49,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 	date_default_timezone_set("US/Hawaii");
 	$logging = true;
 	$debug = true;
+	$logger = '';
 	
 	$settings = get_option("twpw_custommc");
 	$api_key = $settings['mcapikey'];	
@@ -107,10 +108,9 @@ function acl_wlm_approve_user( $id, $levels ) {
 			}
 			
 			if ( $logging ) {
-				echo $firstname.' '.$lastname.'('.$id.' '.$levid.') not added to Mailchimp.'."\r\n\r\n";
+				$logger .= $firstname.' '.$lastname.'('.$id.' '.$levid.') not added to Mailchimp.'."\r\n\r\n";
 				$logfile = fopen( LOGPATH."approvemember.log", "a" );
-				$out =ob_get_clean();
-				fwrite( $logfile, $out );
+				fwrite( $logfile, $logger );
 				fclose( $logfile );				
 			}
 			
@@ -188,29 +188,28 @@ function acl_wlm_approve_user( $id, $levels ) {
 									
 			if ($mailchimp->errorCode){
 				if ( $logging ) {
-					echo "Unable to load listUnsubscribe()!\n\r";
-					echo "\tCode=".$mailchimp->errorCode."\n\r";
-					echo "\tMsg=".$mailchimp->errorMessage."\n\r";				
+					$logger .= "Unable to load listUnsubscribe()!\n\r";
+					$logger .= "\tCode=".$mailchimp->errorCode."\n\r";
+					$logger .= "\tMsg=".$mailchimp->errorMessage."\n\r";				
 				}
 				
 			} else {
 				if ( $logging ) {
-					echo "\r\n\r\n";
-					echo 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
+					$logger .= "\r\n\r\n";
+					$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
 				}
 			}
 		} else {
-			echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
-			echo "\r\n\r\n";
+			if ( $debug ) {
+				echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
+				echo "\r\n\r\n";
+			}
 		}
 	}
-
-	echo '---***---'."\r\n\r\n";
 	
 	if( $logging ) {
 		$logfile = fopen( LOGPATH."approvemember.log", "a" );
-		$out =ob_get_clean();
-		fwrite( $logfile, $out );
+		fwrite( $logfile, $logger );
 		fclose( $logfile );
 	}
 
