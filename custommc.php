@@ -250,7 +250,9 @@ function acl_wlm_approve_user( $id, $levels ) {
 				} else {
 					if ( $logging ) {
 						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
-						$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
+						if ( $groupings ) {
+							$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
+						}
 						$logger .= ' '.$logger1;
 						$logger .= "\n\r---\n\r";
 					}
@@ -263,7 +265,9 @@ function acl_wlm_approve_user( $id, $levels ) {
 				
 				if ( $logging ) {
 					$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
-					$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
+					if ( $groupings ) {
+						$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
+					}
 					$logger .= ' '.$logger1;				
 					$logger .= "\n\r---\n\r";
 				}			
