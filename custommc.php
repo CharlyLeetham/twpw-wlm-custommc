@@ -125,6 +125,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 	$firstname = $user->user_firstname;
 	$lastname = $user->user_lastname;
 	$useremail = $user->user_email;
+	$wlmaction = $_POST['WishListMemberAction'];
 
 	foreach( $levels as $k => $levid ) {
 
@@ -232,7 +233,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 				
 			} else {
 				if ( $logging ) {
-					$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
+					$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction. "\n\r";
 				}
 			}
 		} else {
@@ -242,7 +243,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 			}
 			
 			if ( $logging ) {
-				$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
+				$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction. "\n\r";
 			}			
 		}
 	}
