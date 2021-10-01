@@ -157,131 +157,128 @@ function acl_wlm_approve_user( $id, $levels ) {
 				fwrite( $logfile, $logger );
 				fclose( $logfile );				
 			}
-			
-			break; 			
-			
 		} else { 
 			if ( $debug ) {
 				echo "List: " . $mclistid; 
 				echo "\r\n\r\n"; 
 			}
-		}
 
-		$double_optin = (empty($settings[$levid]['dblopt']))?true:false;
-		$unsub = (empty($settings[$level]['unsub']))?false:true;
-		$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
-		$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
-		$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
-		$groupings = array(); // create groupings array
-		if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
-			foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
-				$group = explode('::',$group); // divide the group as top id and bottom name
-				$groups[$group[0]][] = $group[1]; 
-			}
-			foreach($groups as $group_id => $group) {
-				$groupings[] = array('id'=>$group_id, 'groups' => $group);
-			}
-		}
-		// Setup the array to send to Mailchimp
-		global $wpdb;
-		//$mailchimp = new Mailchimp ( $mcapikey );
-		$merge_vars = array (
-							 'FNAME' => $firstname,
-							 'LNAME' => $lastname,
-							 'GROUPINGS' => $groupings,
-							);
-		$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
-
-		// For PDT ONLY
-		$merge_vars['JOINED'] = current_time('Y-m-d');
-		$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
-		if ( empty ( $previous_join_date ) ) {
-			add_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
-			echo 'join date of '.$merge_vars['JOINED'].' added'."\r\n\r\n";
-			$logger1 = 'join date of '.$merge_vars['JOINED'].' added';
-		} elseif ( $settings[$level[$levid]]['update_join_date'] == 'yes' ) {
-			update_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
-			echo 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n\r\n";			
-			$logger1 = 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];			
-		} else {
-			echo 'join date not updated from '.$previous_join_date."\r\n\r\n";
-			$logger1 = 'join date not updated from '.$previous_join_date[0];
-		}
-
-		$email_type = 'html';
-		$update_existing = TRUE;
-		$replace_interests = TRUE;	
-		$delete_member = FALSE;
-				
-		if ( $debug ) {
-			$myarray = array(
-				'apikey' => $mcapikey,
-				'id' => $mclistid,
-				'email' => array('email' => $useremail),
-				'merge_vars' => $merge_vars,
-				'email_type' => $email_type,
-				'double_optin' => $double_optin,
-				'update_existing' => $update_existing,
-				'replace_interests' => $replace_interests,
-				'send_welcome' => $send_welcome
-			);
-			$myarr = var_export ( $myarray, true );
-			echo 'Mailchimp settings: '."\r\n\r\n";
-			echo $myarr."\r\n";
-		}
-		
-		if ( $live ) {
-			$result = $mailchimp->call( '/lists/subscribe', array(
-				'apikey' => $mcapikey,
-				'id' => $mclistid,
-				'email' => array('email' => $useremail),
-				'merge_vars' => $merge_vars,
-				'email_type' => $email_type,
-				'double_optin' => $double_optin,
-				'update_existing' => $update_existing,
-				'replace_interests' => $replace_interests,
-				'send_welcome' => $send_welcome
-			));
-									
-			if ($mailchimp->errorCode){
-				if ( $logging ) {
-					$logger .= "Unable to load listUnsubscribe()!\n\r";
-					$logger .= "\tCode=".$mailchimp->errorCode."\n\r";
-					$logger .= "\tMsg=".$mailchimp->errorMessage."\n\r";				
+			$double_optin = (empty($settings[$levid]['dblopt']))?true:false;
+			$unsub = (empty($settings[$level]['unsub']))?false:true;
+			$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
+			$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
+			$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
+			$groupings = array(); // create groupings array
+			if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
+				foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
+					$group = explode('::',$group); // divide the group as top id and bottom name
+					$groups[$group[0]][] = $group[1]; 
 				}
-				
+				foreach($groups as $group_id => $group) {
+					$groupings[] = array('id'=>$group_id, 'groups' => $group);
+				}
+			}
+			// Setup the array to send to Mailchimp
+			global $wpdb;
+			//$mailchimp = new Mailchimp ( $mcapikey );
+			$merge_vars = array (
+								 'FNAME' => $firstname,
+								 'LNAME' => $lastname,
+								 'GROUPINGS' => $groupings,
+								);
+			$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
+
+			// For PDT ONLY
+			$merge_vars['JOINED'] = current_time('Y-m-d');
+			$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
+			if ( empty ( $previous_join_date ) ) {
+				add_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
+				echo 'join date of '.$merge_vars['JOINED'].' added'."\r\n\r\n";
+				$logger1 = 'join date of '.$merge_vars['JOINED'].' added';
+			} elseif ( $settings[$level[$levid]]['update_join_date'] == 'yes' ) {
+				update_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
+				echo 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n\r\n";			
+				$logger1 = 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];			
 			} else {
-				if ( $logging ) {
-					$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction;
-					$logger .= $logger.' '.$logger1;
-					$logger .= "\n\r\n\r";
-				}
+				echo 'join date not updated from '.$previous_join_date."\r\n\r\n";
+				$logger1 = 'join date not updated from '.$previous_join_date[0];
 			}
-		} else {
+
+			$email_type = 'html';
+			$update_existing = TRUE;
+			$replace_interests = TRUE;	
+			$delete_member = FALSE;
+					
 			if ( $debug ) {
-				echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
-				echo "\r\n";
+				$myarray = array(
+					'apikey' => $mcapikey,
+					'id' => $mclistid,
+					'email' => array('email' => $useremail),
+					'merge_vars' => $merge_vars,
+					'email_type' => $email_type,
+					'double_optin' => $double_optin,
+					'update_existing' => $update_existing,
+					'replace_interests' => $replace_interests,
+					'send_welcome' => $send_welcome
+				);
+				$myarr = var_export ( $myarray, true );
+				echo 'Mailchimp settings: '."\r\n\r\n";
+				echo $myarr."\r\n";
 			}
 			
-			if ( $logging ) {
-				$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction; 
-				$logger .= ' '.$logger1;				
-				$logger .= "\n\r";
-			}			
-		}
-	}
-	
-	if( $logging ) {
-		$logfile = fopen( LOGPATH."approvemember.log", "a" );
-		fwrite( $logfile, $logger );
-		fclose( $logfile );
-	}
+			if ( $live ) {
+				$result = $mailchimp->call( '/lists/subscribe', array(
+					'apikey' => $mcapikey,
+					'id' => $mclistid,
+					'email' => array('email' => $useremail),
+					'merge_vars' => $merge_vars,
+					'email_type' => $email_type,
+					'double_optin' => $double_optin,
+					'update_existing' => $update_existing,
+					'replace_interests' => $replace_interests,
+					'send_welcome' => $send_welcome
+				));
+										
+				if ($mailchimp->errorCode){
+					if ( $logging ) {
+						$logger .= "Unable to load listUnsubscribe()!\n\r";
+						$logger .= "\tCode=".$mailchimp->errorCode."\n\r";
+						$logger .= "\tMsg=".$mailchimp->errorMessage."\n\r";				
+					}
+					
+				} else {
+					if ( $logging ) {
+						$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction;
+						$logger .= $logger.' '.$logger1;
+						$logger .= "\n\r\n\r";
+					}
+				}
+			} else {
+				if ( $debug ) {
+					echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
+					echo "\r\n";
+				}
+				
+				if ( $logging ) {
+					$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. ' Success by '.$wlmaction; 
+					$logger .= ' '.$logger1;				
+					$logger .= "\n\r";
+				}			
+			}
+		
+			if( $logging ) {
+				$logfile = fopen( LOGPATH."approvemember.log", "a" );
+				fwrite( $logfile, $logger );
+				fclose( $logfile );
+			}
 
-	if ( $debug ) {
-		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
-		$out =ob_get_clean();
-		fwrite( $logfile, $out );
-		fclose( $logfile );		
+			if ( $debug ) {
+				$logfile = fopen( LOGPATH."mcintlog.log", "a" );
+				$out =ob_get_clean();
+				fwrite( $logfile, $out );
+				fclose( $logfile );		
+			}
+		}
 	}
 }
 add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_approve_user', 30, 2 );
