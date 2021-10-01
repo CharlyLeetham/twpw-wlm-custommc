@@ -58,7 +58,6 @@ function acl_wlm_test( $id, $levels ) {
 		mkdir(dirname( __FILE__ ).'/logs', 0775, true);
 	}
 	define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-	define ( 'LOGFILE', 'approvemember.log' );
 	/* End logging setup */
 	
 	$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
@@ -74,13 +73,13 @@ function acl_wlm_test( $id, $levels ) {
 	$logger .= $_POST['WishListMemberAction'];
 	$logger .= "\r\n\r\n";	
 	
-	$logfile = fopen( LOGPATH."approvemember.log", "a" );
+	$logfile = fopen( LOGPATH."moving.log", "a" );
 	fwrite( $logfile, $logger );
 	fclose( $logfile );	
 }
 
-// add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_test', 30, 2 );
-// add_action ( 'wishlistmember_add_user_levels', 'acl_wlm_test', 30, 2 );
+add_action ( 'wishlistmember_approve_user_levels', 'acl_wlm_test', 30, 2 );
+add_action ( 'wishlistmember_add_user_levels', 'acl_wlm_test', 30, 2 );
 
 function acl_wlm_approve_user( $id, $levels ) {
 	
