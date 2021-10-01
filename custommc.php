@@ -21,16 +21,22 @@ Version 2.02 - Rewrite to stop people being moved after being added
 
 class twpw_custom_mc {
 	
-	/* WP Version Check */
-	global $wp_version;
+	function twpw_custom_mc_activate() {
+		/* WP Version Check */
+		global $wp_version;
 
-	$exit_msg='Mailchimp Signup requires WordPress 3.3.1 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please upgrade!</a> You have version: '.$wp_version.'';
-	if (version_compare($wp_version, "3.3.1","<"))
-	{
-		exit ($exit_msg);
+		$exit_msg='Mailchimp Signup requires WordPress 3.3.1 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please upgrade!</a> You have version: '.$wp_version.'';
+		if (version_compare($wp_version, "3.3.1","<"))
+		{
+			exit ($exit_msg);
+		}
 	}
 
-	require_once(dirname(__FILE__) . '/admin/menu.php');
+	public static function init() {
+		if ( is_admin() ) {
+			require_once(dirname(__FILE__) . '/admin/menu.php');
+		}
+	}
 
 	/*	--------------------------------------------------
 		Load the admin stylesheet
@@ -41,8 +47,6 @@ class twpw_custom_mc {
 		
 		echo "<link rel='stylesheet' type='text/css' href='$url' />\n";
 	}
-
-	add_action('admin_head', 'twpw_custommc_admin_register_head');
 
 	function acl_wlm_test( $id, $levels ) {	
 		ob_start();
@@ -518,12 +522,18 @@ class twpw_custom_mc {
 		$api_key = $settings['mcapikey'];	
 		$twpw_custommc_mcapi = new Mailchimp ( $api_key );
 	}
+	
+	twpw_custom_mc::init();
 }
 
 if ( !isset ($twpw_custom_mc) ){
 	//setup our extension class
 	$twpw_custom_mc = new twpw_custom_mc;
-}
+} else {
+	
+
+register_activation_hook ( __FILE__, array(&$twpw_custom_mc, 'twpw_custom_mc_activate' ) );
+add_action('admin_head', array (&$twpw_custom_mc, 'twpw_custommc_admin_register_head' ) );
 
 add_action ( 'wishlistmember_approve_user_levels', array( &$twpw_custom_mc, 'acl_wlm_test' ), 30, 2 );
 add_action ( 'wishlistmember_add_user_levels', array( &$twpw_custom_mc, 'acl_wlm_test' ), 30, 2 );
