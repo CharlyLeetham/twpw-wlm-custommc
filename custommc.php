@@ -158,7 +158,7 @@ function acl_wlm_approve_user( $id, $levels ) {
 				fclose( $logfile );				
 			}
 			
-			continue; 			
+			break; 			
 			
 		} else { 
 			if ( $debug ) {
