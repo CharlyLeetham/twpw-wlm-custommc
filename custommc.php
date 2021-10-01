@@ -204,6 +204,11 @@ function acl_wlm_approve_user( $id, $levels ) {
 				echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
 				echo "\r\n\r\n";
 			}
+			
+			if ( $logging ) {
+				$logger .= "\r\n\r\n";
+				$logger .= 'Added '.$firstname .'('.$id.') for Level : '.$levid.' to Mailchimp List: '.$mclistid. ' Success'. "\n\r";
+			}			
 		}
 	}
 	
@@ -215,7 +220,6 @@ function acl_wlm_approve_user( $id, $levels ) {
 
 	if ( $debug ) {
 		$logfile = fopen( LOGPATH."mcintlog.log", "a" );
-		echo $logger."\r\n\r\n";
 		$out =ob_get_clean();
 		fwrite( $logfile, $out );
 		fclose( $logfile );		
