@@ -384,6 +384,16 @@ class twpw_custom_mc {
 		if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );			
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
+		
+		if ( $debug ) {
+			echo 'here';
+			echo "\r\n";
+			$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+			$out =ob_get_clean();
+			fwrite( $logfile, $out );
+			fclose( $logfile );			
+		}
+		
 		$mailchimp = new Mailchimp( $api_key );
 		
 		if ( $debug ) {
