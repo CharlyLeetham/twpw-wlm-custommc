@@ -382,7 +382,7 @@ global $twpw_custommc_mcapi;
 		}
 		
 	function twpw_get_interest_groups() {
-		twpw_custommc_createMCAPI();
+		twpw_custom_mc::twpw_custommc_createMCAPI();
 		global $twpw_custommc_mcapi;
 		try {
 			$mclists = $twpw_custommc_mcapi->call('/lists/interest-groupings',array('id'=>$_POST['mclistid']));
