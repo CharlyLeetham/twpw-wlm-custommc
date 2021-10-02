@@ -53,8 +53,27 @@ class twpw_custom_mc {
 		ob_start();
 		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
 		date_default_timezone_set("US/Hawaii");
-		$logging = true;
-		$debug = true;
+		$logging = get_option("twpw_custommc_logging");
+		if ( $logging == "yes") {
+			$logging = true;
+		} else {
+			$logging = false;
+		}
+
+		$debug = get_option("twpw_custommc_listdebug");
+		if ( $debug == "yes") {
+			$debug = true;
+		} else {
+			$debug = false;
+		}
+		
+		$live = get_option("twpw_custommc_livetest");
+		if ( $live == "yes") {
+			$live = true;
+		} else {
+			$live = false;
+		}		
+
 		$logger = '';	
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];	
@@ -267,7 +286,7 @@ class twpw_custom_mc {
 					}
 					
 					if ( $logging ) {
-						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
+						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added as test '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
 						if ( $groupings ) {
 							$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
 						}
@@ -297,8 +316,28 @@ class twpw_custom_mc {
 		ob_start();
 		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
 		date_default_timezone_set("US/Hawaii");
-		$logging = true;
-		$debug = true;
+		
+		$logging = get_option("twpw_custommc_logging");
+		if ( $logging == "yes") {
+			$logging = true;
+		} else {
+			$logging = false;
+		}
+
+		$debug = get_option("twpw_custommc_listdebug");
+		if ( $debug == "yes") {
+			$debug = true;
+		} else {
+			$debug = false;
+		}
+		
+		$live = get_option("twpw_custommc_livetest");
+		if ( $live == "yes") {
+			$live = true;
+		} else {
+			$live = false;
+		}
+		
 		$logger = '';
 		
 		$settings = get_option("twpw_custommc");
@@ -458,7 +497,7 @@ class twpw_custom_mc {
 					}
 					
 					if ( $logging ) {
-						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Removed '.$firstname .'('.$id.') for Level: '.$levid.' from Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
+						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Removed as test '.$firstname .'('.$id.') for Level: '.$levid.' from Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
 						if ( $groupings ) {
 							$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
 						}

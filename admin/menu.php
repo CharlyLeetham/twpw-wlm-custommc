@@ -377,9 +377,11 @@ function twpwcustommclists() {
 		$debugsetting = $_POST['twpw_custommc_debug'];
 		$livetestsetting = $_POST['twpw_custommc_livetest'];
 		$listdebugsetting = $_POST['twpw_custommc_listdebug'];
+		$loggingsetting = $_POST['twpw_custommc_logging'];
 		update_option( 'twpw_custommc_debug', $debugsetting );
 		update_option( 'twpw_custommc_livetest', $livetestsetting );
 		update_option( 'twpw_custommc_listdebug', $listdebugsetting );
+		update_option( 'twpw_custommc_logging', $listdebugsetting );
 	}
 	?>
 
@@ -388,6 +390,7 @@ function twpwcustommclists() {
 		$twpw_custommc_db = get_option("twpw_custommc_debug");
 		$twpw_custommc_livetest = get_option("twpw_custommc_livetest");
 		$twpw_custommc_listdebug = get_option("twpw_custommc_listdebug");
+		$twpw_custommc_logging = get_option("twpw_custommc_logging");
 		?>
 		<table class="form-table">
 			<tr><td align="right"><strong>Settings Debug Mode:</strong></td><td><label>On</label><input type="radio" name="twpw_custommc_debug" value="yes" <?php if ( $twpw_custommc_db == "yes" ) { echo 'checked'; } ?> />&nbsp;&nbsp;<label>Off&nbsp;</label><input type="radio" name="twpw_custommc_debug" value="no" <?php if ( $twpw_custommc_db == "no" ) { echo 'checked="checked"'; } ?> /></td></tr>
@@ -395,6 +398,8 @@ function twpwcustommclists() {
 			<tr><td align="right"><strong>List Debug Mode:</strong></td><td><label>On</label><input type="radio" name="twpw_custommc_listdebug" value="yes" <?php if ( $twpw_custommc_listdebug == "yes" ) { echo 'checked'; } ?> />&nbsp;&nbsp;<label>Off&nbsp;</label><input type="radio" name="twpw_custommc_listdebug" value="no" <?php if ( $twpw_custommc_listdebug == "no" ) { echo 'checked="checked"'; } ?> /></td></tr>
 
 			<tr><td align="right"><strong>Live Or Testing Mode:</strong></td><td><label>Live</label><input type="radio" name="twpw_custommc_livetest" value="yes" <?php if ( $twpw_custommc_livetest == "yes" ) { echo 'checked'; } ?> />&nbsp;&nbsp;<label>Testing&nbsp;</label><input type="radio" name="twpw_custommc_livetest" value="no" <?php if ( $twpw_custommc_livetest == "no" ) { echo 'checked="checked"'; } ?> /></td></tr>
+
+			<tr><td align="right"><strong>Logging:</strong></td><td><label>On</label><input type="radio" name="twpw_custommc_logging" value="yes" <?php if ( $twpw_custommc_logging == "yes" ) { echo 'checked'; } ?> />&nbsp;&nbsp;<label>Off&nbsp;</label><input type="radio" name="twpw_custommc_logging" value="no" <?php if ( $twpw_custommc_logging == "no" ) { echo 'checked="checked"'; } ?> /></td></tr>
 		</table>
 
 		<p class="submit"><input type="submit" name="submit" class="button-primary" value="<?php _e('Save Debug Options') ?>" /></p>
