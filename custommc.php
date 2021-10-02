@@ -116,6 +116,13 @@ class twpw_custom_mc {
 		
 		ob_start();
 		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+		/* Setup Logging */
+		if (!file_exists(dirname( __FILE__ ).'/logs')) {
+			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
+		}
+		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+		/* End logging setup */
+		
 		date_default_timezone_set("US/Hawaii");
 		$logging = get_option("twpw_custommc_logging");
 		if ( $logging == "yes") {
@@ -142,6 +149,8 @@ class twpw_custom_mc {
 		
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
+		
+		if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );			
 
 		$mailchimp = new Mailchimp( $api_key );
 		
@@ -151,12 +160,7 @@ class twpw_custom_mc {
 			echo "\r\n";
 		}						
 		
-		/* Setup Logging */
-		if (!file_exists(dirname( __FILE__ ).'/logs')) {
-			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
-		}
-		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-		/* End logging setup */
+
 		
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
 
@@ -347,6 +351,12 @@ class twpw_custom_mc {
 		
 		ob_start();
 		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+		/* Setup Logging */
+		if (!file_exists(dirname( __FILE__ ).'/logs')) {
+			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
+		}
+		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+		/* End logging setup */		
 		date_default_timezone_set("US/Hawaii");
 		
 		$logging = get_option("twpw_custommc_logging");
@@ -371,7 +381,7 @@ class twpw_custom_mc {
 		}
 		
 		$logger = '';
-		
+		if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );			
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		$mailchimp = new Mailchimp( $api_key );
@@ -381,13 +391,6 @@ class twpw_custom_mc {
 			echo var_export( $mailchimp, true );
 			echo "\r\n";
 		}
-		
-		/* Setup Logging */
-		if (!file_exists(dirname( __FILE__ ).'/logs')) {
-			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
-		}
-		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-		/* End logging setup */
 		
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
 
@@ -601,8 +604,6 @@ if ( !isset ($twpw_custom_mc) ){
 	$twpw_custom_mc = new twpw_custom_mc;
 	twpw_custom_mc::init();
 }
-
-if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );	
 
 register_activation_hook ( __FILE__, array(&$twpw_custom_mc, 'twpw_custom_mc_activate' ) );
 add_action('admin_head', array (&$twpw_custom_mc, 'twpw_custommc_admin_register_head' ) );
