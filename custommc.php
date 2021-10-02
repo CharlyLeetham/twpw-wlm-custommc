@@ -522,7 +522,6 @@ class twpw_custom_mc {
 if ( !isset ($twpw_custom_mc) ){
 	//setup our extension class
 	$twpw_custom_mc = new twpw_custom_mc;
-} else {
 	twpw_custom_mc::init();
 }
 
