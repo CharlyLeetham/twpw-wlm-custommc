@@ -376,8 +376,10 @@ function twpwcustommclists() {
 		// Get the options into a local display options array
 		$debugsetting = $_POST['twpw_custommc_debug'];
 		$livetestsetting = $_POST['twpw_custommc_livetest'];
+		$listdebugsetting = $_POST['twpw_custommc_listdebug'];
 		update_option( 'twpw_custommc_debug', $debugsetting );
 		update_option( 'twpw_custommc_livetest', $livetestsetting );
+		update_option( 'twpw_custommc_listdebug', $listdebugsetting );
 	}
 	?>
 
@@ -385,9 +387,12 @@ function twpwcustommclists() {
 		<?php
 		$twpw_custommc_db = get_option("twpw_custommc_debug");
 		$twpw_custommc_livetest = get_option("twpw_custommc_livetest");
+		$twpw_custommc_listdebug = get_option("twpw_custommc_listdebug");
 		?>
 		<table class="form-table">
-			<tr><td align="right"><strong>Debug Mode:</strong></td><td><label>On</label><input type="radio" name="twpw_custommc_debug" value="yes" <?php if ( $twpw_custommc_db == "yes" ) { echo 'checked'; } ?> />&nbsp;&nbsp;<label>Off&nbsp;</label><input type="radio" name="twpw_custommc_debug" value="no" <?php if ( $twpw_custommc_db == "no" ) { echo 'checked="checked"'; } ?> /></td></tr>
+			<tr><td align="right"><strong>Settings Debug Mode:</strong></td><td><label>On</label><input type="radio" name="twpw_custommc_debug" value="yes" <?php if ( $twpw_custommc_db == "yes" ) { echo 'checked'; } ?> />&nbsp;&nbsp;<label>Off&nbsp;</label><input type="radio" name="twpw_custommc_debug" value="no" <?php if ( $twpw_custommc_db == "no" ) { echo 'checked="checked"'; } ?> /></td></tr>
+
+			<tr><td align="right"><strong>List Debug Mode:</strong></td><td><label>On</label><input type="radio" name="twpw_custommc_listdebug" value="yes" <?php if ( $twpw_custommc_listdebug == "yes" ) { echo 'checked'; } ?> />&nbsp;&nbsp;<label>Off&nbsp;</label><input type="radio" name="twpw_custommc_listdebug" value="no" <?php if ( $twpw_custommc_listdebug == "no" ) { echo 'checked="checked"'; } ?> /></td></tr>
 
 			<tr><td align="right"><strong>Live Or Testing Mode:</strong></td><td><label>Live</label><input type="radio" name="twpw_custommc_livetest" value="yes" <?php if ( $twpw_custommc_livetest == "yes" ) { echo 'checked'; } ?> />&nbsp;&nbsp;<label>Testing&nbsp;</label><input type="radio" name="twpw_custommc_livetest" value="no" <?php if ( $twpw_custommc_livetest == "no" ) { echo 'checked="checked"'; } ?> /></td></tr>
 		</table>
@@ -407,7 +412,7 @@ function twpwcustommclists() {
 						<strong>Version 1.1</strong - Added WooCommerce support and Delete User support <br />
 						<strong>Version 1.2</strong> - Added Mailchimp Group support<br />
 						<strong>Version 1.3</strong> - Fixed Sequential Add <br />
-						<strong>Version 2a<strong> - Tidy up.<br />
+						<strong>Version 2a</strong> - Tidy up.<br />
 						<strong>Version 2.01</strong> - Clean up the code being output to the screen.<br />
 						<strong>Version 2.02</strong> - Rewrite to stop people being moved after being added<br />
 						<strong>Version 2.03</strong> - Adding a class. Removed WooCommerce Support. Added more detailed logging.<br />			
