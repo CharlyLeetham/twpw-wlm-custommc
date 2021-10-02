@@ -457,7 +457,7 @@ class twpw_custom_mc {
 				}
 				// Setup the array to send to Mailchimp
 				global $wpdb;
-				//$mailchimp = new Mailchimp ( $mcapikey );
+				$mailchimp = new Mailchimp ( $api_key );
 				$merge_vars = array (
 									 'FNAME' => $firstname,
 									 'LNAME' => $lastname,
