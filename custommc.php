@@ -399,9 +399,9 @@ class twpw_custom_mc {
 				$merge_vars['JOINED'] = current_time('Y-m-d');
 				$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
 				if ( !empty ( $previous_join_date ) ) {
-					delete_user_meta ( $id, 'wlm_join_date' );
-					echo 'join date of '.$merge_vars['JOINED'].' removed'."\r\n\r\n";
-					$logger1 = 'join date of '.$merge_vars['JOINED'].' removed';
+					// delete_user_meta ( $id, 'wlm_join_date' );
+					echo 'join date of '.$merge_vars['JOINED'].' still set'."\r\n\r\n";
+					$logger1 = 'join date of '.$merge_vars['JOINED'].' still set';
 				} 
 
 				$email_type = 'html';
