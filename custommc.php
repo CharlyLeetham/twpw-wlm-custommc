@@ -67,6 +67,10 @@ class twpw_custom_mc {
 			$debug = false;
 		}
 		
+		if ( !$debug ) {
+			return;
+		}
+		
 		$live = get_option("twpw_custommc_livetest");
 		if ( $live == "yes") {
 			$live = true;
