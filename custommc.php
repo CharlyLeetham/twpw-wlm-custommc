@@ -504,7 +504,7 @@ class twpw_custom_mc {
 						'send_notify' => $send_notify
 					));
 													
-					if ($mailchimp->errorCode){
+					if ( $mailchimp->errorCode ){
 						if ( $logging ) {
 							$logger .= "Unable to load listUnsubscribe()!\n\r";
 							$logger .= "\tCode=".$mailchimp->errorCode."\n\r";
