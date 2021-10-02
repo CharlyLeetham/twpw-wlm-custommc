@@ -381,7 +381,7 @@ function twpwcustommclists() {
 		update_option( 'twpw_custommc_debug', $debugsetting );
 		update_option( 'twpw_custommc_livetest', $livetestsetting );
 		update_option( 'twpw_custommc_listdebug', $listdebugsetting );
-		update_option( 'twpw_custommc_logging', $listdebugsetting );
+		update_option( 'twpw_custommc_logging', $loggingsetting );
 	}
 	?>
 
