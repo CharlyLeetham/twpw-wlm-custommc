@@ -527,7 +527,11 @@ class twpw_custom_mc {
 							echo "Unable to load listUnsubscribe()!\n\r"; 
 							echo "\tCode=".$mailchimp->errorCode."\n\r";
 							echo "\tMsg=".$mailchimp->errorMessage."\n\r";
-							echo "\r\n"; 			
+							echo "\r\n"; 
+							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+							$out =ob_get_clean();
+							fwrite( $logfile, $out );
+							fclose( $logfile );								
 						}
 						
 						if ( $logging ) {
