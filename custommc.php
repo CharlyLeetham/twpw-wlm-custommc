@@ -16,6 +16,7 @@ Version 1.3 - Fixed Sequential Add
 Version 2a - Tidy up.
 Version 2.01 - Clean up the code being output to the screen.
 Version 2.02 - Rewrite to stop people being moved after being added
+Verions wlm-removeaction-bug - snapshot to show errors.
 */
 
 
