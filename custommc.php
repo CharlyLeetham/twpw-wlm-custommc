@@ -398,18 +398,11 @@ class twpw_custom_mc {
 				// For PDT ONLY
 				$merge_vars['JOINED'] = current_time('Y-m-d');
 				$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
-				if ( empty ( $previous_join_date ) ) {
-					add_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
-					echo 'join date of '.$merge_vars['JOINED'].' added'."\r\n\r\n";
-					$logger1 = 'join date of '.$merge_vars['JOINED'].' added';
-				} elseif ( $settings[$level[$levid]]['update_join_date'] == 'yes' ) {
-					update_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
-					echo 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n";			
-					$logger1 = 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];			
-				} else {
-					echo 'join date not updated from '.$previous_join_date."\r\n";
-					$logger1 = 'join date not updated from '.$previous_join_date[0];
-				}
+				if ( !empty ( $previous_join_date ) ) {
+					delete_user_meta ( $id, 'wlm_join_date' );
+					echo 'join date of '.$merge_vars['JOINED'].' removed'."\r\n\r\n";
+					$logger1 = 'join date of '.$merge_vars['JOINED'].' removed';
+				} 
 
 				$email_type = 'html';
 				$update_existing = TRUE;
