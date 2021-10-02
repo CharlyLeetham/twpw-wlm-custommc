@@ -227,6 +227,13 @@ class twpw_custom_mc {
 				// Setup the array to send to Mailchimp
 				global $wpdb;
 				$mailchimp = new Mailchimp ( $mcapikey );
+
+				if ( $debug ) {
+					echo '$mailchimp:';
+					echo var_export( $mailchimp, true );
+					echo "\r\n";
+				}				
+				
 				$merge_vars = array (
 									 'FNAME' => $firstname,
 									 'LNAME' => $lastname,
@@ -274,7 +281,12 @@ class twpw_custom_mc {
 				
 				if ( $live ) {
 					
-
+					if ( $debug ) {
+						$logfile = fopen( LOGPATH."mcapplog.log", "a" );
+						$out =ob_get_clean();
+						fwrite( $logfile, $out );
+						fclose( $logfile );		
+					}				
 					
 					$result = $mailchimp->call( '/lists/subscribe', array(
 						'apikey' => $mcapikey,
