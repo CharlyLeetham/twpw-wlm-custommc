@@ -375,17 +375,21 @@ function twpwcustommclists() {
 	if(isset($_POST["submit"])){
 		// Get the options into a local display options array
 		$debugsetting = $_POST['twpw_custommc_debug'];
-
+		$livetestsetting = $_POST['twpw_custommc_livetest'];
 		update_option( 'twpw_custommc_debug', $debugsetting );
+		update_option( 'twpw_custommc_livetest', $livetestsetting );
 	}
 	?>
 
 	<form method="post">
 		<?php
 		$twpw_custommc_db = get_option("twpw_custommc_debug");
+		$twpw_custommc_livetest = get_option("twpw_custommc_livetest");
 		?>
 		<table class="form-table">
 			<tr><td align="right"><strong>Debug Mode:</strong></td><td><label>On</label><input type="radio" name="twpw_custommc_debug" value="yes" <?php if ( $twpw_custommc_db == "yes" ) { echo 'checked'; } ?> />&nbsp;&nbsp;<label>Off&nbsp;</label><input type="radio" name="twpw_custommc_debug" value="no" <?php if ( $twpw_custommc_db == "no" ) { echo 'checked="checked"'; } ?> /></td></tr>
+
+			<tr><td align="right"><strong>Live Or Testing Mode:</strong></td><td><label>Live</label><input type="radio" name="twpw_custommc_livetest" value="yes" <?php if ( $twpw_custommc_livetest == "yes" ) { echo 'checked'; } ?> />&nbsp;&nbsp;<label>Testing&nbsp;</label><input type="radio" name="twpw_custommc_livetest" value="no" <?php if ( $twpw_custommc_livetest == "no" ) { echo 'checked="checked"'; } ?> /></td></tr>
 		</table>
 
 		<p class="submit"><input type="submit" name="submit" class="button-primary" value="<?php _e('Save Debug Options') ?>" /></p>
@@ -399,9 +403,16 @@ function twpwcustommclists() {
 		
 			if(!@readfile($change_file)){
 				echo'<div id="icon-themes" class="icon32"></div><h2>Changelog - TWPW Custom Mailchimp Plugin</h2>
-				<p><b>Version 1.0</b><br />23 March 2012</p>
+						<strong>Version 1.0</strong> - Original Version <br />
+						<strong>Version 1.1</strong - Added WooCommerce support and Delete User support <br />
+						<strong>Version 1.2</strong> - Added Mailchimp Group support<br />
+						<strong>Version 1.3</strong> - Fixed Sequential Add <br />
+						<strong>Version 2a<strong> - Tidy up.<br />
+						<strong>Version 2.01</strong> - Clean up the code being output to the screen.<br />
+						<strong>Version 2.02</strong> - Rewrite to stop people being moved after being added<br />
+						<strong>Version 2.03</strong> - Adding a class. Removed WooCommerce Support. Added more detailed logging.<br />			
 				<h3 style="border-bottom: 1px solid #000; width: 75%;">Known Issues</h3>
-				<p>None</p>'; 
+				<p>1 October 2020: Wishlistmember wishlistmember_remove_user_levels action fires when user is added. Reported to Wishlist Products</p>'; 
 			}
 		}
 		
