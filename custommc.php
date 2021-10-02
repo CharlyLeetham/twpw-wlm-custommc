@@ -450,6 +450,10 @@ class twpw_custom_mc {
 				if ( $debug ) {
 					echo "List: " . $mclistid; 
 					echo "\r\n\r\n"; 
+					$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+					$out =ob_get_clean();
+					fwrite( $logfile, $out );
+					fclose( $logfile );					
 				}
 
 				$double_optin = (empty($settings[$levid]['dblopt']))?true:false;
@@ -502,9 +506,24 @@ class twpw_custom_mc {
 					$myarr = var_export ( $myarray, true );
 					echo 'Mailchimp settings: '."\r\n\r\n";
 					echo $myarr."\r\n";
+					$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+					$out =ob_get_clean();
+					fwrite( $logfile, $out );
+					fclose( $logfile );					
 				}
 				
-				if ( $live ) {				
+				
+				
+				if ( $live ) {	
+
+					if ( $debug ) {
+						echo "Here"; 
+						echo "\r\n\r\n"; 
+						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+						$out =ob_get_clean();
+						fwrite( $logfile, $out );
+						fclose( $logfile );							
+					}				
 					
 					$result = $mailchimp->call( '/lists/unsubscribe', array(
 						'apikey' => $api_key,
