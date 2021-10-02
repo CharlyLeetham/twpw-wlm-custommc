@@ -216,7 +216,7 @@ function twpwcustommclists() {
 							$logger .= "\r\n***\r\n";
 							$logger .= var_export ( $settings[$level['id']]['mcgroup'], true );
 							$logger .= "\r\n***\r\n";
-							$logger .= ( $settings[$level['id']]['mclistid'], true );
+							$logger .= var_export ( $settings[$level['id']]['mclistid'], true );
 							$logger .= "\r\n***\r\n";
 						}
 						
