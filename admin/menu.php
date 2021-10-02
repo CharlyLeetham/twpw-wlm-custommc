@@ -288,7 +288,7 @@ global $twpw_custommc_mcapi;
 		</table>
 		
 		<p class="submit">
-		<input type="submit" name="submit" class="button-primary" value="<?php _e('Save Button Options') ?>" />
+		<input type="submit" name="submit" class="button-primary" value="<?php _e('Save Mailchimp Settings') ?>" />
 		</p>
 	</form>
 	<script type="text/javascript">
