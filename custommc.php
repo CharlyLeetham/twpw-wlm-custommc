@@ -521,15 +521,6 @@ Version 2.02 - Rewrite to stop people being moved after being added
 		$api_key = $settings['mcapikey'];	
 		$twpw_custommc_mcapi = new Mailchimp ( $api_key );
 	}
-	
-}
-
-if ( !isset ($twpw_custom_mc) ){
-	//setup our extension class
-	$twpw_custom_mc = new twpw_custom_mc;
-} else {
-	twpw_custom_mc::init();
-}
 
 add_action ('init', 'acl_init');
 register_activation_hook ( __FILE__, 'twpw_custom_mc_activate' );
