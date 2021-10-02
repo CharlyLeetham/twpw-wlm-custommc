@@ -227,6 +227,15 @@ class twpw_custom_mc {
 				// Setup the array to send to Mailchimp
 				global $wpdb;
 				$mailchimp = new Mailchimp ( $mcapikey );
+				
+					if ( $debug ) {
+						echo var_export( $mailchimp, true )."\r\n";
+						$logfile = fopen( LOGPATH."mcapplog.log", "a" );
+						$out =ob_get_clean();
+						fwrite( $logfile, $out );
+						fclose( $logfile );	
+						return;
+					}					
 
 				if ( $debug ) {
 					echo '$mailchimp:';
@@ -279,14 +288,7 @@ class twpw_custom_mc {
 					echo $myarr."\r\n";
 				}
 				
-				if ( $live ) {
-					
-					if ( $debug ) {
-						$logfile = fopen( LOGPATH."mcapplog.log", "a" );
-						$out =ob_get_clean();
-						fwrite( $logfile, $out );
-						fclose( $logfile );		
-					}				
+				if ( $live ) {		
 					
 					$result = $mailchimp->call( '/lists/subscribe', array(
 						'apikey' => $mcapikey,
