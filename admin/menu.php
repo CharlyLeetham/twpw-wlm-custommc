@@ -211,13 +211,13 @@ function twpwcustommclists() {
 						
 						if ( $debug == 'yes' ) {
 							$logger .= var_export ( $level, true );
-							$logger .= "\r\n***\r\n"
+							$logger .= "\r\n***\r\n";
 							$logger .= var_export( $settings[$level['id']], true );
-							$logger .= "\r\n***\r\n"
+							$logger .= "\r\n***\r\n";
 							$logger .= var_export ( $settings[$level['id']]['mcgroup'], true );
-							$logger .= "\r\n***\r\n"
+							$logger .= "\r\n***\r\n";
 							$logger .= ( $settings[$level['id']]['mclistid'], true );
-							$logger .= "\r\n***\r\n"
+							$logger .= "\r\n***\r\n";
 						}
 						
 						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
@@ -229,7 +229,7 @@ function twpwcustommclists() {
 							if ( $debug == 'yes' ) {
 								$logger .= "MCGroups: ";
 								$logger .= var_export( $mclists, true );
-								$logger .= "\r\n"
+								$logger .= "\r\n";
 							}
 							
 							echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
@@ -322,7 +322,7 @@ function twpwcustommclists() {
 				function(msg) {
 					msg = msg.trim();
 					groupobject.html(msg);
-					<?php if (get_option('twpw_custommc_debug', 'no') == 'yes') {
+					<?php if ( $debug == 'yes' ) {
 							echo "console.log(msg);";
 						} ?>
 				});		
