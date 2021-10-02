@@ -235,7 +235,7 @@ function twpwcustommclists() {
 							echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
 
 								foreach ( $mclists as $mclist ) {
-									echo '<option disabled="disabled"><strong>** '.$mclist['name'].' **</strong></option>';
+									echo '<option disabled="disabled">** '.$mclist['name'].' **</option>';
 									foreach ( $mclist['groups'] as $group ) {
 										$val = str_replace(',','\,',$group['name']);
 										$val = $mclist['id'].'::'.$val;
