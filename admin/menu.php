@@ -198,7 +198,7 @@ global $twpw_custommc_mcapi;
 					<?php echo'<td>' . $level['name'] . '</td>'; ?>
 
 					<!-- List all Mailchimp Lists -->
-					<td><?php echo get_mailchimp_lists($settings[$level['id']]['mclistid'],$level['id']) ?></td>
+					<td><?php echo twpw_custom_mc::get_mailchimp_lists($settings[$level['id']]['mclistid'],$level['id']) ?></td>
 					
 					<!-- List groups for Mailchimp List selected -->
 					<td class="grouplisting" levelid="<?php echo $level['id']; ?>">
