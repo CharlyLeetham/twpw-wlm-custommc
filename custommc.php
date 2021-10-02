@@ -36,9 +36,7 @@ class twpw_custom_mc {
 	public static function init() {
 		if ( is_admin() ) {
 			require_once(dirname(__FILE__) . '/admin/menu.php');
-		}
-		
-		if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );		
+		}	
 	}
 
 	/*	--------------------------------------------------
@@ -591,6 +589,8 @@ if ( !isset ($twpw_custom_mc) ){
 	$twpw_custom_mc = new twpw_custom_mc;
 	twpw_custom_mc::init();
 }
+
+if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );	
 
 register_activation_hook ( __FILE__, array(&$twpw_custom_mc, 'twpw_custom_mc_activate' ) );
 add_action('admin_head', array (&$twpw_custom_mc, 'twpw_custommc_admin_register_head' ) );
