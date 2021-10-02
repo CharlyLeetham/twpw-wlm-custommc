@@ -113,8 +113,27 @@ class twpw_custom_mc {
 		ob_start();
 		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
 		date_default_timezone_set("US/Hawaii");
-		$logging = true;
-		$debug = true;
+		$logging = get_option("twpw_custommc_logging");
+		if ( $logging == "yes") {
+			$logging = true;
+		} else {
+			$logging = false;
+		}
+
+		$debug = get_option("twpw_custommc_listdebug");
+		if ( $debug == "yes") {
+			$debug = true;
+		} else {
+			$debug = false;
+		}
+		
+		$live = get_option("twpw_custommc_livetest");
+		if ( $live == "yes") {
+			$live = true;
+		} else {
+			$live = false;
+		}
+		
 		$logger = '';
 		
 		$settings = get_option("twpw_custommc");
