@@ -90,6 +90,7 @@ function twpwcustommcgen() {
 	if(isset($_POST["submit"])){
 		$settings = get_option('twpw_custommc');
 		$settings['mcapikey'] = $_POST['mcapikey'];
+		$settings['mcdc'] = $_POST['mcdc'];
 		update_option('twpw_custommc', $settings);
 	}
 	?>
@@ -98,9 +99,12 @@ function twpwcustommcgen() {
 		<?php
 		$settings = get_option("twpw_custommc");
 		$twpw_mcapikey = $settings['mcapikey'];
+		$twpw_mcdc = $settings['mcdc'];
 		?>
 		<table class="form-table">
 			<tr><td align="right"><strong>Mailchimp API Key:</strong></td><td><input type="text" size="25" name="mcapikey" value="<?php echo $twpw_mcapikey;?>" /> (Get your API key from: <a href="http://admin.mailchimp.com/account/api/" target="_blank">http://admin.mailchimp.com/account/api/</a>)</td></tr>
+			
+			<tr><td align="right"><strong>Mailchimp Data Centre:</strong></td><td><input type="text" size="4" name="mcdc" value="<?php echo $twpw_mcdc;?>" /> <br />Log into your Mailchimp account and look at the URL in your browser. You’ll see something like https://us19.admin.mailchimp.com/; the <strong>us19</strong> part is the server prefix. Note that your specific value may be different.</td></tr>			
 		</table>
 		
 		<p class="submit"><input type="submit" name="submit" class="button-primary" value="<?php _e('Save General Options') ?>" /></p>
