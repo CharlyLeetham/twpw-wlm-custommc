@@ -26,7 +26,6 @@ function twpw_admin_subpage() {
 		//Our main div... common to all tabs
 		echo '<div class="wrap twpw-wrap">';
 		echo '<div class="twpw-admin-header">';
-		//echo '<a href="http://www.theworpdresswarrior.com/" title="Visit The Wordpress Press Warrior" target="_blank"><img src="http://aclclients.s3.amazonaws.com/theWPWarrior/header.jpg" alt="The Wordpress Warrior" style="max-width:900px; width:100%;"/></a>';
 		echo '</div>';
 		twpw_admin_plugin_menu();
 		twpw_sub_menu();
@@ -110,47 +109,65 @@ function twpwcustommcgen() {
 }
 
 function twpwcustommclists() {
-global $twpw_custommc_mcapi;
+	global $twpw_custommc_mcapi;
+	$debug = get_option( 'twpw_custommc_debug', 'no' );
+	$logger = '';
+	
+	if ( $debug == 'yes' ) {
+		/* Setup Logging */		
+		date_default_timezone_set("US/Hawaii");
+
+		if (!file_exists(dirname( __FILE__ ).'/logs')) {
+			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
+		}
+		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+		$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
+	}
 ?>
 	<div class="twpw-admin-content">
 	<div id="icon-options-general" class="icon32"></div><h2>List Selection - TWPW Custom Mailchimp Plugin</h2>
 	<p>Here you can set the Mailchimp list for each level, whether to use double optin; send the welcome email; and unsubscribe from list when removed from level</p>
 
 	<?php
-	if(isset($_POST["submit"])){
+	if( isset($_POST["submit"] ) ){
 		$count = 0;
 		$err_msg = array();
 		$error_occured = false;
 
-		if (get_option('twpw_custommc_debug', 'no') == 'yes') {
-			echo '$_POST: ';
-			var_dump($_POST['twpw_custommc']);
-			echo '<br>';
+		if ( $debug == 'yes' ) {
+			$logger .= '$_POST: ';
+			$logger .= var_export( $_POST['twpw_custommc'], true );
+			$logger .= "\r\n";
 		}
 		
 		$newsettings = $_POST['twpw_custommc'];
 		$settings = get_option('twpw_custommc');
-		if (get_option('twpw_custommc_debug', 'no') == 'yes') {
-			echo '$newsettings: ';
-			var_dump($newsettings);
-			echo '<br>';
-			echo '$settings: ';
-			var_dump($settings);
-			echo '<br>';
+		if ( $debug == 'yes' ) {
+			$logger .= '$newsettings: ';
+			$logger .= var_export( $newsettings, true );
+			$logger .= "\r\n";
+			$logger .= '$settings: ';
+			$logger .= var_export( $settings, true );
+			$logger .= "\r\n";
 		}
 		
 		$newsettings['mcapikey']=$settings['mcapikey'];
-		if (get_option('twpw_custommc_debug', 'no') == 'yes') {
-			echo '$newsettings: ';
-			var_dump($newsettings);
-			echo '<br>';
+		if ( $debug == 'yes' ) {
+			$logger .= '$newsettings: ';
+			$logger .= var_export( $newsettings, true );
+			$logger .= "\r\n";
 		}			
 		update_option('twpw_custommc', $newsettings);
 	}
 
 	twpw_custom_mc::twpw_custommc_createMCAPI();  // initialise the Mailchimp api
 	
-	if($error_occured){echo '<div align="center" style="font-weight: bold; font-size: 16px; color: #FF0000; margin-bottom: 10px;">Your changes have not been saved. Please scroll down to see the error message(s).</div>';} else {if(isset($_POST["submit"])){echo '<div align="center" style="font-weight: bold; font-size: 16px; color: #FF0000; margin-bottom: 10px;">Your changes have been saved!</div>';}} ?>
+	if( $error_occured ){
+		echo '<div align="center" style="font-weight: bold; font-size: 16px; color: #FF0000; margin-bottom: 10px;">Your changes have not been saved. Please scroll down to see the error message(s).</div>';
+	} else {
+		if ( isset($_POST["submit"] ) ) {
+			echo '<div align="center" style="font-weight: bold; font-size: 16px; color: #FF0000; margin-bottom: 10px;">Your changes have been saved!</div>';}
+		} ?>
 
 	<form method="post">
 			<div style="margin-bottom: 6px; margin-top: 10px; font-size: 16px;"><strong>How To Use This Form</strong></div>
@@ -171,27 +188,15 @@ global $twpw_custommc_mcapi;
 
 			<?php
 			$settings = get_option('twpw_custommc',false);
-			if (get_option('twpw_custommc_debug', 'no') == 'yes') {
-				echo '<pre>';
-					var_dump($settings);
-				echo '</pre>';
+			if ( $debug == 'yes' ) {
+				$logger .= var_export( $settings, true );
+				$logger .= "\r\n";
 			}
-			//$twpw_custommc_api = twpw_verify_api();
-			//$WLM_levels = WLMAPI::GetLevels();
 			$levels = wlmapi_get_levels();
 			$levels = $levels["levels"]["level"];
-			$count = 0;
-			// for each level print out a row the user can set options on.
-			/*foreach($response as $level) {
-				$levels[] = array(
-					'id' => $level['id'],
-					'name' => (string)$level['name']
-				);
-			}*/
-			
-				
+			$count = 0;				
 		
-			foreach($levels AS $level) {
+			foreach( $levels as $level ) {
 				$count += 1;
 				?>
 				<tr valign="top">
@@ -204,20 +209,15 @@ global $twpw_custommc_mcapi;
 					<td class="grouplisting" levelid="<?php echo $level['id']; ?>">
 						<?php
 						
-						if (get_option('twpw_custommc_debug', 'no') == 'yes') {
-							echo '<pre>';
-							var_dump ($level);
-							echo '<hr />';
-							var_dump( $settings[$level['id'] ] );
-							echo '<hr />';
-							var_dump($settings[$level['id']]['mcgroup'] );
-							echo '<hr />';
-							var_dump ($settings[$level['id']]['mclistid']);
-							echo '<hr />';
-							if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-								echo 'tis empty<br />';
-							}
-							echo '</pre>';
+						if ( $debug == 'yes' ) {
+							$logger .= var_export ( $level, true );
+							$logger .= "\r\n***\r\n"
+							$logger .= var_export( $settings[$level['id']], true );
+							$logger .= "\r\n***\r\n"
+							$logger .= var_export ( $settings[$level['id']]['mcgroup'], true );
+							$logger .= "\r\n***\r\n"
+							$logger .= ( $settings[$level['id']]['mclistid'], true );
+							$logger .= "\r\n***\r\n"
 						}
 						
 						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
@@ -225,17 +225,18 @@ global $twpw_custommc_mcapi;
 						}
 						
 						if ( !empty( $settings[$level['id']]['mcgroup'] ) ) {
-							$mclists = $twpw_custommc_mcapi->call('/lists/interest-groupings',array('id'=>$settings[$level['id']]['mclistid']));
-							if (get_option('twpw_custommc_debug', 'no') == 'yes') {
-								echo "MCGroups: ";
-								var_dump($mclists);
+							$mclists = $twpw_custommc_mcapi->call('/lists/interest-groupings', array('id'=>$settings[$level['id']]['mclistid']) );
+							if ( $debug == 'yes' ) {
+								$logger .= "MCGroups: ";
+								$logger .= var_export( $mclists, true );
+								$logger .= "\r\n"
 							}
 							
 							echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
 
-								foreach ($mclists as $mclist) {
-									echo '<option disabled="disabled">** '.$mclist['name'].' **</option>';
-									foreach ($mclist['groups'] as $group) {
+								foreach ( $mclists as $mclist ) {
+									echo '<option disabled="disabled"><strong>** '.$mclist['name'].' **</strong></option>';
+									foreach ( $mclist['groups'] as $group ) {
 										$val = str_replace(',','\,',$group['name']);
 										$val = $mclist['id'].'::'.$val;
 										echo '<option value="'.$val.'" ';
@@ -249,39 +250,57 @@ global $twpw_custommc_mcapi;
 						?>
 					</td>
 										
-					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][update_join_date]" value="yes" 
+					<td><input type="checkbox" name="twpw_custommc[ <?php echo $level['id']; ?>][update_join_date]" value="yes" 
 						<?php 
-							if ($settings[$level['id']]['update_join_date'] == 'yes') { echo ' checked="checked" '; } 
+							if ( $settings[$level['id']]['update_join_date'] == 'yes' ) { 
+								echo ' checked="checked" '; 
+							} 
 						?>
 					/>
 					</td>					
 					
-					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][dblopt]" value="yes" 
+					<td><input type="checkbox" name="twpw_custommc[ <?php echo $level['id']; ?>][dblopt]" value="yes" 
 						<?php 
-						if ($settings[$level['id']]['dblopt'] == 'yes') { echo ' checked="checked" '; } ?>
+							if ( $settings[$level['id']]['dblopt'] == 'yes' ) { 
+							 echo ' checked="checked" '; 
+							} 
+						?>
 					/>
 					</td>
 					
 
-					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][sendwel]" value="yes" 
-						<?php if ($settings[$level['id']]['sendwel'] == 'yes') { echo ' checked="checked" '; } ?>
+					<td><input type="checkbox" name="twpw_custommc[ <?php echo $level['id']; ?>][sendwel]" value="yes" 
+						<?php if ( $settings[$level['id']]['sendwel'] == 'yes' ) { 
+								echo ' checked="checked" '; 
+							} 
+						?>
 					/></td>
 					
 					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][unsub]" value="yes" 
-						<?php if ($settings[$level['id']]['unsub'] == 'yes') {  echo ' checked="checked" '; } ?>
+						<?php if ( $settings[$level['id']]['unsub'] == 'yes' ) {  
+								echo ' checked="checked" '; 
+							} 
+						?>
 					/></td>
 
 					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][sendbye]" value="yes" 
-						<?php if ($settings[$level['id']]['sendbye'] == 'yes') {  echo ' checked="checked" '; } ?>
+						<?php if ( $settings[$level['id']]['sendbye'] == 'yes' ) {  
+								echo ' checked="checked" '; 
+							} 
+						?>
 					/></td>
 
 					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][sendnotify]" value="yes" 
-						<?php if ($settings[$level['id']]['sendnotify'] == 'yes') {  echo ' checked="checked" '; } ?>
+						<?php if ( $settings[$level['id']]['sendnotify'] == 'yes' ) {  
+							echo ' checked="checked" '; 
+							} 
+						?>
 					/></td>					
 
 				</tr>
-				<?php if ($err_msg[$count] != '') { ?>
-				<tr><td colspan="4" align="right"><span style="font-weight:bold; color:#FF0000;"><?php echo $err_msg[$count]; ?></span></td></tr><?php } ?>
+				<?php if ( $err_msg[$count] != '' ) { ?>
+				<tr><td colspan="4" align="right"><span style="font-weight:bold; color:#FF0000;"><?php echo $err_msg[$count]; ?></span></td></tr>
+				<?php } ?>
 			<?php
 			}
 			?>
@@ -312,6 +331,11 @@ global $twpw_custommc_mcapi;
 	</script>
 	<?php 
 	
+		if ( $debug == 'yes' ) {
+			$logfile = fopen( LOGPATH."twpw-mc-admin-debug.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );	
+		}
 	
 	}
 	
@@ -350,9 +374,9 @@ global $twpw_custommc_mcapi;
 	<?php
 	if(isset($_POST["submit"])){
 		// Get the options into a local display options array
-		$debug = $_POST['twpw_custommc_debug'];
+		$debugsetting = $_POST['twpw_custommc_debug'];
 
-		update_option('twpw_custommc_debug', $debug);
+		update_option( 'twpw_custommc_debug', $debugsetting );
 	}
 	?>
 
@@ -392,9 +416,6 @@ global $twpw_custommc_mcapi;
 			} 
 			die();
 		}
-		if (get_option('twpw_custommc_debug', 'no') == 'yes') {
-			var_dump($mclists);
-		}
 		echo '<select multiple="multiple" name="twpw_custommc['.$_POST['levelid'].'][mcgroup][]" class="mclist">';
 		foreach ($mclists as $mclist) {
 			echo '<option disabled="disabled">** '.$mclist['name'].' **</option>';
@@ -407,6 +428,6 @@ global $twpw_custommc_mcapi;
 		echo '</select>';
 		die();
 	}
-	add_action('wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups');
+	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
 	
 ?>
