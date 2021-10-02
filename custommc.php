@@ -505,6 +505,14 @@ class twpw_custom_mc {
 				}
 				
 				if ( $live ) {
+					if ( $debug ) {
+						echo "Here"; 
+						echo "\r\n\r\n"; 
+						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+						$out =ob_get_clean();
+						fwrite( $logfile, $out );
+						fclose( $logfile );			
+					}					
 					
 					$result = $mailchimp->call( '/lists/unsubscribe', array(
 						'apikey' => $api_key,
@@ -514,8 +522,30 @@ class twpw_custom_mc {
 						'send_goodbye' => $send_goodbye,
 						'send_notify' => $send_notify
 					));
+					
+					if ( $debug ) {
+						echo "Result"; 
+						echo var_export ( $result, true );
+						echo "\r\n\r\n"; 
+						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+						$out = ob_get_clean();
+						fwrite( $logfile, $out );
+						fclose( $logfile );			
+					}					
 													
 					if ( $mailchimp->errorCode ){
+						
+						if ( $debug ) {
+							echo "Unable to load listUnsubscribe()!\n\r"; 
+							echo "\tCode=".$mailchimp->errorCode."\n\r";
+							echo "\tMsg=".$mailchimp->errorMessage."\n\r";
+							echo "\r\n"; 
+							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+							$out = ob_get_clean();
+							fwrite( $logfile, $out );
+							fclose( $logfile );			
+						}
+						
 						if ( $logging ) {
 							$logger .= "Unable to load listUnsubscribe()!\n\r";
 							$logger .= "\tCode=".$mailchimp->errorCode."\n\r";
