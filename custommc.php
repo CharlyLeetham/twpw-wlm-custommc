@@ -141,7 +141,15 @@ class twpw_custom_mc {
 		$logger = '';
 		
 		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];	
+		$api_key = $settings['mcapikey'];
+
+		$mailchimp = new Mailchimp( $api_key );
+		
+		if ( $debug ) {
+			echo '$mailchimp:';
+			echo var_export( $mailchimp, true );
+			echo "\r\n";
+		}						
 		
 		/* Setup Logging */
 		if (!file_exists(dirname( __FILE__ ).'/logs')) {
@@ -226,13 +234,6 @@ class twpw_custom_mc {
 				}
 				// Setup the array to send to Mailchimp
 				global $wpdb;
-				$mailchimp = new Mailchimp ( $api_key );
-				
-				if ( $debug ) {
-					echo '$mailchimp:';
-					echo var_export( $mailchimp, true );
-					echo "\r\n";			
-				}				
 				
 				$merge_vars = array (
 									 'FNAME' => $firstname,
@@ -372,7 +373,14 @@ class twpw_custom_mc {
 		$logger = '';
 		
 		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];	
+		$api_key = $settings['mcapikey'];
+		$mailchimp = new Mailchimp( $api_key );
+		
+		if ( $debug ) {
+			echo '$mailchimp:';
+			echo var_export( $mailchimp, true );
+			echo "\r\n";
+		}
 		
 		/* Setup Logging */
 		if (!file_exists(dirname( __FILE__ ).'/logs')) {
@@ -457,7 +465,6 @@ class twpw_custom_mc {
 				}
 				// Setup the array to send to Mailchimp
 				global $wpdb;
-				$mailchimp = new Mailchimp ( $api_key );
 				$merge_vars = array (
 									 'FNAME' => $firstname,
 									 'LNAME' => $lastname,
