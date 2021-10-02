@@ -518,7 +518,11 @@ class twpw_custom_mc {
 					if ( $debug ) {
 						echo "Result"; 
 						echo var_export ( $result, true );
-						echo "\r\n\r\n"; 		
+						echo "\r\n\r\n"; 
+							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+							$out =ob_get_clean();
+							fwrite( $logfile, $out );
+							fclose( $logfile );							
 					}					
 													
 					if ( $mailchimp->errorCode ){
