@@ -31,7 +31,7 @@ Version 2.02 - Rewrite to stop people being moved after being added
 		}
 	}
 
-	function acl-init() {
+	function acl_init() {
 		if ( is_admin() ) {
 			require_once(dirname(__FILE__) . '/admin/menu.php');
 		}
@@ -531,7 +531,7 @@ if ( !isset ($twpw_custom_mc) ){
 	twpw_custom_mc::init();
 }
 
-add_action ('init', 'acl-init');
+add_action ('init', 'acl_init');
 register_activation_hook ( __FILE__, 'twpw_custom_mc_activate' );
 add_action('admin_head', 'twpw_custommc_admin_register_head' );
 
