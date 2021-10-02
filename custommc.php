@@ -226,7 +226,7 @@ class twpw_custom_mc {
 				}
 				// Setup the array to send to Mailchimp
 				global $wpdb;
-				//$mailchimp = new Mailchimp ( $mcapikey );
+				$mailchimp = new Mailchimp ( $mcapikey );
 				$merge_vars = array (
 									 'FNAME' => $firstname,
 									 'LNAME' => $lastname,
@@ -246,7 +246,7 @@ class twpw_custom_mc {
 					echo 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n";			
 					$logger1 = 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];			
 				} else {
-					echo 'join date not updated from '.$previous_join_date."\r\n";
+					echo 'join date not updated from '.$previous_join_date[0]."\r\n";
 					$logger1 = 'join date not updated from '.$previous_join_date[0];
 				}
 
@@ -274,11 +274,7 @@ class twpw_custom_mc {
 				
 				if ( $live ) {
 					
-					echo 'Here: '."\r\n";
-					$logfile = fopen( LOGPATH."mcapplog.log", "a" );
-					$out =ob_get_clean();
-					fwrite( $logfile, $out );
-					fclose( $logfile );	
+
 					
 					$result = $mailchimp->call( '/lists/subscribe', array(
 						'apikey' => $mcapikey,
