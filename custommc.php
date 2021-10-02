@@ -37,6 +37,8 @@ class twpw_custom_mc {
 		if ( is_admin() ) {
 			require_once(dirname(__FILE__) . '/admin/menu.php');
 		}
+		
+		if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );		
 	}
 
 	/*	--------------------------------------------------
