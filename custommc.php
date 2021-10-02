@@ -3,7 +3,7 @@
 Plugin Name: TWPW Custom MC signup
 Plugin URI: http://askcharlyleetham.com
 Description: Mailchimp Signup
-Version: 2.02
+Version: 2.03
 Author: Morgan & Charly Leetham
 Author URI: http://thewpwarrior.com
 License: GPL
@@ -16,6 +16,7 @@ Version 1.3 - Fixed Sequential Add
 Version 2a - Tidy up.
 Version 2.01 - Clean up the code being output to the screen.
 Version 2.02 - Rewrite to stop people being moved after being added
+Version 2.03 - Adding a class
 */
 
 
