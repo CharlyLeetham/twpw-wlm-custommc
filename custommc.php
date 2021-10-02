@@ -385,25 +385,12 @@ class twpw_custom_mc {
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		
-		if ( $debug ) {
-			echo 'here';
-			echo "\r\n";
-			$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-			$out =ob_get_clean();
-			fwrite( $logfile, $out );
-			fclose( $logfile );			
-		}
-		
 		$mailchimp = new Mailchimp( $api_key );
 		
 		if ( $debug ) {
 			echo '$mailchimp:';
 			echo var_export( $mailchimp, true );
-			echo "\r\n";
-			$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-			$out =ob_get_clean();
-			fwrite( $logfile, $out );
-			fclose( $logfile );					
+			echo "\r\n";				
 		}
 		
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
@@ -505,7 +492,7 @@ class twpw_custom_mc {
 						
 				if ( $debug ) {
 					$myarray = array(
-						'apikey' => $mcapikey,
+						'apikey' => $api_key,
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'delete_member' => $delete_member,
@@ -520,7 +507,7 @@ class twpw_custom_mc {
 				if ( $live ) {
 					
 					$result = $mailchimp->call( '/lists/unsubscribe', array(
-						'apikey' => $mcapikey,
+						'apikey' => $api_key,
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'delete_member' => $delete_member,
