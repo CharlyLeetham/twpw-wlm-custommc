@@ -526,8 +526,8 @@ add_action ('init', 'acl_init');
 register_activation_hook ( __FILE__, 'twpw_custom_mc_activate' );
 add_action('admin_head', 'twpw_custommc_admin_register_head' );
 
-add_action ( 'wishlistmember_approve_user_levels',  'acl_wlm_test' , 30, 2 );
-add_action ( 'wishlistmember_add_user_levels',  'acl_wlm_test' , 30, 2 );
+// add_action ( 'wishlistmember_approve_user_levels',  'acl_wlm_test' , 30, 2 );
+// add_action ( 'wishlistmember_add_user_levels',  'acl_wlm_test' , 30, 2 );
 add_action ( 'wishlistmember_remove_user_levels',  'acl_wlm_test' , 30, 2 );
 // add_action ( 'wishlistmember_unapprove_user_levels',  'acl_wlm_test' , 30, 2 );
 // add_action ( 'wishlistmember_unconfirm_user_levels',  'acl_wlm_test' , 30, 2 );
@@ -535,10 +535,10 @@ add_action ( 'wishlistmember_remove_user_levels',  'acl_wlm_test' , 30, 2 );
 // add_action ( 'wishlistmember_cancel_user_levels',  'acl_wlm_test' , 30, 2 );
 // add_action ( 'wishlistmember_uncancel_user_levels',  'acl_wlm_test' , 30, 2 );
 
-add_action ( 'wishlistmember_approve_user_levels',  'acl_wlm_approve_user' , 30, 2 );
-add_action ( 'wishlistmember_add_user_levels',  'acl_wlm_approve_user' , 30, 2 );
-add_action ( 'wishlistmember_confirm_user_levels',  'acl_wlm_approve_user' , 30, 2 );
-add_action ( 'wishlistmember_uncancel_user_levels',  'acl_wlm_approve_user' , 30, 2 );
+// add_action ( 'wishlistmember_approve_user_levels',  'acl_wlm_approve_user' , 30, 2 );
+// add_action ( 'wishlistmember_add_user_levels',  'acl_wlm_approve_user' , 30, 2 );
+// add_action ( 'wishlistmember_confirm_user_levels',  'acl_wlm_approve_user' , 30, 2 );
+// add_action ( 'wishlistmember_uncancel_user_levels',  'acl_wlm_approve_user' , 30, 2 );
 
 add_action ( 'wishlistmember_remove_user_levels', 'acl_wlm_unapprove_user' , 30, 2 );
 // add_action ( 'wishlistmember_unapprove_user_levels', 'acl_wlm_unapprove_user' , 30, 2 );
