@@ -226,21 +226,17 @@ class twpw_custom_mc {
 				}
 				// Setup the array to send to Mailchimp
 				global $wpdb;
-				$mailchimp = new Mailchimp ( $mcapikey );
+				$mailchimp = new Mailchimp ( $api_key );
 				
-					if ( $debug ) {
-						echo var_export( $mailchimp, true )."\r\n";
-						$logfile = fopen( LOGPATH."mcapplog.log", "a" );
-						$out =ob_get_clean();
-						fwrite( $logfile, $out );
-						fclose( $logfile );	
-						return;
-					}					
-
 				if ( $debug ) {
 					echo '$mailchimp:';
 					echo var_export( $mailchimp, true );
 					echo "\r\n";
+					$logfile = fopen( LOGPATH."mcapplog.log", "a" );
+					$out =ob_get_clean();
+					fwrite( $logfile, $out );
+					fclose( $logfile );	
+					return;					
 				}				
 				
 				$merge_vars = array (
