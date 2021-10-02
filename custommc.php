@@ -400,6 +400,10 @@ class twpw_custom_mc {
 			echo '$mailchimp:';
 			echo var_export( $mailchimp, true );
 			echo "\r\n";
+			$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+			$out =ob_get_clean();
+			fwrite( $logfile, $out );
+			fclose( $logfile );					
 		}
 		
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
