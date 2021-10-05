@@ -546,7 +546,7 @@ class twpw_custom_mc {
 							$out =ob_get_clean();
 							fwrite( $logfile, $out );
 							fclose( $logfile );								
-							$result = $mailchimp->patch('lists/mclistid/members/'. $emailmd5, [
+							$result = $mailchimp->patch('lists/'.$mclistid.'/members/'. $emailmd5, [
 								'status' => 'subscribed',
 								'merge_fields' => array(
 									'FNAME' => $firstname,
