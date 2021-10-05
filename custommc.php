@@ -519,7 +519,7 @@ class twpw_custom_mc {
 						$interestgroup = array();
 						foreach ( $groupings[$inum]['groups'] as $k => $v ) {
 							// echo 'Key: '.$k.' Value: '.$v."\r\n";
-							echo $v .' =>  false,';
+							echo $v .' =>  false,' . "\r\n";
 							$inum ++;							
 						}
 						// echo var_export( $interestgroup, true )."\r\n"
