@@ -549,10 +549,12 @@ class twpw_custom_mc {
 								),
 							]);	
 						} catch (Exception $e) {
-							$exception = (string) $e->getResponse()->getBody();
-							$exception = json_decode($exception);
+							// $exception = (string) $e->getResponse()->getBody();
+							// $exception = json_decode($exception);
 							if ( $debug ){
-								echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
+								// echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
+								echo 'An error has occurred: ';
+								var_export ( $e, true). "\r\n\r\n";
 							}
 						}
 												
