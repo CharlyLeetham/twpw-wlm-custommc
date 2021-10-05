@@ -538,24 +538,29 @@ class twpw_custom_mc {
 						foreach ( $groupings[$inum]['groups'] as $k => $v ) {
 							$mcstring .= $v .' =>  false,' . "\r\n";
 							$inum ++;							
-						}		
-						
-						$result = $mailchimp->patch('lists/mclistid/members/'. $emailmd5, [
-							'status' => 'subscribed',
-							'merge_fields' => array(
-								'FNAME' => $firstname,
-								'LNAME' => $lastname,
-							),
-						]);
+						}
+
+						try {
+							$result = $mailchimp->patch('lists/mclistid/members/'. $emailmd5, [
+								'status' => 'subscribed',
+								'merge_fields' => array(
+									'FNAME' => $firstname,
+									'LNAME' => $lastname,
+								),
+							]);	
+						} catch (Exception $e) {
+							$exception = (string) $e->getResponse()->getBody();
+							$exception = json_decode($exception);
+							if ( $debug ){
+								echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
+							}
+						}
 												
 						if ( $debug ) {
-							echo "Result"; 
-							echo var_export ( $result, true );
-							echo "\r\n\r\n"; 
-								$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-								$out =ob_get_clean();
-								fwrite( $logfile, $out );
-								fclose( $logfile );							
+							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+							$out =ob_get_clean();
+							fwrite( $logfile, $out );
+							fclose( $logfile );							
 						}					
 														
 						if ( $mailchimp->errorCode ){
