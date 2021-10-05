@@ -482,6 +482,7 @@ class twpw_custom_mc {
 						foreach($groups as $group_id => $group) {
 							$groupings[] = array('id'=>$group_id, 'groups' => $group);
 						}
+						
 					}
 					// Setup the array to send to Mailchimp
 					global $wpdb;
@@ -518,6 +519,8 @@ class twpw_custom_mc {
 						echo var_export ( $myarray, true ).",\r\n";
 						echo 'Mailchimp settings: '."\r\n\r\n";
 						echo $myarr."\r\n";
+						echo 'Groupings: ';
+						echo var_export( $groupings, true)."\r\n";
 						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
 						$out =ob_get_clean();
 						fwrite( $logfile, $out );
