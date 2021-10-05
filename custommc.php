@@ -393,21 +393,14 @@ class twpw_custom_mc {
 		]);
 
 		try {
-				$response = $mailchimp->ping->get();
-				
-				if ( $debug ) {
-					echo 'Mailchimp Response: ';
-					echo var_export( $response, true);
-				}
-
+				$response = $mailchimp->ping->get();	
 		} catch (Exception $e) {
 				$exception = (string) $e->getResponse()->getBody();
 				$exception = json_decode($exception);
 				if ( $debug ){
 					echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
 				}
-		} finally {	
-			
+		} finally {			
 			$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
 
 			if ( $debug ) {
@@ -477,6 +470,10 @@ class twpw_custom_mc {
 					$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
 					$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
 					$groupings = array(); // create groupings array
+					
+					if ( $debug ) {
+							echo var_export( $settings[$levid]['mcgroup'], true )."\r\n";
+					}
 					if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
 						foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
 							$group = explode('::',$group); // divide the group as top id and bottom name
