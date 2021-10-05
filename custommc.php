@@ -520,9 +520,9 @@ class twpw_custom_mc {
 						foreach ( $groupings[$inum]['groups'] as $k => $v ) {
 							// echo 'Key: '.$k.' Value: '.$v."\r\n";
 							$inum ++;
-							$interestgroup[$v] => false;
+							// $interestgroup[$v] => false;
 						}
-						echo var_export( $interestgroup, true )."\r\n"
+						// echo var_export( $interestgroup, true )."\r\n"
 						echo '),'."\r\n";
 						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
 						$out =ob_get_clean();
