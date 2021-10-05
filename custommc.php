@@ -508,11 +508,9 @@ class twpw_custom_mc {
 					if ( $debug ) { 
 						echo '$mailchimp->patch(\'lists/mclistid/members/\'. $emailmd5, ['."\r\n";
 						echo '\'status\' => \'subscribed\','."\r\n";
-						echo '\'merge_fields\' => array ('."\r\n";
-						$myarray = array(
-							'FNAME' => $firstname,
-							'LNAME' => $lastname,
-						);
+						echo '\'merge_fields\' => array ('."\r\n";	
+						echo 'FNAME => '.$firstname .','."\r\n";
+						echo 'LNAME => '.$lastname .','
 						echo '),'."\r\n";
 						echo '\'interests\' => array('."\r\n";
 						$inum = 0;
@@ -524,6 +522,7 @@ class twpw_custom_mc {
 						}
 						// echo var_export( $interestgroup, true )."\r\n"
 						echo '),'."\r\n";
+						echo ']);'."\r\n";
 						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
 						$out =ob_get_clean();
 						fwrite( $logfile, $out );
