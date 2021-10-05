@@ -517,14 +517,12 @@ class twpw_custom_mc {
 						echo '\'interests\' => array('."\r\n";
 						$inum = 0;
 						foreach ( $groupings[$inum]['groups'] as $k => $v ) {
-							echo 'Key: '.$k.' Value: '.$v."\r\n";
+							// echo 'Key: '.$k.' Value: '.$v."\r\n";
 							$inum ++;
+							$interestgroup[$v] => false;
 						}
-						echo var_export ( $myarray, true ).",\r\n";
-						echo 'Mailchimp settings: '."\r\n\r\n";
-						echo $myarr."\r\n";
-						echo 'Groupings: ';
-						echo var_export( $groupings, true)."\r\n";
+						echo var_export( $interestgroup, true )."\r\n"
+						echo '),'."\r\n";
 						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
 						$out =ob_get_clean();
 						fwrite( $logfile, $out );
