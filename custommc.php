@@ -516,7 +516,7 @@ class twpw_custom_mc {
 						echo '),'."\r\n";
 						echo '\'interests\' => array('."\r\n";
 						$inum = 0;
-						foreach ( $groupings[0] as $k => $v ) {
+						foreach ( $groupings[$inum]['groups'] as $k => $v ) {
 							echo 'Key: '.$k.' Value: '.$v."\r\n";
 							$inum ++;
 						}
