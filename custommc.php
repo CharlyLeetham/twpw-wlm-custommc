@@ -546,11 +546,6 @@ class twpw_custom_mc {
 								'FNAME' => $firstname,
 								'LNAME' => $lastname,
 							),
-							'interests' => array(
-							foreach ( $groupings[$inum]['groups'] as $k => $v ) {
-								$v => false,
-							}
-							),
 						]);
 												
 						if ( $debug ) {
