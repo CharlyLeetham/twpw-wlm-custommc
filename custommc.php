@@ -547,7 +547,9 @@ class twpw_custom_mc {
 								'LNAME' => $lastname,
 							),
 							'interests' => array(
-								echo $mcstring;
+							foreach ( $groupings[$inum]['groups'] as $k => $v ) {
+								$v => false,
+							}
 							),
 						]);
 												
