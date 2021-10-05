@@ -471,9 +471,6 @@ class twpw_custom_mc {
 					$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
 					$groupings = array(); // create groupings array
 					
-					if ( $debug ) {
-							echo var_export( $settings[$levid]['mcgroup'], true )."\r\n";
-					}
 					if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
 						foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
 							$group = explode('::',$group); // divide the group as top id and bottom name
@@ -516,6 +513,11 @@ class twpw_custom_mc {
 							'FNAME' => $firstname,
 							'LNAME' => $lastname,
 						);
+						echo '),'."\r\n";
+						echo '\'interests\' => array('."\r\n";
+						foreach ( $groupings as $k => $v ) {
+							echo 'Key: '.$k.' Value: '.$v."\r\n";
+						}
 						echo var_export ( $myarray, true ).",\r\n";
 						echo 'Mailchimp settings: '."\r\n\r\n";
 						echo $myarr."\r\n";
