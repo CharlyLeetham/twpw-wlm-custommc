@@ -506,26 +506,26 @@ class twpw_custom_mc {
 					$emailmd5 = md5( $useremail );
 							
 					if ( $debug ) { 
-						echo '$mailchimp->patch(\'lists/mclistid/members/\'. $emailmd5, ['."\r\n";
-						echo '\'status\' => \'subscribed\','."\r\n";
-						echo '\'merge_fields\' => array ('."\r\n";	
-						echo '\'FNAME\' => '.$firstname .','."\r\n";
-						echo '\'LNAME\' => '.$lastname .','."\r\n";
-						echo '),'."\r\n";
-						echo '\'interests\' => array('."\r\n";
-						$inum = 0;
-						$interestgroup = array();
-						foreach ( $groupings[$inum]['groups'] as $k => $v ) {
+						// echo '$mailchimp->patch(\'lists/mclistid/members/\'. $emailmd5, ['."\r\n";
+						// echo '\'status\' => \'subscribed\','."\r\n";
+						// echo '\'merge_fields\' => array ('."\r\n";	
+						// echo '\'FNAME\' => '.$firstname .','."\r\n";
+						// echo '\'LNAME\' => '.$lastname .','."\r\n";
+						// echo '),'."\r\n";
+						// echo '\'interests\' => array('."\r\n";
+						// $inum = 0;
+						// $interestgroup = array();
+						// foreach ( $groupings[$inum]['groups'] as $k => $v ) {
 							// echo 'Key: '.$k.' Value: '.$v."\r\n";
-							echo $v .' =>  false,' . "\r\n";
-							$inum ++;							
-						}
-						echo '),'."\r\n";
-						echo ']);'."\r\n";
-						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-						$out =ob_get_clean();
-						fwrite( $logfile, $out );
-						fclose( $logfile );					
+							// echo $v .' =>  false,' . "\r\n";
+							// $inum ++;							
+						// }
+						// echo '),'."\r\n";
+						// echo ']);'."\r\n";
+						// $logfile = fopen( LOGPATH."mcremlog.log", "a" );
+						// $out =ob_get_clean();
+						// fwrite( $logfile, $out );
+						// fclose( $logfile );					
 					}
 					
 					
@@ -541,13 +541,13 @@ class twpw_custom_mc {
 						}
 
 						try {
-							$result = $mailchimp->patch('lists/mclistid/members/'. $emailmd5, [
-								'status' => 'subscribed',
-								'merge_fields' => array(
-									'FNAME' => $firstname,
-									'LNAME' => $lastname,
-								),
-							]);	
+							// $result = $mailchimp->patch('lists/mclistid/members/'. $emailmd5, [
+								// 'status' => 'subscribed',
+								// 'merge_fields' => array(
+									// 'FNAME' => $firstname,
+									// 'LNAME' => $lastname,
+								// ),
+							// ]);	
 						} catch (Exception $e) {
 							// $exception = (string) $e->getResponse()->getBody();
 							// $exception = json_decode($exception);
