@@ -381,228 +381,244 @@ class twpw_custom_mc {
 		}
 		
 		$logger = '';
-		if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );			
+		require_once('mailchimp/vendor/autoload.php');
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
 		
-		$mailchimp = new Mailchimp( $api_key );
-		
-		if ( $debug ) {
-			echo '$mailchimp:';
-			echo var_export( $mailchimp, true );
-			echo "\r\n";				
-		}
-		
-		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
+		$mailchimp = new \MailchimpMarketing\ApiClient();
+		$mailchimp->setConfig([
+				'apiKey' => $mcapikey,
+				'server' => $dc
+		]);
 
-		if ( $debug ) {
-			echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
-			echo "User ID: " .$id;
-			echo "\r\n\r\n";		
-			echo 'Post: ';
-			$postexp = var_export( $_POST, true );
-			echo $postexp;
-			echo "\r\n\r\n";		
-			$levexp = var_export( $levels, true );
-			echo 'Levels: '.$levexp;
-			echo "\r\n\r\n";
-			$levexp = var_export ( $wlmlevels, true );
-			echo 'WLM Levels: '.$levexp;
-			echo "\r\n\r\n";
-			$sett = var_export ( $settings, true );
-			echo 'TWPW CustomMC:';
-			echo $sett."\r\n\r\n";
-		}
+		try {
+				$response = $mailchimp->ping->get();
+				
+				if ( $debug ) {
+					echo 'Mailchimp Response: ';
+					echo var_export( $response, true);
+				}
 
-		//get the user object so we can grab their details to add to Mailchimp
-		$user = get_user_by( 'id', $id );
-		$firstname = $user->user_firstname;
-		$lastname = $user->user_lastname;
-		$useremail = $user->user_email;
-		$wlmaction = $_POST['WishListMemberAction'];
-		$levelaction = $_POST['level_action'];
-
-		foreach( $levels as $k => $levid ) {
-
-			if ( ( $settings[$levid]['mclistid'] ) ) {
-				$mclistid = $settings[$levid]['mclistid'];
-			} else {
-				$mclistid = false;
-			}
+		} catch (Exception $e) {
+				$exception = (string) $e->getResponse()->getBody();
+				$exception = json_decode($exception);
+				if ( $debug ){
+					echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
+				}
+		} finally {	
 			
-			if ( $mclistid == false ) {
-				if ( $debug ) {
-					echo "No List"; 
-					echo "\r\n\r\n"; 
-					$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-					$out =ob_get_clean();
-					fwrite( $logfile, $out );
-					fclose( $logfile );			
+			$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
+
+			if ( $debug ) {
+				echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
+				echo "User ID: " .$id;
+				echo "\r\n\r\n";		
+				echo 'Post: ';
+				$postexp = var_export( $_POST, true );
+				echo $postexp;
+				echo "\r\n\r\n";		
+				$levexp = var_export( $levels, true );
+				echo 'Levels: '.$levexp;
+				echo "\r\n\r\n";
+				$levexp = var_export ( $wlmlevels, true );
+				echo 'WLM Levels: '.$levexp;
+				echo "\r\n\r\n";
+				$sett = var_export ( $settings, true );
+				echo 'TWPW CustomMC:';
+				echo $sett."\r\n\r\n";
+			}
+
+			//get the user object so we can grab their details to add to Mailchimp
+			$user = get_user_by( 'id', $id );
+			$firstname = $user->user_firstname;
+			$lastname = $user->user_lastname;
+			$useremail = $user->user_email;
+			$wlmaction = $_POST['WishListMemberAction'];
+			$levelaction = $_POST['level_action'];
+
+			foreach( $levels as $k => $levid ) {
+
+				if ( ( $settings[$levid]['mclistid'] ) ) {
+					$mclistid = $settings[$levid]['mclistid'];
+				} else {
+					$mclistid = false;
 				}
 				
-				if ( $logging ) {
-					$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not removed from Mailchimp.'."\r\n";
-					$logfile = fopen( LOGPATH."removemember.log", "a" );
-					fwrite( $logfile, $logger );
-					fclose( $logfile );				
-				}
-			} else { 
-				if ( $debug ) {
-					echo "List: " . $mclistid; 
-					echo "\r\n\r\n"; 
-					$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-					$out =ob_get_clean();
-					fwrite( $logfile, $out );
-					fclose( $logfile );					
-				}
-
-				$double_optin = (empty($settings[$levid]['dblopt']))?true:false;
-				$unsub = (empty($settings[$level]['unsub']))?false:true;
-				$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
-				$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
-				$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
-				$groupings = array(); // create groupings array
-				if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
-					foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
-						$group = explode('::',$group); // divide the group as top id and bottom name
-						$groups[$group[0]][] = $group[1]; 
-					}
-					foreach($groups as $group_id => $group) {
-						$groupings[] = array('id'=>$group_id, 'groups' => $group);
-					}
-				}
-				// Setup the array to send to Mailchimp
-				global $wpdb;
-				$merge_vars = array (
-									 'FNAME' => $firstname,
-									 'LNAME' => $lastname,
-									 'GROUPINGS' => $groupings,
-									);
-				$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
-
-				// For PDT ONLY
-				$merge_vars['JOINED'] = current_time('Y-m-d');
-				$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
-				if ( !empty ( $previous_join_date ) ) {
-					// delete_user_meta ( $id, 'wlm_join_date' );
-					echo 'join date of '.$merge_vars['JOINED'].' still set'."\r\n\r\n";
-					$logger1 = 'join date of '.$merge_vars['JOINED'].' still set';
-				} 
-
-				$email_type = 'html';
-				$update_existing = TRUE;
-				$replace_interests = TRUE;	
-				$delete_member = FALSE;
-						
-				if ( $debug ) {
-					$myarray = array(
-						'apikey' => $api_key,
-						'id' => $mclistid,
-						'email' => array('email' => $useremail),
-						'delete_member' => $delete_member,
-						'send_goodbye' => $send_goodbye,
-						'send_notify' => $send_notify
-					);
-					$myarr = var_export ( $myarray, true );
-					echo 'Mailchimp settings: '."\r\n\r\n";
-					echo $myarr."\r\n";
-					$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-					$out =ob_get_clean();
-					fwrite( $logfile, $out );
-					fclose( $logfile );					
-				}
-				
-				
-				
-				if ( $live ) {	
-
+				if ( $mclistid == false ) {
 					if ( $debug ) {
-						echo "Here"; 
+						echo "No List"; 
 						echo "\r\n\r\n"; 
 						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
 						$out =ob_get_clean();
 						fwrite( $logfile, $out );
-						fclose( $logfile );							
-					}				
+						fclose( $logfile );			
+					}
 					
-					$result = $mailchimp->call( '/lists/unsubscribe', array(
-						'apikey' => $api_key,
-						'id' => $mclistid,
-						'email' => array('email' => $useremail),
-						'delete_member' => $delete_member,
-						'send_goodbye' => $send_goodbye,
-						'send_notify' => $send_notify
-					));
-					
+					if ( $logging ) {
+						$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not removed from Mailchimp.'."\r\n";
+						$logfile = fopen( LOGPATH."removemember.log", "a" );
+						fwrite( $logfile, $logger );
+						fclose( $logfile );				
+					}
+				} else { 
 					if ( $debug ) {
-						echo "Result"; 
-						echo var_export ( $result, true );
+						echo "List: " . $mclistid; 
 						echo "\r\n\r\n"; 
+						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+						$out =ob_get_clean();
+						fwrite( $logfile, $out );
+						fclose( $logfile );					
+					}
+
+					$double_optin = (empty($settings[$levid]['dblopt']))?true:false;
+					$unsub = (empty($settings[$level]['unsub']))?false:true;
+					$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
+					$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
+					$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
+					$groupings = array(); // create groupings array
+					if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
+						foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
+							$group = explode('::',$group); // divide the group as top id and bottom name
+							$groups[$group[0]][] = $group[1]; 
+						}
+						foreach($groups as $group_id => $group) {
+							$groupings[] = array('id'=>$group_id, 'groups' => $group);
+						}
+					}
+					// Setup the array to send to Mailchimp
+					global $wpdb;
+					$merge_vars = array (
+										 'FNAME' => $firstname,
+										 'LNAME' => $lastname,
+										 'GROUPINGS' => $groupings,
+										);
+					$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
+
+					// For PDT ONLY
+					$merge_vars['JOINED'] = current_time('Y-m-d');
+					$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
+					if ( !empty ( $previous_join_date ) ) {
+						// delete_user_meta ( $id, 'wlm_join_date' );
+						echo 'join date of '.$merge_vars['JOINED'].' still set'."\r\n\r\n";
+						$logger1 = 'join date of '.$merge_vars['JOINED'].' still set';
+					} 
+
+					$email_type = 'html';
+					$update_existing = TRUE;
+					$replace_interests = TRUE;	
+					$delete_member = FALSE;
+					$emailmd5 = md5( $useremail );
+							
+					if ( $debug ) { 
+						echo '$mailchimp->patch(\'lists/mclistid/members/\'. $emailmd5, ['."\r\n";
+						echo '\'status\' => \'subscribed\','."\r\n";
+						echo '\'merge_fields\' => array ('."\r\n";
+						$myarray = array(
+							'FNAME' => $firstname,
+							'LNAME' => $lastname,
+						);
+						echo var_export ( $myarray, true ).",\r\n";
+						echo 'Mailchimp settings: '."\r\n\r\n";
+						echo $myarr."\r\n";
+						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+						$out =ob_get_clean();
+						fwrite( $logfile, $out );
+						fclose( $logfile );					
+					}
+					
+					
+					
+					if ( $live ) {	
+
+						if ( $debug ) {
+							echo "Here"; 
+							echo "\r\n\r\n"; 
 							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
 							$out =ob_get_clean();
 							fwrite( $logfile, $out );
 							fclose( $logfile );							
-					}					
-													
-					if ( $mailchimp->errorCode ){
+						}				
+						
+						$result = $mailchimp->call( '/lists/unsubscribe', array(
+							'apikey' => $api_key,
+							'id' => $mclistid,
+							'email' => array('email' => $useremail),
+							'delete_member' => $delete_member,
+							'send_goodbye' => $send_goodbye,
+							'send_notify' => $send_notify
+						));
 						
 						if ( $debug ) {
-							echo "Unable to load listUnsubscribe()!\n\r"; 
-							echo "\tCode=".$mailchimp->errorCode."\n\r";
-							echo "\tMsg=".$mailchimp->errorMessage."\n\r";
-							echo "\r\n"; 
-							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-							$out =ob_get_clean();
-							fwrite( $logfile, $out );
-							fclose( $logfile );								
+							echo "Result"; 
+							echo var_export ( $result, true );
+							echo "\r\n\r\n"; 
+								$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+								$out =ob_get_clean();
+								fwrite( $logfile, $out );
+								fclose( $logfile );							
+						}					
+														
+						if ( $mailchimp->errorCode ){
+							
+							if ( $debug ) {
+								echo "Unable to load listUnsubscribe()!\n\r"; 
+								echo "\tCode=".$mailchimp->errorCode."\n\r";
+								echo "\tMsg=".$mailchimp->errorMessage."\n\r";
+								echo "\r\n"; 
+								$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+								$out =ob_get_clean();
+								fwrite( $logfile, $out );
+								fclose( $logfile );								
+							}
+							
+							if ( $logging ) {
+								$logger .= "Unable to load listUnsubscribe()!\n\r";
+								$logger .= "\tCode=".$mailchimp->errorCode."\n\r";
+								$logger .= "\tMsg=".$mailchimp->errorMessage."\n\r";				
+							}
+							
+						} else {
+							if ( $logging ) {
+								$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Removed '.$firstname .'('.$id.') for Level: '.$levid.' from Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
+								if ( $groupings ) {
+									$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
+								}
+								$logger .= ' '.$logger1;
+								$logger .= "\n\r---\n\r";
+							}
 						}
-						
-						if ( $logging ) {
-							$logger .= "Unable to load listUnsubscribe()!\n\r";
-							$logger .= "\tCode=".$mailchimp->errorCode."\n\r";
-							$logger .= "\tMsg=".$mailchimp->errorMessage."\n\r";				
-						}
-						
 					} else {
+						if ( $debug ) {
+							echo 'Call made: $mailchimp->call( /lists/unsubscribe, '. $myarr .')';
+							echo "\r\n";
+						}
+						
 						if ( $logging ) {
-							$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Removed '.$firstname .'('.$id.') for Level: '.$levid.' from Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
+							$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Removed as test '.$firstname .'('.$id.') for Level: '.$levid.' from Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
 							if ( $groupings ) {
 								$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
 							}
-							$logger .= ' '.$logger1;
-							$logger .= "\n\r---\n\r";
-						}
+							$logger .= ' '.$logger1;				
+							$logger .= "\r\n---\r\n";
+						}			
 					}
-				} else {
-					if ( $debug ) {
-						echo 'Call made: $mailchimp->call( /lists/unsubscribe, '. $myarr .')';
-						echo "\r\n";
+				
+					if( $logging ) {
+						$logfile = fopen( LOGPATH."removemember.log", "a" );
+						fwrite( $logfile, $logger );
+						fclose( $logfile );
 					}
-					
-					if ( $logging ) {
-						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Removed as test '.$firstname .'('.$id.') for Level: '.$levid.' from Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
-						if ( $groupings ) {
-							$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
-						}
-						$logger .= ' '.$logger1;				
-						$logger .= "\r\n---\r\n";
-					}			
-				}
-			
-				if( $logging ) {
-					$logfile = fopen( LOGPATH."removemember.log", "a" );
-					fwrite( $logfile, $logger );
-					fclose( $logfile );
-				}
 
-				if ( $debug ) {
-					$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-					$out =ob_get_clean();
-					fwrite( $logfile, $out );
-					fclose( $logfile );		
+					if ( $debug ) {
+						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+						$out =ob_get_clean();
+						fwrite( $logfile, $out );
+						fclose( $logfile );		
+					}
 				}
 			}
-		}
+		} // finally
 	}
 
 

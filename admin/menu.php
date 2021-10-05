@@ -358,7 +358,7 @@ function twpwcustommclists() {
 			<p>This plugin provides the ability to select a Mailchimp list for each Wishlist Member level as well as whether to use Double Optin, Send the Mailchimp Welcome Message and whether to unsubscribe a member from that list when they are removed from the level.</p>
 				
 			<p style="font-size: 14px; text-align:center;"><b>General Options</b></p>
-			<p>To use this plugin, you need the Mailchimp api key.  You can get the api key by visiting: <a href="http://admin.mailchimp.com/account/api/" target="_blank">http://admin.mailchimp.com/account/api/</a> </p>
+			<p>To use this plugin, you need the Mailchimp api key and the data centre for your account.  You can get the api key by visiting: <a href="http://admin.mailchimp.com/account/api/" target="_blank">http://admin.mailchimp.com/account/api/</a>. To get your data centre, log into your Mailchimp account and look at the URL in your browser. You’ll see something like https://us19.admin.mailchimp.com/; the <strong>us19</strong> part is the server prefix. Note that your specific value may be different. </p>
 				
 			<p style="font-size: 14px; text-align:center;"><b>List Selection</b></p>
 			<p>You will find a row for each of your defined membership levels.</p>
