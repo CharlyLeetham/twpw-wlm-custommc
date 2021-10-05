@@ -418,8 +418,8 @@ class twpw_custom_mc {
 				echo 'WLM Levels: '.$levexp;
 				echo "\r\n\r\n";
 				$sett = var_export ( $settings, true );
-				echo 'TWPW CustomMC:';
-				echo $sett."\r\n\r\n";
+				// echo 'TWPW CustomMC:';
+				// echo $sett."\r\n\r\n";
 			}
 
 			//get the user object so we can grab their details to add to Mailchimp
@@ -522,7 +522,7 @@ class twpw_custom_mc {
 							$inum ++;
 							$interestgroup[$v] = false;
 						}
-						// echo var_export( $interestgroup, true )."\r\n"
+						echo var_export( $interestgroup, true )."\r\n"
 						echo '),'."\r\n";
 						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
 						$out =ob_get_clean();
