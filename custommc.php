@@ -515,8 +515,10 @@ class twpw_custom_mc {
 						);
 						echo '),'."\r\n";
 						echo '\'interests\' => array('."\r\n";
-						foreach ( $groupings as $k => $v ) {
+						$inum = 0;
+						foreach ( $groupings[0] as $k => $v ) {
 							echo 'Key: '.$k.' Value: '.$v."\r\n";
+							$inum ++;
 						}
 						echo var_export ( $myarray, true ).",\r\n";
 						echo 'Mailchimp settings: '."\r\n\r\n";
