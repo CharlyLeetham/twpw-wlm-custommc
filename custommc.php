@@ -539,6 +539,14 @@ class twpw_custom_mc {
 							$mcstring .= $v .' =>  false,' . "\r\n";
 							$inum ++;							
 						}		
+						
+						$result = $mailchimp->patch('lists/mclistid/members/'. $emailmd5, [
+							'status' => 'subscribed',
+							'merge_fields' => array(
+								'FNAME' => $firstname,
+								'LNAME' => $lastname,
+							),
+						]);
 												
 						if ( $debug ) {
 							echo "Result"; 
