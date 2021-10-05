@@ -541,13 +541,18 @@ class twpw_custom_mc {
 						}
 
 						try {
-							// $result = $mailchimp->patch('lists/mclistid/members/'. $emailmd5, [
-								// 'status' => 'subscribed',
-								// 'merge_fields' => array(
-									// 'FNAME' => $firstname,
-									// 'LNAME' => $lastname,
-								// ),
-							// ]);	
+							echo 'Here: '."\r\n";
+							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+							$out =ob_get_clean();
+							fwrite( $logfile, $out );
+							fclose( $logfile );								
+							$result = $mailchimp->patch('lists/mclistid/members/'. $emailmd5, [
+								'status' => 'subscribed',
+								'merge_fields' => array(
+									'FNAME' => $firstname,
+									'LNAME' => $lastname,
+								),
+							]);	
 						} catch (Exception $e) {
 							// $exception = (string) $e->getResponse()->getBody();
 							// $exception = json_decode($exception);
