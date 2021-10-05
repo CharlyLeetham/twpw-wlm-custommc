@@ -532,24 +532,25 @@ class twpw_custom_mc {
 					
 					if ( $live ) {	
 
-						if ( $debug ) {
-							echo "Here"; 
-							echo "\r\n\r\n"; 
-							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-							$out =ob_get_clean();
-							fwrite( $logfile, $out );
-							fclose( $logfile );							
-						}				
+						$mcstring = '';
+						$inum = 0;
+						$interestgroup = array();
+						foreach ( $groupings[$inum]['groups'] as $k => $v ) {
+							$mcstring .= $v .' =>  false,' . "\r\n";
+							$inum ++;							
+						}		
 						
-						$result = $mailchimp->call( '/lists/unsubscribe', array(
-							'apikey' => $api_key,
-							'id' => $mclistid,
-							'email' => array('email' => $useremail),
-							'delete_member' => $delete_member,
-							'send_goodbye' => $send_goodbye,
-							'send_notify' => $send_notify
-						));
-						
+						$result = $mailchimp->patch('lists/mclistid/members/'. $emailmd5, [
+							'status' => 'subscribed';
+							'merge_fields' => array(
+								'FNAME' => $firstname,
+								'LNAME' => $lastname,
+							),
+							'interests' => array(
+								echo $mcstring;
+							),
+						]);
+												
 						if ( $debug ) {
 							echo "Result"; 
 							echo var_export ( $result, true );
