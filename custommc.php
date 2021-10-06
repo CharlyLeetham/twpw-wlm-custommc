@@ -388,7 +388,7 @@ class twpw_custom_mc {
 		
 		$mailchimp = new \MailchimpMarketing\ApiClient();
 		$mailchimp->setConfig([
-				'apiKey' => $mcapikey,
+				'apiKey' => $api_key,
 				'server' => $dc
 		]);
 
