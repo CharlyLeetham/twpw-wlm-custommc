@@ -682,6 +682,8 @@ class twpw_custom_mc {
                         $intnum++;
                 }
         }
+		
+		return $intarr;
 	}
 		
 	
