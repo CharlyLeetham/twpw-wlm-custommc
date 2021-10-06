@@ -401,7 +401,7 @@ class twpw_custom_mc {
 					echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
 				}
 		} finally {		
-			$interestgroups = acl_get_interest_groups( $mailchimp );
+			$interestgroups = $this->acl_get_interest_groups( $mailchimp );
 			
 			$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
 
