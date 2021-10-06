@@ -400,7 +400,9 @@ class twpw_custom_mc {
 				if ( $debug ){
 					echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
 				}
-		} finally {			
+		} finally {		
+			$interestgroups = acl_get_interest_groups( $mailchimp );
+			
 			$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
 
 			if ( $debug ) {
@@ -418,6 +420,8 @@ class twpw_custom_mc {
 				echo 'WLM Levels: '.$levexp;
 				echo "\r\n\r\n";
 				$sett = var_export ( $settings, true );
+				$ig = var_export ( $interestgroups, true );
+				echo 'IG: '.$ig."\r\n";
 				// echo 'TWPW CustomMC:';
 				// echo $sett."\r\n\r\n";
 			}
@@ -537,20 +541,14 @@ class twpw_custom_mc {
 							$mcstring .= $v .' =>  false,' . "\r\n";
 							$inum ++;							
 						}
-
-						$mailchimp = new \MailchimpMarketing\ApiClient();
-						$mailchimp->setConfig([
-								'apiKey' => $api_key,
-								'server' => $dc
-						]);
-						
+				
 						try {
 							echo 'Here: '."\r\n";
 							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
 							$out =ob_get_clean();
 							fwrite( $logfile, $out );
 							fclose( $logfile );								
-							$result = $mailchimp->post('lists/'.$mclistid.'/members/'. $emailmd5, [ 'status' => 'subscribed', 'merge_fields' => array('FNAME' => $firstname,'LNAME' => $lastname)]);
+							$result = $mailchimp->lists->updateListMember($mclistid, $emailmd5, [ 'status' => 'subscribed', 'merge_fields' => array('FNAME' => $firstname,'LNAME' => $lastname)]);
 							echo var_export ( $result, true)."\r\n";
 							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
 							$out =ob_get_clean();
@@ -659,15 +657,33 @@ class twpw_custom_mc {
 		}
 		return $mailchimplists;
 	}
+	
+	function acl_get_interest_groups( $mailchimp ) {
+        $response1 = $mailchimp->lists->getListInterestCategories($listid);
+        $mccats = $response1->categories;
+        $catarr = array();
+        $intarr = array();
+        $catnum = 0;
 
-	function twpw_custommc_createMCAPI() {
-		global $twpw_custommc_mcapi;
-		if (isset($twpw_custommc_mcapi)) return;
-	 if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );		
-		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];	
-		$twpw_custommc_mcapi = new Mailchimp ( $api_key );
+        foreach ($mccats as $k) {
+                $catarr[$catnum]['id'] = $k->id;
+                $catarr[$catnum]['title'] = $k->title;
+                $catnum++;
+        }
+
+        $intnum = 0;
+        foreach ( $catarr as $cat1 ) {
+                $interests = $mailchimp->lists->listInterestCategoryInterests( $listid, $cat1['id'] );
+                $ia = $interests->interests;
+                foreach ( $ia as $v ) {
+                        $intarr[$intnum]['title'] = $v->name;
+                        $intarr[$intnum]['id'] = $v->id;
+                        $intarr[$intnum]['catid'] = $v->category_id;
+                        $intnum++;
+                }
+        }
 	}
+		
 	
 }
 
