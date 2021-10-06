@@ -431,7 +431,6 @@ class twpw_custom_mc {
 			$levelaction = $_POST['level_action'];
 
 			foreach( $levels as $k => $levid ) {
-
 				if ( ( $settings[$levid]['mclistid'] ) ) {
 					$mclistid = $settings[$levid]['mclistid'];
 				} else {
@@ -494,7 +493,6 @@ class twpw_custom_mc {
 					$merge_vars['JOINED'] = current_time('Y-m-d');
 					$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
 					if ( !empty ( $previous_join_date ) ) {
-						// delete_user_meta ( $id, 'wlm_join_date' );
 						echo 'join date of '.$merge_vars['JOINED'].' still set'."\r\n\r\n";
 						$logger1 = 'join date of '.$merge_vars['JOINED'].' still set';
 					} 
@@ -552,7 +550,12 @@ class twpw_custom_mc {
 									'FNAME' => $firstname,
 									'LNAME' => $lastname,
 								],
-							]);	
+							]);
+							echo var_export ( $result, true)."\r\n";
+							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+							$out =ob_get_clean();
+							fwrite( $logfile, $out );
+							fclose( $logfile );								
 						} catch (Exception $e) {
 							// $exception = (string) $e->getResponse()->getBody();
 							// $exception = json_decode($exception);
