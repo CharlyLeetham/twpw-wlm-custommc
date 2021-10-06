@@ -421,9 +421,10 @@ class twpw_custom_mc {
 				echo "\r\n\r\n";
 				$sett = var_export ( $settings, true );
 				$ig = var_export ( $interestgroups, true );
-				echo 'IG: '.$ig."\r\n";
-				// echo 'TWPW CustomMC:';
-				// echo $sett."\r\n\r\n";
+				$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+				$out =ob_get_clean();
+				fwrite( $logfile, $out );
+				fclose( $logfile );	
 			}
 
 			//get the user object so we can grab their details to add to Mailchimp
