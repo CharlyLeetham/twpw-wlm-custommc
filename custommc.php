@@ -538,6 +538,12 @@ class twpw_custom_mc {
 							$inum ++;							
 						}
 
+						$mailchimp = new \MailchimpMarketing\ApiClient();
+						$mailchimp->setConfig([
+								'apiKey' => $api_key,
+								'server' => $dc
+						]);
+						
 						try {
 							echo 'Here: '."\r\n";
 							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
