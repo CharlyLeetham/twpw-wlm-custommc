@@ -544,13 +544,7 @@ class twpw_custom_mc {
 							$out =ob_get_clean();
 							fwrite( $logfile, $out );
 							fclose( $logfile );								
-							$result = $mailchimp->post('lists/'.$mclistid.'/members/'. $emailmd5, [
-								'status' => 'subscribed',
-								'merge_fields' => array(
-									'FNAME' => $firstname,
-									'LNAME' => $lastname,
-								),
-							]);
+							$result = $mailchimp->post('lists/'.$mclistid.'/members/'. $emailmd5, [ 'status' => 'subscribed', 'merge_fields' => array('FNAME' => $firstname,'LNAME' => $lastname)]);
 							echo var_export ( $result, true)."\r\n";
 							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
 							$out =ob_get_clean();
