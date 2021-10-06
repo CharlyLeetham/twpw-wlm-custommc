@@ -546,10 +546,10 @@ class twpw_custom_mc {
 							fclose( $logfile );								
 							$result = $mailchimp->patch('lists/'.$mclistid.'/members/'. $emailmd5, [
 								'status' => 'subscribed',
-								'merge_fields' => [
+								'merge_fields' => array(
 									'FNAME' => $firstname,
 									'LNAME' => $lastname,
-								],
+								),
 							]);
 							echo var_export ( $result, true)."\r\n";
 							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
