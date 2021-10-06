@@ -401,8 +401,7 @@ class twpw_custom_mc {
 					echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
 				}
 		} finally {		
-			$interestgroups = $this->acl_get_interest_groups( $mailchimp );
-			
+	
 			$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
 
 			if ( $debug ) {
@@ -420,11 +419,6 @@ class twpw_custom_mc {
 				echo 'WLM Levels: '.$levexp;
 				echo "\r\n\r\n";
 				$sett = var_export ( $settings, true );
-				$ig = var_export ( $interestgroups, true );
-				$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-				$out =ob_get_clean();
-				fwrite( $logfile, $out );
-				fclose( $logfile );	
 			}
 
 			//get the user object so we can grab their details to add to Mailchimp
@@ -473,18 +467,7 @@ class twpw_custom_mc {
 					$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
 					$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
 					$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
-					$groupings = array(); // create groupings array
-					
-					if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
-						foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
-							$group = explode('::',$group); // divide the group as top id and bottom name
-							$groups[$group[0]][] = $group[1]; 
-						}
-						foreach($groups as $group_id => $group) {
-							$groupings[] = array('id'=>$group_id, 'groups' => $group);
-						}
-						
-					}
+					$interestgroups = $this->acl_get_interest_groups( $mailchimp, $mclistid );
 					// Setup the array to send to Mailchimp
 					global $wpdb;
 					$merge_vars = array (
@@ -659,7 +642,7 @@ class twpw_custom_mc {
 		return $mailchimplists;
 	}
 	
-	function acl_get_interest_groups( $mailchimp ) {
+	function acl_get_interest_groups( $mailchimp, $listid ) {
         $response1 = $mailchimp->lists->getListInterestCategories($listid);
         $mccats = $response1->categories;
         $catarr = array();
