@@ -52,11 +52,11 @@ if ( $_GET['interests'] ) {
 		// echo '<select multiple="multiple" name="$level[id]" class="mclist">';
 			foreach ( $catarr as $key => $value ) {
 				// echo '<option disabled="disabled">** '.$key.' **</option>';
-				echo '** '.$key.' ** '.var_export ( $value, true ). '<br />';
+				echo '** '.$key.' ** <br />';
 				foreach ( $value as $k => $v ) {
 					// echo 'Key: '.$k.' Val: '.var_export( $v, true ).'<br />';
-					// echo '<option value="'.$v['id'].'" >';
-					// echo $v['name'].'</option>';
+					echo '<option value="'.$v['id'].'" >';
+					echo $v['name'].'</option>';
 				}
 			}
 		// echo '</select>';
