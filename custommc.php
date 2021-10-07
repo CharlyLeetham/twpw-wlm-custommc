@@ -688,10 +688,10 @@ class twpw_custom_mc {
 	
 }
 
-if ( !isset ($twpw_custom_mailchimp) ){
+if ( !isset ($twpw_custom_mc) ){
 	//setup our extension class
-	$twpw_custom_mailchimp = new twpw_custom_mc;
-	twpw_custom_mailchimp::init();
+	$twpw_custom_mc = new twpw_custom_mc;
+	twpw_custom_mc::init();
 }
 
 register_activation_hook ( __FILE__, array(&$twpw_custom_mc, 'twpw_custom_mc_activate' ) );
