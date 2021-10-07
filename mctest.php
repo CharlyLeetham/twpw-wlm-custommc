@@ -51,8 +51,8 @@ if ( $_GET['interests'] ) {
 		echo var_export( $catarr, true ).'<br />';
 		echo '<select multiple="multiple" name="$level[id]" class="mclist">';
 			foreach ( $catarr as $key => $value ) {
-				echo '<option disabled="disabled">** '.$catarr[$key].' **</option>';
-				foreach ( $catarr[$value] as $k => $v ) {
+				echo '<option disabled="disabled">** '.$key.' **</option>';
+				foreach ( $value as $k => $v ) {
 					echo '<option value="'.$v['id'].'" >';
 					echo $v['name'].'</option>';
 				}
