@@ -72,7 +72,7 @@ if ( $_GET['lists'] ) {
 		$response1 = $mailchimp->lists->getAllLists();
 		echo '<pre>';
 		$mclists = $response1->lists;
-		echo var_export( $mclists ).'<br />';
+		echo var_export( $mclists['name'] ).'<br />';
 		
 		echo '</pre>';
 	} catch (Exception $e) {
