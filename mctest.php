@@ -27,7 +27,7 @@ $mailchimp->setConfig([
 
 $subemailhash = md5('helpdesk+test113@askcharlyleetham.com');
 
-if ( $_GET['interests'] ) {
+// if ( $_GET['interests'] ) {
 	try {
 		$response1 = $mailchimp->lists->getListInterestCategories($listid);
 		$mccats = $response1->categories;
@@ -35,7 +35,7 @@ if ( $_GET['interests'] ) {
 		$intarr = array();
 		$catnum = 0;
 		echo '<pre>';
-	        foreach ($mccats as $k) {
+		foreach ($mccats as $k) {
 			$catarr[$catnum]['id'] = $k->id;
 			$catarr[$catnum]['title'] = $k->title;
 			$catnum++;
@@ -66,7 +66,7 @@ if ( $_GET['interests'] ) {
 	} finally {
 		echo 'Here.';
 	}
-} 
+// } 
 
 // if ( $_GET['lists'] ) {
 	// try {
