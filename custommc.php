@@ -629,7 +629,7 @@ class twpw_custom_mc {
 		if (($api_key <> "")) {
 			
 			$list_info= $twpw_custommc_mcapi->lists->getAllLists();
-			$alllists = $response1->lists;
+			$alllists = $list_info->lists;
 			$mailchimplists = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mclistid]">
 							<option value="0">No list</option>';
 							foreach ($alllists as $list1) {
