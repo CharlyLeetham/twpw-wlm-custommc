@@ -35,23 +35,31 @@ if ( $_GET['interests'] ) {
 		$catnum = 0;
 		echo '<pre>';
 		foreach ($mccats as $k) {
-			$catarr[$catnum]['id'] = $k->id;
-			$catarr[$catnum]['title'] = $k->title;
-			$catnum++;
-		}
-
-		echo var_export( $catarr, true ).'<br />';
-		$intnum = 0;
-		foreach ( $catarr as $cat1 ) {
-			$interests = $mailchimp->lists->listInterestCategoryInterests( $listid, $cat1['id'] );
+			$catarr[$k->title]['id'] = $k->id;
+			$catarr[$k->title]['title'] = $k->title;
+			$interests = $mailchimp->lists->listInterestCategoryInterests( $listid, $k->id );
 			$ia = $interests->interests;
+			$intnum = 0;
 			foreach ( $ia as $v ) {
-				$intarr[$intnum]['title'] = $v->name;
-				$intarr[$intnum]['id'] = $v->id;
-				$intarr[$intnum]['catid'] = $v->category_id;
+				$catarr[$k->title][$intnum]['title'] = $v->name;
+				$intarr[$k->title][$intnum]['id'] = $v->id;
+				$intarr[$k->title][$intnum]['catid'] = $v->category_id;
 				$intnum++;
 			}
 		}
+
+		echo var_export( $catarr, true ).'<br />';
+		// $intnum = 0;
+		// foreach ( $catarr as $cat1 ) {
+			// $interests = $mailchimp->lists->listInterestCategoryInterests( $listid, $cat1['id'] );
+			// $ia = $interests->interests;
+			// foreach ( $ia as $v ) {
+				// $intarr[$intnum]['title'] = $v->name;
+				// $intarr[$intnum]['id'] = $v->id;
+				// $intarr[$intnum]['catid'] = $v->category_id;
+				// $intnum++;
+			// }
+		// }
 		// $response = $mailchimp->lists->updateListMember($listid, $subemailhash, [ 'status' => 'subscribed', 'email_address' => 'helpdesk+test113@askcharlyleetham.com', 'merge_fields' => ['FNAME' => 'Charly'], 'interests' => array ('2fad6d6b73' => true), ]);
 		// $response = $mailchimp->lists->getListMember($listid, $subemailhash);
         // echo 'Response: '.var_export( $response, true).'<br />';
