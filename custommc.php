@@ -644,8 +644,9 @@ class twpw_custom_mc {
 		return $mailchimplists;
 	}
 	
-	function acl_get_interest_groups( $mailchimp, $listid ) {
-        $response1 = $mailchimp->lists->getListInterestCategories($listid);
+	function acl_get_interest_groups( $listid ) {
+		global $twpw_custommc_mcapi;
+        $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
         $mccats = $response1->categories;
         $catarr = array();
         $intarr = array();
