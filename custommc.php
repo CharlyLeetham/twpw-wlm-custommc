@@ -633,9 +633,10 @@ class twpw_custom_mc {
 			$mailchimplists = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mclistid]">
 							<option value="0">No list</option>';
 							foreach ($alllists as $list1) {
-								$mailchimplists.='<option value="'.$list1->id.'"';
-									if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
-								$mailchimplists.='>'.$list1->name.'</option>';
+								echo 'ID: '.$list1->id.' - Name: '.$list1->name.'<br />';
+								// $mailchimplists.='<option value="'.$list1->id.'"';
+									// if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
+								// $mailchimplists.='>'.$list1->name.'</option>';
 							}
 			$mailchimplists .= '</select>';
 		} else {
