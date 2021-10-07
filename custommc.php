@@ -468,6 +468,8 @@ class twpw_custom_mc {
 					$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
 					$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
 					$interestgroups = $this->acl_get_interest_groups( $mailchimp, $mclistid );
+					
+					
 					// Setup the array to send to Mailchimp
 					global $wpdb;
 					$merge_vars = array (
@@ -666,7 +668,6 @@ class twpw_custom_mc {
                         $intnum++;
                 }
         }
-		
 		return $intarr;
 	}
 		
