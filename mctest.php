@@ -48,17 +48,18 @@ if ( $_GET['interests'] ) {
 			}
 		}
 
-		echo var_export( $catarr, true ).'<br />';
-		echo '<select multiple="multiple" name="$level[id]" class="mclist">';
+		// echo var_export( $catarr, true ).'<br />';
+		// echo '<select multiple="multiple" name="$level[id]" class="mclist">';
 			foreach ( $catarr as $key => $value ) {
-				echo '<option disabled="disabled">** '.$key.' **</option>';
+				// echo '<option disabled="disabled">** '.$key.' **</option>';
+				echo '** '.$key.' ** '.var_export ( $value, true ). '<br />';
 				foreach ( $value as $k => $v ) {
 					echo 'Key: '.$k.' Val: '.$v.'<br />';
 					// echo '<option value="'.$v['id'].'" >';
 					// echo $v['name'].'</option>';
 				}
 			}
-		echo '</select>';
+		// echo '</select>';
 
 
 		echo '</pre>';
