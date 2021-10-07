@@ -76,7 +76,7 @@ if ( $_GET['lists'] ) {
 		$mclists = $response1->lists;
 		foreach ( $response1 as $list1 ) {
 			echo var_export( $list1, true ).'<br />';
-			// echo 'ID: '.$list1['id'].'<br />';
+			echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
 		}
 
