@@ -1,8 +1,8 @@
 <?php
 $dc = "us1";
-$mcapikey = "c7a1d02e8fbe7e12fee97c9e4909967d-us1";
+$mcapikey = $_GET['apikey'];
 $listid = 'c580a5bbc9';
-//$mcapikey = "c7a1d02e8fbe7e12fee97c9e4909967e-us1";
+
 
 require_once('mailchimp/vendor/autoload.php');
 $mailchimp = new \MailchimpMarketing\ApiClient();
