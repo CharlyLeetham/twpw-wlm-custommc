@@ -467,8 +467,21 @@ class twpw_custom_mc {
 					$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
 					$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
 					$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
+					
 					$interestgroups = $this->acl_get_interest_groups( $mailchimp, $mclistid );
 					
+					$groupings = array(); // create groupings array
+					if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
+						foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
+							$group = explode('::',$group); // divide the group as top id and bottom name
+							$groups[$group[0]][] = $group[1]; 
+						}
+						foreach($groups as $group_id => $group) {
+							$groupings[] = array('id'=>$group_id, 'groups' => $group);
+						}
+					}					
+					
+						
 					
 					// Setup the array to send to Mailchimp
 					global $wpdb;
@@ -494,26 +507,26 @@ class twpw_custom_mc {
 					$emailmd5 = md5( $useremail );
 							
 					if ( $debug ) { 
-						// echo '$mailchimp->patch(\'lists/mclistid/members/\'. $emailmd5, ['."\r\n";
-						// echo '\'status\' => \'subscribed\','."\r\n";
-						// echo '\'merge_fields\' => array ('."\r\n";	
-						// echo '\'FNAME\' => '.$firstname .','."\r\n";
-						// echo '\'LNAME\' => '.$lastname .','."\r\n";
-						// echo '),'."\r\n";
-						// echo '\'interests\' => array('."\r\n";
-						// $inum = 0;
-						// $interestgroup = array();
-						// foreach ( $groupings[$inum]['groups'] as $k => $v ) {
-							// echo 'Key: '.$k.' Value: '.$v."\r\n";
-							// echo $v .' =>  false,' . "\r\n";
-							// $inum ++;							
-						// }
-						// echo '),'."\r\n";
-						// echo ']);'."\r\n";
-						// $logfile = fopen( LOGPATH."mcremlog.log", "a" );
-						// $out =ob_get_clean();
-						// fwrite( $logfile, $out );
-						// fclose( $logfile );					
+						echo '$mailchimp->patch(\'lists/mclistid/members/\'. $emailmd5, ['."\r\n";
+						echo '\'status\' => \'subscribed\','."\r\n";
+						echo '\'merge_fields\' => array ('."\r\n";	
+						echo '\'FNAME\' => '.$firstname .','."\r\n";
+						echo '\'LNAME\' => '.$lastname .','."\r\n";
+						echo '),'."\r\n";
+						echo '\'interests\' => array('."\r\n";
+						$inum = 0;
+						$interestgroup = array();
+						foreach ( $groupings[$inum]['group_id'] as $k => $v ) {
+							echo 'Key: '.$k.' Value: '.$v."\r\n";
+							echo $k .' =>  false,' . "\r\n";
+							$inum ++;							
+						}
+						echo '),'."\r\n";
+						echo ']);'."\r\n";
+						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+						$out =ob_get_clean();
+						fwrite( $logfile, $out );
+						fclose( $logfile );					
 					}
 					
 					
