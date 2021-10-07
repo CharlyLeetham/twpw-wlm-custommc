@@ -41,9 +41,9 @@ if ( $_GET['interests'] ) {
 			$ia = $interests->interests;
 			$intnum = 0;
 			foreach ( $ia as $v ) {
-				$catarr[$k->title][$intnum]['title'] = $v->name;
-				$catarr[$k->title][$intnum]['id'] = $v->id;
-				$catarr[$k->title][$intnum]['catid'] = $v->category_id;
+				$catarr[$k->title]['groups'][$intnum]['title'] = $v->name;
+				$catarr[$k->title]['groups'][$intnum]['id'] = $v->id;
+				$catarr[$k->title]['groups'][$intnum]['catid'] = $v->category_id;
 				$intnum++;
 			}
 		}
