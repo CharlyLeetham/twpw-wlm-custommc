@@ -42,27 +42,24 @@ if ( $_GET['interests'] ) {
 			$intnum = 0;
 			foreach ( $ia as $v ) {
 				$catarr[$k->title][$intnum]['title'] = $v->name;
-				$intarr[$k->title][$intnum]['id'] = $v->id;
-				$intarr[$k->title][$intnum]['catid'] = $v->category_id;
+				$catarr[$k->title][$intnum]['id'] = $v->id;
+				$catarr[$k->title][$intnum]['catid'] = $v->category_id;
 				$intnum++;
 			}
 		}
 
 		echo var_export( $catarr, true ).'<br />';
-		// $intnum = 0;
-		// foreach ( $catarr as $cat1 ) {
-			// $interests = $mailchimp->lists->listInterestCategoryInterests( $listid, $cat1['id'] );
-			// $ia = $interests->interests;
-			// foreach ( $ia as $v ) {
-				// $intarr[$intnum]['title'] = $v->name;
-				// $intarr[$intnum]['id'] = $v->id;
-				// $intarr[$intnum]['catid'] = $v->category_id;
-				// $intnum++;
-			// }
-		// }
-		// $response = $mailchimp->lists->updateListMember($listid, $subemailhash, [ 'status' => 'subscribed', 'email_address' => 'helpdesk+test113@askcharlyleetham.com', 'merge_fields' => ['FNAME' => 'Charly'], 'interests' => array ('2fad6d6b73' => true), ]);
-		// $response = $mailchimp->lists->getListMember($listid, $subemailhash);
-        // echo 'Response: '.var_export( $response, true).'<br />';
+		echo '<select multiple="multiple" name="$level[id]" class="mclist">';
+			foreach ( $catarr as $key => $value ) {
+				echo '<option disabled="disabled">** '.$catarr[$key].' **</option>';
+				foreach ( $catarr[$value] as $k => $v ) {
+					echo '<option value="'.$v['id'].'" >';
+					echo $v['name'].'</option>';
+				}
+			}
+		echo '</select>';
+
+
 		echo '</pre>';
 	} catch (Exception $e) {
         	echo '<pre>';
