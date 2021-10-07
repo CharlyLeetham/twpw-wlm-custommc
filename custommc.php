@@ -672,6 +672,19 @@ class twpw_custom_mc {
 		return $intarr;
 	}
 		
+	function twpw_custommc_createMCAPI() {
+		global $twpw_custommc_mcapi;
+		if (isset($twpw_custommc_mcapi)) return;
+		require_once('mailchimp/vendor/autoload.php');
+		$settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
+		$twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();
+		$twpw_custommc_mcapi->setConfig([
+				'apiKey' => $api_key,
+				'server' => $dc
+		]);	
+	}		
 	
 }
 
