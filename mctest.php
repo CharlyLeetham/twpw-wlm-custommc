@@ -68,23 +68,23 @@ if ( $_GET['interests'] ) {
 	}
 } 
 
-if ( $_GET['lists'] ) {
-	try {
-		$response1 = $mailchimp->lists->getAllLists();
-		echo '<pre>';
-		echo var_export( $response1 ).'<br />';
-		echo '</pre>';
-	} catch (Exception $e) {
-        	echo '<pre>';
-	        $exception = (string) $e->getResponse()->getBody();
-        	$exception = json_decode($exception);
-		echo var_export( $exception ).'<br />';
-        	echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
-        	echo '</pre>';
-	} finally {
+// if ( $_GET['lists'] ) {
+	// try {
+		// $response1 = $mailchimp->lists->getAllLists();
+		// echo '<pre>';
+		// echo var_export( $response1 ).'<br />';
+		// echo '</pre>';
+	// } catch (Exception $e) {
+        	// echo '<pre>';
+	        // $exception = (string) $e->getResponse()->getBody();
+        	// $exception = json_decode($exception);
+		// echo var_export( $exception ).'<br />';
+        	// echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
+        	// echo '</pre>';
+	// } finally {
 
-	}
-} 
+	// }
+// } 
 
 
 ?>
