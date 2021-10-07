@@ -54,8 +54,8 @@ if ( $_GET['interests'] ) {
 				// echo '<option disabled="disabled">** '.$key.' **</option>';
 				echo '** '.$key.' ** <br />';
 				foreach ( $value as $k => $v ) {
-					// echo 'Key: '.$k.' Val: '.var_export( $v, true ).'<br />';
-					echo $v['id'].' - '.$v['name'].'<br />';
+					echo var_export( $v, true ).'<br />';
+					// echo $v['id'].' - '.$v['name'].'<br />';
 					// echo '<option value="'.$v['id'].'" >';
 					// echo $v['name'].'</option>';
 				}
