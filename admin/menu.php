@@ -229,7 +229,7 @@ function twpwcustommclists() {
 						}
 						
 						if ( !empty( $settings[$level['id']]['mcgroup'] ) ) {
-							echo $level['id']['mclistid'];
+							echo 'LEVEL: '.$level['id']['mclistid'].'<br />';
 							$mclists = $twpw_custom_mc->acl_get_interest_groups( $level['id']['mclistid'] );
 							// $mclists = $twpw_custommc_mcapi->call('/lists/interest-groupings', array('id'=>$settings[$level['id']]['mclistid']) );
 							if ( $debug == 'yes' ) {
