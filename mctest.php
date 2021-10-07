@@ -3,6 +3,10 @@ $dc = "us1";
 $mcapikey = $_GET['apikey'];
 $listid = 'c580a5bbc9';
 
+echo '<pre>';
+	var_export ($mcapikey);
+echo '</pre>';
+
 
 require_once('mailchimp/vendor/autoload.php');
 $mailchimp = new \MailchimpMarketing\ApiClient();
