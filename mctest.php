@@ -74,7 +74,7 @@ if ( $_GET['lists'] ) {
 		$listnum = 0;
 		echo '<pre>';
 		$mclists = $response1->lists;
-		foreach ( $response1 as $list1 => $v ) {
+		foreach ( $mclists as $list1 => $v ) {
 			echo 'List: '.$list1.' - V: '.$v.'<br />';
 			// echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
