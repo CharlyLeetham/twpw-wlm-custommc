@@ -207,7 +207,7 @@ function twpwcustommclists() {
 					<?php echo'<td>' . $level['name'] . '</td>'; ?>
 
 					<!-- List all Mailchimp Lists -->
-					<td><?php echo $twpw_custom_mc->get_mailchimp_lists($settings[$level['id']]['mclistid'],$level['id']) ?></td>
+					<td><?php echo $twpw_custom_mailchimp->get_mailchimp_lists($settings[$level['id']]['mclistid'],$level['id']) ?></td>
 					
 					<!-- List groups for Mailchimp List selected -->
 					<td class="grouplisting" levelid="<?php echo $level['id']; ?>">
@@ -230,7 +230,7 @@ function twpwcustommclists() {
 						
 						if ( !empty( $settings[$level['id']]['mcgroup'] ) ) {
 							echo 'LEVEL: '.$settings[$level['id']]['mclistid'].'<br />';
-							$mclists = $twpw_custom_mc->acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
+							$mclists = $twpw_custom_mailchimp->acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
 							// $mclists = $twpw_custommc_mcapi->call('/lists/interest-groupings', array('id'=>$settings[$level['id']]['mclistid']) );
 							if ( $debug == 'yes' ) {
 								$logger .= "MCGroups: ";
