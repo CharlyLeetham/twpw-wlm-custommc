@@ -455,11 +455,7 @@ class twpw_custom_mc {
 				} else { 
 					if ( $debug ) {
 						echo "List: " . $mclistid; 
-						echo "\r\n\r\n"; 
-						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-						$out =ob_get_clean();
-						fwrite( $logfile, $out );
-						fclose( $logfile );					
+						echo "\r\n\r\n"; 				
 					}
 
 					$double_optin = (empty($settings[$levid]['dblopt']))?true:false;
@@ -468,7 +464,7 @@ class twpw_custom_mc {
 					$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
 					$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
 					
-					$interestgroups = $this->acl_get_interest_groups( $mailchimp, $mclistid );
+					// $interestgroups = $this->acl_get_interest_groups( $mailchimp, $mclistid );
 					
 					$groupings = array(); // create groupings array
 					if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
@@ -479,9 +475,7 @@ class twpw_custom_mc {
 						foreach($groups as $group_id => $group) {
 							$groupings[] = array('id'=>$group_id, 'groups' => $group);
 						}
-					}					
-					
-						
+					}		
 					
 					// Setup the array to send to Mailchimp
 					global $wpdb;
@@ -522,11 +516,7 @@ class twpw_custom_mc {
 							$inum ++;							
 						}
 						echo '),'."\r\n";
-						echo ']);'."\r\n";
-						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-						$out =ob_get_clean();
-						fwrite( $logfile, $out );
-						fclose( $logfile );					
+						echo ']);'."\r\n";				
 					}
 					
 					
