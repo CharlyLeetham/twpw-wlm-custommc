@@ -71,7 +71,7 @@ if ( $_GET['lists'] ) {
 	try {
 		$response1 = $mailchimp->lists->getAllLists();
 		echo '<pre>';
-		$mclists = $response1->lists->name;
+		$mclists = $response1->lists;
 		echo var_export( $mclists ).'<br />';
 		
 		echo '</pre>';
