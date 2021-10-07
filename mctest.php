@@ -70,9 +70,14 @@ if ( $_GET['interests'] ) {
 if ( $_GET['lists'] ) {
 	try {
 		$response1 = $mailchimp->lists->getAllLists();
+		$listarr = array();
+		$listnum = 0;
 		echo '<pre>';
 		$mclists = $response1->lists;
-		echo var_export( $mclists[0]['name'] ).'<br />';
+		foreach ( $listarr as $list1 ) {
+			echo var_export ( $list1, true).'<br />';
+		}
+
 		
 		echo '</pre>';
 	} catch (Exception $e) {
