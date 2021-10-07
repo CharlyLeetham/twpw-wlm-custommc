@@ -49,7 +49,7 @@ if ( $_GET['interests'] ) {
 		}
 
 		// echo var_export( $catarr, true ).'<br />';
-		// echo '<select multiple="multiple" name="$level[id]" class="mclist">';
+		echo '<select multiple="multiple" name="$level[id]" class="mclist">';
 			foreach ( $catarr as $key => $value ) {
 				echo '<option disabled="disabled">** '.$key.' **</option>';
 				foreach ( $value['groups'] as $k => $v ) {
@@ -58,7 +58,7 @@ if ( $_GET['interests'] ) {
 					echo $v['name'].'</option>';
 				}
 			}
-		// echo '</select>';
+		echo '</select>';
 
 
 		echo '</pre>';
