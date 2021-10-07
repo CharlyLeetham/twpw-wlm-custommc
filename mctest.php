@@ -40,6 +40,7 @@ if ( $_GET['interests'] ) {
 			$catnum++;
 		}
 
+		echo var_export( $catarr, true ).'<br />';
 		$intnum = 0;
 		foreach ( $catarr as $cat1 ) {
 			$interests = $mailchimp->lists->listInterestCategoryInterests( $listid, $cat1['id'] );
@@ -51,9 +52,9 @@ if ( $_GET['interests'] ) {
 				$intnum++;
 			}
 		}
-	        $response = $mailchimp->lists->updateListMember($listid, $subemailhash, [ 'status' => 'subscribed', 'email_address' => 'helpdesk+test113@askcharlyleetham.com', 'merge_fields' => ['FNAME' => 'Charly'], 'interests' => array ('2fad6d6b73' => true), ]);
-		$response = $mailchimp->lists->getListMember($listid, $subemailhash);
-        	echo 'Response: '.var_export( $response, true).'<br />';
+		// $response = $mailchimp->lists->updateListMember($listid, $subemailhash, [ 'status' => 'subscribed', 'email_address' => 'helpdesk+test113@askcharlyleetham.com', 'merge_fields' => ['FNAME' => 'Charly'], 'interests' => array ('2fad6d6b73' => true), ]);
+		// $response = $mailchimp->lists->getListMember($listid, $subemailhash);
+        // echo 'Response: '.var_export( $response, true).'<br />';
 		echo '</pre>';
 	} catch (Exception $e) {
         	echo '<pre>';
@@ -81,9 +82,7 @@ if ( $_GET['lists'] ) {
 			echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 			// echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
-		}
-
-		
+		}		
 		echo '</pre>';
 	} catch (Exception $e) {
         	echo '<pre>';
@@ -99,4 +98,3 @@ if ( $_GET['lists'] ) {
 
 
 ?>
-
