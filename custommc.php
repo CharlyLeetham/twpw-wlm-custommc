@@ -477,14 +477,12 @@ class twpw_custom_mc {
 						}
 					}		
 					
+					if ( $debug ) {
+						echo 'Groupings: '.var_export( $groupings, true )."\r\n";
+					}
 					// Setup the array to send to Mailchimp
-					global $wpdb;
-					$merge_vars = array (
-										 'FNAME' => $firstname,
-										 'LNAME' => $lastname,
-										 'GROUPINGS' => $groupings,
-										);
-					$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
+					global $wpdb; // is this needeD?
+					
 
 					// For PDT ONLY
 					$merge_vars['JOINED'] = current_time('Y-m-d');
