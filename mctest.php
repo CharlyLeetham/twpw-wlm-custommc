@@ -41,7 +41,7 @@ if ( $_GET['interests'] ) {
 			$ia = $interests->interests;
 			$intnum = 0;
 			foreach ( $ia as $v ) {
-				$catarr[$k->title]['groups'][$intnum]['title'] = $v->name;
+				$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
 				$catarr[$k->title]['groups'][$intnum]['id'] = $v->id;
 				$catarr[$k->title]['groups'][$intnum]['catid'] = $v->category_id;
 				$intnum++;
@@ -54,8 +54,7 @@ if ( $_GET['interests'] ) {
 				// echo '<option disabled="disabled">** '.$key.' **</option>';
 				echo '** '.$key.' ** <br />';
 				foreach ( $value['groups'] as $k => $v ) {
-					echo '$k: '.$k.' $v: '.var_export( $v, true ).'<br />';
-					// echo $v['id'].' - '.$v['name'].'<br />';
+					echo $v['id'].' - '.$v['name'].'<br />';
 					// echo '<option value="'.$v['id'].'" >';
 					// echo $v['name'].'</option>';
 				}
