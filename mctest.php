@@ -53,8 +53,9 @@ if ( $_GET['interests'] ) {
 			foreach ( $catarr as $key => $value ) {
 				echo '<option disabled="disabled">** '.$key.' **</option>';
 				foreach ( $value as $k => $v ) {
-					echo '<option value="'.$v['id'].'" >';
-					echo $v['name'].'</option>';
+					echo 'Key: '.$k.' Val: '.$v.'<br />';
+					// echo '<option value="'.$v['id'].'" >';
+					// echo $v['name'].'</option>';
 				}
 			}
 		echo '</select>';
