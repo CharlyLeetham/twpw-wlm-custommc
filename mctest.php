@@ -74,7 +74,7 @@ if ( $_GET['lists'] ) {
 		$listnum = 0;
 		echo '<pre>';
 		$mclists = $response1->lists;
-		echo var_export( $mclists, true ).'<br />';;
+		// echo var_export( $mclists, true ).'<br />';;
 		foreach ( $mclists as $list1 ) {
 			echo 'List 1: '.$list1.'<br />';
 			echo var_export( $list1, true ).'<br />';
