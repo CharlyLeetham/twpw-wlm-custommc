@@ -627,16 +627,15 @@ class twpw_custom_mc {
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		if (($api_key <> "")) {
-			$list_info = $twpw_custommc_mcapi->call('/lists/list',array(
-				'api_key' => $api_key,
-			));
-			$alllists = $list_info['data'];
+			
+			$list_info= $mailchimp->lists->getAllLists();
+			$alllists = $response1->lists;
 			$mailchimplists = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mclistid]">
 							<option value="0">No list</option>';
-							foreach ($alllists as $key=>$value) {
-								$mailchimplists.='<option value="'.$alllists[$key]['id'].'"';
-									if ($alllists[$key]['id'] == $mclistid) { $mailchimplists.=' selected="yes" '; }
-								$mailchimplists.='>'.$alllists[$key]['name'].'</option>';
+							foreach ($alllists as $list1) {
+								$mailchimplists.='<option value="'.$list1->id.'"';
+									if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
+								$mailchimplists.='>'.$list1->name.'</option>';
 							}
 			$mailchimplists .= '</select>';
 		} else {
