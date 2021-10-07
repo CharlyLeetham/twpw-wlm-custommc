@@ -64,7 +64,7 @@ if ( $_GET['interests'] ) {
         	echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
         	echo '</pre>';
 	} finally {
-
+		echo 'Here.';
 	}
 } 
 
