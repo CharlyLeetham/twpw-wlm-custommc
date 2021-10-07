@@ -3,11 +3,6 @@ $dc = "us1";
 $mcapikey = $_GET['apikey'];
 $listid = 'c580a5bbc9';
 
-echo '<pre>';
-	var_export ($mcapikey);
-echo '</pre>';
-
-
 require_once('mailchimp/vendor/autoload.php');
 $mailchimp = new \MailchimpMarketing\ApiClient();
 $mailchimp->setConfig([
@@ -31,7 +26,7 @@ $mailchimp->setConfig([
 
 $subemailhash = md5('helpdesk+test113@askcharlyleetham.com');
 
-// if ( $_GET['interests'] ) {
+if ( $_GET['interests'] ) {
 	try {
 		$response1 = $mailchimp->lists->getListInterestCategories($listid);
 		$mccats = $response1->categories;
@@ -70,7 +65,7 @@ $subemailhash = md5('helpdesk+test113@askcharlyleetham.com');
 	} finally {
 		echo 'Here.';
 	}
-// } 
+} 
 
 // if ( $_GET['lists'] ) {
 	// try {
