@@ -95,7 +95,8 @@ function twpwcustommcgen() {
 			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
 		}
 		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-		$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
+		$logger .= 'Setup settings'."\r\n";
+		$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n";
 	}	
 	
 	echo '<div class="twpw-admin-content">';
@@ -107,14 +108,13 @@ function twpwcustommcgen() {
 		$settings['mcapikey'] = $_POST['mcapikey'];
 		$settings['mcdc'] = $_POST['mcdc'];
 		$logger .= 'MCAPIKEY: '.$settings['mcapikey']."\r\n";
-		$logger .= 'DC: '.$settings['mcdc']."\r\n";
+		$logger .= 'DC: '.$settings['mcdc']."\r\n\r\n";
 		update_option('twpw_custommc', $settings);
-		var_dump ($debug);
-			if ( $debug == 'yes' ) {
-				$logfile = fopen( LOGPATH."listdebug.log", "a" );
-				fwrite( $logfile, $logger );
-				fclose( $logfile );		
-			}			
+		if ( $debug == 'yes' ) {
+			$logfile = fopen( LOGPATH."listdebug.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );		
+		}			
 	}
 	
 	
@@ -150,7 +150,8 @@ function twpwcustommclists() {
 			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
 		}
 		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-		$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
+		$logger .= 'Saving List Settings'."\r\n";
+		$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n";
 	}
 ?>
 	<div class="twpw-admin-content">
