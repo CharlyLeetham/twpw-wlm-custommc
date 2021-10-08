@@ -176,6 +176,7 @@ function twpwcustommclists() {
 		}
 		
 		$newsettings['mcapikey']=$settings['mcapikey'];
+		$newsettings['mcdc']=$settings['mcdc'];
 		if ( $debug == 'yes' ) {
 			$logger .= '$newsettings: '.var_export( $newsettings, true )."\r\n";
 		}			
