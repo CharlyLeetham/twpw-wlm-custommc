@@ -651,7 +651,7 @@ class twpw_custom_mc {
 		global $twpw_custommc_mcapi;	
         $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
         $mccats = $response1->categories;
-		return $response1;
+		return $twpw_custommc_mcapi;
         $catarr = array();
         $intarr = array();
         $catnum = 0;
