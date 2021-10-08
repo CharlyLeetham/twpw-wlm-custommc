@@ -433,8 +433,8 @@ function twpwcustommclists() {
 		}
 		
 	function twpw_get_interest_groups() {
-		$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
-		echo var_export ( $mclists, true );
+		// $mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
+		echo var_export ( $settings, true );
 		return;
 		if ( $debug == 'yes' ) {
 			$logger .= "MCGroups: ";
