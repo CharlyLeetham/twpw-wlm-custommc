@@ -253,8 +253,6 @@ function twpwcustommclists() {
 						
 						if ( !empty( $settings[$level['id']]['mcgroup'] ) ) {
 							$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
-							// echo 'Lists: '.var_export( $mclists, true ).'<br />';
-							// $mclists = $twpw_custommc_mcapi->call('/lists/interest-groupings', array('id'=>$settings[$level['id']]['mclistid']) );
 							if ( $debug == 'yes' ) {
 								$logger .= "MCGroups: ";
 								$logger .= var_export( $mclists, true );
@@ -323,6 +321,10 @@ function twpwcustommclists() {
 						?>
 					/></td>					
 
+				</tr>
+				
+				<tr>
+				<td class="twpwmergevals"> Merge Values </td>
 				</tr>
 				<?php if ( $err_msg[$count] != '' ) { ?>
 				<tr><td colspan="4" align="right"><span style="font-weight:bold; color:#FF0000;"><?php echo $err_msg[$count]; ?></span></td></tr>
