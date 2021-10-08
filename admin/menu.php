@@ -324,7 +324,10 @@ function twpwcustommclists() {
 				</tr>
 				
 				<tr>
-				<td colspan ="9"> Merge Values:</td>
+				<td colspan ="9"> Merge Values:
+				<?php var_dump ($settings[$level['id']][$list1->tag]);
+				?>
+				</td>
 				</tr>
 				<?php
 
@@ -346,7 +349,7 @@ function twpwcustommclists() {
 						<tr class="twpwmergevals">
 							<?php 
 							foreach ( $mclists as $list1 ) {
-								if ( !$settings[$level['id']][$list1->tag] ) {
+								if ( ! $settings[$level['id']][$list1->tag] ) {
 									if ( $settings[$level['id']][$list1->tag] == 'FNAME' ) {
 										$tag = 'FirstName';
 									} elseif ( $settings[$level['id']][$list1->tag] == 'LNAME' ) {
