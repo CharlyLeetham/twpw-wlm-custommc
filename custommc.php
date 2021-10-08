@@ -646,7 +646,7 @@ class twpw_custom_mc {
 		return $mailchimplists;
 	}
 	
-	function acl_get_interest_groups( $listid ) {
+	public function acl_get_interest_groups( $listid ) {
 		global $twpw_custommc_mcapi;
 		
 		require_once( $this->acl_plugin_dir.'/mailchimp/vendor/autoload.php' );
