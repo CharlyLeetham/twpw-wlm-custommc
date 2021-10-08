@@ -672,7 +672,7 @@ class twpw_custom_mc {
 	}
 		
 	function twpw_custommc_createMCAPI() {
-		global $twpw_custommc_mcapi;
+		global $twpw_custommc_mcapi, $acl_plugin_dir;
 		if (isset($twpw_custommc_mcapi)) return;
 		require_once( $acl_plugin_dir.'/mailchimp/vendor/autoload.php');
 		$settings = get_option("twpw_custommc");
