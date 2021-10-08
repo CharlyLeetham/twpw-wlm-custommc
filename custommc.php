@@ -646,6 +646,16 @@ class twpw_custom_mc {
 	
 	function acl_get_interest_groups( $listid ) {
 		global $twpw_custommc_mcapi;
+		
+		require_once('mailchimp/vendor/autoload.php');
+		$settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
+		$twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();
+		$twpw_custommc_mcapi->setConfig([
+				'apiKey' => $api_key,
+				'server' => $dc
+		]);		
         $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
         $mccats = $response1->categories;
 		return $response1;
