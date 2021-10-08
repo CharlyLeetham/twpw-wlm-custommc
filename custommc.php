@@ -298,6 +298,7 @@ Version 2.02 - Rewrite to stop people being moved after being added. Approve wor
 		$logging = true;
 		$debug = true;
 		$logger = '';
+		$live = true;
 		
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];	
