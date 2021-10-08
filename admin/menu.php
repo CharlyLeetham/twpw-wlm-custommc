@@ -83,6 +83,21 @@ function twpw_sub_menu() {
 }
 
 function twpwcustommcgen() {
+	
+	$debug = get_option( 'twpw_custommc_debug', 'no' );
+	$logger = '';
+	
+	if ( $debug == 'yes' ) {
+		/* Setup Logging */		
+		date_default_timezone_set("US/Hawaii");
+
+		if (!file_exists(dirname( __FILE__ ).'/logs')) {
+			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
+		}
+		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+		$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
+	}	
+	
 	echo '<div class="twpw-admin-content">';
 	echo '<div id="icon-options-general" class="icon32"></div><h2>Options - TWPW Custom Mailchimp Plugin</h2>';
 	echo '<p>Here you can set the general display options for the TWPW Custom Mailchimp plugin. Please <a href="' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page=wp_twpw_admin&tab=custommctab&mode=twpwcustommcdoc">refer to the documentation</a> for detailed instructions for using this plugin.</p>';
@@ -91,8 +106,17 @@ function twpwcustommcgen() {
 		$settings = get_option('twpw_custommc');
 		$settings['mcapikey'] = $_POST['mcapikey'];
 		$settings['mcdc'] = $_POST['mcdc'];
+		$logger .= 'MCAPIKEY: '.$settings['mcapikey']."\r\n";
+		$logger .= 'DC: '.$settings['mcdc']."\r\n";
 		update_option('twpw_custommc', $settings);
+			if ( $twpw_list_debug == 'yes' ) {
+				$logfile = fopen( LOGPATH."listdebug.log", "a" );
+				fwrite( $logfile, $logger );
+				fclose( $logfile );		
+			}			
 	}
+	
+	
 	?>
 
 	<form method="post">
@@ -139,29 +163,28 @@ function twpwcustommclists() {
 		$error_occured = false;
 
 		if ( $debug == 'yes' ) {
-			$logger .= '$_POST: ';
-			$logger .= var_export( $_POST['twpw_custommc'], true );
-			$logger .= "\r\n";
+			$logger .= 'Full settings: '.var_export( $_POST['twpw_custommc'], true )."\r\n";
 		}
 		
 		$newsettings = $_POST['twpw_custommc'];
 		$settings = get_option('twpw_custommc');
 		if ( $debug == 'yes' ) {
-			$logger .= '$newsettings: ';
-			$logger .= var_export( $newsettings, true );
-			$logger .= "\r\n";
-			$logger .= '$settings: ';
-			$logger .= var_export( $settings, true );
-			$logger .= "\r\n";
+			$logger .= '$newsettings: 'var_export( $newsettings, true )."\r\n";
+			$logger .= '$settings: '.var_export( $settings, true )."\r\n";
 		}
 		
 		$newsettings['mcapikey']=$settings['mcapikey'];
 		if ( $debug == 'yes' ) {
-			$logger .= '$newsettings: ';
-			$logger .= var_export( $newsettings, true );
-			$logger .= "\r\n";
+			$logger .= '$newsettings: '.var_export( $newsettings, true )."\r\n";
 		}			
 		update_option('twpw_custommc', $newsettings);
+		
+		update_option('twpw_custommc', $settings);
+			if ( $twpw_list_debug == 'yes' ) {
+				$logfile = fopen( LOGPATH."listdebug.log", "a" );
+				fwrite( $logfile, $logger );
+				fclose( $logfile );		
+			}		
 	}
 
 	twpw_custom_mc::twpw_custommc_createMCAPI();  // initialise the Mailchimp api
