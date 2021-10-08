@@ -504,7 +504,7 @@ function twpwcustommclists() {
 		} else {
 			echo '';
 		}
-		die();
+		wp_die();
 	}
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
 	

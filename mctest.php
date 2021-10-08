@@ -1,7 +1,29 @@
 <?php
-$dc = "us1";
+
+
+// Usage:
+// mctest.php?
+// apikey = apikey
+// dc=dc
+// listid=listid
+// interests=yes
+// lists=yes
+// mergevals=yes
+
+
 $mcapikey = $_GET['apikey'];
-$listid = 'c580a5bbc9';
+
+if ( !$_GET['listid'] ){
+	$listid = 'c580a5bbc9';
+} else {
+	$listid = $_GET['listid'];
+}
+
+if ( !$_GET['dc'] ) {
+	$dc = "us1";
+} else {
+	$dc = $_GET['dc'];
+}
 
 require_once('mailchimp/vendor/autoload.php');
 $mailchimp = new \MailchimpMarketing\ApiClient();
@@ -86,6 +108,34 @@ if ( $_GET['lists'] ) {
 			// echo 'List 1: '.$list1->id.'<br />';
 			// echo var_export( $list1, true ).'<br />';
 			echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
+			// echo 'ID: '.$list1[0]['id'].'<br />';
+			// echo 'name: '.$list1->name.'<br />';
+		}		
+		echo '</pre>';
+	} catch (Exception $e) {
+        	echo '<pre>';
+	        $exception = (string) $e->getResponse()->getBody();
+        	$exception = json_decode($exception);
+		echo var_export( $exception ).'<br />';
+        	echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
+        	echo '</pre>';
+	} finally {
+
+	}
+} 
+
+if ( $_GET['mergevals'] ) {
+	try {
+		$response1 = $mailchimp->lists->getAllLists();
+		$listarr = array();
+		$listnum = 0;
+		echo '<pre>';
+		$mclists = $response1->lists;
+		echo var_export( $mclists, true ).'<br />';;
+		foreach ( $mclists as $list1 ) {
+			// echo 'List 1: '.$list1->id.'<br />';
+			// echo var_export( $list1, true ).'<br />';
+			// echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 			// echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
 		}		
