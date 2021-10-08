@@ -304,7 +304,7 @@ function twpwcustommclists() {
 						<?php if ( $settings[$level['id']]['unsub'] == 'yes' ) {  
 								echo ' checked="checked" '; 
 							} 
-						?>
+						 ?>
 					/></td>
 
 					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][sendbye]" value="yes" 
@@ -324,7 +324,7 @@ function twpwcustommclists() {
 				</tr>
 				
 				<tr>
-				<td class="twpwmergevals"> Merge Values </td>
+				<td class="twpwmergevals" colspan ="9"> Merge Values </td>
 				</tr>
 				<?php if ( $err_msg[$count] != '' ) { ?>
 				<tr><td colspan="4" align="right"><span style="font-weight:bold; color:#FF0000;"><?php echo $err_msg[$count]; ?></span></td></tr>
@@ -345,7 +345,6 @@ function twpwcustommclists() {
 				var groupobject=$(this).parent().next("td.grouplisting");
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
 					action:"twpw_custommc_ig",
-					// action:"acl_test_ajax",
 					mclistid: $(this).val(),
 					levelid: groupobject.attr('levelid')
 				},
@@ -356,7 +355,7 @@ function twpwcustommclists() {
 							echo "console.log(msg);";
 						} ?>
 				});		
-			});
+			});		
 		})(jQuery);
 	</script>
 	<?php 
