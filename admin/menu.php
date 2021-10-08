@@ -329,7 +329,7 @@ function twpwcustommclists() {
 				<?php
 				if ( $settings[$level['id']]['mclistid'] ) {
 					try {
-						$response1 = $mailchimp->lists->getListMergeFields( $settings[$level['id']]['mclistid'] );
+						$response1 = $twpw_custom_mc->lists->getListMergeFields( $settings[$level['id']]['mclistid'] );
 						$listarr = array();
 						$listnum = 0;
 					} catch (Exception $e) {
