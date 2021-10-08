@@ -1,0 +1,1154 @@
+Saving List Settings
+Date: 10/08/2021 10:33:54 (-1000) GMT
+Full settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'sendbye' => 'yes',
+  ),
+  ' 1613508572' => 
+  array (
+    'update_join_date' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'sendbye' => 'yes',
+  ),
+  ' 1613508572' => 
+  array (
+    'update_join_date' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+$settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'sendbye' => 'yes',
+  ),
+  ' 1613508572' => 
+  array (
+    'update_join_date' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+Saving List Settings
+Date: 10/08/2021 10:34:07 (-1000) GMT
+Full settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+$settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'sendbye' => 'yes',
+  ),
+  ' 1613508572' => 
+  array (
+    'update_join_date' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+Saving List Settings
+Date: 10/08/2021 10:34:35 (-1000) GMT
+Full settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+$settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
