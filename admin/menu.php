@@ -347,7 +347,7 @@ function twpwcustommclists() {
 							<?php 
 							foreach ( $mclists as $list1 ) {
 							?>
-								<td ><?echo $list1->name.' ('.$list1->tag.')'; ?></td><td><input type="text" size="10" name="twpw_custommc[<?php echo $level['id']; ?>][<?php echo $list1->tag; ?>]" value="<?php echo ' ';?>" /></td>
+								<td ><? echo $list1->name.' ('.$list1->tag.')'; ?></td><td><input type="text" size="10" name="twpw_custommc[<?php echo $level['id']; ?>][<?php echo $list1->tag; ?>]" value="<?php echo ' ';?>" /></td>
 							<?php 
 							}
 							?>
