@@ -320,9 +320,9 @@ function twpwcustommclists() {
 			$("select.mclistid").change(function() {
 				var groupobject=$(this).parent().next("td.grouplisting");
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
-					// action:"twpw_custommc_ig",
-					action:"acl_test_ajax",
-					// mclistid: $(this).val(),
+					action:"twpw_custommc_ig",
+					// action:"acl_test_ajax",
+					mclistid: $(this).val(),
 					levelid: groupobject.attr('levelid')
 				},
 				function(msg) {
@@ -458,6 +458,6 @@ function twpwcustommclists() {
 		echo 'Hellow World.';
 	}
 	// add_action( 'wp_ajax_acl_test_ajax', 'acl_test_ajax' );
-	add_action( 'wp_ajax_twpw_get_interest_groups', 'twpw_get_interest_groups' );
+	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
 	
 ?>
