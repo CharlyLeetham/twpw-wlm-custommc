@@ -109,6 +109,7 @@ function twpwcustommcgen() {
 		$logger .= 'MCAPIKEY: '.$settings['mcapikey']."\r\n";
 		$logger .= 'DC: '.$settings['mcdc']."\r\n";
 		update_option('twpw_custommc', $settings);
+		var_dump ($debug);
 			if ( $debug == 'yes' ) {
 				$logfile = fopen( LOGPATH."listdebug.log", "a" );
 				fwrite( $logfile, $logger );
