@@ -109,7 +109,7 @@ function twpwcustommcgen() {
 		$logger .= 'MCAPIKEY: '.$settings['mcapikey']."\r\n";
 		$logger .= 'DC: '.$settings['mcdc']."\r\n";
 		update_option('twpw_custommc', $settings);
-			if ( $twpw_list_debug == 'yes' ) {
+			if ( $debug == 'yes' ) {
 				$logfile = fopen( LOGPATH."listdebug.log", "a" );
 				fwrite( $logfile, $logger );
 				fclose( $logfile );		
@@ -180,7 +180,7 @@ function twpwcustommclists() {
 		update_option('twpw_custommc', $newsettings);
 		
 		update_option('twpw_custommc', $settings);
-			if ( $twpw_list_debug == 'yes' ) {
+			if ( $debug == 'yes' ) {
 				$logfile = fopen( LOGPATH."listdebug.log", "a" );
 				fwrite( $logfile, $logger );
 				fclose( $logfile );		
