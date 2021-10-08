@@ -468,6 +468,8 @@ function twpwcustommclists() {
 			$logger .= var_export( $mclists, true );
 			$logger .= "\r\n";
 		}
+		
+		$mclists = $catarr;
 			
 		echo '<select multiple="multiple" name="twpw_custommc['.$_POST['levelid'].'][mcgroup][]" class="mclist">';
 			foreach ( $mclists as $mclist ) {
