@@ -169,7 +169,7 @@ function twpwcustommclists() {
 		$newsettings = $_POST['twpw_custommc'];
 		$settings = get_option('twpw_custommc');
 		if ( $debug == 'yes' ) {
-			$logger .= '$newsettings: 'var_export( $newsettings, true )."\r\n";
+			$logger .= '$newsettings: '.var_export( $newsettings, true )."\r\n";
 			$logger .= '$settings: '.var_export( $settings, true )."\r\n";
 		}
 		
