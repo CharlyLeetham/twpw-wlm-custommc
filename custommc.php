@@ -21,8 +21,7 @@ Version 2.03 - Adding a class
 
 
 class twpw_custom_mc {
-	
-	public $acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm/custommc';			
+			
 	
 	function twpw_custom_mc_activate() {
 		/* WP Version Check */
@@ -35,11 +34,19 @@ class twpw_custom_mc {
 		}
 	}
 
-	public static function init() {
+	// public static function init() {
+		// if ( is_admin() ) {
+			// require_once(dirname(__FILE__) . '/admin/menu.php');
+		// }
+	// }
+	
+    public function load() {
+		$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm/custommc';
 		if ( is_admin() ) {
-			require_once(dirname(__FILE__) . '/admin/menu.php');
+			include_once $acl_plugin_dir.'/admin/menu.php';
 		}
-	}
+    }
+		
 
 	/*	--------------------------------------------------
 		Load the admin stylesheet
@@ -649,16 +656,7 @@ class twpw_custom_mc {
 	public function acl_get_interest_groups( $listid ) {
 		global $twpw_custommc_mcapi;
 		
-		require_once( $acl_plugin_dir.'/mailchimp/vendor/autoload.php' );
-		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-		$dc = $settings['mcdc'];
-		$twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();
-		$twpw_custommc_mcapi->setConfig([
-				'apiKey' => $api_key,
-				'server' => $dc
-		]);		
-        $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
+        $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories( $listid );
         $mccats = $response1->categories;
 		return $response1;
         $catarr = array();
@@ -683,8 +681,8 @@ class twpw_custom_mc {
 		
 	function twpw_custommc_createMCAPI() {
 		global $twpw_custommc_mcapi;
-		if (isset($twpw_custommc_mcapi)) return;
-		require_once('mailchimp/vendor/autoload.php');
+		if ( isset($twpw_custommc_mcapi) ) return;
+		require_once( 'mailchimp/vendor/autoload.php' );
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		$dc = $settings['mcdc'];
@@ -697,12 +695,18 @@ class twpw_custom_mc {
 	
 }
 
-if ( !isset ($twpw_custom_mc) ){
-	//setup our extension class
-	$twpw_custom_mc = new twpw_custom_mc;
-	twpw_custom_mc::init();
+// if ( !isset ($twpw_custom_mc) ){
+	// setup our extension class
+	// $twpw_custom_mc = new twpw_custom_mc;
+	// twpw_custom_mc::init();
+// }
+
+function twpw_custom_mc_load() {
+    $twpw_custom_mc = new twpw_custom_mc();
+    $twpw_custom_mc->load();
 }
 
+add_action( 'plugins_loaded', 'twpw_custom_mc\twpw_custom_mc_load' );
 register_activation_hook ( __FILE__, array(&$twpw_custom_mc, 'twpw_custom_mc_activate' ) );
 add_action('admin_head', array (&$twpw_custom_mc, 'twpw_custommc_admin_register_head' ) );
 
