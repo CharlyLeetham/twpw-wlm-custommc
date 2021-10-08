@@ -433,8 +433,8 @@ function twpwcustommclists() {
 		}
 		
 	function twpw_get_interest_groups() {
-		echo $_POST['mclistid'].' - ';
-		$mclists = twpw_custom_mc::acl_get_interest_groups( $_POST['mclistid'] );
+		$listid =  $_POST['mclistid'];
+		$mclists = twpw_custom_mc::acl_get_interest_groups( $listid );
 		echo $mclists;
 		die();
 		if ( $debug == 'yes' ) {
