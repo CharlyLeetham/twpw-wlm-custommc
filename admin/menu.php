@@ -445,8 +445,6 @@ function twpwcustommclists() {
 				'server' => $dc
 		]);			
         $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
-		return ('Here');
-		die();
         $mccats = $response1->categories;
         $catarr = array();
         $intarr = array();
@@ -465,8 +463,6 @@ function twpwcustommclists() {
 				$intnum++;
 			}
 		}
-		return $catarr;
-		die();
 		if ( $debug == 'yes' ) {
 			$logger .= "MCGroups: ";
 			$logger .= var_export( $mclists, true );
@@ -484,7 +480,7 @@ function twpwcustommclists() {
 				}
 			}
 		echo '</select>';		
-		// die();
+		die();
 	}
 	
 	function acl_test_ajax() {
