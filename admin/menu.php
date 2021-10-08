@@ -433,8 +433,26 @@ function twpwcustommclists() {
 		
 	function twpw_get_interest_groups() {
 		$listid =  $_POST['mclistid'];
-		$mclists = twpw_custom_mc::acl_get_interest_groups( $listid );
-		echo $mclists;
+        $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
+        $mccats = $response1->categories;
+        $catarr = array();
+        $intarr = array();
+        $catnum = 0;
+
+		foreach ($mccats as $k) {
+			$catarr[$k->title]['id'] = $k->id;
+			$catarr[$k->title]['title'] = $k->title;
+			$interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
+			$ia = $interests->interests;
+			$intnum = 0;
+			foreach ( $ia as $v ) {
+				$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
+				$catarr[$k->title]['groups'][$intnum]['id'] = $v->id;
+				$catarr[$k->title]['groups'][$intnum]['catid'] = $v->category_id;
+				$intnum++;
+			}
+		}
+		return $catarr;
 		die();
 		if ( $debug == 'yes' ) {
 			$logger .= "MCGroups: ";
