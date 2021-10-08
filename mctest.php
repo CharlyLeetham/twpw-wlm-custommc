@@ -131,13 +131,15 @@ if ( $_GET['mergevals'] ) {
 		$listnum = 0;
 		echo '<pre>';
 		echo var_export( $response1, true ).'<br />';
-		// foreach ( $mclists as $list1 ) {
-			// echo 'List 1: '.$list1->id.'<br />';
+		$mclists = $response1->merge_fields;
+		foreach ( $mclists as $list1 ) {
+			echo 'Field: '.$list1->tag.'<br />';
+			echo 'Name: '.$list1->name.'<br />';
 			// if ( $list1->id == $listid ){
 				// echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 			// echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
-		// }		
+		}		
 		echo '</pre>';
 	} catch (Exception $e) {
         	echo '<pre>';
