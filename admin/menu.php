@@ -434,6 +434,8 @@ function twpwcustommclists() {
 		
 	function twpw_get_interest_groups() {
 		$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
+		echo var_export ( $mclists, true );
+		return;
 		if ( $debug == 'yes' ) {
 			$logger .= "MCGroups: ";
 			$logger .= var_export( $mclists, true );
