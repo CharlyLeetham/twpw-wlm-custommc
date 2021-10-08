@@ -649,7 +649,7 @@ class twpw_custom_mc {
 	
 	public function acl_get_interest_groups( $listid, $ajax=null ) {
 		global $twpw_custommc_mcapi;
-		$twpw_custommc_mcapi = $self->twpw_custommc_createMCAPI();
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
         $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
         $mccats = $response1->categories;
         $catarr = array();
