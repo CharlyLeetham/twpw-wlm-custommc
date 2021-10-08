@@ -449,8 +449,7 @@ function twpwcustommclists() {
 					echo '>'.$gvalue['name'].'</option>';
 				}
 			}
-		echo '</select>';
-		}		
+		echo '</select>';		
 		die();
 	}
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
