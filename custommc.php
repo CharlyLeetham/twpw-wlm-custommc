@@ -38,7 +38,7 @@ class twpw_custom_mc {
 			require_once(dirname(__FILE__) . '/admin/menu.php');
 		}
 
-		$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm/custommc';		
+		public $acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm/custommc';		
 	}
 
 	/*	--------------------------------------------------
