@@ -649,6 +649,7 @@ class twpw_custom_mc {
 	
 	public function acl_get_interest_groups( $listid, $ajax=null ) {
 		global $twpw_custommc_mcapi;
+		$twpw_custommc_mcapi = $this->twpw_custommc_createMCAPI();
         $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
         $mccats = $response1->categories;
         $catarr = array();
@@ -672,7 +673,7 @@ class twpw_custom_mc {
 	}
 		
 	function twpw_custommc_createMCAPI() {
-		global $twpw_custommc_mcapi, $acl_plugin_dir;
+		global $twpw_custommc_mcapi;
 		$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
 		if (isset($twpw_custommc_mcapi)) return;
 		require_once( $acl_plugin_dir.'/mailchimp/vendor/autoload.php');
