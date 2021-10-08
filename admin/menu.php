@@ -230,7 +230,7 @@ function twpwcustommclists() {
 					<?php echo'<td>' . $level['name'] . '</td>'; ?>
 
 					<!-- List all Mailchimp Lists -->
-					<td><?php echo twpw_custom_mc::get_mailchimp_lists($settings[$level['id']]['mclistid'],$level['id']) ?></td>
+					<td><?php echo twpw_custom_mc::get_mailchimp_lists( $settings[$level['id']]['mclistid'],$level['id'] ) ?></td>
 					
 					<!-- List groups for Mailchimp List selected -->
 					<td class="grouplisting" levelid="<?php echo $level['id']; ?>">
@@ -327,6 +327,7 @@ function twpwcustommclists() {
 				<td colspan ="9"> Merge Values </td>
 				</tr>
 				<?php
+				echo $settings[$level['id']]['mclistid'].'<br />';
 				if ( $settings[$level['id']]['mclistid'] ) {
 					try {
 						$response1 = $twpw_custom_mc->lists->getListMergeFields( $settings[$level['id']]['mclistid'] );
