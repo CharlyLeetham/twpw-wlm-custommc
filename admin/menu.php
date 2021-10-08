@@ -324,7 +324,7 @@ function twpwcustommclists() {
 				</tr>
 				
 				<tr>
-				<td colspan ="9"> Merge Values: <?phpecho $settings[$level['id']]['mclistid'].'<br />';?> </td>
+				<td colspan ="9"> Merge Values:</td>
 				</tr>
 				<?php
 
