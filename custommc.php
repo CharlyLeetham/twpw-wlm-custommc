@@ -36,7 +36,9 @@ class twpw_custom_mc {
 	public static function init() {
 		if ( is_admin() ) {
 			require_once(dirname(__FILE__) . '/admin/menu.php');
-		}	
+		}
+
+		$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm/custommc';		
 	}
 
 	/*	--------------------------------------------------
@@ -647,7 +649,7 @@ class twpw_custom_mc {
 	function acl_get_interest_groups( $listid ) {
 		global $twpw_custommc_mcapi;
 		
-		require_once('mailchimp/vendor/autoload.php');
+		require_once( $acl_plugin_dir.'/mailchimp/vendor/autoload.php' );
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		$dc = $settings['mcdc'];
