@@ -244,7 +244,7 @@ function twpwcustommclists() {
 									echo '<option disabled="disabled">** '.$mclist['name'].' **</option>';
 									foreach ( $mclist['groups'] as $group => $gvalue ) {
 										echo '<option value="'.$gvalue['id'].'" ';
-										if( in_array($val, $settings[$level['id']]['mcgroup'] ) )
+										if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
 											echo 'selected="selected" ';
 										echo '>'.$gvalue['name'].'</option>';
 									}
