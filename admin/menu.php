@@ -276,7 +276,7 @@ function twpwcustommclists() {
 						?>
 					</td>
 										
-					<td><input type="checkbox" name="twpw_custommc[ <?php echo $level['id']; ?>][update_join_date]" value="yes" 
+					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][update_join_date]" value="yes" 
 						<?php 
 							if ( $settings[$level['id']]['update_join_date'] == 'yes' ) { 
 								echo ' checked="checked" '; 
@@ -285,7 +285,7 @@ function twpwcustommclists() {
 					/>
 					</td>					
 					
-					<td><input type="checkbox" name="twpw_custommc[ <?php echo $level['id']; ?>][dblopt]" value="yes" 
+					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][dblopt]" value="yes" 
 						<?php 
 							if ( $settings[$level['id']]['dblopt'] == 'yes' ) { 
 							 echo ' checked="checked" '; 
@@ -295,7 +295,7 @@ function twpwcustommclists() {
 					</td>
 					
 
-					<td><input type="checkbox" name="twpw_custommc[ <?php echo $level['id']; ?>][sendwel]" value="yes" 
+					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][sendwel]" value="yes" 
 						<?php if ( $settings[$level['id']]['sendwel'] == 'yes' ) { 
 								echo ' checked="checked" '; 
 							} 
