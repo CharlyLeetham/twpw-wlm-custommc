@@ -22,7 +22,7 @@ Version 2.03 - Adding a class
 
 class twpw_custom_mc {
 	
-	public $acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm/custommc';			
+	public $acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';			
 	
 	function twpw_custom_mc_activate() {
 		/* WP Version Check */
@@ -672,8 +672,8 @@ class twpw_custom_mc {
 	}
 		
 	function twpw_custommc_createMCAPI() {
-		global $twpw_custommc_mcapi;
-		$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm/custommc';
+		global $twpw_custommc_mcapi, $acl_plugin_dir;
+		// $acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
 		if (isset($twpw_custommc_mcapi)) return;
 		require_once( $acl_plugin_dir.'/mailchimp/vendor/autoload.php');
 		$settings = get_option("twpw_custommc");
