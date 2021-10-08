@@ -170,19 +170,16 @@ function twpwcustommclists() {
 		
 		$newsettings = $_POST['twpw_custommc'];
 		$settings = get_option('twpw_custommc');
+
+		$newsettings['mcapikey']=$settings['mcapikey'];
+		$newsettings['mcdc']=$settings['mcdc'];
+
 		if ( $debug == 'yes' ) {
 			$logger .= '$newsettings: '.var_export( $newsettings, true )."\r\n";
 			$logger .= '$settings: '.var_export( $settings, true )."\r\n";
-		}
-		
-		$newsettings['mcapikey']=$settings['mcapikey'];
-		$newsettings['mcdc']=$settings['mcdc'];
-		if ( $debug == 'yes' ) {
-			$logger .= '$newsettings: '.var_export( $newsettings, true )."\r\n";
 		}			
 		update_option('twpw_custommc', $newsettings);
 		
-		update_option('twpw_custommc', $settings);
 			if ( $debug == 'yes' ) {
 				$logfile = fopen( LOGPATH."listdebug.log", "a" );
 				fwrite( $logfile, $logger );
