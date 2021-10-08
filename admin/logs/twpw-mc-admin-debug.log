@@ -1,0 +1,5270 @@
+Saving List Settings
+Date: 10/08/2021 10:33:54 (-1000) GMT
+Full settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'sendbye' => 'yes',
+  ),
+  ' 1613508572' => 
+  array (
+    'update_join_date' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'sendbye' => 'yes',
+  ),
+  ' 1613508572' => 
+  array (
+    'update_join_date' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+$settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'sendbye' => 'yes',
+  ),
+  ' 1613508572' => 
+  array (
+    'update_join_date' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'sendbye' => 'yes',
+  ),
+  ' 1613508572' => 
+  array (
+    'update_join_date' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+array (
+  'id' => 1613508572,
+  'name' => 'test',
+  '_more_' => '/levels/1613508572',
+)
+***
+array (
+  'mclistid' => 'c580a5bbc9',
+  'mcgroup' => 
+  array (
+    0 => '5df73ee21d',
+  ),
+  'sendbye' => 'yes',
+)
+***
+array (
+  0 => '5df73ee21d',
+)
+***
+'c580a5bbc9'
+***
+MCGroups: array (
+  'Interested In' => 
+  array (
+    'id' => '2207b44bb2',
+    'title' => 'Interested In',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Shoestring Marketing',
+        'id' => '5d2ba1ce72',
+        'catid' => '2207b44bb2',
+      ),
+      1 => 
+      array (
+        'name' => 'Biz Success & Wellbeing',
+        'id' => '7cff71ebcf',
+        'catid' => '2207b44bb2',
+      ),
+      2 => 
+      array (
+        'name' => 'Power of 100',
+        'id' => '560c137dd4',
+        'catid' => '2207b44bb2',
+      ),
+      3 => 
+      array (
+        'name' => 'ACL Training',
+        'id' => '2e014890c7',
+        'catid' => '2207b44bb2',
+      ),
+      4 => 
+      array (
+        'name' => 'Clients',
+        'id' => 'dce48ddcac',
+        'catid' => '2207b44bb2',
+      ),
+    ),
+  ),
+  'Wishlist Member Plugins' => 
+  array (
+    'id' => '5447679647',
+    'title' => 'Wishlist Member Plugins',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Get Levels',
+        'id' => '6b9a10bd34',
+        'catid' => '5447679647',
+      ),
+      1 => 
+      array (
+        'name' => '1SC integration',
+        'id' => '1e4aa8524c',
+        'catid' => '5447679647',
+      ),
+      2 => 
+      array (
+        'name' => 'Fix WLM Generic AutoResponder',
+        'id' => '1cc78b6fb6',
+        'catid' => '5447679647',
+      ),
+      3 => 
+      array (
+        'name' => 'Change User',
+        'id' => 'dc3ad02af5',
+        'catid' => '5447679647',
+      ),
+      4 => 
+      array (
+        'name' => 'Authorize',
+        'id' => '5aeb9fea50',
+        'catid' => '5447679647',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Purchasers',
+        'id' => 'ca912a6af3',
+        'catid' => '5447679647',
+      ),
+    ),
+  ),
+  'WSA' => 
+  array (
+    'id' => 'cb40b5328f',
+    'title' => 'WSA',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Silver',
+        'id' => 'ed1acb2ba9',
+        'catid' => 'cb40b5328f',
+      ),
+      1 => 
+      array (
+        'name' => 'Gold',
+        'id' => 'bf79d48b4f',
+        'catid' => 'cb40b5328f',
+      ),
+      2 => 
+      array (
+        'name' => 'WordPress Wizardry',
+        'id' => 'c5bb3febb3',
+        'catid' => 'cb40b5328f',
+      ),
+      3 => 
+      array (
+        'name' => 'Whole Shebang',
+        'id' => '1b2f13a963',
+        'catid' => 'cb40b5328f',
+      ),
+      4 => 
+      array (
+        'name' => 'WW Level 2',
+        'id' => '763554e282',
+        'catid' => 'cb40b5328f',
+      ),
+      5 => 
+      array (
+        'name' => 'Free Webinars',
+        'id' => 'd53af1ed6c',
+        'catid' => 'cb40b5328f',
+      ),
+      6 => 
+      array (
+        'name' => 'Get Ranked',
+        'id' => '3cf8a53ab8',
+        'catid' => 'cb40b5328f',
+      ),
+      7 => 
+      array (
+        'name' => 'Silver-LS',
+        'id' => 'fa6c92bee6',
+        'catid' => 'cb40b5328f',
+      ),
+      8 => 
+      array (
+        'name' => 'Monthly Support',
+        'id' => '70c4aa3ced',
+        'catid' => 'cb40b5328f',
+      ),
+      9 => 
+      array (
+        'name' => 'Staff',
+        'id' => '3bb37ee638',
+        'catid' => 'cb40b5328f',
+      ),
+    ),
+  ),
+  'Test' => 
+  array (
+    'id' => 'ca750fe656',
+    'title' => 'Test',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'test1',
+        'id' => '78f9169b08',
+        'catid' => 'ca750fe656',
+      ),
+      1 => 
+      array (
+        'name' => 'test2',
+        'id' => '5df73ee21d',
+        'catid' => 'ca750fe656',
+      ),
+      2 => 
+      array (
+        'name' => 'test3',
+        'id' => '2fad6d6b73',
+        'catid' => 'ca750fe656',
+      ),
+    ),
+  ),
+  'Clients' => 
+  array (
+    'id' => 'aed1d586e1',
+    'title' => 'Clients',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Website & Support',
+        'id' => '8360e949bd',
+        'catid' => 'aed1d586e1',
+      ),
+      1 => 
+      array (
+        'name' => 'Hosting',
+        'id' => '8f77360260',
+        'catid' => 'aed1d586e1',
+      ),
+      2 => 
+      array (
+        'name' => 'Google Apps',
+        'id' => 'fa3b3b307b',
+        'catid' => 'aed1d586e1',
+      ),
+      3 => 
+      array (
+        'name' => 'Newsletter Testing',
+        'id' => '886a09e2a9',
+        'catid' => 'aed1d586e1',
+      ),
+      4 => 
+      array (
+        'name' => 'Charly Only',
+        'id' => 'bb49d613af',
+        'catid' => 'aed1d586e1',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Clients',
+        'id' => '25aec09087',
+        'catid' => 'aed1d586e1',
+      ),
+      6 => 
+      array (
+        'name' => 'Previous Hosting',
+        'id' => '47aa6fbc4f',
+        'catid' => 'aed1d586e1',
+      ),
+      7 => 
+      array (
+        'name' => 'Non Contract WebSite Support',
+        'id' => 'b88f719955',
+        'catid' => 'aed1d586e1',
+      ),
+      8 => 
+      array (
+        'name' => 'URblogged Hosting',
+        'id' => '75e8ce74b8',
+        'catid' => 'aed1d586e1',
+      ),
+      9 => 
+      array (
+        'name' => 'Reseller Hosting',
+        'id' => '06f58d98ce',
+        'catid' => 'aed1d586e1',
+      ),
+    ),
+  ),
+)
+array (
+  'id' => 1613508609,
+  'name' => 'eclass 1',
+  '_more_' => '/levels/1613508609',
+)
+***
+array (
+  'mclistid' => 'c580a5bbc9',
+  'mcgroup' => 
+  array (
+    0 => '2fad6d6b73',
+  ),
+)
+***
+array (
+  0 => '2fad6d6b73',
+)
+***
+'c580a5bbc9'
+***
+MCGroups: array (
+  'Interested In' => 
+  array (
+    'id' => '2207b44bb2',
+    'title' => 'Interested In',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Shoestring Marketing',
+        'id' => '5d2ba1ce72',
+        'catid' => '2207b44bb2',
+      ),
+      1 => 
+      array (
+        'name' => 'Biz Success & Wellbeing',
+        'id' => '7cff71ebcf',
+        'catid' => '2207b44bb2',
+      ),
+      2 => 
+      array (
+        'name' => 'Power of 100',
+        'id' => '560c137dd4',
+        'catid' => '2207b44bb2',
+      ),
+      3 => 
+      array (
+        'name' => 'ACL Training',
+        'id' => '2e014890c7',
+        'catid' => '2207b44bb2',
+      ),
+      4 => 
+      array (
+        'name' => 'Clients',
+        'id' => 'dce48ddcac',
+        'catid' => '2207b44bb2',
+      ),
+    ),
+  ),
+  'Wishlist Member Plugins' => 
+  array (
+    'id' => '5447679647',
+    'title' => 'Wishlist Member Plugins',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Get Levels',
+        'id' => '6b9a10bd34',
+        'catid' => '5447679647',
+      ),
+      1 => 
+      array (
+        'name' => '1SC integration',
+        'id' => '1e4aa8524c',
+        'catid' => '5447679647',
+      ),
+      2 => 
+      array (
+        'name' => 'Fix WLM Generic AutoResponder',
+        'id' => '1cc78b6fb6',
+        'catid' => '5447679647',
+      ),
+      3 => 
+      array (
+        'name' => 'Change User',
+        'id' => 'dc3ad02af5',
+        'catid' => '5447679647',
+      ),
+      4 => 
+      array (
+        'name' => 'Authorize',
+        'id' => '5aeb9fea50',
+        'catid' => '5447679647',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Purchasers',
+        'id' => 'ca912a6af3',
+        'catid' => '5447679647',
+      ),
+    ),
+  ),
+  'WSA' => 
+  array (
+    'id' => 'cb40b5328f',
+    'title' => 'WSA',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Silver',
+        'id' => 'ed1acb2ba9',
+        'catid' => 'cb40b5328f',
+      ),
+      1 => 
+      array (
+        'name' => 'Gold',
+        'id' => 'bf79d48b4f',
+        'catid' => 'cb40b5328f',
+      ),
+      2 => 
+      array (
+        'name' => 'WordPress Wizardry',
+        'id' => 'c5bb3febb3',
+        'catid' => 'cb40b5328f',
+      ),
+      3 => 
+      array (
+        'name' => 'Whole Shebang',
+        'id' => '1b2f13a963',
+        'catid' => 'cb40b5328f',
+      ),
+      4 => 
+      array (
+        'name' => 'WW Level 2',
+        'id' => '763554e282',
+        'catid' => 'cb40b5328f',
+      ),
+      5 => 
+      array (
+        'name' => 'Free Webinars',
+        'id' => 'd53af1ed6c',
+        'catid' => 'cb40b5328f',
+      ),
+      6 => 
+      array (
+        'name' => 'Get Ranked',
+        'id' => '3cf8a53ab8',
+        'catid' => 'cb40b5328f',
+      ),
+      7 => 
+      array (
+        'name' => 'Silver-LS',
+        'id' => 'fa6c92bee6',
+        'catid' => 'cb40b5328f',
+      ),
+      8 => 
+      array (
+        'name' => 'Monthly Support',
+        'id' => '70c4aa3ced',
+        'catid' => 'cb40b5328f',
+      ),
+      9 => 
+      array (
+        'name' => 'Staff',
+        'id' => '3bb37ee638',
+        'catid' => 'cb40b5328f',
+      ),
+    ),
+  ),
+  'Test' => 
+  array (
+    'id' => 'ca750fe656',
+    'title' => 'Test',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'test1',
+        'id' => '78f9169b08',
+        'catid' => 'ca750fe656',
+      ),
+      1 => 
+      array (
+        'name' => 'test2',
+        'id' => '5df73ee21d',
+        'catid' => 'ca750fe656',
+      ),
+      2 => 
+      array (
+        'name' => 'test3',
+        'id' => '2fad6d6b73',
+        'catid' => 'ca750fe656',
+      ),
+    ),
+  ),
+  'Clients' => 
+  array (
+    'id' => 'aed1d586e1',
+    'title' => 'Clients',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Website & Support',
+        'id' => '8360e949bd',
+        'catid' => 'aed1d586e1',
+      ),
+      1 => 
+      array (
+        'name' => 'Hosting',
+        'id' => '8f77360260',
+        'catid' => 'aed1d586e1',
+      ),
+      2 => 
+      array (
+        'name' => 'Google Apps',
+        'id' => 'fa3b3b307b',
+        'catid' => 'aed1d586e1',
+      ),
+      3 => 
+      array (
+        'name' => 'Newsletter Testing',
+        'id' => '886a09e2a9',
+        'catid' => 'aed1d586e1',
+      ),
+      4 => 
+      array (
+        'name' => 'Charly Only',
+        'id' => 'bb49d613af',
+        'catid' => 'aed1d586e1',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Clients',
+        'id' => '25aec09087',
+        'catid' => 'aed1d586e1',
+      ),
+      6 => 
+      array (
+        'name' => 'Previous Hosting',
+        'id' => '47aa6fbc4f',
+        'catid' => 'aed1d586e1',
+      ),
+      7 => 
+      array (
+        'name' => 'Non Contract WebSite Support',
+        'id' => 'b88f719955',
+        'catid' => 'aed1d586e1',
+      ),
+      8 => 
+      array (
+        'name' => 'URblogged Hosting',
+        'id' => '75e8ce74b8',
+        'catid' => 'aed1d586e1',
+      ),
+      9 => 
+      array (
+        'name' => 'Reseller Hosting',
+        'id' => '06f58d98ce',
+        'catid' => 'aed1d586e1',
+      ),
+    ),
+  ),
+)
+array (
+  'id' => 1613508610,
+  'name' => 'eclass 2',
+  '_more_' => '/levels/1613508610',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508611,
+  'name' => 'eclass 3',
+  '_more_' => '/levels/1613508611',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508612,
+  'name' => 'eclass 4',
+  '_more_' => '/levels/1613508612',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508613,
+  'name' => 'eclass 5',
+  '_more_' => '/levels/1613508613',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508614,
+  'name' => 'eclass 6',
+  '_more_' => '/levels/1613508614',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508615,
+  'name' => 'eclass 7',
+  '_more_' => '/levels/1613508615',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508616,
+  'name' => 'eclass 8',
+  '_more_' => '/levels/1613508616',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508617,
+  'name' => 'eclass 9',
+  '_more_' => '/levels/1613508617',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508618,
+  'name' => 'eclass 10',
+  '_more_' => '/levels/1613508618',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508619,
+  'name' => 'eclass 11',
+  '_more_' => '/levels/1613508619',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508620,
+  'name' => 'eclass 12',
+  '_more_' => '/levels/1613508620',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508621,
+  'name' => 'eclass 13',
+  '_more_' => '/levels/1613508621',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508622,
+  'name' => 'eclass 14',
+  '_more_' => '/levels/1613508622',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508623,
+  'name' => 'eclass 15',
+  '_more_' => '/levels/1613508623',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508624,
+  'name' => 'Lund-1',
+  '_more_' => '/levels/1613508624',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508625,
+  'name' => 'Lund-2',
+  '_more_' => '/levels/1613508625',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508626,
+  'name' => 'CC4R Membership',
+  '_more_' => '/levels/1613508626',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508627,
+  'name' => 'CC4R PreCourse',
+  '_more_' => '/levels/1613508627',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508628,
+  'name' => 'CC4R Alumi',
+  '_more_' => '/levels/1613508628',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508629,
+  'name' => 'Lund',
+  '_more_' => '/levels/1613508629',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508630,
+  'name' => 'CC4R Lund PreCourse',
+  '_more_' => '/levels/1613508630',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508631,
+  'name' => 'CC4R Lund Membership',
+  '_more_' => '/levels/1613508631',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508632,
+  'name' => 'CC4R Lund Alumni',
+  '_more_' => '/levels/1613508632',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508633,
+  'name' => 'UQ PCSP',
+  '_more_' => '/levels/1613508633',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508634,
+  'name' => 'UiO PCSP Paused',
+  '_more_' => '/levels/1613508634',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508635,
+  'name' => 'Uppsala PCSP',
+  '_more_' => '/levels/1613508635',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+Saving List Settings
+Date: 10/08/2021 10:34:07 (-1000) GMT
+Full settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+$settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'sendbye' => 'yes',
+  ),
+  ' 1613508572' => 
+  array (
+    'update_join_date' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+array (
+  'id' => 1613508572,
+  'name' => 'test',
+  '_more_' => '/levels/1613508572',
+)
+***
+array (
+  'mclistid' => 'c580a5bbc9',
+  'mcgroup' => 
+  array (
+    0 => '5df73ee21d',
+  ),
+  'update_join_date' => 'yes',
+  'sendbye' => 'yes',
+)
+***
+array (
+  0 => '5df73ee21d',
+)
+***
+'c580a5bbc9'
+***
+MCGroups: array (
+  'Interested In' => 
+  array (
+    'id' => '2207b44bb2',
+    'title' => 'Interested In',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Shoestring Marketing',
+        'id' => '5d2ba1ce72',
+        'catid' => '2207b44bb2',
+      ),
+      1 => 
+      array (
+        'name' => 'Biz Success & Wellbeing',
+        'id' => '7cff71ebcf',
+        'catid' => '2207b44bb2',
+      ),
+      2 => 
+      array (
+        'name' => 'Power of 100',
+        'id' => '560c137dd4',
+        'catid' => '2207b44bb2',
+      ),
+      3 => 
+      array (
+        'name' => 'ACL Training',
+        'id' => '2e014890c7',
+        'catid' => '2207b44bb2',
+      ),
+      4 => 
+      array (
+        'name' => 'Clients',
+        'id' => 'dce48ddcac',
+        'catid' => '2207b44bb2',
+      ),
+    ),
+  ),
+  'Wishlist Member Plugins' => 
+  array (
+    'id' => '5447679647',
+    'title' => 'Wishlist Member Plugins',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Get Levels',
+        'id' => '6b9a10bd34',
+        'catid' => '5447679647',
+      ),
+      1 => 
+      array (
+        'name' => '1SC integration',
+        'id' => '1e4aa8524c',
+        'catid' => '5447679647',
+      ),
+      2 => 
+      array (
+        'name' => 'Fix WLM Generic AutoResponder',
+        'id' => '1cc78b6fb6',
+        'catid' => '5447679647',
+      ),
+      3 => 
+      array (
+        'name' => 'Change User',
+        'id' => 'dc3ad02af5',
+        'catid' => '5447679647',
+      ),
+      4 => 
+      array (
+        'name' => 'Authorize',
+        'id' => '5aeb9fea50',
+        'catid' => '5447679647',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Purchasers',
+        'id' => 'ca912a6af3',
+        'catid' => '5447679647',
+      ),
+    ),
+  ),
+  'WSA' => 
+  array (
+    'id' => 'cb40b5328f',
+    'title' => 'WSA',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Silver',
+        'id' => 'ed1acb2ba9',
+        'catid' => 'cb40b5328f',
+      ),
+      1 => 
+      array (
+        'name' => 'Gold',
+        'id' => 'bf79d48b4f',
+        'catid' => 'cb40b5328f',
+      ),
+      2 => 
+      array (
+        'name' => 'WordPress Wizardry',
+        'id' => 'c5bb3febb3',
+        'catid' => 'cb40b5328f',
+      ),
+      3 => 
+      array (
+        'name' => 'Whole Shebang',
+        'id' => '1b2f13a963',
+        'catid' => 'cb40b5328f',
+      ),
+      4 => 
+      array (
+        'name' => 'WW Level 2',
+        'id' => '763554e282',
+        'catid' => 'cb40b5328f',
+      ),
+      5 => 
+      array (
+        'name' => 'Free Webinars',
+        'id' => 'd53af1ed6c',
+        'catid' => 'cb40b5328f',
+      ),
+      6 => 
+      array (
+        'name' => 'Get Ranked',
+        'id' => '3cf8a53ab8',
+        'catid' => 'cb40b5328f',
+      ),
+      7 => 
+      array (
+        'name' => 'Silver-LS',
+        'id' => 'fa6c92bee6',
+        'catid' => 'cb40b5328f',
+      ),
+      8 => 
+      array (
+        'name' => 'Monthly Support',
+        'id' => '70c4aa3ced',
+        'catid' => 'cb40b5328f',
+      ),
+      9 => 
+      array (
+        'name' => 'Staff',
+        'id' => '3bb37ee638',
+        'catid' => 'cb40b5328f',
+      ),
+    ),
+  ),
+  'Test' => 
+  array (
+    'id' => 'ca750fe656',
+    'title' => 'Test',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'test1',
+        'id' => '78f9169b08',
+        'catid' => 'ca750fe656',
+      ),
+      1 => 
+      array (
+        'name' => 'test2',
+        'id' => '5df73ee21d',
+        'catid' => 'ca750fe656',
+      ),
+      2 => 
+      array (
+        'name' => 'test3',
+        'id' => '2fad6d6b73',
+        'catid' => 'ca750fe656',
+      ),
+    ),
+  ),
+  'Clients' => 
+  array (
+    'id' => 'aed1d586e1',
+    'title' => 'Clients',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Website & Support',
+        'id' => '8360e949bd',
+        'catid' => 'aed1d586e1',
+      ),
+      1 => 
+      array (
+        'name' => 'Hosting',
+        'id' => '8f77360260',
+        'catid' => 'aed1d586e1',
+      ),
+      2 => 
+      array (
+        'name' => 'Google Apps',
+        'id' => 'fa3b3b307b',
+        'catid' => 'aed1d586e1',
+      ),
+      3 => 
+      array (
+        'name' => 'Newsletter Testing',
+        'id' => '886a09e2a9',
+        'catid' => 'aed1d586e1',
+      ),
+      4 => 
+      array (
+        'name' => 'Charly Only',
+        'id' => 'bb49d613af',
+        'catid' => 'aed1d586e1',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Clients',
+        'id' => '25aec09087',
+        'catid' => 'aed1d586e1',
+      ),
+      6 => 
+      array (
+        'name' => 'Previous Hosting',
+        'id' => '47aa6fbc4f',
+        'catid' => 'aed1d586e1',
+      ),
+      7 => 
+      array (
+        'name' => 'Non Contract WebSite Support',
+        'id' => 'b88f719955',
+        'catid' => 'aed1d586e1',
+      ),
+      8 => 
+      array (
+        'name' => 'URblogged Hosting',
+        'id' => '75e8ce74b8',
+        'catid' => 'aed1d586e1',
+      ),
+      9 => 
+      array (
+        'name' => 'Reseller Hosting',
+        'id' => '06f58d98ce',
+        'catid' => 'aed1d586e1',
+      ),
+    ),
+  ),
+)
+array (
+  'id' => 1613508609,
+  'name' => 'eclass 1',
+  '_more_' => '/levels/1613508609',
+)
+***
+array (
+  'mclistid' => 'c580a5bbc9',
+  'mcgroup' => 
+  array (
+    0 => '2fad6d6b73',
+  ),
+)
+***
+array (
+  0 => '2fad6d6b73',
+)
+***
+'c580a5bbc9'
+***
+MCGroups: array (
+  'Interested In' => 
+  array (
+    'id' => '2207b44bb2',
+    'title' => 'Interested In',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Shoestring Marketing',
+        'id' => '5d2ba1ce72',
+        'catid' => '2207b44bb2',
+      ),
+      1 => 
+      array (
+        'name' => 'Biz Success & Wellbeing',
+        'id' => '7cff71ebcf',
+        'catid' => '2207b44bb2',
+      ),
+      2 => 
+      array (
+        'name' => 'Power of 100',
+        'id' => '560c137dd4',
+        'catid' => '2207b44bb2',
+      ),
+      3 => 
+      array (
+        'name' => 'ACL Training',
+        'id' => '2e014890c7',
+        'catid' => '2207b44bb2',
+      ),
+      4 => 
+      array (
+        'name' => 'Clients',
+        'id' => 'dce48ddcac',
+        'catid' => '2207b44bb2',
+      ),
+    ),
+  ),
+  'Wishlist Member Plugins' => 
+  array (
+    'id' => '5447679647',
+    'title' => 'Wishlist Member Plugins',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Get Levels',
+        'id' => '6b9a10bd34',
+        'catid' => '5447679647',
+      ),
+      1 => 
+      array (
+        'name' => '1SC integration',
+        'id' => '1e4aa8524c',
+        'catid' => '5447679647',
+      ),
+      2 => 
+      array (
+        'name' => 'Fix WLM Generic AutoResponder',
+        'id' => '1cc78b6fb6',
+        'catid' => '5447679647',
+      ),
+      3 => 
+      array (
+        'name' => 'Change User',
+        'id' => 'dc3ad02af5',
+        'catid' => '5447679647',
+      ),
+      4 => 
+      array (
+        'name' => 'Authorize',
+        'id' => '5aeb9fea50',
+        'catid' => '5447679647',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Purchasers',
+        'id' => 'ca912a6af3',
+        'catid' => '5447679647',
+      ),
+    ),
+  ),
+  'WSA' => 
+  array (
+    'id' => 'cb40b5328f',
+    'title' => 'WSA',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Silver',
+        'id' => 'ed1acb2ba9',
+        'catid' => 'cb40b5328f',
+      ),
+      1 => 
+      array (
+        'name' => 'Gold',
+        'id' => 'bf79d48b4f',
+        'catid' => 'cb40b5328f',
+      ),
+      2 => 
+      array (
+        'name' => 'WordPress Wizardry',
+        'id' => 'c5bb3febb3',
+        'catid' => 'cb40b5328f',
+      ),
+      3 => 
+      array (
+        'name' => 'Whole Shebang',
+        'id' => '1b2f13a963',
+        'catid' => 'cb40b5328f',
+      ),
+      4 => 
+      array (
+        'name' => 'WW Level 2',
+        'id' => '763554e282',
+        'catid' => 'cb40b5328f',
+      ),
+      5 => 
+      array (
+        'name' => 'Free Webinars',
+        'id' => 'd53af1ed6c',
+        'catid' => 'cb40b5328f',
+      ),
+      6 => 
+      array (
+        'name' => 'Get Ranked',
+        'id' => '3cf8a53ab8',
+        'catid' => 'cb40b5328f',
+      ),
+      7 => 
+      array (
+        'name' => 'Silver-LS',
+        'id' => 'fa6c92bee6',
+        'catid' => 'cb40b5328f',
+      ),
+      8 => 
+      array (
+        'name' => 'Monthly Support',
+        'id' => '70c4aa3ced',
+        'catid' => 'cb40b5328f',
+      ),
+      9 => 
+      array (
+        'name' => 'Staff',
+        'id' => '3bb37ee638',
+        'catid' => 'cb40b5328f',
+      ),
+    ),
+  ),
+  'Test' => 
+  array (
+    'id' => 'ca750fe656',
+    'title' => 'Test',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'test1',
+        'id' => '78f9169b08',
+        'catid' => 'ca750fe656',
+      ),
+      1 => 
+      array (
+        'name' => 'test2',
+        'id' => '5df73ee21d',
+        'catid' => 'ca750fe656',
+      ),
+      2 => 
+      array (
+        'name' => 'test3',
+        'id' => '2fad6d6b73',
+        'catid' => 'ca750fe656',
+      ),
+    ),
+  ),
+  'Clients' => 
+  array (
+    'id' => 'aed1d586e1',
+    'title' => 'Clients',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Website & Support',
+        'id' => '8360e949bd',
+        'catid' => 'aed1d586e1',
+      ),
+      1 => 
+      array (
+        'name' => 'Hosting',
+        'id' => '8f77360260',
+        'catid' => 'aed1d586e1',
+      ),
+      2 => 
+      array (
+        'name' => 'Google Apps',
+        'id' => 'fa3b3b307b',
+        'catid' => 'aed1d586e1',
+      ),
+      3 => 
+      array (
+        'name' => 'Newsletter Testing',
+        'id' => '886a09e2a9',
+        'catid' => 'aed1d586e1',
+      ),
+      4 => 
+      array (
+        'name' => 'Charly Only',
+        'id' => 'bb49d613af',
+        'catid' => 'aed1d586e1',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Clients',
+        'id' => '25aec09087',
+        'catid' => 'aed1d586e1',
+      ),
+      6 => 
+      array (
+        'name' => 'Previous Hosting',
+        'id' => '47aa6fbc4f',
+        'catid' => 'aed1d586e1',
+      ),
+      7 => 
+      array (
+        'name' => 'Non Contract WebSite Support',
+        'id' => 'b88f719955',
+        'catid' => 'aed1d586e1',
+      ),
+      8 => 
+      array (
+        'name' => 'URblogged Hosting',
+        'id' => '75e8ce74b8',
+        'catid' => 'aed1d586e1',
+      ),
+      9 => 
+      array (
+        'name' => 'Reseller Hosting',
+        'id' => '06f58d98ce',
+        'catid' => 'aed1d586e1',
+      ),
+    ),
+  ),
+)
+array (
+  'id' => 1613508610,
+  'name' => 'eclass 2',
+  '_more_' => '/levels/1613508610',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508611,
+  'name' => 'eclass 3',
+  '_more_' => '/levels/1613508611',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508612,
+  'name' => 'eclass 4',
+  '_more_' => '/levels/1613508612',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508613,
+  'name' => 'eclass 5',
+  '_more_' => '/levels/1613508613',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508614,
+  'name' => 'eclass 6',
+  '_more_' => '/levels/1613508614',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508615,
+  'name' => 'eclass 7',
+  '_more_' => '/levels/1613508615',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508616,
+  'name' => 'eclass 8',
+  '_more_' => '/levels/1613508616',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508617,
+  'name' => 'eclass 9',
+  '_more_' => '/levels/1613508617',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508618,
+  'name' => 'eclass 10',
+  '_more_' => '/levels/1613508618',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508619,
+  'name' => 'eclass 11',
+  '_more_' => '/levels/1613508619',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508620,
+  'name' => 'eclass 12',
+  '_more_' => '/levels/1613508620',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508621,
+  'name' => 'eclass 13',
+  '_more_' => '/levels/1613508621',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508622,
+  'name' => 'eclass 14',
+  '_more_' => '/levels/1613508622',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508623,
+  'name' => 'eclass 15',
+  '_more_' => '/levels/1613508623',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508624,
+  'name' => 'Lund-1',
+  '_more_' => '/levels/1613508624',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508625,
+  'name' => 'Lund-2',
+  '_more_' => '/levels/1613508625',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508626,
+  'name' => 'CC4R Membership',
+  '_more_' => '/levels/1613508626',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508627,
+  'name' => 'CC4R PreCourse',
+  '_more_' => '/levels/1613508627',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508628,
+  'name' => 'CC4R Alumi',
+  '_more_' => '/levels/1613508628',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508629,
+  'name' => 'Lund',
+  '_more_' => '/levels/1613508629',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508630,
+  'name' => 'CC4R Lund PreCourse',
+  '_more_' => '/levels/1613508630',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508631,
+  'name' => 'CC4R Lund Membership',
+  '_more_' => '/levels/1613508631',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508632,
+  'name' => 'CC4R Lund Alumni',
+  '_more_' => '/levels/1613508632',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508633,
+  'name' => 'UQ PCSP',
+  '_more_' => '/levels/1613508633',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508634,
+  'name' => 'UiO PCSP Paused',
+  '_more_' => '/levels/1613508634',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508635,
+  'name' => 'Uppsala PCSP',
+  '_more_' => '/levels/1613508635',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+Saving List Settings
+Date: 10/08/2021 10:34:35 (-1000) GMT
+Full settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+$settings: array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+array (
+  'id' => 1613508572,
+  'name' => 'test',
+  '_more_' => '/levels/1613508572',
+)
+***
+array (
+  'mclistid' => 'c580a5bbc9',
+  'mcgroup' => 
+  array (
+    0 => '5df73ee21d',
+  ),
+  'update_join_date' => 'yes',
+  'dblopt' => 'yes',
+  'sendbye' => 'yes',
+)
+***
+array (
+  0 => '5df73ee21d',
+)
+***
+'c580a5bbc9'
+***
+MCGroups: array (
+  'Interested In' => 
+  array (
+    'id' => '2207b44bb2',
+    'title' => 'Interested In',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Shoestring Marketing',
+        'id' => '5d2ba1ce72',
+        'catid' => '2207b44bb2',
+      ),
+      1 => 
+      array (
+        'name' => 'Biz Success & Wellbeing',
+        'id' => '7cff71ebcf',
+        'catid' => '2207b44bb2',
+      ),
+      2 => 
+      array (
+        'name' => 'Power of 100',
+        'id' => '560c137dd4',
+        'catid' => '2207b44bb2',
+      ),
+      3 => 
+      array (
+        'name' => 'ACL Training',
+        'id' => '2e014890c7',
+        'catid' => '2207b44bb2',
+      ),
+      4 => 
+      array (
+        'name' => 'Clients',
+        'id' => 'dce48ddcac',
+        'catid' => '2207b44bb2',
+      ),
+    ),
+  ),
+  'Wishlist Member Plugins' => 
+  array (
+    'id' => '5447679647',
+    'title' => 'Wishlist Member Plugins',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Get Levels',
+        'id' => '6b9a10bd34',
+        'catid' => '5447679647',
+      ),
+      1 => 
+      array (
+        'name' => '1SC integration',
+        'id' => '1e4aa8524c',
+        'catid' => '5447679647',
+      ),
+      2 => 
+      array (
+        'name' => 'Fix WLM Generic AutoResponder',
+        'id' => '1cc78b6fb6',
+        'catid' => '5447679647',
+      ),
+      3 => 
+      array (
+        'name' => 'Change User',
+        'id' => 'dc3ad02af5',
+        'catid' => '5447679647',
+      ),
+      4 => 
+      array (
+        'name' => 'Authorize',
+        'id' => '5aeb9fea50',
+        'catid' => '5447679647',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Purchasers',
+        'id' => 'ca912a6af3',
+        'catid' => '5447679647',
+      ),
+    ),
+  ),
+  'WSA' => 
+  array (
+    'id' => 'cb40b5328f',
+    'title' => 'WSA',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Silver',
+        'id' => 'ed1acb2ba9',
+        'catid' => 'cb40b5328f',
+      ),
+      1 => 
+      array (
+        'name' => 'Gold',
+        'id' => 'bf79d48b4f',
+        'catid' => 'cb40b5328f',
+      ),
+      2 => 
+      array (
+        'name' => 'WordPress Wizardry',
+        'id' => 'c5bb3febb3',
+        'catid' => 'cb40b5328f',
+      ),
+      3 => 
+      array (
+        'name' => 'Whole Shebang',
+        'id' => '1b2f13a963',
+        'catid' => 'cb40b5328f',
+      ),
+      4 => 
+      array (
+        'name' => 'WW Level 2',
+        'id' => '763554e282',
+        'catid' => 'cb40b5328f',
+      ),
+      5 => 
+      array (
+        'name' => 'Free Webinars',
+        'id' => 'd53af1ed6c',
+        'catid' => 'cb40b5328f',
+      ),
+      6 => 
+      array (
+        'name' => 'Get Ranked',
+        'id' => '3cf8a53ab8',
+        'catid' => 'cb40b5328f',
+      ),
+      7 => 
+      array (
+        'name' => 'Silver-LS',
+        'id' => 'fa6c92bee6',
+        'catid' => 'cb40b5328f',
+      ),
+      8 => 
+      array (
+        'name' => 'Monthly Support',
+        'id' => '70c4aa3ced',
+        'catid' => 'cb40b5328f',
+      ),
+      9 => 
+      array (
+        'name' => 'Staff',
+        'id' => '3bb37ee638',
+        'catid' => 'cb40b5328f',
+      ),
+    ),
+  ),
+  'Test' => 
+  array (
+    'id' => 'ca750fe656',
+    'title' => 'Test',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'test1',
+        'id' => '78f9169b08',
+        'catid' => 'ca750fe656',
+      ),
+      1 => 
+      array (
+        'name' => 'test2',
+        'id' => '5df73ee21d',
+        'catid' => 'ca750fe656',
+      ),
+      2 => 
+      array (
+        'name' => 'test3',
+        'id' => '2fad6d6b73',
+        'catid' => 'ca750fe656',
+      ),
+    ),
+  ),
+  'Clients' => 
+  array (
+    'id' => 'aed1d586e1',
+    'title' => 'Clients',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Website & Support',
+        'id' => '8360e949bd',
+        'catid' => 'aed1d586e1',
+      ),
+      1 => 
+      array (
+        'name' => 'Hosting',
+        'id' => '8f77360260',
+        'catid' => 'aed1d586e1',
+      ),
+      2 => 
+      array (
+        'name' => 'Google Apps',
+        'id' => 'fa3b3b307b',
+        'catid' => 'aed1d586e1',
+      ),
+      3 => 
+      array (
+        'name' => 'Newsletter Testing',
+        'id' => '886a09e2a9',
+        'catid' => 'aed1d586e1',
+      ),
+      4 => 
+      array (
+        'name' => 'Charly Only',
+        'id' => 'bb49d613af',
+        'catid' => 'aed1d586e1',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Clients',
+        'id' => '25aec09087',
+        'catid' => 'aed1d586e1',
+      ),
+      6 => 
+      array (
+        'name' => 'Previous Hosting',
+        'id' => '47aa6fbc4f',
+        'catid' => 'aed1d586e1',
+      ),
+      7 => 
+      array (
+        'name' => 'Non Contract WebSite Support',
+        'id' => 'b88f719955',
+        'catid' => 'aed1d586e1',
+      ),
+      8 => 
+      array (
+        'name' => 'URblogged Hosting',
+        'id' => '75e8ce74b8',
+        'catid' => 'aed1d586e1',
+      ),
+      9 => 
+      array (
+        'name' => 'Reseller Hosting',
+        'id' => '06f58d98ce',
+        'catid' => 'aed1d586e1',
+      ),
+    ),
+  ),
+)
+array (
+  'id' => 1613508609,
+  'name' => 'eclass 1',
+  '_more_' => '/levels/1613508609',
+)
+***
+array (
+  'mclistid' => 'c580a5bbc9',
+  'mcgroup' => 
+  array (
+    0 => '2fad6d6b73',
+  ),
+  'update_join_date' => 'yes',
+  'dblopt' => 'yes',
+  'sendbye' => 'yes',
+)
+***
+array (
+  0 => '2fad6d6b73',
+)
+***
+'c580a5bbc9'
+***
+MCGroups: array (
+  'Interested In' => 
+  array (
+    'id' => '2207b44bb2',
+    'title' => 'Interested In',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Shoestring Marketing',
+        'id' => '5d2ba1ce72',
+        'catid' => '2207b44bb2',
+      ),
+      1 => 
+      array (
+        'name' => 'Biz Success & Wellbeing',
+        'id' => '7cff71ebcf',
+        'catid' => '2207b44bb2',
+      ),
+      2 => 
+      array (
+        'name' => 'Power of 100',
+        'id' => '560c137dd4',
+        'catid' => '2207b44bb2',
+      ),
+      3 => 
+      array (
+        'name' => 'ACL Training',
+        'id' => '2e014890c7',
+        'catid' => '2207b44bb2',
+      ),
+      4 => 
+      array (
+        'name' => 'Clients',
+        'id' => 'dce48ddcac',
+        'catid' => '2207b44bb2',
+      ),
+    ),
+  ),
+  'Wishlist Member Plugins' => 
+  array (
+    'id' => '5447679647',
+    'title' => 'Wishlist Member Plugins',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Get Levels',
+        'id' => '6b9a10bd34',
+        'catid' => '5447679647',
+      ),
+      1 => 
+      array (
+        'name' => '1SC integration',
+        'id' => '1e4aa8524c',
+        'catid' => '5447679647',
+      ),
+      2 => 
+      array (
+        'name' => 'Fix WLM Generic AutoResponder',
+        'id' => '1cc78b6fb6',
+        'catid' => '5447679647',
+      ),
+      3 => 
+      array (
+        'name' => 'Change User',
+        'id' => 'dc3ad02af5',
+        'catid' => '5447679647',
+      ),
+      4 => 
+      array (
+        'name' => 'Authorize',
+        'id' => '5aeb9fea50',
+        'catid' => '5447679647',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Purchasers',
+        'id' => 'ca912a6af3',
+        'catid' => '5447679647',
+      ),
+    ),
+  ),
+  'WSA' => 
+  array (
+    'id' => 'cb40b5328f',
+    'title' => 'WSA',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Silver',
+        'id' => 'ed1acb2ba9',
+        'catid' => 'cb40b5328f',
+      ),
+      1 => 
+      array (
+        'name' => 'Gold',
+        'id' => 'bf79d48b4f',
+        'catid' => 'cb40b5328f',
+      ),
+      2 => 
+      array (
+        'name' => 'WordPress Wizardry',
+        'id' => 'c5bb3febb3',
+        'catid' => 'cb40b5328f',
+      ),
+      3 => 
+      array (
+        'name' => 'Whole Shebang',
+        'id' => '1b2f13a963',
+        'catid' => 'cb40b5328f',
+      ),
+      4 => 
+      array (
+        'name' => 'WW Level 2',
+        'id' => '763554e282',
+        'catid' => 'cb40b5328f',
+      ),
+      5 => 
+      array (
+        'name' => 'Free Webinars',
+        'id' => 'd53af1ed6c',
+        'catid' => 'cb40b5328f',
+      ),
+      6 => 
+      array (
+        'name' => 'Get Ranked',
+        'id' => '3cf8a53ab8',
+        'catid' => 'cb40b5328f',
+      ),
+      7 => 
+      array (
+        'name' => 'Silver-LS',
+        'id' => 'fa6c92bee6',
+        'catid' => 'cb40b5328f',
+      ),
+      8 => 
+      array (
+        'name' => 'Monthly Support',
+        'id' => '70c4aa3ced',
+        'catid' => 'cb40b5328f',
+      ),
+      9 => 
+      array (
+        'name' => 'Staff',
+        'id' => '3bb37ee638',
+        'catid' => 'cb40b5328f',
+      ),
+    ),
+  ),
+  'Test' => 
+  array (
+    'id' => 'ca750fe656',
+    'title' => 'Test',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'test1',
+        'id' => '78f9169b08',
+        'catid' => 'ca750fe656',
+      ),
+      1 => 
+      array (
+        'name' => 'test2',
+        'id' => '5df73ee21d',
+        'catid' => 'ca750fe656',
+      ),
+      2 => 
+      array (
+        'name' => 'test3',
+        'id' => '2fad6d6b73',
+        'catid' => 'ca750fe656',
+      ),
+    ),
+  ),
+  'Clients' => 
+  array (
+    'id' => 'aed1d586e1',
+    'title' => 'Clients',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Website & Support',
+        'id' => '8360e949bd',
+        'catid' => 'aed1d586e1',
+      ),
+      1 => 
+      array (
+        'name' => 'Hosting',
+        'id' => '8f77360260',
+        'catid' => 'aed1d586e1',
+      ),
+      2 => 
+      array (
+        'name' => 'Google Apps',
+        'id' => 'fa3b3b307b',
+        'catid' => 'aed1d586e1',
+      ),
+      3 => 
+      array (
+        'name' => 'Newsletter Testing',
+        'id' => '886a09e2a9',
+        'catid' => 'aed1d586e1',
+      ),
+      4 => 
+      array (
+        'name' => 'Charly Only',
+        'id' => 'bb49d613af',
+        'catid' => 'aed1d586e1',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Clients',
+        'id' => '25aec09087',
+        'catid' => 'aed1d586e1',
+      ),
+      6 => 
+      array (
+        'name' => 'Previous Hosting',
+        'id' => '47aa6fbc4f',
+        'catid' => 'aed1d586e1',
+      ),
+      7 => 
+      array (
+        'name' => 'Non Contract WebSite Support',
+        'id' => 'b88f719955',
+        'catid' => 'aed1d586e1',
+      ),
+      8 => 
+      array (
+        'name' => 'URblogged Hosting',
+        'id' => '75e8ce74b8',
+        'catid' => 'aed1d586e1',
+      ),
+      9 => 
+      array (
+        'name' => 'Reseller Hosting',
+        'id' => '06f58d98ce',
+        'catid' => 'aed1d586e1',
+      ),
+    ),
+  ),
+)
+array (
+  'id' => 1613508610,
+  'name' => 'eclass 2',
+  '_more_' => '/levels/1613508610',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508611,
+  'name' => 'eclass 3',
+  '_more_' => '/levels/1613508611',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508612,
+  'name' => 'eclass 4',
+  '_more_' => '/levels/1613508612',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508613,
+  'name' => 'eclass 5',
+  '_more_' => '/levels/1613508613',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508614,
+  'name' => 'eclass 6',
+  '_more_' => '/levels/1613508614',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508615,
+  'name' => 'eclass 7',
+  '_more_' => '/levels/1613508615',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508616,
+  'name' => 'eclass 8',
+  '_more_' => '/levels/1613508616',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508617,
+  'name' => 'eclass 9',
+  '_more_' => '/levels/1613508617',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508618,
+  'name' => 'eclass 10',
+  '_more_' => '/levels/1613508618',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508619,
+  'name' => 'eclass 11',
+  '_more_' => '/levels/1613508619',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508620,
+  'name' => 'eclass 12',
+  '_more_' => '/levels/1613508620',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508621,
+  'name' => 'eclass 13',
+  '_more_' => '/levels/1613508621',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508622,
+  'name' => 'eclass 14',
+  '_more_' => '/levels/1613508622',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508623,
+  'name' => 'eclass 15',
+  '_more_' => '/levels/1613508623',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508624,
+  'name' => 'Lund-1',
+  '_more_' => '/levels/1613508624',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508625,
+  'name' => 'Lund-2',
+  '_more_' => '/levels/1613508625',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508626,
+  'name' => 'CC4R Membership',
+  '_more_' => '/levels/1613508626',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508627,
+  'name' => 'CC4R PreCourse',
+  '_more_' => '/levels/1613508627',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508628,
+  'name' => 'CC4R Alumi',
+  '_more_' => '/levels/1613508628',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508629,
+  'name' => 'Lund',
+  '_more_' => '/levels/1613508629',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508630,
+  'name' => 'CC4R Lund PreCourse',
+  '_more_' => '/levels/1613508630',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508631,
+  'name' => 'CC4R Lund Membership',
+  '_more_' => '/levels/1613508631',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508632,
+  'name' => 'CC4R Lund Alumni',
+  '_more_' => '/levels/1613508632',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508633,
+  'name' => 'UQ PCSP',
+  '_more_' => '/levels/1613508633',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508634,
+  'name' => 'UiO PCSP Paused',
+  '_more_' => '/levels/1613508634',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508635,
+  'name' => 'Uppsala PCSP',
+  '_more_' => '/levels/1613508635',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+Saving List Settings
+Date: 10/08/2021 10:53:42 (-1000) GMT
+array (
+  1613508572 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '5df73ee21d',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508609 => 
+  array (
+    'mclistid' => 'c580a5bbc9',
+    'mcgroup' => 
+    array (
+      0 => '2fad6d6b73',
+    ),
+    'update_join_date' => 'yes',
+    'dblopt' => 'yes',
+    'sendbye' => 'yes',
+  ),
+  1613508610 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508611 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508613 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508614 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508615 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508616 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508617 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508618 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508619 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508620 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508622 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508623 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508624 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508625 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508626 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508627 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508628 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508629 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508630 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508632 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508633 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508634 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1613508635 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
+  'mcdc' => 'us1',
+)
+array (
+  'id' => 1613508572,
+  'name' => 'test',
+  '_more_' => '/levels/1613508572',
+)
+***
+array (
+  'mclistid' => 'c580a5bbc9',
+  'mcgroup' => 
+  array (
+    0 => '5df73ee21d',
+  ),
+  'update_join_date' => 'yes',
+  'dblopt' => 'yes',
+  'sendbye' => 'yes',
+)
+***
+array (
+  0 => '5df73ee21d',
+)
+***
+'c580a5bbc9'
+***
+MCGroups: array (
+  'Interested In' => 
+  array (
+    'id' => '2207b44bb2',
+    'title' => 'Interested In',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Shoestring Marketing',
+        'id' => '5d2ba1ce72',
+        'catid' => '2207b44bb2',
+      ),
+      1 => 
+      array (
+        'name' => 'Biz Success & Wellbeing',
+        'id' => '7cff71ebcf',
+        'catid' => '2207b44bb2',
+      ),
+      2 => 
+      array (
+        'name' => 'Power of 100',
+        'id' => '560c137dd4',
+        'catid' => '2207b44bb2',
+      ),
+      3 => 
+      array (
+        'name' => 'ACL Training',
+        'id' => '2e014890c7',
+        'catid' => '2207b44bb2',
+      ),
+      4 => 
+      array (
+        'name' => 'Clients',
+        'id' => 'dce48ddcac',
+        'catid' => '2207b44bb2',
+      ),
+    ),
+  ),
+  'Wishlist Member Plugins' => 
+  array (
+    'id' => '5447679647',
+    'title' => 'Wishlist Member Plugins',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Get Levels',
+        'id' => '6b9a10bd34',
+        'catid' => '5447679647',
+      ),
+      1 => 
+      array (
+        'name' => '1SC integration',
+        'id' => '1e4aa8524c',
+        'catid' => '5447679647',
+      ),
+      2 => 
+      array (
+        'name' => 'Fix WLM Generic AutoResponder',
+        'id' => '1cc78b6fb6',
+        'catid' => '5447679647',
+      ),
+      3 => 
+      array (
+        'name' => 'Change User',
+        'id' => 'dc3ad02af5',
+        'catid' => '5447679647',
+      ),
+      4 => 
+      array (
+        'name' => 'Authorize',
+        'id' => '5aeb9fea50',
+        'catid' => '5447679647',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Purchasers',
+        'id' => 'ca912a6af3',
+        'catid' => '5447679647',
+      ),
+    ),
+  ),
+  'WSA' => 
+  array (
+    'id' => 'cb40b5328f',
+    'title' => 'WSA',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Silver',
+        'id' => 'ed1acb2ba9',
+        'catid' => 'cb40b5328f',
+      ),
+      1 => 
+      array (
+        'name' => 'Gold',
+        'id' => 'bf79d48b4f',
+        'catid' => 'cb40b5328f',
+      ),
+      2 => 
+      array (
+        'name' => 'WordPress Wizardry',
+        'id' => 'c5bb3febb3',
+        'catid' => 'cb40b5328f',
+      ),
+      3 => 
+      array (
+        'name' => 'Whole Shebang',
+        'id' => '1b2f13a963',
+        'catid' => 'cb40b5328f',
+      ),
+      4 => 
+      array (
+        'name' => 'WW Level 2',
+        'id' => '763554e282',
+        'catid' => 'cb40b5328f',
+      ),
+      5 => 
+      array (
+        'name' => 'Free Webinars',
+        'id' => 'd53af1ed6c',
+        'catid' => 'cb40b5328f',
+      ),
+      6 => 
+      array (
+        'name' => 'Get Ranked',
+        'id' => '3cf8a53ab8',
+        'catid' => 'cb40b5328f',
+      ),
+      7 => 
+      array (
+        'name' => 'Silver-LS',
+        'id' => 'fa6c92bee6',
+        'catid' => 'cb40b5328f',
+      ),
+      8 => 
+      array (
+        'name' => 'Monthly Support',
+        'id' => '70c4aa3ced',
+        'catid' => 'cb40b5328f',
+      ),
+      9 => 
+      array (
+        'name' => 'Staff',
+        'id' => '3bb37ee638',
+        'catid' => 'cb40b5328f',
+      ),
+    ),
+  ),
+  'Test' => 
+  array (
+    'id' => 'ca750fe656',
+    'title' => 'Test',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'test1',
+        'id' => '78f9169b08',
+        'catid' => 'ca750fe656',
+      ),
+      1 => 
+      array (
+        'name' => 'test2',
+        'id' => '5df73ee21d',
+        'catid' => 'ca750fe656',
+      ),
+      2 => 
+      array (
+        'name' => 'test3',
+        'id' => '2fad6d6b73',
+        'catid' => 'ca750fe656',
+      ),
+    ),
+  ),
+  'Clients' => 
+  array (
+    'id' => 'aed1d586e1',
+    'title' => 'Clients',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Website & Support',
+        'id' => '8360e949bd',
+        'catid' => 'aed1d586e1',
+      ),
+      1 => 
+      array (
+        'name' => 'Hosting',
+        'id' => '8f77360260',
+        'catid' => 'aed1d586e1',
+      ),
+      2 => 
+      array (
+        'name' => 'Google Apps',
+        'id' => 'fa3b3b307b',
+        'catid' => 'aed1d586e1',
+      ),
+      3 => 
+      array (
+        'name' => 'Newsletter Testing',
+        'id' => '886a09e2a9',
+        'catid' => 'aed1d586e1',
+      ),
+      4 => 
+      array (
+        'name' => 'Charly Only',
+        'id' => 'bb49d613af',
+        'catid' => 'aed1d586e1',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Clients',
+        'id' => '25aec09087',
+        'catid' => 'aed1d586e1',
+      ),
+      6 => 
+      array (
+        'name' => 'Previous Hosting',
+        'id' => '47aa6fbc4f',
+        'catid' => 'aed1d586e1',
+      ),
+      7 => 
+      array (
+        'name' => 'Non Contract WebSite Support',
+        'id' => 'b88f719955',
+        'catid' => 'aed1d586e1',
+      ),
+      8 => 
+      array (
+        'name' => 'URblogged Hosting',
+        'id' => '75e8ce74b8',
+        'catid' => 'aed1d586e1',
+      ),
+      9 => 
+      array (
+        'name' => 'Reseller Hosting',
+        'id' => '06f58d98ce',
+        'catid' => 'aed1d586e1',
+      ),
+    ),
+  ),
+)
+array (
+  'id' => 1613508609,
+  'name' => 'eclass 1',
+  '_more_' => '/levels/1613508609',
+)
+***
+array (
+  'mclistid' => 'c580a5bbc9',
+  'mcgroup' => 
+  array (
+    0 => '2fad6d6b73',
+  ),
+  'update_join_date' => 'yes',
+  'dblopt' => 'yes',
+  'sendbye' => 'yes',
+)
+***
+array (
+  0 => '2fad6d6b73',
+)
+***
+'c580a5bbc9'
+***
+MCGroups: array (
+  'Interested In' => 
+  array (
+    'id' => '2207b44bb2',
+    'title' => 'Interested In',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Shoestring Marketing',
+        'id' => '5d2ba1ce72',
+        'catid' => '2207b44bb2',
+      ),
+      1 => 
+      array (
+        'name' => 'Biz Success & Wellbeing',
+        'id' => '7cff71ebcf',
+        'catid' => '2207b44bb2',
+      ),
+      2 => 
+      array (
+        'name' => 'Power of 100',
+        'id' => '560c137dd4',
+        'catid' => '2207b44bb2',
+      ),
+      3 => 
+      array (
+        'name' => 'ACL Training',
+        'id' => '2e014890c7',
+        'catid' => '2207b44bb2',
+      ),
+      4 => 
+      array (
+        'name' => 'Clients',
+        'id' => 'dce48ddcac',
+        'catid' => '2207b44bb2',
+      ),
+    ),
+  ),
+  'Wishlist Member Plugins' => 
+  array (
+    'id' => '5447679647',
+    'title' => 'Wishlist Member Plugins',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Get Levels',
+        'id' => '6b9a10bd34',
+        'catid' => '5447679647',
+      ),
+      1 => 
+      array (
+        'name' => '1SC integration',
+        'id' => '1e4aa8524c',
+        'catid' => '5447679647',
+      ),
+      2 => 
+      array (
+        'name' => 'Fix WLM Generic AutoResponder',
+        'id' => '1cc78b6fb6',
+        'catid' => '5447679647',
+      ),
+      3 => 
+      array (
+        'name' => 'Change User',
+        'id' => 'dc3ad02af5',
+        'catid' => '5447679647',
+      ),
+      4 => 
+      array (
+        'name' => 'Authorize',
+        'id' => '5aeb9fea50',
+        'catid' => '5447679647',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Purchasers',
+        'id' => 'ca912a6af3',
+        'catid' => '5447679647',
+      ),
+    ),
+  ),
+  'WSA' => 
+  array (
+    'id' => 'cb40b5328f',
+    'title' => 'WSA',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Silver',
+        'id' => 'ed1acb2ba9',
+        'catid' => 'cb40b5328f',
+      ),
+      1 => 
+      array (
+        'name' => 'Gold',
+        'id' => 'bf79d48b4f',
+        'catid' => 'cb40b5328f',
+      ),
+      2 => 
+      array (
+        'name' => 'WordPress Wizardry',
+        'id' => 'c5bb3febb3',
+        'catid' => 'cb40b5328f',
+      ),
+      3 => 
+      array (
+        'name' => 'Whole Shebang',
+        'id' => '1b2f13a963',
+        'catid' => 'cb40b5328f',
+      ),
+      4 => 
+      array (
+        'name' => 'WW Level 2',
+        'id' => '763554e282',
+        'catid' => 'cb40b5328f',
+      ),
+      5 => 
+      array (
+        'name' => 'Free Webinars',
+        'id' => 'd53af1ed6c',
+        'catid' => 'cb40b5328f',
+      ),
+      6 => 
+      array (
+        'name' => 'Get Ranked',
+        'id' => '3cf8a53ab8',
+        'catid' => 'cb40b5328f',
+      ),
+      7 => 
+      array (
+        'name' => 'Silver-LS',
+        'id' => 'fa6c92bee6',
+        'catid' => 'cb40b5328f',
+      ),
+      8 => 
+      array (
+        'name' => 'Monthly Support',
+        'id' => '70c4aa3ced',
+        'catid' => 'cb40b5328f',
+      ),
+      9 => 
+      array (
+        'name' => 'Staff',
+        'id' => '3bb37ee638',
+        'catid' => 'cb40b5328f',
+      ),
+    ),
+  ),
+  'Test' => 
+  array (
+    'id' => 'ca750fe656',
+    'title' => 'Test',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'test1',
+        'id' => '78f9169b08',
+        'catid' => 'ca750fe656',
+      ),
+      1 => 
+      array (
+        'name' => 'test2',
+        'id' => '5df73ee21d',
+        'catid' => 'ca750fe656',
+      ),
+      2 => 
+      array (
+        'name' => 'test3',
+        'id' => '2fad6d6b73',
+        'catid' => 'ca750fe656',
+      ),
+    ),
+  ),
+  'Clients' => 
+  array (
+    'id' => 'aed1d586e1',
+    'title' => 'Clients',
+    'groups' => 
+    array (
+      0 => 
+      array (
+        'name' => 'Website & Support',
+        'id' => '8360e949bd',
+        'catid' => 'aed1d586e1',
+      ),
+      1 => 
+      array (
+        'name' => 'Hosting',
+        'id' => '8f77360260',
+        'catid' => 'aed1d586e1',
+      ),
+      2 => 
+      array (
+        'name' => 'Google Apps',
+        'id' => 'fa3b3b307b',
+        'catid' => 'aed1d586e1',
+      ),
+      3 => 
+      array (
+        'name' => 'Newsletter Testing',
+        'id' => '886a09e2a9',
+        'catid' => 'aed1d586e1',
+      ),
+      4 => 
+      array (
+        'name' => 'Charly Only',
+        'id' => 'bb49d613af',
+        'catid' => 'aed1d586e1',
+      ),
+      5 => 
+      array (
+        'name' => 'Previous Clients',
+        'id' => '25aec09087',
+        'catid' => 'aed1d586e1',
+      ),
+      6 => 
+      array (
+        'name' => 'Previous Hosting',
+        'id' => '47aa6fbc4f',
+        'catid' => 'aed1d586e1',
+      ),
+      7 => 
+      array (
+        'name' => 'Non Contract WebSite Support',
+        'id' => 'b88f719955',
+        'catid' => 'aed1d586e1',
+      ),
+      8 => 
+      array (
+        'name' => 'URblogged Hosting',
+        'id' => '75e8ce74b8',
+        'catid' => 'aed1d586e1',
+      ),
+      9 => 
+      array (
+        'name' => 'Reseller Hosting',
+        'id' => '06f58d98ce',
+        'catid' => 'aed1d586e1',
+      ),
+    ),
+  ),
+)
+array (
+  'id' => 1613508610,
+  'name' => 'eclass 2',
+  '_more_' => '/levels/1613508610',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508611,
+  'name' => 'eclass 3',
+  '_more_' => '/levels/1613508611',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508612,
+  'name' => 'eclass 4',
+  '_more_' => '/levels/1613508612',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508613,
+  'name' => 'eclass 5',
+  '_more_' => '/levels/1613508613',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508614,
+  'name' => 'eclass 6',
+  '_more_' => '/levels/1613508614',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508615,
+  'name' => 'eclass 7',
+  '_more_' => '/levels/1613508615',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508616,
+  'name' => 'eclass 8',
+  '_more_' => '/levels/1613508616',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508617,
+  'name' => 'eclass 9',
+  '_more_' => '/levels/1613508617',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508618,
+  'name' => 'eclass 10',
+  '_more_' => '/levels/1613508618',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508619,
+  'name' => 'eclass 11',
+  '_more_' => '/levels/1613508619',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508620,
+  'name' => 'eclass 12',
+  '_more_' => '/levels/1613508620',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508621,
+  'name' => 'eclass 13',
+  '_more_' => '/levels/1613508621',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508622,
+  'name' => 'eclass 14',
+  '_more_' => '/levels/1613508622',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508623,
+  'name' => 'eclass 15',
+  '_more_' => '/levels/1613508623',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508624,
+  'name' => 'Lund-1',
+  '_more_' => '/levels/1613508624',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508625,
+  'name' => 'Lund-2',
+  '_more_' => '/levels/1613508625',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508626,
+  'name' => 'CC4R Membership',
+  '_more_' => '/levels/1613508626',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508627,
+  'name' => 'CC4R PreCourse',
+  '_more_' => '/levels/1613508627',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508628,
+  'name' => 'CC4R Alumi',
+  '_more_' => '/levels/1613508628',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508629,
+  'name' => 'Lund',
+  '_more_' => '/levels/1613508629',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508630,
+  'name' => 'CC4R Lund PreCourse',
+  '_more_' => '/levels/1613508630',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508631,
+  'name' => 'CC4R Lund Membership',
+  '_more_' => '/levels/1613508631',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508632,
+  'name' => 'CC4R Lund Alumni',
+  '_more_' => '/levels/1613508632',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508633,
+  'name' => 'UQ PCSP',
+  '_more_' => '/levels/1613508633',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508634,
+  'name' => 'UiO PCSP Paused',
+  '_more_' => '/levels/1613508634',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
+array (
+  'id' => 1613508635,
+  'name' => 'Uppsala PCSP',
+  '_more_' => '/levels/1613508635',
+)
+***
+array (
+  'mclistid' => '0',
+)
+***
+NULL
+***
+'0'
+***
