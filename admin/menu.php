@@ -229,9 +229,7 @@ function twpwcustommclists() {
 						}
 						
 						if ( !empty( $settings[$level['id']]['mcgroup'] ) ) {
-							echo 'LEVEL: '.$settings[$level['id']]['mclistid'].'<br />';
 							$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
-							echo $mclists;
 							// echo 'Lists: '.var_export( $mclists, true ).'<br />';
 							// $mclists = $twpw_custommc_mcapi->call('/lists/interest-groupings', array('id'=>$settings[$level['id']]['mclistid']) );
 							if ( $debug == 'yes' ) {
