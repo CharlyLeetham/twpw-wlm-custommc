@@ -324,13 +324,13 @@ function twpwcustommclists() {
 				</tr>
 				
 				<tr>
-				<td colspan ="9"> Merge Values </td>
+				<td colspan ="9"> Merge Values: <?phpecho $settings[$level['id']]['mclistid'].'<br />';?> </td>
 				</tr>
 				<?php
-				echo $settings[$level['id']]['mclistid'].'<br />';
+
 				if ( $settings[$level['id']]['mclistid'] ) {
 					try {
-						$response1 = $twpw_custom_mc->lists->getListMergeFields('c580a5bbc9');
+						$response1 = $twpw_custommc_mcapi->lists->getListMergeFields('c580a5bbc9');
 						$listarr = array();
 						$listnum = 0;
 					} catch (Exception $e) {
