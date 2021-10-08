@@ -454,7 +454,7 @@ function twpwcustommclists() {
 		die();
 	}
 	
-	fuction acl_test_ajax() {
+	function acl_test_ajax() {
 		return 'Hellow World.';
 	}
 	add_action( 'wp_ajax_acl_test_ajax', 'acl_test_ajax' );
