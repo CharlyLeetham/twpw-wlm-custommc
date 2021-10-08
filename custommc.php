@@ -213,7 +213,7 @@ Version 2.02 - Rewrite to stop people being moved after being added. Approve wor
 						
 				if ( $debug ) {
 					$myarray = array(
-						'apikey' => $mcapikey,
+						'apikey' => $api_key,
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'merge_vars' => $merge_vars,
@@ -230,7 +230,7 @@ Version 2.02 - Rewrite to stop people being moved after being added. Approve wor
 				
 				if ( $live ) {
 					$result = $mailchimp->call( '/lists/subscribe', array(
-						'apikey' => $mcapikey,
+						'apikey' => $api_key,
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'merge_vars' => $merge_vars,
@@ -416,7 +416,7 @@ Version 2.02 - Rewrite to stop people being moved after being added. Approve wor
 						
 				if ( $debug ) {
 					$myarray = array(
-						'apikey' => $mcapikey,
+						'apikey' => $api_key,
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'delete_member' => $delete_member,
@@ -431,7 +431,7 @@ Version 2.02 - Rewrite to stop people being moved after being added. Approve wor
 				if ( $live ) {
 					
 					$result = $mailchimp->call( '/lists/unsubscribe', array(
-						'apikey' => $mcapikey,
+						'apikey' => $api_key,
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'delete_member' => $delete_member,
