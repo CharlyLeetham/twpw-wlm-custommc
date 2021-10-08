@@ -346,8 +346,17 @@ function twpwcustommclists() {
 						<tr class="twpwmergevals">
 							<?php 
 							foreach ( $mclists as $list1 ) {
+								if ( !$settings[$level['id']][$list1->tag] ) {
+									if ( $settings[$level['id']][$list1->tag] == 'FNAME' ) {
+										$tag = 'FirstName';
+									} elseif ( $settings[$level['id']][$list1->tag] == 'LNAME' ) {
+										$tag = 'LastName';
+									}
+								} else {
+									$tag = $settings[$level['id']][$list1->tag];
+								}
 							?>
-								<td ><?php echo $list1->name.' ('.$list1->tag.')'; ?></td><td><input type="text" size="10" name="twpw_custommc[<?php echo $level['id']; ?>][<?php echo $list1->tag; ?>]" value="<?php echo ' ';?>" /></td>
+								<td ><?php echo $list1->name.' ('.$list1->tag.')'; ?></td><td><input type="text" size="10" name="twpw_custommc[<?php echo $level['id']; ?>][<?php echo $list1->tag; ?>]" value="<?php if ( $tag ) { echo $tag; } ?>" /></td>
 							<?php 
 							}
 							?>
