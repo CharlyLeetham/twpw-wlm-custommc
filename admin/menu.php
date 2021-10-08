@@ -314,6 +314,7 @@ function twpwcustommclists() {
 		<input type="submit" name="submit" class="button-primary" value="<?php _e('Save Mailchimp Settings') ?>" />
 		</p>
 	</form>
+	
 	<script type="text/javascript">
 		(function($){
 			$("select.mclistid").change(function() {
@@ -431,26 +432,25 @@ function twpwcustommclists() {
 		}
 		
 	function twpw_get_interest_groups() {
-		twpw_custom_mc::twpw_custommc_createMCAPI();
-		global $twpw_custommc_mcapi;
-		try {
-			$mclists = $twpw_custommc_mcapi->call('/lists/interest-groupings',array('id'=>$_POST['mclistid']));
-		} catch (Exception $e) {
-			if($e->getCode() == 211) {
-				echo "<p>This list has no interest groups.</p>";
-			} 
-			die();
+		$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
+		if ( $debug == 'yes' ) {
+			$logger .= "MCGroups: ";
+			$logger .= var_export( $mclists, true );
+			$logger .= "\r\n";
 		}
+			
 		echo '<select multiple="multiple" name="twpw_custommc['.$_POST['levelid'].'][mcgroup][]" class="mclist">';
-		foreach ($mclists as $mclist) {
-			echo '<option disabled="disabled">** '.$mclist['name'].' **</option>';
-			foreach ($mclist['groups'] as $group) {				
-				$val = str_replace(',','\,',$group['name']);
-				$val = $mclist['id'].'::'.$val;
-				echo '<option value="'.$val.'">'.$group['name'].'</option>';
+			foreach ( $mclists as $mclist ) {
+				echo '<option disabled="disabled">** '.$mclist['name'].' **</option>';
+				foreach ( $mclist['groups'] as $group => $gvalue ) {
+					echo '<option value="'.$gvalue['id'].'" ';
+					if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
+						echo 'selected="selected" ';
+					echo '>'.$gvalue['name'].'</option>';
+				}
 			}
-		}
 		echo '</select>';
+		}		
 		die();
 	}
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
