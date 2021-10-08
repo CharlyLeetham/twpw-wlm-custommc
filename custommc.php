@@ -655,7 +655,7 @@ class twpw_custom_mc {
 		foreach ($mccats as $k) {
 			$catarr[$k->title]['id'] = $k->id;
 			$catarr[$k->title]['title'] = $k->title;
-			$interests = $mailchimp->lists->listInterestCategoryInterests( $listid, $k->id );
+			$interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
 			$ia = $interests->interests;
 			$intnum = 0;
 			foreach ( $ia as $v ) {
