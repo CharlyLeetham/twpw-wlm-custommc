@@ -324,9 +324,37 @@ function twpwcustommclists() {
 				</tr>
 				
 				<tr>
-				<td class="twpwmergevals" colspan ="9"> Merge Values </td>
+				<td colspan ="9"> Merge Values </td>
 				</tr>
-				<?php if ( $err_msg[$count] != '' ) { ?>
+				<?php
+				if ( $settings[$level['id']]['mclistid'] ) {
+					try {
+						$response1 = $mailchimp->lists->getListMergeFields($listid);
+						$listarr = array();
+						$listnum = 0;
+					} catch (Exception $e) {
+							echo '<pre>';
+							$exception = (string) $e->getResponse()->getBody();
+							$exception = json_decode($exception);
+						echo var_export( $exception ).'<br />';
+							echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
+							echo '</pre>';
+					} finally {
+						$mclists = $response1->merge_fields;				
+					?>
+						<tr class="twpwmergevals">
+							<?php 
+							foreach ( $mclists as $list1 ) {
+							?>
+								<td ><?echo $list1->name.' ('.$list1->tag.')'; ?></td><td><input type="text" size="10" name="twpw_custommc[<?php echo $level['id']; ?>][<?php echo $list1->tag; ?>]" value="<?php echo ' ';?>" /></td>
+							<?php 
+							}
+							?>
+						</tr>
+					<?php
+					}
+				}
+				if ( $err_msg[$count] != '' ) { ?>
 				<tr><td colspan="4" align="right"><span style="font-weight:bold; color:#FF0000;"><?php echo $err_msg[$count]; ?></span></td></tr>
 				<?php } ?>
 			<?php
