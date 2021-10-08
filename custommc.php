@@ -107,6 +107,10 @@ Version 2.02 - Rewrite to stop people being moved after being added. Approve wor
 		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
 		/* End logging setup */
 		
+		if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );			
+
+		$mailchimp = new Mailchimp( $api_key );		
+		
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.	
 
 		if ( $debug ) {
@@ -183,7 +187,6 @@ Version 2.02 - Rewrite to stop people being moved after being added. Approve wor
 				}
 				// Setup the array to send to Mailchimp
 				global $wpdb;
-				$mailchimp = new Mailchimp ( $api_key );
 				$merge_vars = array (
 									 'FNAME' => $firstname,
 									 'LNAME' => $lastname,
