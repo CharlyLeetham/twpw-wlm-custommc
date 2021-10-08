@@ -356,7 +356,7 @@ function twpwcustommclists() {
 									$tag = $settings[$level['id']][$list1->tag];
 								}
 							?>
-								<td ><?php echo $list1->name.' ('.$list1->tag.')'; ?></td><td><input type="text" size="10" name="twpw_custommc[<?php echo $level['id']; ?>][<?php echo $list1->tag; ?>]" value="<?php if ( $tag ) { echo $tag; } ?>" /></td>
+								<td ><?php echo $list1->name.' ('.$list1->tag.')'; ?></td><td><input type="text" size="10" name="twpw_custommc[<?php echo $level['id']; ?>][<?php echo $list1->tag; ?>]" value="<?php if ( $tag ) { echo $tag; } else { echo 'blank'; } ?>" /></td>
 							<?php 
 							}
 							?>
