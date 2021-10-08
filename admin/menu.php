@@ -445,7 +445,7 @@ function twpwcustommclists() {
 				'server' => $dc
 		]);			
         $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
-		return 'Here';
+		return ('Here');
 		die();
         $mccats = $response1->categories;
         $catarr = array();
