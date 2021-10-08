@@ -126,12 +126,11 @@ if ( $_GET['lists'] ) {
 
 if ( $_GET['mergevals'] ) {
 	try {
-		$response1 = $mailchimp->lists->getAllLists();
+		$response1 = $mailchimp->lists/$listid/merge-fields;
 		$listarr = array();
 		$listnum = 0;
 		echo '<pre>';
-		$mclists = $response1->lists/$listid/merge-fields;
-		echo var_export( $mclists, true ).'<br />';
+		echo var_export( $response1, true ).'<br />';
 		// foreach ( $mclists as $list1 ) {
 			// echo 'List 1: '.$list1->id.'<br />';
 			// if ( $list1->id == $listid ){
