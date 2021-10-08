@@ -239,7 +239,7 @@ function twpwcustommclists() {
 								$logger .= "\r\n";
 							}
 							
-							echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
+							echo '<select2 multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
 								foreach ( $mclists as $mclist ) {
 									echo '<option disabled="disabled">** '.$mclist['name'].' **</option>';
 									foreach ( $mclist['groups'] as $group => $gvalue ) {
@@ -249,7 +249,7 @@ function twpwcustommclists() {
 										echo '>'.$gvalue['name'].'</option>';
 									}
 								}
-							echo '</select>';
+							echo '</select2>';
 						}
 						?>
 					</td>
