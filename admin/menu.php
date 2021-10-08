@@ -434,6 +434,8 @@ function twpwcustommclists() {
 	function twpw_get_interest_groups() {
 		$listid =  $_POST['mclistid'];
         $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
+		return 'Here';
+		die();
         $mccats = $response1->categories;
         $catarr = array();
         $intarr = array();
