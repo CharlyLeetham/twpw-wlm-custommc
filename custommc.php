@@ -652,24 +652,20 @@ class twpw_custom_mc {
         $intarr = array();
         $catnum = 0;
 
-        foreach ($mccats as $k) {
-                $catarr[$catnum]['id'] = $k->id;
-                $catarr[$catnum]['title'] = $k->title;
-                $catnum++;
-        }
-
-        $intnum = 0;
-        foreach ( $catarr as $cat1 ) {
-                $interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $cat1['id'] );
-                $ia = $interests->interests;
-                foreach ( $ia as $v ) {
-                        $intarr[$intnum]['title'] = $v->name;
-                        $intarr[$intnum]['id'] = $v->id;
-                        $intarr[$intnum]['catid'] = $v->category_id;
-                        $intnum++;
-                }
-        }
-		return $intarr;
+		foreach ($mccats as $k) {
+			$catarr[$k->title]['id'] = $k->id;
+			$catarr[$k->title]['title'] = $k->title;
+			$interests = $mailchimp->lists->listInterestCategoryInterests( $listid, $k->id );
+			$ia = $interests->interests;
+			$intnum = 0;
+			foreach ( $ia as $v ) {
+				$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
+				$catarr[$k->title]['groups'][$intnum]['id'] = $v->id;
+				$catarr[$k->title]['groups'][$intnum]['catid'] = $v->category_id;
+				$intnum++;
+			}
+		}
+		return $catarr;
 	}
 		
 	function twpw_custommc_createMCAPI() {
