@@ -164,7 +164,7 @@ function twpwcustommclists() {
 		update_option('twpw_custommc', $newsettings);
 	}
 
-	twpw_custom_mc::twpw_custommc_createMCAPI();  // initialise the Mailchimp api
+	// twpw_custom_mc::twpw_custommc_createMCAPI();  // initialise the Mailchimp api
 	
 	if( $error_occured ){
 		echo '<div align="center" style="font-weight: bold; font-size: 16px; color: #FF0000; margin-bottom: 10px;">Your changes have not been saved. Please scroll down to see the error message(s).</div>';
