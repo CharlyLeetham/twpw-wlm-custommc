@@ -22,6 +22,8 @@ Version 2.03 - Adding a class
 
 class twpw_custom_mc {
 	
+	public $acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm/custommc';			
+	
 	function twpw_custom_mc_activate() {
 		/* WP Version Check */
 		global $wp_version;
@@ -37,8 +39,6 @@ class twpw_custom_mc {
 		if ( is_admin() ) {
 			require_once(dirname(__FILE__) . '/admin/menu.php');
 		}
-
-		public $acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm/custommc';		
 	}
 
 	/*	--------------------------------------------------
