@@ -330,7 +330,7 @@ function twpwcustommclists() {
 				echo $settings[$level['id']]['mclistid'].'<br />';
 				if ( $settings[$level['id']]['mclistid'] ) {
 					try {
-						$response1 = $twpw_custom_mc->lists->getListMergeFields( $settings[$level['id']]['mclistid'] );
+						$response1 = $twpw_custom_mc->lists->getListMergeFields('c580a5bbc9');
 						$listarr = array();
 						$listnum = 0;
 					} catch (Exception $e) {
