@@ -434,8 +434,8 @@ function twpwcustommclists() {
 		
 	function twpw_get_interest_groups() {
 		echo $_POST['mclistid'].' - ';
-		// $mclists = twpw_custom_mc::acl_get_interest_groups( $_POST['mclistid'] );
-		// echo $mclists;
+		$mclists = twpw_custom_mc::acl_get_interest_groups( $_POST['mclistid'] );
+		echo $mclists;
 		die();
 		if ( $debug == 'yes' ) {
 			$logger .= "MCGroups: ";
