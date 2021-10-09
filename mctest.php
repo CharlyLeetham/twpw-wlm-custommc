@@ -103,11 +103,11 @@ if ( $_GET['lists'] ) {
 		$listnum = 0;
 		echo '<pre>';
 		$mclists = $response1->lists;
-		// echo var_export( $mclists, true ).'<br />';;
+		echo var_export( $mclists, true ).'<br />';;
 		foreach ( $mclists as $list1 ) {
 			// echo 'List 1: '.$list1->id.'<br />';
 			// echo var_export( $list1, true ).'<br />';
-			echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
+			// echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 			// echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
 		}		
