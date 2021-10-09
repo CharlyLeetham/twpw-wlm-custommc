@@ -350,6 +350,7 @@ function twpwcustommclists() {
 							<?php 
 							foreach ( $mclists as $list1 ) {
 								if ( $settings[$level['id']][$list1->tag] === NULL ) {
+									echo 'here';
 									if ( $settings[$level['id']][$list1->tag] == 'FNAME' ) {
 										$tag = 'FirstName';
 									} elseif ( $settings[$level['id']][$list1->tag] == 'LNAME' ) {
