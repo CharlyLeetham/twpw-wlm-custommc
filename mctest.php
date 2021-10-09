@@ -155,7 +155,7 @@ if ( $_GET['mergevals'] ) {
 
 if ( $_GET['tags'] ) {
 	try {
-		$response1 = $mailchimp->lists->tagSearch( if ($_GET['listid'] { echo $_GET['listid']; } );
+		$response1 = $mailchimp->lists->tagSearch($listid);
 		$listarr = array();
 		$listnum = 0;
 		echo '<pre>';
