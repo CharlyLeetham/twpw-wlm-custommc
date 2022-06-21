@@ -32,20 +32,20 @@ $mailchimp->setConfig([
 	'server' => $dc
 ]);
 
-//try {
-	//$response = $mailchimp->ping->get();
-	//echo var_export( $response, true);
+try {
+	$response = $mailchimp->ping->get();
+	echo var_export( $response, true);
 
-//} catch (Exception $e) {
-//	echo '<pre>';
-//	$exception = (string) $e->getResponse()->getBody();
-//        $exception = json_decode($exception);
-//	echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
-//	echo '</pre>';
-//} finally {
-	//echo 'More code here';
-//}
-
+ catch (Exception $e) {
+	echo '<pre>';
+	$exception = (string) $e->getResponse()->getBody();
+        $exception = json_decode($exception);
+	echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
+	echo '</pre>';
+} finally {
+	echo 'More code here';
+}
+/*
 $subemailhash = md5('helpdesk+test113@askcharlyleetham.com');
 
 if ( $_GET['interests'] ) {
@@ -94,7 +94,7 @@ if ( $_GET['interests'] ) {
 	} finally {
 		echo 'Here.';
 	}
-} 
+}
 
 if ( $_GET['lists'] ) {
 	try {
@@ -110,7 +110,7 @@ if ( $_GET['lists'] ) {
 			// echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 			// echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
-		}		
+		}
 		echo '</pre>';
 	} catch (Exception $e) {
         	echo '<pre>';
@@ -122,7 +122,7 @@ if ( $_GET['lists'] ) {
 	} finally {
 
 	}
-} 
+}
 
 if ( $_GET['mergevals'] ) {
 	try {
@@ -139,7 +139,7 @@ if ( $_GET['mergevals'] ) {
 				// echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 			// echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
-		}		
+		}
 		echo '</pre>';
 	} catch (Exception $e) {
         	echo '<pre>';
@@ -151,7 +151,7 @@ if ( $_GET['mergevals'] ) {
 	} finally {
 
 	}
-} 
+}
 
 if ( $_GET['tags'] ) {
 	try {
@@ -168,7 +168,7 @@ if ( $_GET['tags'] ) {
 			echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 			// echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
-		}		
+		}
 		echo '</pre>';
 	} catch (Exception $e) {
         	echo '<pre>';
@@ -180,6 +180,6 @@ if ( $_GET['tags'] ) {
 	} finally {
 
 	}
-} 
-
+}
+*/
 ?>
