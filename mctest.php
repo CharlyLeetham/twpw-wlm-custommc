@@ -32,6 +32,8 @@ $mailchimp->setConfig([
 	'server' => $dc
 ]);
 
+$response = $mailchimp->ping->get();
+var_dump ($response);
 try {
 	$response = $mailchimp->ping->get();
 	echo 'code ran';
