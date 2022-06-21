@@ -36,7 +36,7 @@ try {
 	$response = $mailchimp->ping->get();
 	echo 'code ran';
 	echo var_export( $response, true);
-	var_dump ($response);
+	echo '<br />';
 } catch (Exception $e) {
 	echo '<pre>';
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
