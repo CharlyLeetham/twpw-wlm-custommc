@@ -47,7 +47,7 @@ try {
 } finally {
 	echo 'More code here';
 }
-/*
+
 $subemailhash = md5('helpdesk+test113@askcharlyleetham.com');
 
 if ( $_GET['interests'] ) {
@@ -183,5 +183,5 @@ if ( $_GET['tags'] ) {
 
 	}
 }
-*/
+
 ?>
