@@ -32,8 +32,6 @@ $mailchimp->setConfig([
 	'server' => $dc
 ]);
 
-$response = $mailchimp->ping->get();
-var_dump ($response);
 try {
 	$response = $mailchimp->ping->get();
 	echo 'code ran';
@@ -41,8 +39,9 @@ try {
 	var_dump ($response);
 } catch (Exception $e) {
 	echo '<pre>';
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
 	$exception = (string) $e->getResponse()->getBody();
-        $exception = json_decode($exception);
+  $exception = json_decode($exception);
 	echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
 	echo '</pre>';
 } finally {
