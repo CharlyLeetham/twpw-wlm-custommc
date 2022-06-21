@@ -9,6 +9,7 @@
 // interests=yes
 // lists=yes
 // mergevals=yes
+// tags=yes
 
 
 $mcapikey = $_GET['apikey'];

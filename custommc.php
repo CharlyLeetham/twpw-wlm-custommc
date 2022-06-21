@@ -684,6 +684,9 @@ class twpw_custom_mc {
 				'apiKey' => $api_key,
 				'server' => $dc
 		]);
+
+			$response = $mailchimp->ping->get();
+			die();
 	}
 
 }
