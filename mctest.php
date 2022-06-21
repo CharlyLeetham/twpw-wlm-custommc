@@ -34,6 +34,7 @@ $mailchimp->setConfig([
 
 try {
 	$response = $mailchimp->ping->get();
+	echo 'code ran';
 	echo var_export( $response, true);
 	var_dump ($response);
 } catch (Exception $e) {
