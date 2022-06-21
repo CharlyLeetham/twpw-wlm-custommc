@@ -36,7 +36,7 @@ try {
 	$response = $mailchimp->ping->get();
 	echo var_export( $response, true);
 
- catch (Exception $e) {
+} catch (Exception $e) {
 	echo '<pre>';
 	$exception = (string) $e->getResponse()->getBody();
         $exception = json_decode($exception);
