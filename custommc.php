@@ -633,7 +633,7 @@ class twpw_custom_mc {
 
 			$mailchimp = twpw_custom_mc::twpw_custommc_createMCAPI();
 			$response1 = $mailchimp->ping->get();
-			var_dump ( $response1 );
+			var_dump ( $mailchimp );
 			die();
 			$list_info= $mailchimp->lists->getAllLists();
 			$alllists = $list_info->lists;
@@ -689,7 +689,8 @@ class twpw_custom_mc {
 				'server' => $dc
 		]);
 
-		return $twpw_custommc_mcapi;
+		//return $twpw_custommc_mcapi;
+		return 'hello word';
 
 	}
 
