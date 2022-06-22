@@ -632,7 +632,8 @@ class twpw_custom_mc {
 		if (($api_key <> "")) {
 
 			$mailchimp = twpw_custom_mc::twpw_custommc_createMCAPI();
-			var_dump ( $mailchimp );
+			$response1 = $mailchimp->ping->get();
+			var_dump ( $response1 );
 			die();
 			$list_info= $mailchimp->lists->getAllLists();
 			$alllists = $list_info->lists;
