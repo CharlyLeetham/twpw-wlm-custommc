@@ -231,6 +231,7 @@ function twpwcustommclists() {
 
 					<!-- List all Mailchimp Lists -->
 					<td><?php
+					echo twpw_custom_mc::twpw_custommc_createMCAPI();
 					echo twpw_custom_mc::get_mailchimp_lists( $settings[$level['id']]['mclistid'],$level['id'] )
 					?></td>
 
