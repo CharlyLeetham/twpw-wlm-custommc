@@ -631,7 +631,7 @@ class twpw_custom_mc {
 		$api_key = $settings['mcapikey'];
 		if (($api_key <> "")) {
 
-			$mailchimp = $twpw_custom_mc->twpw_custommc_createMCAPI();
+			$mailchimp = twpw_custom_mc::twpw_custommc_createMCAPI();
 			$list_info= $mailchimp->lists->getAllLists();
 			$alllists = $list_info->lists;
 			$mailchimplists = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mclistid]">
