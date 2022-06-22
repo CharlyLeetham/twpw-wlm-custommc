@@ -624,14 +624,14 @@ class twpw_custom_mc {
 	}
 
 
-	function get_mailchimp_lists($mclistid,$wlmlevelid) {
+	public function get_mailchimp_lists($mclistid,$wlmlevelid) {
 		//Setup the mailchimp api
 		//global $twpw_custommc_mcapi;
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		if (($api_key <> "")) {
 
-			$mailchimp = twpw_custom_mc::twpw_custommc_createMCAPI();
+			$mailchimp = $this->twpw_custommc_createMCAPI();
 			//$response1 = $mailchimp->ping->get();
 			var_dump ( $mailchimp );
 			die();
@@ -675,7 +675,7 @@ class twpw_custom_mc {
 		return $catarr;
 	}
 
-	function twpw_custommc_createMCAPI() {
+	public function twpw_custommc_createMCAPI() {
 		global $twpw_custommc_mcapi;
 		$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
 		if (isset($twpw_custommc_mcapi)) return;
