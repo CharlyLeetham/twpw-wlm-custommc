@@ -231,9 +231,7 @@ function twpwcustommclists() {
 
 					<!-- List all Mailchimp Lists -->
 					<td><?php
-					//echo twpw_custom_mc::get_mailchimp_lists( $settings[$level['id']]['mclistid'],$level['id'] )
-					$response1 = $mailchimp->lists->getAllLists();
-					
+					echo $twpw_custom_mc->get_mailchimp_lists( $settings[$level['id']]['mclistid'],$level['id'] )
 					?></td>
 
 					<!-- List groups for Mailchimp List selected -->

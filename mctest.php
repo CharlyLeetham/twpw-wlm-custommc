@@ -111,9 +111,6 @@ if ( $_GET['lists'] ) {
 			echo 'List 1: '.$list1->id.'<br />';
 			//echo var_export( $list1, true ).'<br />';
 			echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
-
-			//echo 'ID: '.$list1[0]['id'].'<br />';
-			echo 'name: '.$list1->name.'<br />';
 		}
 		echo '</pre>';
 	} catch (Exception $e) {
