@@ -685,7 +685,8 @@ class twpw_custom_mc {
 				'server' => $dc
 		]);
 
-			$response = $mailchimp->ping->get();
+		return $twpw_custommc_mcapi;
+
 	}
 
 }
