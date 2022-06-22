@@ -626,17 +626,12 @@ class twpw_custom_mc {
 
 	public function get_mailchimp_lists($mclistid,$wlmlevelid) {
 		//Setup the mailchimp api
-		//global $twpw_custommc_mcapi;
-		return 'lllllll';
+		global $twpw_custommc_mcapi;
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		if (($api_key <> "")) {
 
-			$mailchimp = twpw_custom_mc::twpw_custommc_createMCAPI();
-			//$response1 = $mailchimp->ping->get();
-			var_dump ( $mailchimp );
-			die();
-			$list_info= $mailchimp->lists->getAllLists();
+			$list_info= $twpw_custommc_mcapi->lists->getAllLists();
 			$alllists = $list_info->lists;
 			$mailchimplists = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mclistid]">
 							<option value="0">No list</option>';
@@ -689,9 +684,6 @@ class twpw_custom_mc {
 				'apiKey' => $api_key,
 				'server' => $dc
 		]);
-
-		//return $twpw_custommc_mcapi;
-		return 'hello word';
 
 	}
 
