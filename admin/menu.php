@@ -187,7 +187,7 @@ function twpwcustommclists() {
 			}
 	}
 
-	//twpw_custom_mc::twpw_custommc_createMCAPI();  // initialise the Mailchimp api
+	twpw_custom_mc::twpw_custommc_createMCAPI();  // initialise the Mailchimp api
 
 	if( $error_occured ){
 		echo '<div align="center" style="font-weight: bold; font-size: 16px; color: #FF0000; margin-bottom: 10px;">Your changes have not been saved. Please scroll down to see the error message(s).</div>';
@@ -230,7 +230,11 @@ function twpwcustommclists() {
 					<?php echo'<td>' . $level['name'] . '</td>'; ?>
 
 					<!-- List all Mailchimp Lists -->
-					<td><?php echo twpw_custom_mc::get_mailchimp_lists( $settings[$level['id']]['mclistid'],$level['id'] ) ?></td>
+					<td><?php
+					//echo twpw_custom_mc::get_mailchimp_lists( $settings[$level['id']]['mclistid'],$level['id'] )
+					$response1 = $mailchimp->lists->getAllLists();
+					var_dump($response1);
+					?></td>
 
 					<!-- List groups for Mailchimp List selected -->
 					<td class="grouplisting" levelid="<?php echo $level['id']; ?>">

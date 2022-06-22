@@ -686,8 +686,6 @@ class twpw_custom_mc {
 		]);
 
 			$response = $mailchimp->ping->get();
-			var_dump ($response);
-			die();
 	}
 
 }
