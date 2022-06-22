@@ -627,6 +627,7 @@ class twpw_custom_mc {
 	public function get_mailchimp_lists($mclistid,$wlmlevelid) {
 		//Setup the mailchimp api
 		//global $twpw_custommc_mcapi;
+		return 'lllllll';
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		if (($api_key <> "")) {
