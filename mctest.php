@@ -112,7 +112,7 @@ if ( $_GET['lists'] ) {
 			//echo var_export( $list1, true ).'<br />';
 			echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 
-			echo 'ID: '.$list1[0]['id'].'<br />';
+			//echo 'ID: '.$list1[0]['id'].'<br />';
 			echo 'name: '.$list1->name.'<br />';
 		}
 		echo '</pre>';
@@ -120,7 +120,7 @@ if ( $_GET['lists'] ) {
         	echo '<pre>';
 	        $exception = (string) $e->getResponse()->getBody();
         	$exception = json_decode($exception);
-		echo var_export( $exception ).'<br />';
+					echo var_export( $exception ).'<br />';
         	echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
         	echo '</pre>';
 	} finally {
