@@ -672,7 +672,7 @@ class twpw_custom_mc {
 		return $catarr;
 	}
 
-	function twpw_custommc_createMCAPI() {
+	function static twpw_custommc_createMCAPI() {
 		global $twpw_custommc_mcapi;
 		$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
 		if (isset($twpw_custommc_mcapi)) return;
