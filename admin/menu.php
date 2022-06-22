@@ -277,6 +277,9 @@ function twpwcustommclists() {
 						}
 						?>
 					</td>
+
+					<td>Display tags
+					</td>
 <?php
 $display = false;
 if ( $display ) { ?>
