@@ -205,12 +205,13 @@ function twpwcustommclists() {
 				<td><strong>Membership Level</strong></td>
 				<td><strong>Mailchimp List</strong></td>
 				<td><strong>Interest Group</strong></td>
-				<td><strong>Update Join Date?</strong></td>
-				<td><strong>Disable Double Optin?</strong></td>
-				<td><strong>Send Welcome Email</strong></td>
-				<td><strong>Unsubscribe on remove?</strong></td>
-				<td><strong>Send Goodbye message?</strong></td>
-				<td><strong>Notify List Owner?</strong></td>
+				<td><strong>Tags</strong></td>
+				<!-- <td><strong>Update Join Date?</strong></td> -->
+				<!-- <td><strong>Disable Double Optin?</strong></td>  -->
+				<!-- <td><strong>Send Welcome Email</strong></td> -->
+				<!-- <td><strong>Unsubscribe on remove?</strong></td> -->
+				<!-- <td><strong>Send Goodbye message?</strong></td> -->
+				<!-- <td><strong>Notify List Owner?</strong></td> -->
 			</tr>
 
 			<?php
@@ -231,7 +232,7 @@ function twpwcustommclists() {
 
 					<!-- List all Mailchimp Lists -->
 					<td><?php
-					echo twpw_custom_mc::twpw_custommc_createMCAPI();
+					//echo twpw_custom_mc::twpw_custommc_createMCAPI();
 					echo twpw_custom_mc::get_mailchimp_lists( $settings[$level['id']]['mclistid'],$level['id'] )
 					?></td>
 
@@ -276,7 +277,9 @@ function twpwcustommclists() {
 						}
 						?>
 					</td>
-
+<?php
+$display = false;
+if ( $display ) { ?>
 					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][update_join_date]" value="yes"
 						<?php
 							if ( $settings[$level['id']]['update_join_date'] == 'yes' ) {
@@ -323,7 +326,7 @@ function twpwcustommclists() {
 							}
 						?>
 					/></td>
-
+<?php } ?>
 				</tr>
 
 				<tr>
