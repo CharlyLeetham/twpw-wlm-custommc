@@ -278,7 +278,7 @@ function twpwcustommclists() {
 						?>
 					</td>
 
-					<!-- List all Mailchimp Lists -->
+					<!-- List all Mailchimp Tags -->
 					<td class="taglisting" levelid="<?php echo $level['id']; ?>"><?php
 
 					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
@@ -586,17 +586,20 @@ if ( $display ) { ?>
 
 		if ( !empty( $listid ) ) {
 			global $twpw_custommc_mcapi;
+			$settings = get_option("twpw_custommc");
 			$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 			$mclists = $response1->tags;
-			$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mctag]">';
+			$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$_POST['levelid'].'][mctag]">';
 			foreach ( $mclists as $list1 ) {
 				$mailchimptags.='<option value="'.$list1->id.'"';
-				if ($list1->id == $mclistid) {
-					$mailchimplists.=' selected="yes" ';
+				if( in_array( $list1->id, $settings[$_POST['levelid']]['mctag'] ) ) {
+					$mailchimptags.=' selected="yes" ';
 				}
 				$mailchimptags.='>'.$list1->name.'</option>';
 			}
 			$mailchimptags .= '</select>';
+
+			/** to be removed eventually */
 			$display = false;
 			if ( $display ) {
 				$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
@@ -642,6 +645,8 @@ if ( $display ) { ?>
 					}
 				echo '</select>';
 			}
+
+			/** to here **/
 		} else {
 			echo '';
 		}
@@ -649,6 +654,6 @@ if ( $display ) { ?>
 	}
 
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
-	//add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
+	add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
 
 ?>
