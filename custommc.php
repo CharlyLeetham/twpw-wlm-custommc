@@ -649,6 +649,8 @@ class twpw_custom_mc {
 					if ( $debug ){
 						$mailchimplists = 'An error has occurred: '.$exception->title.' - '.$exception->detail.'<br />';
 					}
+			} finally {
+				return $mailchimplists;
 			}
 		} else {
 			$mailchimplists.= 'Please enter your mailchimp API before continuing<br>';
