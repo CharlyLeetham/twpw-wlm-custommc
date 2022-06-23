@@ -682,12 +682,14 @@ class twpw_custom_mc {
 
 	public function acl_get_tags( $listid, $levelid, $ajax=null ) {
 		global $twpw_custommc_mcapi;
+		$settings = get_option("twpw_custommc");
 		$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 		$mclists = $response1->tags;
-		$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$levelid.'][mctag]">';
+		$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$levelid.'][mctag][]">';
 		foreach ( $mclists as $list1 ) {
 			$mailchimptags.='<option value="'.$list1->id.'"';
-			if ($list1->id == $listid) {
+			/*if ($list1->id == $listid) {*/
+			if ( in_array( $list1->id ), $settings[$levelid['id']]['mctag'] ) {
 				$mailchimplists.=' selected="yes" ';
 			}
 			$mailchimptags.='>'.$list1->name.'</option>';
@@ -695,6 +697,21 @@ class twpw_custom_mc {
 		$mailchimptags .= '</select>';
 		return $mailchimptags;
 	}
+
+/*  Pasting for comparison
+	echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
+		foreach ( $mclists as $mclist ) {
+			echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
+			foreach ( $mclist['groups'] as $group => $gvalue ) {
+				echo '<option value="'.$gvalue['id'].'" ';
+				if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
+					echo 'selected="selected" ';
+				echo '>'.$gvalue['name'].'</option>';
+			}
+		}
+	echo '</select>';
+
+	/*
 
 	public function twpw_custommc_createMCAPI() {
 		global $twpw_custommc_mcapi;
