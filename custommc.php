@@ -683,19 +683,14 @@ class twpw_custom_mc {
 	public function acl_get_tags( $listid, $levelid, $ajax=null ) {
 		global $twpw_custommc_mcapi;
 		$settings = get_option("twpw_custommc");
-	/*	echo '<pre>';
-		var_dump ( $settings[$levelid]['mctag'] );
-		echo '</pre>';*/
 		$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 		$mclists = $response1->tags;
 		$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$levelid.'][mctag][]">';
+		var_dump( $settings[$levelid]['mctag'] );
 		foreach ( $mclists as $list1 ) {
 			$mailchimptags.='<option value="'.$list1->id.'"';
-			var_dump( $settings[$levelid]['mctag'] );
-			/*var_dump( $settings[$levelid]['mcgroup'] );*/
-			/* if ($list1->id == $listid) { */
 			if( in_array( $list1->id, $settings[$levelid]['mctag'] ) ) {
-				$mailchimplists.=' selected="yes" ';
+				$mailchimplists.=' selected="selected" ';
 			}
 			$mailchimptags.='>'.$list1->name.'</option>';
 		}
