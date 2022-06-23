@@ -264,19 +264,17 @@ function twpwcustommclists() {
 								}
 
 								$display = false;
-								if ( $display ) {
-									echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
-										foreach ( $mclists as $mclist ) {
-											echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
-											foreach ( $mclist['groups'] as $group => $gvalue ) {
-												echo '<option value="'.$gvalue['id'].'" ';
-												if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
-													echo 'selected="selected" ';
-												echo '>'.$gvalue['name'].'</option>';
-											}
+								echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
+									foreach ( $mclists as $mclist ) {
+										echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
+										foreach ( $mclist['groups'] as $group => $gvalue ) {
+											echo '<option value="'.$gvalue['id'].'" ';
+											if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
+												echo 'selected="selected" ';
+											echo '>'.$gvalue['name'].'</option>';
 										}
-									echo '</select>';
-								}
+									}
+								echo '</select>';
 							}
 						}
 						?>
@@ -285,15 +283,12 @@ function twpwcustommclists() {
 					<!-- List all Mailchimp Lists -->
 					<td class="taglisting"><?php
 
-					$display = false;
-					if ( $display ) {
-						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-							$settings[$level['id']]['mctags'] ='';
-						}
+					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
+						$settings[$level['id']]['mctags'] ='';
+					}
 
-						if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
-							echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
-						}
+					if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
+						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
 					}
 					?></td>
 <?php
