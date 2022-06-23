@@ -549,7 +549,7 @@ class twpw_custom_mc {
 							// $exception = json_decode($exception);
 							if ( $debug ){
 								// echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
-								echo 'An error has occurred: ';
+								echo 'An error has occurred---: ';
 								var_export ( $e, true). "\r\n\r\n";
 							}
 						}
