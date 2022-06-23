@@ -422,6 +422,7 @@ if ( $display ) { ?>
 					levelid: groupobject.attr('levelid')
 				},
 				function(msg) {
+					console.log ('here');
 					msg = msg.trim();
 					groupobject.html(msg);
 					<?php
