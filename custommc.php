@@ -711,6 +711,8 @@ class twpw_custom_mc {
 		}
 	echo '</select>';
 
+	*/
+
 	/*
 
 	public function twpw_custommc_createMCAPI() {
