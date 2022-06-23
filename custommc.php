@@ -685,7 +685,7 @@ class twpw_custom_mc {
 		$settings = get_option("twpw_custommc");
 		echo '<pre>';
 		var_dump ($settings[$levelid]);
-		echo '</pre>'
+		echo '</pre>';
 		return;
 		$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 		$mclists = $response1->tags;
