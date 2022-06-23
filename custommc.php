@@ -673,7 +673,7 @@ class twpw_custom_mc {
 
 	public function acl_get_tags( $listid, $ajax=null ) {
 		global $twpw_custommc_mcapi;
-		$response1 = $mailchimp->lists->tagSearch($listid);
+		$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 		$mclists = $response1->tags;
 		$mailchimptags = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mctag]">
 						<option value="0">No tags</option>';
