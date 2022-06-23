@@ -278,8 +278,11 @@ function twpwcustommclists() {
 						?>
 					</td>
 
-					<td>Display tags
-					</td>
+					<!-- List all Mailchimp Lists -->
+					<td><?php
+					//echo twpw_custom_mc::twpw_custommc_createMCAPI();
+					echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] )
+					?></td>
 <?php
 $display = false;
 if ( $display ) { ?>

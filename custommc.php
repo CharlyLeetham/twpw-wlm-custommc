@@ -671,6 +671,21 @@ class twpw_custom_mc {
 		return $catarr;
 	}
 
+	public function acl_get_tags( $listid, $ajax=null ) {
+		global $twpw_custommc_mcapi;
+		$response1 = $mailchimp->lists->tagSearch($listid);
+		$mclists = $response1->tags;
+		$mailchimptags = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mctag]">
+						<option value="0">No tags</option>';
+						foreach ($mclists as $list1) {
+							$mailchimplists.='<option value="'.$list1->id.'"';
+								if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
+							$mailchimplists.='>'.$list1->name.'</option>';
+						}
+		$mailchimplists .= '</select>';
+		return $mailchimplists;
+	}
+
 	public function twpw_custommc_createMCAPI() {
 		global $twpw_custommc_mcapi;
 		$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
