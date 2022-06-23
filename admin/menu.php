@@ -232,7 +232,6 @@ function twpwcustommclists() {
 
 					<!-- List all Mailchimp Lists -->
 					<td><?php
-					//echo twpw_custom_mc::twpw_custommc_createMCAPI();
 					echo twpw_custom_mc::get_mailchimp_lists( $settings[$level['id']]['mclistid'],$level['id'] )
 					?></td>
 
@@ -279,8 +278,7 @@ function twpwcustommclists() {
 					</td>
 
 					<!-- List all Mailchimp Lists -->
-					<td><?php
-					//echo twpw_custom_mc::twpw_custommc_createMCAPI();
+					<td class="taglisting"><?php
 					echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] )
 					?></td>
 <?php
@@ -386,7 +384,7 @@ if ( $display ) { ?>
 	</form>
 
 	<script type="text/javascript">
-		(function($){
+		( function($) {
 			$("select.mclistid").change(function() {
 				var groupobject=$(this).parent().next("td.grouplisting");
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
@@ -402,7 +400,27 @@ if ( $display ) { ?>
 						} ?>
 				});
 			});
-		})(jQuery);
+		})( jQuery );
+	</script>
+
+	<script type="text/javascript">
+		( function($) {
+			$("select.mclistid").change(function() {
+				var groupobject=$(this).parent().next("td.taglisting");
+				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
+					action:"twpw_custommc_tag",
+					mclistid: $(this).val(),
+					levelid: groupobject.attr('levelid')
+				},
+				function(msg) {
+					msg = msg.trim();
+					groupobject.html(msg);
+					<?php if ( $debug == 'yes' ) {
+							echo "console.log(msg);";
+						} ?>
+				});
+			});
+		})( jQuery );
 	</script>
 	<?php
 
@@ -553,6 +571,8 @@ if ( $display ) { ?>
 		}
 		wp_die();
 	}
+
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
+	add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
 
 ?>

@@ -648,12 +648,12 @@ class twpw_custom_mc {
 	}
 
 	public function acl_get_interest_groups( $listid, $ajax=null ) {
-		global $twpw_custommc_mcapi;
-        $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
-        $mccats = $response1->categories;
-        $catarr = array();
-        $intarr = array();
-        $catnum = 0;
+			global $twpw_custommc_mcapi;
+      $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
+      $mccats = $response1->categories;
+      $catarr = array();
+      $intarr = array();
+      $catnum = 0;
 
 		foreach ($mccats as $k) {
 			$catarr[$k->title]['id'] = $k->id;
@@ -676,11 +676,13 @@ class twpw_custom_mc {
 		$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 		$mclists = $response1->tags;
 		$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mctag]">';
-						foreach ($mclists as $list1) {
-							$mailchimptags.='<option value="'.$list1->id.'"';
-								if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
-							$mailchimptags.='>'.$list1->name.'</option>';
-						}
+		foreach ( $mclists as $list1 ) {
+			$mailchimptags.='<option value="'.$list1->id.'"';
+			if ($list1->id == $mclistid) {
+				$mailchimplists.=' selected="yes" ';
+			}
+			$mailchimptags.='>'.$list1->name.'</option>';
+		}
 		$mailchimptags .= '</select>';
 		return $mailchimptags;
 	}
