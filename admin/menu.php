@@ -281,7 +281,7 @@ function twpwcustommclists() {
 					</td>
 
 					<!-- List all Mailchimp Lists -->
-					<td class="taglisting"><?php
+					<td class="taglisting" levelid="<?php echo $level['id']; ?>"><?php
 
 					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
 						$settings[$level['id']]['mctags'] ='';
