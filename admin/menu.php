@@ -284,7 +284,7 @@ function twpwcustommclists() {
 						$settings[$level['id']]['mctags'] ='';
 					}
 
-					if ( !empty( $settings[$level['id']]['mctags'] ) && !empty( $settings[$level['id']]['mclistid'] ) ) {
+					if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
 						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
 					}
 					?></td>
