@@ -262,6 +262,7 @@ function twpwcustommclists() {
 								$logger .= "\r\n";
 							}
 
+							var_dump($mclists);
 							echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
 								foreach ( $mclists as $mclist ) {
 									echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
