@@ -279,7 +279,14 @@ function twpwcustommclists() {
 
 					<!-- List all Mailchimp Lists -->
 					<td class="taglisting"><?php
-					echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] )
+
+					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
+						$settings[$level['id']]['mcgroup'] ='';
+					}
+
+					if ( !empty( $settings[$level['id']]['mctags'] ) ) {
+						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
+					}
 					?></td>
 <?php
 $display = false;
