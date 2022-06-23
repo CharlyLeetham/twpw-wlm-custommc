@@ -675,8 +675,8 @@ class twpw_custom_mc {
 		global $twpw_custommc_mcapi;
 		$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 		$mclists = $response1->tags;
-		$mailchimptags = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mctag]">
-						<option value="0">No tags</option>';
+		$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mctag]">
+						<option value="0">Select tags</option>';
 						foreach ($mclists as $list1) {
 							$mailchimptags.='<option value="'.$list1->id.'"';
 								if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
