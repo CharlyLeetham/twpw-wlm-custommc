@@ -678,12 +678,12 @@ class twpw_custom_mc {
 		$mailchimptags = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mctag]">
 						<option value="0">No tags</option>';
 						foreach ($mclists as $list1) {
-							$mailchimplists.='<option value="'.$list1->id.'"';
+							$mailchimptags.='<option value="'.$list1->id.'"';
 								if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
-							$mailchimplists.='>'.$list1->name.'</option>';
+							$mailchimptags.='>'.$list1->name.'</option>';
 						}
-		$mailchimplists .= '</select>';
-		return $mailchimplists;
+		$mailchimptags .= '</select>';
+		return $mailchimptags;
 	}
 
 	public function twpw_custommc_createMCAPI() {
