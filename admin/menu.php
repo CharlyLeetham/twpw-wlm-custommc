@@ -262,7 +262,6 @@ function twpwcustommclists() {
 								$logger .= "\r\n";
 							}
 
-							var_dump($mclists);
 							echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
 								foreach ( $mclists as $mclist ) {
 									echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
@@ -285,7 +284,7 @@ function twpwcustommclists() {
 						$settings[$level['id']]['mctags'] ='';
 					}
 
-					if ( !empty( $settings[$level['id']]['mctags'] ) ) {
+					if ( !empty( $settings[$level['id']]['mctags'] ) && !empty( $settings[$level['id']]['mclistid'] ) ) {
 						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
 					}
 					?></td>
