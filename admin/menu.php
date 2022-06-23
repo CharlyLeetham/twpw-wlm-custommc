@@ -572,7 +572,8 @@ if ( $display ) { ?>
 		wp_die();
 	}
 
-	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
+	//add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
+	add_action( 'wp_ajax_twpw_custommc_ig', array( &$twpw_custom_mc, 'acl_get_interest_groups' ), 30, 2 );
 	add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
 
 ?>
