@@ -345,7 +345,7 @@ if ( $display ) { ?>
 							}
 						?>
 					/></td>
-<?php } ?>
+
 				</tr>
 				<?php
 
@@ -385,6 +385,7 @@ if ( $display ) { ?>
 					<?php
 					}
 				}
+			}
 				if ( $err_msg[$count] != '' ) { ?>
 				<tr><td colspan="4" align="right"><span style="font-weight:bold; color:#FF0000;"><?php echo $err_msg[$count]; ?></span></td></tr>
 				<?php } ?>
