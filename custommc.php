@@ -401,7 +401,7 @@ class twpw_custom_mc {
 				$exception = (string) $e->getResponse()->getBody();
 				$exception = json_decode($exception);
 				if ( $debug ){
-					echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
+					echo 'An error has occurred +++ : '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
 				}
 		} finally {
 
