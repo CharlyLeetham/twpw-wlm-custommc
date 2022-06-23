@@ -285,12 +285,15 @@ function twpwcustommclists() {
 					<!-- List all Mailchimp Lists -->
 					<td class="taglisting"><?php
 
-					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-						$settings[$level['id']]['mctags'] ='';
-					}
+					$display = false;
+					if ( $display ) {
+						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
+							$settings[$level['id']]['mctags'] ='';
+						}
 
-					if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
-						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
+						if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
+							echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
+						}
 					}
 					?></td>
 <?php
