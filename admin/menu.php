@@ -284,9 +284,9 @@ function twpwcustommclists() {
 						$settings[$level['id']]['mcgroup'] ='';
 					}
 
-					if ( !empty( $settings[$level['id']]['mctags'] ) ) {
+					/*if ( !empty( $settings[$level['id']]['mctags'] ) ) {*/
 						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
-					}
+					/*}*/
 					?></td>
 <?php
 $display = false;
@@ -647,6 +647,6 @@ if ( $display ) { ?>
 	}
 
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
-	add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
+	//add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
 
 ?>
