@@ -687,7 +687,7 @@ class twpw_custom_mc {
 		$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mctag]">';
 		foreach ( $mclists as $list1 ) {
 			$mailchimptags.='<option value="'.$list1->id.'"';
-			if ($list1->id == $mclistid) {
+			if ($list1->id == $listid) {
 				$mailchimplists.=' selected="yes" ';
 			}
 			$mailchimptags.='>'.$list1->name.'</option>';

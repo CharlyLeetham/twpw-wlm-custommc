@@ -255,27 +255,25 @@ function twpwcustommclists() {
 						}
 
 						if ( !empty ($settings[$level['id']]['mclistid'] ) ) {
-							/*if ( !empty( $settings[$level['id']]['mcgroup'] ) ) {*/
-								$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
-								if ( $debug == 'yes' ) {
-									$logger .= "MCGroups: ";
-									$logger .= var_export( $mclists, true );
-									$logger .= "\r\n";
-								}
+							$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
+							if ( $debug == 'yes' ) {
+								$logger .= "MCGroups: ";
+								$logger .= var_export( $mclists, true );
+								$logger .= "\r\n";
+							}
 
-								$display = false;
-								echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
-									foreach ( $mclists as $mclist ) {
-										echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
-										foreach ( $mclist['groups'] as $group => $gvalue ) {
-											echo '<option value="'.$gvalue['id'].'" ';
-											if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
-												echo 'selected="selected" ';
-											echo '>'.$gvalue['name'].'</option>';
-										}
+							$display = false;
+							echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
+								foreach ( $mclists as $mclist ) {
+									echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
+									foreach ( $mclist['groups'] as $group => $gvalue ) {
+										echo '<option value="'.$gvalue['id'].'" ';
+										if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
+											echo 'selected="selected" ';
+										echo '>'.$gvalue['name'].'</option>';
 									}
-								echo '</select>';
-						/*	}*/
+								}
+							echo '</select>';
 						}
 						?>
 					</td>
