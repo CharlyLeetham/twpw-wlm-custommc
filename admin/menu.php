@@ -232,7 +232,6 @@ function twpwcustommclists() {
 
 					<!-- List all Mailchimp Lists -->
 					<td><?php
-						echo 'kdkdd';
 						echo twpw_custom_mc::get_mailchimp_lists( $settings[$level['id']]['mclistid'],$level['id'] )
 					?></td>
 
@@ -264,17 +263,20 @@ function twpwcustommclists() {
 									$logger .= "\r\n";
 								}
 
-								echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
-									foreach ( $mclists as $mclist ) {
-										echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
-										foreach ( $mclist['groups'] as $group => $gvalue ) {
-											echo '<option value="'.$gvalue['id'].'" ';
-											if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
-												echo 'selected="selected" ';
-											echo '>'.$gvalue['name'].'</option>';
+								$display = false;
+								if ( $display ) {
+									echo '<select multiple="multiple" name="twpw_custommc['. $level['id'] .'][mcgroup][]" class="mclist">';
+										foreach ( $mclists as $mclist ) {
+											echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
+											foreach ( $mclist['groups'] as $group => $gvalue ) {
+												echo '<option value="'.$gvalue['id'].'" ';
+												if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
+													echo 'selected="selected" ';
+												echo '>'.$gvalue['name'].'</option>';
+											}
 										}
-									}
-								echo '</select>';
+									echo '</select>';
+								}
 							}
 						}
 						?>
