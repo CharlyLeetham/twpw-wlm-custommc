@@ -683,7 +683,9 @@ class twpw_custom_mc {
 	public function acl_get_tags( $listid, $levelid, $ajax=null ) {
 		global $twpw_custommc_mcapi;
 		$settings = get_option("twpw_custommc");
-		var_dump ($settings);
+		echo '<pre>';
+		var_dump ($settings[$levelid]);
+		echo '</pre>'
 		return;
 		$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 		$mclists = $response1->tags;
