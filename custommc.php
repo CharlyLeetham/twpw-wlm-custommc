@@ -633,23 +633,22 @@ class twpw_custom_mc {
 
 			try {
 					$response = $mailchimp->ping->get();
+					$list_info= $twpw_custommc_mcapi->lists->getAllLists();
+					$alllists = $list_info->lists;
+					$mailchimplists = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mclistid]">
+									<option value="0">No list</option>';
+									foreach ($alllists as $list1) {
+										$mailchimplists.='<option value="'.$list1->id.'"';
+											if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
+										$mailchimplists.='>'.$list1->name.'</option>';
+									}
+					$mailchimplists .= '</select>';
 			} catch (Exception $e) {
 					$exception = (string) $e->getResponse()->getBody();
 					$exception = json_decode($exception);
 					if ( $debug ){
 						$mailchimplists = 'An error has occurred: '.$exception->title.' - '.$exception->detail.'<br />';
 					}
-			} finally {
-				$list_info= $twpw_custommc_mcapi->lists->getAllLists();
-				$alllists = $list_info->lists;
-				$mailchimplists = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mclistid]">
-								<option value="0">No list</option>';
-								foreach ($alllists as $list1) {
-									$mailchimplists.='<option value="'.$list1->id.'"';
-										if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
-									$mailchimplists.='>'.$list1->name.'</option>';
-								}
-				$mailchimplists .= '</select>';
 			}
 		} else {
 			$mailchimplists.= 'Please enter your mailchimp API before continuing<br>';
