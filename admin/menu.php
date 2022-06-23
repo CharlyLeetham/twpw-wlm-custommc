@@ -425,6 +425,7 @@ if ( $display ) { ?>
 					console.log ('here');
 					msg = msg.trim();
 					groupobject.html(msg);
+					console.log(msg);
 					<?php
 					$debug='yes';
 					if ( $debug == 'yes' ) {
