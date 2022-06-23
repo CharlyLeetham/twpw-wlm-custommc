@@ -281,12 +281,12 @@ function twpwcustommclists() {
 					<td class="taglisting"><?php
 
 					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-						$settings[$level['id']]['mcgroup'] ='';
+						$settings[$level['id']]['mctags'] ='';
 					}
 
-					/*if ( !empty( $settings[$level['id']]['mctags'] ) ) {*/
+					if ( !empty( $settings[$level['id']]['mctags'] ) ) {
 						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
-					/*}*/
+					}
 					?></td>
 <?php
 $display = false;
