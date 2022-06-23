@@ -334,11 +334,6 @@ if ( $display ) { ?>
 					/></td>
 <?php } ?>
 				</tr>
-
-				<tr>
-				<td colspan ="9"> Merge Values:
-				</td>
-				</tr>
 				<?php
 
 				if ( $settings[$level['id']]['mclistid'] ) {
