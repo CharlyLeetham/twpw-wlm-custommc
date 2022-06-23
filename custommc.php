@@ -692,7 +692,7 @@ class twpw_custom_mc {
 			var_dump($list1->id);
 			/*var_dump( $settings[$levelid]['mcgroup'] );*/
 			/* if ($list1->id == $listid) { */
-			if( in_array( $list1->id, $settings[$levelid]['mctag'] ) ) {
+			if( in_array( (string)$list1->id, $settings[$levelid]['mctag'] ) ) {
 				$mailchimplists.=' selected="yes" ';
 			}
 			$mailchimptags.='>'.$list1->name.'</option>';
