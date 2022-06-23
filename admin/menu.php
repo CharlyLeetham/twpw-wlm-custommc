@@ -572,8 +572,74 @@ if ( $display ) { ?>
 		wp_die();
 	}
 
-	//add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
-	add_action( 'wp_ajax_twpw_custommc_ig', array( $twpw_custom_mc, 'acl_get_interest_groups' ), 30, 2 );
+	function twpw_get_tags() {
+		$listid =  $_POST['mclistid'];
+
+		if ( !empty( $listid ) ) {
+			global $twpw_custommc_mcapi;
+			$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
+			$mclists = $response1->tags;
+			$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mctag]">';
+			foreach ( $mclists as $list1 ) {
+				$mailchimptags.='<option value="'.$list1->id.'"';
+				if ($list1->id == $mclistid) {
+					$mailchimplists.=' selected="yes" ';
+				}
+				$mailchimptags.='>'.$list1->name.'</option>';
+			}
+			$mailchimptags .= '</select>';
+			$display = false;
+			if ( $display ) {
+				$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
+				if (isset($twpw_custommc_mcapi)) return;
+				require_once( $acl_plugin_dir.'/mailchimp/vendor/autoload.php');
+				$settings = get_option("twpw_custommc");
+				$api_key = $settings['mcapikey'];
+				$dc = $settings['mcdc'];
+				$twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();
+				$twpw_custommc_mcapi->setConfig([
+						'apiKey' => $api_key,
+						'server' => $dc
+				]);
+				$response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
+				$mccats = $response1->categories;
+				$catarr = array();
+				$intarr = array();
+				$catnum = 0;
+
+				foreach ($mccats as $k) {
+					$catarr[$k->title]['id'] = $k->id;
+					$catarr[$k->title]['title'] = $k->title;
+					$interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
+					$ia = $interests->interests;
+					$intnum = 0;
+					foreach ( $ia as $v ) {
+						$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
+						$catarr[$k->title]['groups'][$intnum]['id'] = $v->id;
+						$catarr[$k->title]['groups'][$intnum]['catid'] = $v->category_id;
+						$intnum++;
+					}
+				}
+				$mclists = $catarr;
+				echo '<select multiple="multiple" name="twpw_custommc['.$_POST['levelid'].'][mcgroup][]" class="mclist">';
+					foreach ( $mclists as $mclist ) {
+						echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
+						foreach ( $mclist['groups'] as $group => $gvalue ) {
+							echo '<option value="'.$gvalue['id'].'" ';
+							if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
+								echo 'selected="selected" ';
+							echo '>'.$gvalue['name'].'</option>';
+						}
+					}
+				echo '</select>';
+			}
+		} else {
+			echo '';
+		}
+		wp_die();
+	}
+
+	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
 	add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
 
 ?>
