@@ -255,7 +255,7 @@ function twpwcustommclists() {
 						}
 
 						if ( !empty ($settings[$level['id']]['mclistid'] ) ) {
-							if ( !empty( $settings[$level['id']]['mcgroup'] ) ) {
+							/*if ( !empty( $settings[$level['id']]['mcgroup'] ) ) {*/
 								$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
 								if ( $debug == 'yes' ) {
 									$logger .= "MCGroups: ";
@@ -275,7 +275,7 @@ function twpwcustommclists() {
 										}
 									}
 								echo '</select>';
-							}
+						/*	}*/
 						}
 						?>
 					</td>
