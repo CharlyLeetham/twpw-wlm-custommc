@@ -686,16 +686,11 @@ class twpw_custom_mc {
 		$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 		$mclists = $response1->tags;
 		$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$levelid.'][mctag][]">';
-		var_dump( $settings[$levelid]['mctag'] );
 		foreach ( $mclists as $list1 ) {
 			$mailchimptags.='<option value="'.$list1->id.'"';
 			$list1->id = (string)$list1->id;
-			/*var_dump($list1->id);*/
-			/*var_dump( $settings[$levelid]['mcgroup'] );*/
-			/* if ($list1->id == $listid) { */
 			if( in_array( $list1->id, $settings[$levelid]['mctag'] ) ) {
-				var_dump('made it');
-				$mailchimplists.=' selected="yes" ';
+				$mailchimptags.=' selected="yes" ';
 			}
 			$mailchimptags.='>'.$list1->name.'</option>';
 		}
