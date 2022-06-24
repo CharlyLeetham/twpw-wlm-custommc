@@ -412,7 +412,28 @@ if ( $display ) { ?>
 		})( jQuery );
 	</script>
 
-
+	<script type="text/javascript">
+		( function($) {
+			$("select.mclistid").change(function() {
+				var groupobject=$(this).parent().next("td.taglisting");
+				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
+					action:"twpw_custommc_tag",
+					mclistid: $(this).val(),
+					levelid: groupobject.attr('levelid')
+				},
+				function(msg) {
+					console.log ('here1');
+					msg = msg.trim();
+					groupobject.html(msg);
+					<?php
+					$debug='yes';
+					if ( $debug == 'yes' ) {
+							echo "console.log(msg);";
+						} ?>
+				});
+			});
+		})( jQuery );
+	</script>
 	<?php
 
 		if ( $debug == 'yes' ) {
@@ -595,10 +616,7 @@ if ( $display ) { ?>
 	  wp_die();
 	}
 
-	// add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
-	//add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
-	// add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_interest_groups' );
-	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_tags' );
-
+	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
+	add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
 
 ?>
