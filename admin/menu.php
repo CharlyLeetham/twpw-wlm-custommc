@@ -413,28 +413,6 @@ if ( $display ) { ?>
 	</script>
 
 
-	<script type="text/javascript">
-		( function($) {
-			$("select.mclistid").change(function() {
-				var groupobject=$(this).parent().next("td.taglisting");
-				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
-					action:"twpw_custommc_tag",
-					mclistid: $(this).val(),
-					levelid: groupobject.attr('levelid')
-				},
-				function(msg) {
-					console.log ('here1');
-					msg = msg.trim();
-					groupobject.html(msg);
-					<?php
-					$debug='yes';
-					if ( $debug == 'yes' ) {
-							echo "console.log(msg);";
-						} ?>
-				});
-			});
-		})( jQuery );
-	</script>
 	<?php
 
 		if ( $debug == 'yes' ) {
@@ -585,28 +563,7 @@ if ( $display ) { ?>
 		wp_die();
 	}
 
-	function twpw_get_tags() {
-		$listid =  $_POST['mclistid'];
-		$levelid = $_POST['levelid'];
-		if ( !empty( $listid ) ) {
-			global $twpw_custommc_mcapi;
-			$settings = get_option("twpw_custommc");
-			$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
-			$mclists = $response1->tags;
-			echo '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$_POST['levelid'].'][mctag]">';
-			foreach ( $mclists as $list1 ) {
-				echo '<option value="'.$list1->id.'"';
-				if( in_array( $list1->id, $settings[$_POST['levelid']]['mctag'] ) ) {
-					echo ' selected="yes" ';
-				}
-				echo '>'.$list1->name.'</option>';
-			}
-			echo '</select>';
-		} else {
-			echo '';
-		}
-		wp_die();
-	}
+
 
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
 	//add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
