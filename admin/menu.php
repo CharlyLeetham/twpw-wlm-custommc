@@ -592,16 +592,15 @@ if ( $display ) { ?>
 			$settings = get_option("twpw_custommc");
 			$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 			$mclists = $response1->tags;
-			$mailchimptags = '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$_POST['levelid'].'][mctag]">';
+			echo '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$_POST['levelid'].'][mctag]">';
 			foreach ( $mclists as $list1 ) {
-				$mailchimptags.='<option value="'.$list1->id.'"';
+				echo '<option value="'.$list1->id.'"';
 				if( in_array( $list1->id, $settings[$_POST['levelid']]['mctag'] ) ) {
-					$mailchimptags.=' selected="yes" ';
+					echo ' selected="yes" ';
 				}
-				$mailchimptags.='>'.$list1->name.'</option>';
+				echo '>'.$list1->name.'</option>';
 			}
-			$mailchimptags .= '</select>';
-			return $mailchimptags;
+			echo '</select>';
 		} else {
 			echo '';
 		}
