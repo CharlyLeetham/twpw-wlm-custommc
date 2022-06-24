@@ -412,6 +412,7 @@ if ( $display ) { ?>
 		})( jQuery );
 	</script>
 
+
 	<script type="text/javascript">
 		( function($) {
 			$("select.mclistid").change(function() {
