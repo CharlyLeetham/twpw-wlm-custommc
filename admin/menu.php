@@ -425,7 +425,6 @@ if ( $display ) { ?>
 					console.log ('here');
 					msg = msg.trim();
 					groupobject.html(msg);
-					console.log(msg);
 					<?php
 					$debug='yes';
 					if ( $debug == 'yes' ) {
@@ -587,6 +586,7 @@ if ( $display ) { ?>
 
 	function twpw_get_tags() {
 		$listid =  $_POST['mclistid'];
+		$levelid = $_POST['levelid'];
 		if ( !empty( $listid ) ) {
 			global $twpw_custommc_mcapi;
 			$settings = get_option("twpw_custommc");
@@ -601,6 +601,7 @@ if ( $display ) { ?>
 				$mailchimptags.='>'.$list1->name.'</option>';
 			}
 			$mailchimptags .= '</select>';
+			return $mailchimptags;
 		} else {
 			echo '';
 		}
