@@ -566,11 +566,11 @@ if ( $display ) { ?>
 
 	function twpw_get_tags() {
 	  $listid =  $_POST['mclistid'];
-	  $levelid = $_POST['levelid'];
 	  if ( !empty( $listid ) ) {
 	    global $twpw_custommc_mcapi;
 	    $settings = get_option("twpw_custommc");
 	    $response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
+			return($response1);
 	    $mclists = $response1->tags;
 	    echo '<select multiple="multiple" class="mclistid" name="twpw_custommc['.$_POST['levelid'].'][mctag]">';
 	    foreach ( $mclists as $list1 ) {
@@ -587,10 +587,10 @@ if ( $display ) { ?>
 	  wp_die();
 	}
 
-	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
+	// add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
 	//add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
 	// add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_interest_groups' );
-	// add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_tags' );
+	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_tags' );
 
 
 ?>
