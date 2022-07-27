@@ -185,7 +185,7 @@ if ( $_GET['tags'] ) {
 }
 
 
-
+/*
 if ( $_GET['add'] ) {
 
 	$subscriberhash = md5( $email );
@@ -204,6 +204,6 @@ if ( $_GET['add'] ) {
 	);
 	print_r($response);
 }
-
+*/
 
 ?>
