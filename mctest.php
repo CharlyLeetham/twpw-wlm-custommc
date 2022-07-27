@@ -200,22 +200,20 @@ if ( $_GET['add'] ) {
 	var_dump ( $emailcoded );
 	var_dump ( $emaildecoded );
 	var_dump ( $subemailhash );
-
+	var_dump ($listid);
+/*
 	try {
 		$response = $mailchimp->lists->setListMember( $listid, $subemailhash [
 		    "email_address" => $email,
 		    "status_if_new" => "subscribed",
-				/*
 				"merge_fields" => [
 					"FNAME" => "Test",
 					"LNAME" => "User"
 				]
 			]
-			/*
 			[
 				"skip_merge_validation" => false
 			]
-			*/
 		);
 	} catch (Exception $e) {
 		echo '<pre>';
@@ -225,6 +223,7 @@ if ( $_GET['add'] ) {
 		echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
 		echo '</pre>';
 	}
+*/
 }
 
 
