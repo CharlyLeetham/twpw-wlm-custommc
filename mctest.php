@@ -50,7 +50,13 @@ try {
 	echo 'More code here';
 }
 
-$subemailhash = md5('helpdesk+test113@askcharlyleetham.com');
+if ( !$_GET ['email'] ) {
+	$email = "helpdesk+test113@askcharlyleetham.com";
+	$subemailhash = md5('helpdesk+test113@askcharlyleetham.com');
+} else {
+	$email = $_GET['email'];
+	$subemailhash = md5( $email );
+}
 
 if ( $_GET['interests'] ) {
 	try {
@@ -185,12 +191,13 @@ if ( $_GET['tags'] ) {
 }
 
 
-/*
+
 if ( $_GET['add'] ) {
 
-	$subscriberhash = md5( $email );
-
-	$response = $mailchimp->lists->setListMember( $listid, $subscriberhash [
+	var_dump ( $email );
+	var_dump ( $subemailhash );
+/*
+	$response = $mailchimp->lists->setListMember( $listid, $subemailhash [
 	    "email_address" => $email,
 	    "status_if_new" => "subscribed",
 			"merge_fields" => [
@@ -203,7 +210,8 @@ if ( $_GET['add'] ) {
 		]
 	);
 	print_r($response);
-}
 */
+}
+
 
 ?>
