@@ -222,7 +222,7 @@ if ( $_GET['add'] ) {
 			$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
 	    "tags" => [
 					["name" => "Test Tag",
-					"status" => "active"]
+					"status" => "inactive"]
 				],
 			]);
 			echo '<pre>';
