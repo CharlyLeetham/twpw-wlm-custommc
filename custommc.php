@@ -153,9 +153,16 @@ class twpw_custom_mc {
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 
-		if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
+		/*if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );*/
 
-		$mailchimp = new Mailchimp( $api_key );
+		/*$mailchimp = new Mailchimp( $api_key );*/
+
+		require_once('mailchimp/vendor/autoload.php');
+		$mailchimp = new \MailchimpMarketing\ApiClient();
+		$mailchimp->setConfig([
+			'apiKey' => $mcapikey,
+			'server' => $dc
+		]);
 
 		if ( $debug ) {
 			echo '$mailchimp:';
@@ -239,13 +246,24 @@ class twpw_custom_mc {
 						$groupings[] = array('id'=>$group_id, 'groups' => $group);
 					}
 				}
+
+				$tags = array(); // create a tag
+				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
+					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
+						$tag = explode('::',$tag); // divide the tag as top id and bottom name
+						$tags[$tag[0]][] = $tag[1];
+					}
+					foreach($tags as $tag_id => $tag) {
+						$tags[] = array('id'=>$tag_id, 'tag' => $tag);
+					}
+				}
 				// Setup the array to send to Mailchimp
 				global $wpdb;
 
 				$merge_vars = array (
 									 'FNAME' => $firstname,
 									 'LNAME' => $lastname,
-									 'GROUPINGS' => $groupings,
+									 /*'GROUPINGS' => $groupings,*/
 									);
 				$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
 
@@ -266,9 +284,7 @@ class twpw_custom_mc {
 				}
 
 				$email_type = 'html';
-				$update_existing = TRUE;
-				$replace_interests = TRUE;
-				$delete_member = FALSE;
+
 
 				if ( $debug ) {
 					$myarray = array(
@@ -276,11 +292,8 @@ class twpw_custom_mc {
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'merge_vars' => $merge_vars,
+						'tags' => $mctag,
 						'email_type' => $email_type,
-						'double_optin' => $double_optin,
-						'update_existing' => $update_existing,
-						'replace_interests' => $replace_interests,
-						'send_welcome' => $send_welcome
 					);
 					$myarr = var_export ( $myarray, true );
 					echo 'Mailchimp settings: '."\r\n\r\n";
@@ -289,18 +302,22 @@ class twpw_custom_mc {
 
 				if ( $live ) {
 
+
+
+/*
 					$result = $mailchimp->call( '/lists/subscribe', array(
 						'apikey' => $mcapikey,
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'merge_vars' => $merge_vars,
+						'tags' => $mctag,
 						'email_type' => $email_type,
 						'double_optin' => $double_optin,
 						'update_existing' => $update_existing,
 						'replace_interests' => $replace_interests,
 						'send_welcome' => $send_welcome
 					));
-
+*/
 					if ($mailchimp->errorCode){
 						if ( $logging ) {
 							$logger .= "Unable to load listUnsubscribe()!\n\r";
