@@ -201,21 +201,30 @@ if ( $_GET['add'] ) {
 	var_dump ( $emaildecoded );
 	var_dump ( $subemailhash );
 
-	$response = $mailchimp->lists->setListMember( $listid, $subemailhash [
-	    "email_address" => $email,
-	    "status_if_new" => "subscribed",
-			"merge_fields" => [
-				"FNAME" => "Test",
-				"LNAME" => "User"
+	try {
+		$response = $mailchimp->lists->setListMember( $listid, $subemailhash [
+		    "email_address" => $email,
+		    "status_if_new" => "subscribed",
+				"merge_fields" => [
+					"FNAME" => "Test",
+					"LNAME" => "User"
+				]
+			],
+			/*
+			[
+				"skip_merge_validation" => false
 			]
-		],
-		/*
-		[
-			"skip_merge_validation" => false
-		]
-		*/
-	);
-	print_r($response);
+			*/
+		);
+		print_r($response);
+	} catch (Exception $e) {
+		echo '<pre>';
+		$exception = (string) $e->getResponse()->getBody();
+		$exception = json_decode($exception);
+		echo var_export( $exception ).'<br />';
+		echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
+		echo '</pre>';		
+	}
 
 }
 
