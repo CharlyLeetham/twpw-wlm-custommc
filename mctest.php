@@ -196,6 +196,7 @@ if ( $_GET['tags'] ) {
 
 if ( $_GET['add'] ) {
 
+/*
 	try {
 		$response = $mailchimp->lists->setListMember( $listid, $subemailhash, [
 		    "email_address" => $email,
@@ -215,18 +216,17 @@ if ( $_GET['add'] ) {
 		echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
 		echo '</pre>';
 	}
-
+*/
 
 	try {
-			$response = $client->lists->updateListMemberTags($listid, $subemailhash, [
+			$response1 = $client->lists->updateListMemberTags($listid, $subemailhash, [
 	    "tags" => [
 					["Test Tag" => "name",
 					"status" => "active"]
 				],
 			]);
-
 			echo '<pre>';
-					var_dump ( $response );
+					var_dump ( $response1 );
 			echo '</pre>';
 	} catch (Exception $e) {
 		echo '<pre>';
