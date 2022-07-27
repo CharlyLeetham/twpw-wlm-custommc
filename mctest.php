@@ -212,6 +212,7 @@ if ( $_GET['add'] ) {
 				]
 			]
 		);
+		var_dump ( $response );
 	} catch (Exception $e) {
 		echo '<pre>';
 		$exception = (string) $e->getResponse()->getBody();
