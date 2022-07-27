@@ -211,9 +211,6 @@ if ( $_GET['add'] ) {
 					"LNAME" => "User"
 				]
 			]
-			[
-				"skip_merge_validation" => false
-			]
 		);
 	} catch (Exception $e) {
 		echo '<pre>';
