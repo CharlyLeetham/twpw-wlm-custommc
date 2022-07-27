@@ -213,6 +213,13 @@ if ( $_GET['add'] ) {
 			]
 		);
 		var_dump ( $response );
+
+		$response = $client->lists->updateListMemberTags($listid, $subemailhash, [
+    "tags" => [
+				["Test Tag" => "name",
+				"status" => "active"]
+			],
+		]);
 	} catch (Exception $e) {
 		echo '<pre>';
 		$exception = (string) $e->getResponse()->getBody();
