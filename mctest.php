@@ -188,7 +188,7 @@ if ( $_GET['tags'] ) {
 
 if ( $_GET['add'] ) {
 
-	$subscriberhash = md5( $email )
+	$subscriberhash = md5( $email );
 
 	$response = $mailchimp->lists->setListMember( $listid, $subscriberhash [
 	    "email_address" => $email,
