@@ -200,7 +200,7 @@ if ( $_GET['add'] ) {
 	var_dump ( $emailcoded );
 	var_dump ( $emaildecoded );
 	var_dump ( $subemailhash );
-/*
+
 	$response = $mailchimp->lists->setListMember( $listid, $subemailhash [
 	    "email_address" => $email,
 	    "status_if_new" => "subscribed",
@@ -214,7 +214,7 @@ if ( $_GET['add'] ) {
 		]
 	);
 	print_r($response);
-*/
+
 }
 
 
