@@ -209,9 +209,11 @@ if ( $_GET['add'] ) {
 				"LNAME" => "User"
 			]
 		],
+		/*
 		[
 			"skip_merge_validation" => false
 		]
+		*/
 	);
 	print_r($response);
 
