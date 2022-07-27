@@ -209,21 +209,20 @@ if ( $_GET['add'] ) {
 					"FNAME" => "Test",
 					"LNAME" => "User"
 				]
-			],
+			]
 			/*
 			[
 				"skip_merge_validation" => false
 			]
 			*/
 		);
-		print_r($response);
 	} catch (Exception $e) {
 		echo '<pre>';
 		$exception = (string) $e->getResponse()->getBody();
 		$exception = json_decode($exception);
 		echo var_export( $exception ).'<br />';
 		echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
-		echo '</pre>';		
+		echo '</pre>';
 	}
 
 }
