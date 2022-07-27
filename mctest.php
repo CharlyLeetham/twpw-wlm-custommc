@@ -54,7 +54,9 @@ if ( !$_GET ['email'] ) {
 	$email = "helpdesk+test113@askcharlyleetham.com";
 	$subemailhash = md5('helpdesk+test113@askcharlyleetham.com');
 } else {
-	$email = htmlentities( $_GET['email'] );
+	$email = $_GET['email'];
+	$emailcoded = htmlentities( $_GET['email'] );
+	$emaildecoded = html_entity_decode ( $_GET['email'] );
 	$subemailhash = md5( $email );
 }
 
@@ -195,6 +197,8 @@ if ( $_GET['tags'] ) {
 if ( $_GET['add'] ) {
 
 	var_dump ( $email );
+	var_dump ( $emailcoded );
+	var_dump ( $emaildecoded );
 	var_dump ( $subemailhash );
 /*
 	$response = $mailchimp->lists->setListMember( $listid, $subemailhash [
