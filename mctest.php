@@ -10,6 +10,7 @@
 // lists=yes
 // mergevals=yes
 // tags=yes
+// email=yourname@domain.com
 
 
 $mcapikey = $_GET['apikey'];
@@ -182,5 +183,27 @@ if ( $_GET['tags'] ) {
 
 	}
 }
+
+
+
+if ( $_GET['add'] ) {
+
+	$subscriberhash = md5( $email )
+
+	$response = $mailchimp->lists->setListMember( $listid, $subscriberhash [
+	    "email_address" => $email,
+	    "status_if_new" => "subscribed",
+			"merge_fields" => [
+				"FNAME" => "Test",
+				"LNAME" => "User"
+			]
+		],
+		[
+			"skip_merge_validation" => false
+		]
+	);
+	print_r($response);
+}
+
 
 ?>
