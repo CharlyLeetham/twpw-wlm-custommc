@@ -205,6 +205,7 @@ if ( $_GET['add'] ) {
 		$response = $mailchimp->lists->setListMember( $listid, $subemailhash [
 		    "email_address" => $email,
 		    "status_if_new" => "subscribed",
+				/*
 				"merge_fields" => [
 					"FNAME" => "Test",
 					"LNAME" => "User"
@@ -224,7 +225,6 @@ if ( $_GET['add'] ) {
 		echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
 		echo '</pre>';
 	}
-
 }
 
 
