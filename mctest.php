@@ -219,6 +219,7 @@ if ( $_GET['add'] ) {
 */
 
 	try {
+		echo 'herehehrehehereh';
 			$response1 = $client->lists->updateListMemberTags($listid, $subemailhash, [
 	    "tags" => [
 					["Test Tag" => "name",
