@@ -227,6 +227,7 @@ if ( $_GET['add'] ) {
 				],
 			]);
 			echo '<pre>';
+					echo 'Result: <br />';
 					var_dump ( $response1 );
 			echo '</pre>';
 	} catch (Exception $e) {
