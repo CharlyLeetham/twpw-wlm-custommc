@@ -253,7 +253,7 @@ class twpw_custom_mc {
 					$tagexp = var_export( $settings[$levid]['mctag'], true );
 					echo $tagexp."\r\n\r\n";
 				}
-				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
+				/*if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
 					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
 						$tag = explode('::',$tag); // divide the tag as top id and bottom name
 						$tags[$tag[0]][] = $tag[1];
@@ -268,7 +268,7 @@ class twpw_custom_mc {
 						["name" => "Test Tag",
 						"status" => "inactive"]
 					],
-				]);
+				]); */
 				// Setup the array to send to Mailchimp
 				global $wpdb;
 
