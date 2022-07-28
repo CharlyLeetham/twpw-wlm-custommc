@@ -733,7 +733,7 @@ class twpw_custom_mc {
 
 		$response1 =  curl_exec($mch);
 	  $response1 = json_decode( $response1 );
-
+		var_dump ($response1);
 		$mclists = $response1->tags;
 		var_dump ($mclists);
 		$mailchimptags = '<select multiple="multiple" class="mctag" name="twpw_custommc['.$levelid.'][mctag][]">';
