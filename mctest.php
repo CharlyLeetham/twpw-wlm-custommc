@@ -28,8 +28,16 @@ if ( !$_GET['dc'] ) {
 }
 
 require_once('mailchimp/vendor/autoload.php');
+require_once('mctransactional/vendor/autoload.php');
 $mailchimp = new \MailchimpMarketing\ApiClient();
 $mailchimp->setConfig([
+	'apiKey' => $mcapikey,
+	'server' => $dc
+]);
+
+
+$mctransaction = new MailchimpTransactional\ApiClient();
+$mctransaction->setConfig([
 	'apiKey' => $mcapikey,
 	'server' => $dc
 ]);
@@ -165,23 +173,24 @@ if ( $_GET['mergevals'] ) {
 
 if ( $_GET['tags'] ) {
 	try {
-		$response1 = $mailchimp->lists->tagSearch($listid);
-		$listarr = array();
-		$listnum = 0;
-		$totalitems = $response1->total_items;
-		$response1 = $mailchimp->lists->tagSearch($listid, null, null, $totalitems, '0');
+		// $response1 = $mailchimp->lists->tagSearch($listid);
+		$response1 = $mctransaction->tags->list;
+		// $listarr = array();
+		// $listnum = 0;
+		// $totalitems = $response1->total_items;
+		// $response1 = $mailchimp->lists->tagSearch($listid, null, null, $totalitems, '0');
 		echo '<pre>';
 		echo var_export( $response1, true ).'<br />';
-		$mclists = $response1->tags;
-		echo $response1->total_items.'<br />';
-		echo var_export( $mclists, true ).'<br />';
-		foreach ( $mclists as $list1 ) {
-			echo 'List 1: '.$list1->id.'<br />';
-			echo var_export( $list1, true ).'<br />';
-			echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
+		// $mclists = $response1->tags;
+		// echo $response1->total_items.'<br />';
+		// echo var_export( $mclists, true ).'<br />';
+		// foreach ( $mclists as $list1 ) {
+			// echo 'List 1: '.$list1->id.'<br />';
+			// echo var_export( $list1, true ).'<br />';
+			// echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 			// echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
-		}
+		// }
 		echo '</pre>';
 	} catch (Exception $e) {
         	echo '<pre>';
