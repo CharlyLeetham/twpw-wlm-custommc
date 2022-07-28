@@ -28,7 +28,7 @@ if ( !$_GET['dc'] ) {
 }
 
 require_once('mailchimp/vendor/autoload.php');
-require_once('mctransaction/vendor/autoload.php');
+require_once('includes/mctransaction/vendor/autoload.php');
 $mailchimp = new \MailchimpMarketing\ApiClient();
 $mailchimp->setConfig([
 	'apiKey' => $mcapikey,
