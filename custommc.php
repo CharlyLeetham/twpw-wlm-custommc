@@ -323,6 +323,8 @@ class twpw_custom_mc {
 						]
 					);
 
+					echo $response;
+
 					// $response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
 					// "tags" => [
 					// 		$tags
