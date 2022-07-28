@@ -709,9 +709,30 @@ class twpw_custom_mc {
 
 		$request_type = "GET";
 
-		$response1 = ( $this->acl_mc_curl_connect( $url, $request_type, $api_key, $data ) );
-		die();
-		// $response1 = json_decode( $this->acl_mc_curl_connect( $url, $request_type, $api_key, $data ) );
+		// $response1 = ( $this->acl_mc_curl_connect( $url, $request_type, $api_key, $data ) );
+		if( $request_type == 'GET' )
+			$url .= '?' . http_build_query($data);
+
+		$mch = curl_init();
+		$headers = array(
+			'Content-Type: application/json',
+			'Authorization: Basic '.base64_encode( 'user:'. $api_key )
+		);
+		curl_setopt($mch, CURLOPT_URL, $url );
+		curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
+		//curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+		curl_setopt($mch, CURLOPT_RETURNTRANSFER, true); // do not echo the result, write it into variable
+		curl_setopt($mch, CURLOPT_CUSTOMREQUEST, $request_type); // according to MailChimp API: POST/GET/PATCH/PUT/DELETE
+		curl_setopt($mch, CURLOPT_TIMEOUT, 10);
+		curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
+
+		if( $request_type != 'GET' ) {
+			curl_setopt($mch, CURLOPT_POST, true);
+			curl_setopt($mch, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
+		}
+
+		$response1 =  curl_exec($mch);
+	  $response1 = json_decode( $response1 ) );
 
 		$mclists = $response1->tags;
 		var_dump ($mclists);
