@@ -415,7 +415,7 @@ if ( $display ) { ?>
 	<script type="text/javascript">
 		( function($) {
 			$("select.mclistid").change(function() {
-				var groupobject=$(this).parent().("td.taglisting");
+				var groupobject=$(this).parent().("tr .taglisting");
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
 					action:"twpw_custommc_tag",
 					mclistid: $(this).val(),
