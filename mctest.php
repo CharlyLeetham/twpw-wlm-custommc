@@ -42,7 +42,8 @@ $mctransaction->setApiKey( $mcapikey );
 
 
 try {
-	$response = $mctransaction->ping->get();
+	$response = $mailchimp->ping->get();
+	$response = $mctransaction->users->ping();
 	echo 'code ran';
 	echo var_export( $response, true);
 	echo '<br />';
