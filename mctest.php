@@ -212,7 +212,7 @@ if ( $_GET['tags'] ) {
 	$result = json_decode ( $result );
 	var_dump ( $result );
 	*/
-		}
+	//	}
 		// $response1 = $mailchimp->lists->tagSearch( $listid, [
 			// "offset" => 0,
 			// "count" => 1000
