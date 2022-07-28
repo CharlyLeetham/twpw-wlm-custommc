@@ -14,6 +14,7 @@
 
 
 $mcapikey = $_GET['apikey'];
+$mandrillkey = $_GET['mandrillkey'];
 
 if ( !$_GET['listid'] ){
 	$listid = 'c580a5bbc9';
@@ -37,7 +38,7 @@ $mailchimp->setConfig([
 ]);
 
 $mctransaction = new MailchimpTransactional\ApiClient();
-$mctransaction->setApiKey( $mcapikey );
+$mctransaction->setApiKey( $mandrillkey );
 
 
 
