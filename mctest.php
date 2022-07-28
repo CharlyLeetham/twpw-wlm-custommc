@@ -188,7 +188,7 @@ if ( $_GET['tags'] ) {
 		// );
 		$request_type = "GET";
 
-		$result = json_decode( acl_mc_curl_connect( $url, $request_type, $mcapikey, $data ) );
+		$response1 = json_decode( acl_mc_curl_connect( $url, $request_type, $mcapikey, $data ) );
 		// curl_setopt($mch, CURLOPT_URL, $url );
 		// curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
 		// //curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
@@ -198,7 +198,7 @@ if ( $_GET['tags'] ) {
 		// curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
 		//
 		// $response1 =  curl_exec($mch);
-		$response1 = json_decode ( $response1 );
+		// $response1 = json_decode ( $response1 );
 		echo 'here';
 		$totalitems = $response1->total_items;
 		echo '<pre>';
@@ -278,10 +278,10 @@ if ( $_GET['add'] ) {
 
 function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
 
-	echo $url.'<br />';
-	echo $request_type.'<br />';
-	echo $api_key.'<br />';
-	echo $data.'<br />';
+	// echo $url.'<br />';
+	// echo $request_type.'<br />';
+	// echo $api_key.'<br />';
+	// echo $data.'<br />';
 
 	if( $request_type == 'GET' )
 		$url .= '?' . http_build_query($data);
