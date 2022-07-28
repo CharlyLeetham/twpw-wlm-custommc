@@ -701,8 +701,6 @@ class twpw_custom_mc {
 		global $twpw_custommc_mcapi;
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
-		echo $api_key;
-		die();
 		// $response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 		$data = array (
 			"count" => 1000
@@ -745,6 +743,8 @@ class twpw_custom_mc {
 	}
 
 	public function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
+		echo 'hello';
+		return;
 		if( $request_type == 'GET' )
 			$url .= '?' . http_build_query($data);
 
