@@ -176,23 +176,28 @@ if ( $_GET['mergevals'] ) {
 
 if ( $_GET['tags'] ) {
 	try {
-		$url = $url."/tag-search/?count=1000";
-		$mch = curl_init();
-		$headers = array(
-			'Content-Type: application/json',
-			'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
+		$data = array (
+			"count" => 1000
 		);
+
+		$url = $url."/tag-search/";
+		// $mch = curl_init();
+		// $headers = array(
+		// 	'Content-Type: application/json',
+		// 	'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
+		// );
 		$request_type = "GET";
 
-		curl_setopt($mch, CURLOPT_URL, $url );
-		curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
-		//curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
-		curl_setopt($mch, CURLOPT_RETURNTRANSFER, true); // do not echo the result, write it into variable
-		curl_setopt($mch, CURLOPT_CUSTOMREQUEST, $request_type); // according to MailChimp API: POST/GET/PATCH/PUT/DELETE
-		curl_setopt($mch, CURLOPT_TIMEOUT, 10);
-		curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
-
-		$response1 =  curl_exec($mch);
+		$result = json_decode( acl_mc_curl_connect( $url, $request_type, $mcapikey, $data ) );
+		// curl_setopt($mch, CURLOPT_URL, $url );
+		// curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
+		// //curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+		// curl_setopt($mch, CURLOPT_RETURNTRANSFER, true); // do not echo the result, write it into variable
+		// curl_setopt($mch, CURLOPT_CUSTOMREQUEST, $request_type); // according to MailChimp API: POST/GET/PATCH/PUT/DELETE
+		// curl_setopt($mch, CURLOPT_TIMEOUT, 10);
+		// curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
+		//
+		// $response1 =  curl_exec($mch);
 		$response1 = json_decode ( $response1 );
 		echo 'here';
 		$totalitems = $response1->total_items;
@@ -270,4 +275,30 @@ if ( $_GET['add'] ) {
 }
 
 
+
+function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
+	if( $request_type == 'GET' )
+		$url .= '?' . http_build_query($data);
+
+	$mch = curl_init();
+	$headers = array(
+		'Content-Type: application/json',
+		'Authorization: Basic '.base64_encode( 'user:'. $api_key )
+	);
+	curl_setopt($mch, CURLOPT_URL, $url );
+	curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
+	//curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+	curl_setopt($mch, CURLOPT_RETURNTRANSFER, true); // do not echo the result, write it into variable
+	curl_setopt($mch, CURLOPT_CUSTOMREQUEST, $request_type); // according to MailChimp API: POST/GET/PATCH/PUT/DELETE
+	curl_setopt($mch, CURLOPT_TIMEOUT, 10);
+	curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
+
+	if( $request_type != 'GET' ) {
+		curl_setopt($mch, CURLOPT_POST, true);
+		curl_setopt($mch, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
+	}
+
+	return curl_exec($mch);
+
+}
 ?>
