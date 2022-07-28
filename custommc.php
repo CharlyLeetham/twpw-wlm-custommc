@@ -346,9 +346,9 @@ class twpw_custom_mc {
 */
 					if ( $logging ) {
 						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
-						// $response = var_export( $response, true );
-						$logger .= echo $response;
-						$logger .= "\r\n\r\n"
+						$response = var_export( $response, true );
+						// $logger .= echo $response;
+						// $logger .= "\r\n\r\n"
 						if ( $groupings ) {
 							$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
 						}
