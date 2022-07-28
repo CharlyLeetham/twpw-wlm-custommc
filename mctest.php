@@ -179,11 +179,11 @@ if ( $_GET['tags'] ) {
 		// $response1 = $mailchimp->lists->tagSearch( $listid );
 
 		$url = $url."/tagSearch/";
-		//$mch = curl_init();
-		//$headers = array(
-		//	'Content-Type: application/json',
-		//	'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
-		//);
+		$mch = curl_init();
+		$headers = array(
+			'Content-Type: application/json',
+			'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
+		);
 
 		$data = array(
 			'count' => 5, // the number of lists to return, default - all
@@ -194,7 +194,7 @@ if ( $_GET['tags'] ) {
 		echo $url.'<br />';
 		echo $data.'<br />';
 		echo $request_type.'<br />';
-/*
+
 		curl_setopt($mch, CURLOPT_URL, $url );
 		curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
 		//curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
@@ -211,7 +211,7 @@ if ( $_GET['tags'] ) {
 	$result =  curl_exec($mch);
 	$result = json_decode ( $result );
 	var_dump ( $result );
-	*/
+
 	//	}
 		// $response1 = $mailchimp->lists->tagSearch( $listid, [
 			// "offset" => 0,
