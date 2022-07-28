@@ -709,7 +709,9 @@ class twpw_custom_mc {
 
 		$request_type = "GET";
 
-		$response1 = json_decode( $this->acl_mc_curl_connect( $url, $request_type, $api_key, $data ) );
+		$response1 = ( $this->acl_mc_curl_connect( $url, $request_type, $api_key, $data ) );
+		die();
+		// $response1 = json_decode( $this->acl_mc_curl_connect( $url, $request_type, $api_key, $data ) );
 
 		$mclists = $response1->tags;
 		var_dump ($mclists);
