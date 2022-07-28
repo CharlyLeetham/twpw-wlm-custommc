@@ -1152,3 +1152,3053 @@ $settings: array (
   'mcapikey' => 'a949b440b7a71c35ac1d0de71242545c-us1',
   'mcdc' => 'us1',
 )
+Saving List Settings
+Date: 07/27/2022 22:05:28 (-1000) GMT
+Full settings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '9bb27af522',
+    ),
+    'mctag' => 
+    array (
+      0 => '77573',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '9bb27af522',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '9bb27af522',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '9bb27af522',
+    ),
+    'mctag' => 
+    array (
+      0 => '77573',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '9bb27af522',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '9bb27af522',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => '986f39e2e601a22d480adc54503696dc-us10',
+  'mcdc' => 'us10',
+)
+$settings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '9bb27af522',
+    ),
+    'mctag' => 
+    array (
+      0 => '77573',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => '986f39e2e601a22d480adc54503696dc-us10',
+  'mcdc' => 'us10',
+)
+Saving List Settings
+Date: 07/27/2022 22:09:19 (-1000) GMT
+Full settings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742144',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742148',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742152',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742144',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742148',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742152',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => '986f39e2e601a22d480adc54503696dc-us10',
+  'mcdc' => 'us10',
+)
+$settings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '9bb27af522',
+    ),
+    'mctag' => 
+    array (
+      0 => '77573',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '9bb27af522',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '9bb27af522',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => '986f39e2e601a22d480adc54503696dc-us10',
+  'mcdc' => 'us10',
+)
+Saving List Settings
+Date: 07/27/2022 22:11:12 (-1000) GMT
+Full settings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742144',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742148',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742152',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742156',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742160',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742164',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742168',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742172',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742176',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742180',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742184',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742188',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742192',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742196',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mctag' => 
+    array (
+      0 => '12742200',
+    ),
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742144',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742148',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742152',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742156',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742160',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742164',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742168',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742172',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742176',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742180',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742184',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742188',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742192',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742196',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mctag' => 
+    array (
+      0 => '12742200',
+    ),
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => '986f39e2e601a22d480adc54503696dc-us10',
+  'mcdc' => 'us10',
+)
+$settings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742144',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742148',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742152',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => '986f39e2e601a22d480adc54503696dc-us10',
+  'mcdc' => 'us10',
+)
+Saving List Settings
+Date: 07/27/2022 22:50:09 (-1000) GMT
+Full settings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 1',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 2',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 3',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 4',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 5',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 6',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 7',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 8',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 9',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 10',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 11',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 12',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 13',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 14',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mctag' => 
+    array (
+      0 => 'eclass 15',
+    ),
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 1',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 2',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 3',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 4',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 5',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 6',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 7',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 8',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 9',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 10',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 11',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 12',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 13',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 14',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mctag' => 
+    array (
+      0 => 'eclass 15',
+    ),
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => '986f39e2e601a22d480adc54503696dc-us10',
+  'mcdc' => 'us10',
+)
+$settings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742144',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742148',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742152',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742156',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742160',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742164',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742168',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742172',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742176',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742180',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742184',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742188',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742192',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => '12742196',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mctag' => 
+    array (
+      0 => '12742200',
+    ),
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => '986f39e2e601a22d480adc54503696dc-us10',
+  'mcdc' => 'us10',
+)
+Saving List Settings
+Date: 07/27/2022 23:59:42 (-1000) GMT
+Full settings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 1',
+      1 => 'WasPaused',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 2',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 3',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 4',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 5',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 6',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 7',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 8',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 9',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 10',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 11',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 12',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 13',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 14',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mctag' => 
+    array (
+      0 => 'eclass 15',
+    ),
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+)
+$newsettings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 1',
+      1 => 'WasPaused',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 2',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 3',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 4',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 5',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 6',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 7',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 8',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 9',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 10',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 11',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 12',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 13',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 14',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mctag' => 
+    array (
+      0 => 'eclass 15',
+    ),
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => '986f39e2e601a22d480adc54503696dc-us10',
+  'mcdc' => 'us10',
+)
+$settings: array (
+  1301288307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 1',
+    ),
+  ),
+  1301288404 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 2',
+    ),
+  ),
+  1301288429 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 3',
+    ),
+  ),
+  1301288445 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 4',
+    ),
+  ),
+  1301293352 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 5',
+    ),
+  ),
+  1301293376 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 6',
+    ),
+  ),
+  1301293499 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 7',
+    ),
+  ),
+  1301293508 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 8',
+    ),
+  ),
+  1301293562 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 9',
+    ),
+  ),
+  1301293574 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 10',
+    ),
+  ),
+  1301293601 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 11',
+    ),
+  ),
+  1301293612 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 12',
+    ),
+  ),
+  1301293621 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 13',
+    ),
+  ),
+  1301293631 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mcgroup' => 
+    array (
+      0 => '1e6ead23f9',
+    ),
+    'mctag' => 
+    array (
+      0 => 'eclass 14',
+    ),
+  ),
+  1301293640 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+    'mctag' => 
+    array (
+      0 => 'eclass 15',
+    ),
+  ),
+  1395123756 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1395183062 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1408506759 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409801718 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1409813307 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1430803123 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1510706258 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1510706531 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073033 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1521073187 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1593142226 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1612824806 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1624134739 => 
+  array (
+    'mclistid' => '9f47bd4d97',
+  ),
+  1631561301 => 
+  array (
+    'mclistid' => '0',
+  ),
+  1632172690 => 
+  array (
+    'mclistid' => '0',
+  ),
+  'mcapikey' => '986f39e2e601a22d480adc54503696dc-us10',
+  'mcdc' => 'us10',
+)

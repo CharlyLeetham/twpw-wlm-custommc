@@ -236,7 +236,7 @@ function twpwcustommclists() {
 					?></td>
 
 					<!-- List groups for Mailchimp List selected -->
-					<td class="grouplisting" levelid="<?php echo $level['id']; ?>">
+					<td class="grouplisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>">
 						<?php
 
 						if ( $debug == 'yes' ) {
@@ -279,7 +279,7 @@ function twpwcustommclists() {
 					</td>
 
 					<!-- List all Mailchimp Tags -->
-					<td class="taglisting" levelid="<?php echo $level['id']; ?>"><?php
+					<td class="taglisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>"><?php
 
 					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
 						$settings[$level['id']]['mctags'] ='';
@@ -395,7 +395,10 @@ if ( $display ) { ?>
 	<script type="text/javascript">
 		( function($) {
 			$("select.mclistid").change(function() {
+				
+				var cure_val = $(this).val();
 				var groupobject=$(this).parent().next("td.grouplisting");
+				var tagobject=$(this).parent().closest('tr').find('td.taglisting ');
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
 					action:"twpw_custommc_ig",
 					mclistid: $(this).val(),
@@ -403,10 +406,27 @@ if ( $display ) { ?>
 				},
 				function(msg) {
 					msg = msg.trim();
-					groupobject.html(msg);
-					<?php if ( $debug == 'yes' ) {
+					if(msg === ''){
+						groupobject.html(msg);
+						tagobject.html(msg);
+						
+					}else{
+						$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
+							action:"twpw_custommc_tag",
+							mclistid: cure_val,
+							levelid: groupobject.attr('levelid')
+						},
+						function(tag_msg) {
+							tag_msg = tag_msg.trim();
+							groupobject.html(msg);
+							tagobject.html(tag_msg);
+						});
+						//groupobject.html(msg);
+						<?php if ( $debug == 'yes' ) {
 							echo "console.log(msg);";
 						} ?>
+					}
+					
 				});
 			});
 		})( jQuery );
@@ -414,6 +434,7 @@ if ( $display ) { ?>
 
 	<script type="text/javascript">
 		( function($) {
+			
 			$("select.mclistid").change(function() {
 				var groupobject=$(this).parent().("tr .taglisting");
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
@@ -585,6 +606,7 @@ if ( $display ) { ?>
 
 	function twpw_get_tags() {
 	  $listid =  $_POST['mclistid'];
+	
 	  if ( !empty( $listid ) ) {
 			$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
 			if (isset($twpw_custommc_mcapi)) return;
