@@ -46,7 +46,7 @@ try {
 	$response = $mailchimp->ping->get();
 	$response = $mctransaction->users->ping();
 	echo 'code ran';
-	echo var_export( $response, true);
+	//echo var_export( $response, true);
 	echo '<br />';
 } catch (Exception $e) {
 	echo '<pre>';
@@ -174,9 +174,9 @@ if ( $_GET['mergevals'] ) {
 
 if ( $_GET['tags'] ) {
 	try {
-		// $response1 = $mailchimp->lists->tagSearch($listid);
+		$response1 = $mailchimp->lists->tagSearch();
 		echo 'here';
-		$response1 = $mctransaction->tags->list();
+		// $response1 = $mctransaction->tags->list();
 		// $listarr = array();
 		// $listnum = 0;
 		// $totalitems = $response1->total_items;
