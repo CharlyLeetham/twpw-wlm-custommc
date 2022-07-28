@@ -609,7 +609,7 @@ if ( $display ) { ?>
 
 	  if ( !empty( $listid ) ) {
 			$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
-			echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
+
 			// if (isset($twpw_custommc_mcapi)) return;
 			// require_once( $acl_plugin_dir.'/mailchimp/vendor/autoload.php');
 			// $settings = get_option("twpw_custommc");
@@ -623,10 +623,12 @@ if ( $display ) { ?>
 	    // $response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 	    // $mclists = $response1->tags;
 
+			echo twpw_custom_mc::acl_get_tags( $listid, $_POST['levelid'] );
+
 	    // echo '<select multiple="multiple" class="mctag" name="twpw_custommc['.$_POST['levelid'].'][mctag][]">';
 	    // foreach ( $mclists as $list1 ) {
 	    //   echo '<option value="'.$list1->id.'"';
-	    //   if( in_array( $list1->id, $settings[$_POST['levelid']]['mctag'] ) ) {
+	      // if( in_array( $list1->id, $settings[$_POST['levelid']]['mctag'] ) ) {
 	    //     echo ' selected="yes" ';
 	    //   }
 	    //   echo '>'.$list1->name.'</option>';
