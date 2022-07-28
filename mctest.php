@@ -277,6 +277,12 @@ if ( $_GET['add'] ) {
 
 
 function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
+
+	echo $url.'<br />';
+	echo $request_type.'<br />';
+	echo $api_key.'<br />';
+	echo $data.'<br />';
+
 	if( $request_type == 'GET' )
 		$url .= '?' . http_build_query($data);
 
