@@ -169,7 +169,7 @@ if ( $_GET['tags'] ) {
 		$listarr = array();
 		$listnum = 0;
 		echo '<pre>';
-		// echo var_export( $response1, true ).'<br />';
+		echo var_export( $response1, true ).'<br />';
 		$mclists = $response1->tags;
 		echo $response1->total_items.'<br />';
 		echo var_export( $mclists, true ).'<br />';
