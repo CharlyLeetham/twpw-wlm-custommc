@@ -257,7 +257,7 @@ class twpw_custom_mc {
 					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
 						echo $tag."\r\n\r\n";
 						$tagsnew = array();
-						$tagsnew => [
+						$tagsnew[] => [
 							"name" => $tag,
 							"status" => "active"
 						];
