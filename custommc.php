@@ -701,6 +701,8 @@ class twpw_custom_mc {
 		global $twpw_custommc_mcapi;
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
+		echo $api_key;
+		die();
 		// $response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 		$data = array (
 			"count" => 1000
