@@ -700,7 +700,18 @@ class twpw_custom_mc {
 	public function acl_get_tags( $listid, $levelid, $ajax=null ) {
 		global $twpw_custommc_mcapi;
 		$settings = get_option("twpw_custommc");
-		$response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
+		$api_key = $settings['mcapikey'];
+		// $response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
+		$data = array (
+			"count" => 1000
+		);
+
+		$url = $url."/tag-search/";
+
+		$request_type = "GET";
+
+		$response1 = json_decode( acl_mc_curl_connect( $url, $request_type, $api_key, $data ) );
+
 		$mclists = $response1->tags;
 		var_dump ($mclists);
 		$mailchimptags = '<select multiple="multiple" class="mctag" name="twpw_custommc['.$levelid.'][mctag][]">';
@@ -729,6 +740,32 @@ class twpw_custom_mc {
 				'apiKey' => $api_key,
 				'server' => $dc
 		]);
+
+	}
+
+	public function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
+		if( $request_type == 'GET' )
+			$url .= '?' . http_build_query($data);
+
+		$mch = curl_init();
+		$headers = array(
+			'Content-Type: application/json',
+			'Authorization: Basic '.base64_encode( 'user:'. $api_key )
+		);
+		curl_setopt($mch, CURLOPT_URL, $url );
+		curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
+		//curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+		curl_setopt($mch, CURLOPT_RETURNTRANSFER, true); // do not echo the result, write it into variable
+		curl_setopt($mch, CURLOPT_CUSTOMREQUEST, $request_type); // according to MailChimp API: POST/GET/PATCH/PUT/DELETE
+		curl_setopt($mch, CURLOPT_TIMEOUT, 10);
+		curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
+
+		if( $request_type != 'GET' ) {
+			curl_setopt($mch, CURLOPT_POST, true);
+			curl_setopt($mch, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
+		}
+
+		return curl_exec($mch);
 
 	}
 

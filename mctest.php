@@ -181,11 +181,7 @@ if ( $_GET['tags'] ) {
 		);
 
 		$url = $url."/tag-search/";
-		// $mch = curl_init();
-		// $headers = array(
-		// 	'Content-Type: application/json',
-		// 	'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
-		// );
+
 		$request_type = "GET";
 
 		$response1 = json_decode( acl_mc_curl_connect( $url, $request_type, $mcapikey, $data ) );
@@ -193,15 +189,9 @@ if ( $_GET['tags'] ) {
 		echo 'here';
 		$totalitems = $response1->total_items;
 		echo '<pre>';
-		//echo var_export( $response1, true ).'<br />';
 		$mclists = $response1->tags;
-		// echo var_export( $mclists, true ).'<br />';
 		foreach ( $mclists as $list1 ) {
-		// 	echo 'List 1: '.$list1->id.'<br />';
-			// echo var_export( $list1, true ).'<br />';
-			echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
-		// 	echo 'ID: '.$list1[0]['id'].'<br />';
-		// 	echo 'name: '.$list1->name.'<br />';
+					echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 		}
 		echo '</pre>';
 	} catch (Exception $e) {
