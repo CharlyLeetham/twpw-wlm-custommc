@@ -732,7 +732,7 @@ class twpw_custom_mc {
 		}
 
 		$response1 =  curl_exec($mch);
-	  $response1 = json_decode( $response1 ) );
+	  $response1 = json_decode( $response1 );
 
 		$mclists = $response1->tags;
 		var_dump ($mclists);
