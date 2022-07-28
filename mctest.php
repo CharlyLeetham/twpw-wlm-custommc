@@ -193,7 +193,7 @@ if ( $_GET['tags'] ) {
 		curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
 
 		$response1 =  curl_exec($mch);
-		$response1 = json_decode ( $result );
+		$response1 = json_decode ( $response1 );
 		echo 'here';
 		$totalitems = $response1->total_items;
 		echo '<pre>';
