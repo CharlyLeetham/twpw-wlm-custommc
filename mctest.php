@@ -31,7 +31,7 @@ if ( !$_GET['dc'] ) {
 require_once('mailchimp/vendor/autoload.php');
 require_once('includes/mctransaction/vendor/autoload.php');
 
-$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid;
+//$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid;
 
 $mailchimp = new \MailchimpMarketing\ApiClient();
 $mailchimp->setConfig([
