@@ -255,10 +255,11 @@ class twpw_custom_mc {
 				}
 				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
 					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
-						$tags[] => [
+					/*	$tags[] => [
 							"name" => $tag[],
 							"status" => "active"
-						];
+						];*/
+						echo $tag;
 					}
 				}
 
@@ -266,7 +267,7 @@ class twpw_custom_mc {
 					echo "What do our tags look like? \r\n\r\n";
 					$tagexp = var_export( $tags[], true );
 					echo $tagexp."\r\n\r\n";
-				} 
+				}
 				// Setup the array to send to Mailchimp
 				global $wpdb;
 
