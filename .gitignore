@@ -4,5 +4,5 @@ errors.txt
 php_errors.log
 
 # uploads
-
+**/logs
 /logs
