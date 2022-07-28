@@ -178,7 +178,7 @@ if ( $_GET['tags'] ) {
 	try {
 		// $response1 = $mailchimp->lists->tagSearch( $listid );
 
-		$url = $url."/tag-search/";
+		$url = $url."/tag-search/?count=5";
 		$mch = curl_init();
 		$headers = array(
 			'Content-Type: application/json',
