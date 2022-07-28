@@ -599,7 +599,7 @@ if ( $display ) { ?>
 			]);
 	    $response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 	    $mclists = $response1->tags;
-			var_dump ($mclists);
+			
 	    echo '<select multiple="multiple" class="mctag" name="twpw_custommc['.$_POST['levelid'].'][mctag][]">';
 	    foreach ( $mclists as $list1 ) {
 	      echo '<option value="'.$list1->id.'"';
