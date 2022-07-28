@@ -318,7 +318,8 @@ class twpw_custom_mc {
 					    "email_address" => $useremail,
 					    "status_if_new" => "subscribed",
 							"merge_fields" => [
-									$merge_vars
+								"FNAME" => "Test",
+								"LNAME" => "User"
 							]
 						]
 					);
