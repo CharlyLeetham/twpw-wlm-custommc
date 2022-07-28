@@ -286,6 +286,7 @@ function twpwcustommclists() {
 					}
 
 					if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
+						echo 'dhfdjfhsdkfdhskjfhds';
 						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
 					}
 					?></td>
