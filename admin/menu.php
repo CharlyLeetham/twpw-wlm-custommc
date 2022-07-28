@@ -609,36 +609,23 @@ if ( $display ) { ?>
 
 	  if ( !empty( $listid ) ) {
 			$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
+			if (isset($twpw_custommc_mcapi)) return;
+			require_once( $acl_plugin_dir.'/mailchimp/vendor/autoload.php');
 			$settings = get_option("twpw_custommc");
 			$api_key = $settings['mcapikey'];
 			$dc = $settings['mcdc'];
-			// $response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
-			$data = array (
-				"count" => 1000
-			);
-			$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/tag-search/";
-
-			$request_type = "GET";
-
-			//$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
-		  $response1 = json_decode( $response1 );
-			$mclists = $response1->tags;
-			$mailchimptags = '<select multiple="multiple" class="mctag" name="twpw_custommc['.$levelid.'][mctag][]">';
-			foreach ( $mclists as $list1 ) {
-				$mailchimptags.='<option value="'.$list1->name.'"';
-				$list1->name = (string)$list1->name;
-				if( in_array( $list1->name, $settings[$levelid]['mctag'] ) ) {
-					$mailchimptags.=' selected="yes" ';
-				}
-				$mailchimptags.='>'.$list1->name.'</option>';
-			}
-			$mailchimptags .= '</select>';
-			return $mailchimptags;
+			$twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();
+			$twpw_custommc_mcapi->setConfig([
+					'apiKey' => $api_key,
+					'server' => $dc
+			]);
+	    $response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
+	    $mclists = $response1->tags;
 
 	    echo '<select multiple="multiple" class="mctag" name="twpw_custommc['.$_POST['levelid'].'][mctag][]">';
 	    foreach ( $mclists as $list1 ) {
-	      echo '<option value="'.$list1->name.'"';
-	      if( in_array( $list1->name, $settings[$_POST['levelid']]['mctag'] ) ) {
+	      echo '<option value="'.$list1->id.'"';
+	      if( in_array( $list1->id, $settings[$_POST['levelid']]['mctag'] ) ) {
 	        echo ' selected="yes" ';
 	      }
 	      echo '>'.$list1->name.'</option>';
