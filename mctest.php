@@ -196,7 +196,6 @@ if ( $_GET['tags'] ) {
 		$response1 = json_decode ( $result );
 		echo 'here';
 		$totalitems = $response1->total_items;
-		$response1 = $mailchimp->lists->tagSearch($listid, null, null, $totalitems, '0');
 		echo '<pre>';
 		echo var_export( $response1, true ).'<br />';
 		$mclists = $response1->tags;
