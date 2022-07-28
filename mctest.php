@@ -176,24 +176,13 @@ if ( $_GET['mergevals'] ) {
 
 if ( $_GET['tags'] ) {
 	try {
-		// $response1 = $mailchimp->lists->tagSearch( $listid );
-
 		$url = $url."/tag-search/?count=1000";
 		$mch = curl_init();
 		$headers = array(
 			'Content-Type: application/json',
 			'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
 		);
-
-		$data = array(
-			'count' => 5, // the number of lists to return, default - all
-		);
-
 		$request_type = "GET";
-
-		echo $url.'<br />';
-		echo $data.'<br />';
-		echo $request_type.'<br />';
 
 		curl_setopt($mch, CURLOPT_URL, $url );
 		curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
@@ -203,20 +192,13 @@ if ( $_GET['tags'] ) {
 		curl_setopt($mch, CURLOPT_TIMEOUT, 10);
 		curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
 
-		if( $request_type != 'GET' ) {
-			curl_setopt($mch, CURLOPT_POST, true);
-			curl_setopt($mch, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
-		}
+		$response1 =  curl_exec($mch);
+		$response1 = json_decode ( $result );
 
-	$result =  curl_exec($mch);
-	$result = json_decode ( $result );
-	var_dump ( $result );
-
-	//	}
-		// $response1 = $mailchimp->lists->tagSearch( $listid, [
-			// "offset" => 0,
-			// "count" => 1000
-		// ]);
+		$response1 = $mailchimp->lists->tagSearch( $listid, [
+			"offset" => 0,
+			"count" => 1000
+		]);
 		echo 'here';
 		// $response1 = $mctransaction->tags->list();
 		// $listarr = array();
