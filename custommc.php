@@ -325,10 +325,9 @@ class twpw_custom_mc {
 							]
 						);
 					} catch (Exception $e) {
-						echo '<pre>';
 						$exception = (string) $e->getResponse()->getBody();
 						$exception = json_decode($exception);
-						$logger .= var_export( $exception )."\r\n\r\n"
+						$logger .= var_export( $exception )."\r\n\r\n";
 						$logger .= echo 'An error has occurred: '.$exception->title.' - '.$exception->detail."\r\n\r\n";
 					}
 
