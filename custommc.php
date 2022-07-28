@@ -705,8 +705,7 @@ class twpw_custom_mc {
 		$data = array (
 			"count" => 1000
 		);
-
-		$url = $url."/tag-search/";
+		$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/tag-search/";
 
 		$request_type = "GET";
 
