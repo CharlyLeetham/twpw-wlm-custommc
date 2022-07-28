@@ -620,7 +620,7 @@ if ( $display ) { ?>
 
 			$request_type = "GET";
 
-			$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
+			//$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
 		  $response1 = json_decode( $response1 );
 			$mclists = $response1->tags;
 			$mailchimptags = '<select multiple="multiple" class="mctag" name="twpw_custommc['.$levelid.'][mctag][]">';
