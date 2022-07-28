@@ -314,7 +314,7 @@ class twpw_custom_mc {
 				if ( $live ) {
 
 					$subemailhash = md5( $useremail );
-					$response = $mailchimp->lists->setListMember( $listid, $subemailhash, [
+					$response = $mailchimp->lists->setListMember( $mclistid, $subemailhash, [
 					    "email_address" => $useremail,
 					    "status_if_new" => "subscribed",
 							"merge_fields" => [
