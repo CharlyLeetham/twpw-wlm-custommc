@@ -173,7 +173,7 @@ if ( $_GET['mergevals'] ) {
 if ( $_GET['tags'] ) {
 	try {
 		// $response1 = $mailchimp->lists->tagSearch($listid);
-		$response1 = $mctransaction->tags->list;
+		$response1 = $mctransaction->tags->list();
 		// $listarr = array();
 		// $listnum = 0;
 		// $totalitems = $response1->total_items;
