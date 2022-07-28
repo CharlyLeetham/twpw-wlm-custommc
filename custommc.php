@@ -262,6 +262,13 @@ class twpw_custom_mc {
 						$tags[] = array('id'=>$tag_id, 'tag' => $tag);
 					}
 				}
+
+				$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
+				"tags" => [
+						["name" => "Test Tag",
+						"status" => "inactive"]
+					],
+				]);
 				// Setup the array to send to Mailchimp
 				global $wpdb;
 
@@ -720,9 +727,9 @@ class twpw_custom_mc {
 		$mclists = $response1->tags;
 		$mailchimptags = '<select multiple="multiple" class="mctag" name="twpw_custommc['.$levelid.'][mctag][]">';
 		foreach ( $mclists as $list1 ) {
-			$mailchimptags.='<option value="'.$list1->id.'"';
-			$list1->id = (string)$list1->id;
-			if( in_array( $list1->id, $settings[$levelid]['mctag'] ) ) {
+			$mailchimptags.='<option value="'.$list1->name.'"';
+			$list1->name = (string)$list1->name;
+			if( in_array( $list1->name, $settings[$levelid]['mctag'] ) ) {
 				$mailchimptags.=' selected="yes" ';
 			}
 			$mailchimptags.='>'.$list1->name.'</option>';
