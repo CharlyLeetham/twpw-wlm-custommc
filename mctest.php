@@ -195,8 +195,7 @@ if ( $_GET['tags'] ) {
 		echo '<pre>';
 		//echo var_export( $response1, true ).'<br />';
 		$mclists = $response1->tags;
-		echo $response1->total_items.'<br />';
-		echo var_export( $mclists, true ).'<br />';
+		// echo var_export( $mclists, true ).'<br />';
 		foreach ( $mclists as $list1 ) {
 			echo 'List 1: '.$list1->id.'<br />';
 			echo var_export( $list1, true ).'<br />';
