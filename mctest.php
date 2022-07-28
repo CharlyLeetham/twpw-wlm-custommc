@@ -174,7 +174,10 @@ if ( $_GET['mergevals'] ) {
 
 if ( $_GET['tags'] ) {
 	try {
-		$response1 = $mailchimp->lists->tagSearch($listid);
+		$response1 = $mailchimp->lists->tagSearch( $listid, [
+			offset => 0,
+			count => 1000
+		]);
 		echo 'here';
 		// $response1 = $mctransaction->tags->list();
 		// $listarr = array();
