@@ -566,7 +566,7 @@ if ( $display ) { ?>
 					'server' => $dc
 			]);
 
-			echo twpw_custom_mc::acl_get_tags( $listid, $_POST['levelid'] );
+			echo twpw_custom_mc::acl_get_interest_groups( $listid, $_POST['levelid'] );
 			// $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
 			// $mccats = $response1->categories;
 			// $catarr = array();
