@@ -168,6 +168,8 @@ if ( $_GET['tags'] ) {
 		$response1 = $mailchimp->lists->tagSearch($listid);
 		$listarr = array();
 		$listnum = 0;
+		$totalitems = $response1->total_items;
+		$response1 = $mailchimp->lists->tagSearch($listid$fields = null, $exclude_fields = null, $count = $totalitems, $offset = '0');
 		echo '<pre>';
 		echo var_export( $response1, true ).'<br />';
 		$mclists = $response1->tags;
