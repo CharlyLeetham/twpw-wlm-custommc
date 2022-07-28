@@ -253,22 +253,20 @@ class twpw_custom_mc {
 					$tagexp = var_export( $settings[$levid]['mctag'], true );
 					echo $tagexp."\r\n\r\n";
 				}
-				/*if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
+				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
 					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
-						$tag = explode('::',$tag); // divide the tag as top id and bottom name
-						$tags[$tag[0]][] = $tag[1];
-					}
-					foreach($tags as $tag_id => $tag) {
-						$tags[] = array('id'=>$tag_id, 'tag' => $tag);
+						$tags[] => [
+							"name" => $tag[],
+							"status" => "active"
+						];
 					}
 				}
 
-				$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
-				"tags" => [
-						["name" => "Test Tag",
-						"status" => "inactive"]
-					],
-				]); */
+				if ( $debug ) {
+					echo "What do our tags look like? \r\n\r\n";
+					$tagexp = var_export( $tags[], true );
+					echo $tagexp."\r\n\r\n";
+				} 
 				// Setup the array to send to Mailchimp
 				global $wpdb;
 
