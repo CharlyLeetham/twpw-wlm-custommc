@@ -711,8 +711,6 @@ class twpw_custom_mc {
 		$request_type = "GET";
 
 		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
-		echo $response1;
-		die();
 		/*
 		if( $request_type == 'GET' )
 			$url .= '?' . http_build_query($data);
@@ -771,8 +769,6 @@ class twpw_custom_mc {
 	}
 
 	public function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
-		echo 'hello';
-		return;
 		if( $request_type == 'GET' )
 			$url .= '?' . http_build_query($data);
 
