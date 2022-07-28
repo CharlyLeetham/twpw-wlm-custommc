@@ -31,6 +31,8 @@ if ( !$_GET['dc'] ) {
 require_once('mailchimp/vendor/autoload.php');
 require_once('includes/mctransaction/vendor/autoload.php');
 
+$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid;
+
 $mailchimp = new \MailchimpMarketing\ApiClient();
 $mailchimp->setConfig([
 	'apiKey' => $mcapikey,
@@ -174,7 +176,31 @@ if ( $_GET['mergevals'] ) {
 
 if ( $_GET['tags'] ) {
 	try {
-		$response1 = $mailchimp->lists->tagSearch( $listid );
+		// $response1 = $mailchimp->lists->tagSearch( $listid );
+
+		$url = $url."/tagSearch/";
+		$mch = curl_init();
+		$headers = array(
+			'Content-Type: application/json',
+			'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
+		);
+		curl_setopt($mch, CURLOPT_URL, $url );
+		curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
+		//curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+		curl_setopt($mch, CURLOPT_RETURNTRANSFER, true); // do not echo the result, write it into variable
+		curl_setopt($mch, CURLOPT_CUSTOMREQUEST, $request_type); // according to MailChimp API: POST/GET/PATCH/PUT/DELETE
+		curl_setopt($mch, CURLOPT_TIMEOUT, 10);
+		curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
+
+		if( $request_type != 'GET' ) {
+			curl_setopt($mch, CURLOPT_POST, true);
+			curl_setopt($mch, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
+		}
+
+	$result =  curl_exec($mch);
+	$result = json_decode ( $result );
+	var_dump ( $result );
+		}
 		// $response1 = $mailchimp->lists->tagSearch( $listid, [
 			// "offset" => 0,
 			// "count" => 1000
