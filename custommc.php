@@ -711,7 +711,8 @@ class twpw_custom_mc {
 		$request_type = "GET";
 
 		$response1 = ( $this->acl_mc_curl_connect( $url, $request_type, $api_key, $data ) );
-
+		echo $response1;
+		die();
 		/*
 		if( $request_type == 'GET' )
 			$url .= '?' . http_build_query($data);
