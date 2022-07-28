@@ -189,6 +189,8 @@ if ( $_GET['tags'] ) {
 			'count' => 5, // the number of lists to return, default - all
 		);
 
+		$request_type = "GET";
+
 		curl_setopt($mch, CURLOPT_URL, $url );
 		curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
 		//curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
