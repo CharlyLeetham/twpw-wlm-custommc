@@ -253,15 +253,15 @@ class twpw_custom_mc {
 					$tagexp = var_export( $settings[$levid]['mctag'], true );
 					echo $tagexp."\r\n\r\n";
 				}
-				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
-					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
+				// if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
+					// foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
 					/*	$tags[] => [
 							"name" => $tag[],
 							"status" => "active"
 						];*/
-						echo $tag;
-					}
-				}
+						// echo $tag;
+					// }
+				// }
 
 				if ( $debug ) {
 					echo "What do our tags look like? \r\n\r\n";
