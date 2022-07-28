@@ -744,7 +744,7 @@ class twpw_custom_mc {
 
 	}
 
-	public function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
+	function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
 		echo 'hello';
 		return;
 		if( $request_type == 'GET' )
