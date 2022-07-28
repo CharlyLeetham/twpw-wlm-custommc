@@ -710,7 +710,7 @@ class twpw_custom_mc {
 
 		$request_type = "GET";
 
-		$response1 = acl_mc_curl_connect( $url, $request_type, $api_key, $data );
+		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
 		echo $response1;
 		die();
 		/*
