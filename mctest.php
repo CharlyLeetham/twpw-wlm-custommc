@@ -178,18 +178,18 @@ if ( $_GET['tags'] ) {
 	try {
 		// $response1 = $mailchimp->lists->tagSearch( $listid );
 
-		$url = $url."/tagSearch/";
-		$mch = curl_init();
-		$headers = array(
-			'Content-Type: application/json',
-			'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
-		);
+		//$url = $url."/tagSearch/";
+		//$mch = curl_init();
+		//$headers = array(
+		//	'Content-Type: application/json',
+		//	'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
+		//);
 
-		$data = array(
-			'count' => 5, // the number of lists to return, default - all
-		);
+		//$data = array(
+		//	'count' => 5, // the number of lists to return, default - all
+		//);
 
-		$request_type = "GET";
+		//$request_type = "GET";
 
 		echo $url.'<br />';
 		echo $data.'<br />';
