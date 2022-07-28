@@ -256,8 +256,7 @@ class twpw_custom_mc {
 				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
 					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
 						echo $tag."\r\n\r\n";
-						$tagsnew = array();
-						$tagsnew[] = [
+						$tags[] = [
 							"name" => $tag,
 							"status" => "active"
 						];
@@ -267,6 +266,11 @@ class twpw_custom_mc {
 					}*/
 				}
 
+				if ( $debug ) {
+					echo "Tags for export \r\n\r\n";
+					$tagexp = var_export( $tags, true );
+					echo $tagexp."\r\n\r\n";
+				}
 				/*$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
 				"tags" => [
 						["name" => "Test Tag",
