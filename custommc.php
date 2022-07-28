@@ -292,7 +292,7 @@ class twpw_custom_mc {
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'merge_vars' => $merge_vars,
-						'tags' => $mctag,
+						'tags' => $tags,
 						'email_type' => $email_type,
 					);
 					$myarr = var_export ( $myarray, true );
