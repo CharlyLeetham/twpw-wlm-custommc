@@ -253,6 +253,7 @@ class twpw_custom_mc {
 					$tagexp = var_export( $settings[$levid]['mctag'], true );
 					echo $tagexp."\r\n\r\n";
 				}
+
 				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
 					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
 						echo $tag."\r\n\r\n";
@@ -261,9 +262,6 @@ class twpw_custom_mc {
 							"status" => "active"
 						];
 					}
-					/*foreach($tags as $tag_id => $tag) {
-						$tags[] = array('id'=>$tag_id, 'tag' => $tag);
-					}*/
 				}
 
 				if ( $debug ) {
@@ -271,21 +269,14 @@ class twpw_custom_mc {
 					$tagexp = var_export( $tags, true );
 					echo $tagexp."\r\n\r\n";
 				}
-				/*$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
-				"tags" => [
-						["name" => "Test Tag",
-						"status" => "inactive"]
-					],
-				]); */
+
 				// Setup the array to send to Mailchimp
 				global $wpdb;
 
 				$merge_vars = array (
 									 'FNAME' => $firstname,
-									 'LNAME' => $lastname,
-									 /*'GROUPINGS' => $groupings,*/
+									 'LNAME' => $lastname
 									);
-				$merge_vars = array_merge($merge_vars, $settings[$levid]['merge_vars']);
 
 				// For PDT ONLY
 				$merge_vars['JOINED'] = current_time('Y-m-d');
@@ -322,7 +313,21 @@ class twpw_custom_mc {
 
 				if ( $live ) {
 
+					$subemailhash = md5( $useremail );
+					$response = $mailchimp->lists->setListMember( $listid, $subemailhash, [
+					    "email_address" => $useremail,
+					    "status_if_new" => "subscribed",
+							"merge_fields" => [
+									$merge_vars
+							]
+						]
+					);
 
+					// $response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
+					// "tags" => [
+					// 		$tags
+					// 	],
+					// ]);
 
 /*
 					$result = $mailchimp->call( '/lists/subscribe', array(
@@ -338,22 +343,13 @@ class twpw_custom_mc {
 						'send_welcome' => $send_welcome
 					));
 */
-					if ($mailchimp->errorCode){
-						if ( $logging ) {
-							$logger .= "Unable to load listUnsubscribe()!\n\r";
-							$logger .= "\tCode=".$mailchimp->errorCode."\n\r";
-							$logger .= "\tMsg=".$mailchimp->errorMessage."\n\r";
+					if ( $logging ) {
+						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
+						if ( $groupings ) {
+							$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
 						}
-
-					} else {
-						if ( $logging ) {
-							$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
-							if ( $groupings ) {
-								$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
-							}
-							$logger .= ' '.$logger1;
-							$logger .= "\n\r---\n\r";
-						}
+						$logger .= ' '.$logger1;
+						$logger .= "\n\r---\n\r";
 					}
 				} else {
 					if ( $debug ) {
