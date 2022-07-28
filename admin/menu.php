@@ -255,7 +255,7 @@ function twpwcustommclists() {
 						}
 
 						if ( !empty ($settings[$level['id']]['mclistid'] ) ) {
-							$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
+							//$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
 							if ( $debug == 'yes' ) {
 								$logger .= "MCGroups: ";
 								$logger .= var_export( $mclists, true );
@@ -640,4 +640,4 @@ if ( $display ) { ?>
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
 	add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
 
-?>  
+?>
