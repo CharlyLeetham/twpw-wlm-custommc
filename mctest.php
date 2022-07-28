@@ -31,7 +31,7 @@ if ( !$_GET['dc'] ) {
 require_once('mailchimp/vendor/autoload.php');
 require_once('includes/mctransaction/vendor/autoload.php');
 
-//$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid;
+$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid;
 
 $mailchimp = new \MailchimpMarketing\ApiClient();
 $mailchimp->setConfig([
@@ -178,18 +178,18 @@ if ( $_GET['tags'] ) {
 	try {
 		// $response1 = $mailchimp->lists->tagSearch( $listid );
 
-		//$url = $url."/tagSearch/";
+		$url = $url."/tagSearch/";
 		//$mch = curl_init();
 		//$headers = array(
 		//	'Content-Type: application/json',
 		//	'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
 		//);
 
-		//$data = array(
-		//	'count' => 5, // the number of lists to return, default - all
-		//);
+		$data = array(
+			'count' => 5, // the number of lists to return, default - all
+		);
 
-		//$request_type = "GET";
+		$request_type = "GET";
 
 		echo $url.'<br />';
 		echo $data.'<br />';
