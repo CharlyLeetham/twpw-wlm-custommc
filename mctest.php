@@ -194,29 +194,21 @@ if ( $_GET['tags'] ) {
 
 		$response1 =  curl_exec($mch);
 		$response1 = json_decode ( $result );
-
-		$response1 = $mailchimp->lists->tagSearch( $listid, [
-			"offset" => 0,
-			"count" => 1000
-		]);
 		echo 'here';
-		// $response1 = $mctransaction->tags->list();
-		// $listarr = array();
-		// $listnum = 0;
-		// $totalitems = $response1->total_items;
-		// $response1 = $mailchimp->lists->tagSearch($listid, null, null, $totalitems, '0');
+		$totalitems = $response1->total_items;
+		$response1 = $mailchimp->lists->tagSearch($listid, null, null, $totalitems, '0');
 		echo '<pre>';
 		echo var_export( $response1, true ).'<br />';
-		// $mclists = $response1->tags;
-		// echo $response1->total_items.'<br />';
-		// echo var_export( $mclists, true ).'<br />';
-		// foreach ( $mclists as $list1 ) {
-			// echo 'List 1: '.$list1->id.'<br />';
-			// echo var_export( $list1, true ).'<br />';
-			// echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
-			// echo 'ID: '.$list1[0]['id'].'<br />';
-			// echo 'name: '.$list1->name.'<br />';
-		// }
+		$mclists = $response1->tags;
+		echo $response1->total_items.'<br />';
+		echo var_export( $mclists, true ).'<br />';
+		foreach ( $mclists as $list1 ) {
+			echo 'List 1: '.$list1->id.'<br />';
+			echo var_export( $list1, true ).'<br />';
+			echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
+			echo 'ID: '.$list1[0]['id'].'<br />';
+			echo 'name: '.$list1->name.'<br />';
+		}
 		echo '</pre>';
 	} catch (Exception $e) {
         	echo '<pre>';
