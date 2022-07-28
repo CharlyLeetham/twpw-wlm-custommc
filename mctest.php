@@ -189,20 +189,11 @@ if ( $_GET['tags'] ) {
 		$request_type = "GET";
 
 		$response1 = json_decode( acl_mc_curl_connect( $url, $request_type, $mcapikey, $data ) );
-		// curl_setopt($mch, CURLOPT_URL, $url );
-		// curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
-		// //curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
-		// curl_setopt($mch, CURLOPT_RETURNTRANSFER, true); // do not echo the result, write it into variable
-		// curl_setopt($mch, CURLOPT_CUSTOMREQUEST, $request_type); // according to MailChimp API: POST/GET/PATCH/PUT/DELETE
-		// curl_setopt($mch, CURLOPT_TIMEOUT, 10);
-		// curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
-		//
-		// $response1 =  curl_exec($mch);
-		// $response1 = json_decode ( $response1 );
+
 		echo 'here';
 		$totalitems = $response1->total_items;
 		echo '<pre>';
-		echo var_export( $response1, true ).'<br />';
+		//echo var_export( $response1, true ).'<br />';
 		$mclists = $response1->tags;
 		echo $response1->total_items.'<br />';
 		echo var_export( $mclists, true ).'<br />';
@@ -218,7 +209,7 @@ if ( $_GET['tags'] ) {
         	echo '<pre>';
 	        $exception = (string) $e->getResponse()->getBody();
         	$exception = json_decode($exception);
-		echo var_export( $exception ).'<br />';
+					echo var_export( $exception ).'<br />';
         	echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
         	echo '</pre>';
 	} finally {
@@ -277,12 +268,6 @@ if ( $_GET['add'] ) {
 
 
 function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
-
-	// echo $url.'<br />';
-	// echo $request_type.'<br />';
-	// echo $api_key.'<br />';
-	// echo $data.'<br />';
-
 	if( $request_type == 'GET' )
 		$url .= '?' . http_build_query($data);
 
