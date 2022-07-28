@@ -323,7 +323,6 @@ class twpw_custom_mc {
 						]
 					);
 
-					echo $response;
 
 					// $response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
 					// "tags" => [
@@ -347,6 +346,8 @@ class twpw_custom_mc {
 */
 					if ( $logging ) {
 						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
+						$logger .= var_export ( $response, true);
+						$logger .= "\r\n\r\n"
 						if ( $groupings ) {
 							$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
 						}
