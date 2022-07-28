@@ -184,6 +184,11 @@ if ( $_GET['tags'] ) {
 			'Content-Type: application/json',
 			'Authorization: Basic '.base64_encode( 'user:'. $mcapikey )
 		);
+
+		$data = array(
+			'count' => 5, // the number of lists to return, default - all
+		);
+
 		curl_setopt($mch, CURLOPT_URL, $url );
 		curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
 		//curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
