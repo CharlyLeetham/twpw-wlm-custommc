@@ -395,7 +395,7 @@ if ( $display ) { ?>
 	<script type="text/javascript">
 		( function($) {
 			$("select.mclistid").change(function() {
-				var groupobject=$(this).parent().next("td.grouplisting");
+				var groupobject=$(this).parent().next("td.taglisting");
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
 					action:"twpw_custommc_ig",
 					mclistid: $(this).val(),
@@ -599,7 +599,7 @@ if ( $display ) { ?>
 			]);
 	    $response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
 	    $mclists = $response1->tags;
-			
+
 	    echo '<select multiple="multiple" class="mctag" name="twpw_custommc['.$_POST['levelid'].'][mctag][]">';
 	    foreach ( $mclists as $list1 ) {
 	      echo '<option value="'.$list1->id.'"';
