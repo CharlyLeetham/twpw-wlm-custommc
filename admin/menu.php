@@ -565,38 +565,40 @@ if ( $display ) { ?>
 					'apiKey' => $api_key,
 					'server' => $dc
 			]);
-			$response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
-			$mccats = $response1->categories;
-			$catarr = array();
-			$intarr = array();
-			$catnum = 0;
 
-			foreach ($mccats as $k) {
-				$catarr[$k->title]['id'] = $k->id;
-				$catarr[$k->title]['title'] = $k->title;
-				$interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
-				$ia = $interests->interests;
-				$intnum = 0;
-				foreach ( $ia as $v ) {
-					$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
-					$catarr[$k->title]['groups'][$intnum]['id'] = $v->id;
-					$catarr[$k->title]['groups'][$intnum]['catid'] = $v->category_id;
-					$intnum++;
-				}
-			}
-
-			$mclists = $catarr;
-			echo '<select multiple="multiple" name="twpw_custommc['.$_POST['levelid'].'][mcgroup][]" class="mclist">';
-				foreach ( $mclists as $mclist ) {
-					echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
-					foreach ( $mclist['groups'] as $group => $gvalue ) {
-						echo '<option value="'.$gvalue['id'].'" ';
-						if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
-							echo 'selected="selected" ';
-						echo '>'.$gvalue['name'].'</option>';
-					}
-				}
-			echo '</select>';
+			echo twpw_custom_mc::acl_get_tags( $listid, $_POST['levelid'] );
+			// $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
+			// $mccats = $response1->categories;
+			// $catarr = array();
+			// $intarr = array();
+			// $catnum = 0;
+			//
+			// foreach ($mccats as $k) {
+			// 	$catarr[$k->title]['id'] = $k->id;
+			// 	$catarr[$k->title]['title'] = $k->title;
+			// 	$interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
+			// 	$ia = $interests->interests;
+			// 	$intnum = 0;
+			// 	foreach ( $ia as $v ) {
+			// 		$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
+			// 		$catarr[$k->title]['groups'][$intnum]['id'] = $v->id;
+			// 		$catarr[$k->title]['groups'][$intnum]['catid'] = $v->category_id;
+			// 		$intnum++;
+			// 	}
+			// }
+			//
+			// $mclists = $catarr;
+			// echo '<select multiple="multiple" name="twpw_custommc['.$_POST['levelid'].'][mcgroup][]" class="mclist">';
+			// 	foreach ( $mclists as $mclist ) {
+			// 		echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
+			// 		foreach ( $mclist['groups'] as $group => $gvalue ) {
+			// 			echo '<option value="'.$gvalue['id'].'" ';
+			// 			if( in_array($gvalue['id'], $settings[$level['id']]['mcgroup'] ) )
+			// 				echo 'selected="selected" ';
+			// 			echo '>'.$gvalue['name'].'</option>';
+			// 		}
+			// 	}
+			// echo '</select>';
 		} else {
 			echo '';
 		}
