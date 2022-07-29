@@ -320,7 +320,7 @@ class twpw_custom_mc {
 					$twpw_custommc_mcapi->setConfig([
 							'apiKey' => $api_key,
 							'server' => $dc
-					]); 
+					]);
 
 					$subemailhash = md5( $useremail );
 
@@ -336,7 +336,7 @@ class twpw_custom_mc {
 					// $logger .= $output."\r\n\r\n";
 
 					try {
-						$response = $mailchimp->ping->get();
+						$response = $twpw_custommc_mcapi->ping->get();
 						$logger .= $output."\r\n\r\n";
 					} catch (Exception $e) {
 						$logger .= $e->getMessage(). "\n";
