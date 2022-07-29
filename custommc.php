@@ -320,7 +320,7 @@ class twpw_custom_mc {
 					$twpw_custommc_mcapi->setConfig([
 							'apiKey' => $api_key,
 							'server' => $dc
-					]);
+					]); 
 
 					$subemailhash = md5( $useremail );
 
