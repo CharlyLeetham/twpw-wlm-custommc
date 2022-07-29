@@ -379,11 +379,11 @@ class twpw_custom_mc {
 						$tt1 .= "],"."\r\n";
 
 
-						// array_merge($first, $second);
-						// $logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
-						// $logger .= "       ".$tt1;
-						// // $logger .= "\r\n\r\n";
-						// $logger .= ']);'."\r\n\r\n";
+						array_merge($first, $second);
+						$logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
+						$logger .= $tt1;
+						// $logger .= "\r\n\r\n";
+						$logger .= ']);'."\r\n\r\n";
 
 	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 						// 	$tagtags
