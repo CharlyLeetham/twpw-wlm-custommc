@@ -335,26 +335,24 @@ class twpw_custom_mc {
 					// );';
 					// $logger .= $output."\r\n\r\n";
 
-					try {
-						$response = $mailchimp->ping->get();
-						$logger .= $output."\r\n\r\n";
-					} catch (Exception $e) {
-						$logger .= $e->getMessage(). "\n";
-						$exception = (string) $e->getResponse()->getBody();
-						$exception = json_decode($exception);
-						$logger .= var_export( $exception, true )."\r\n\r\n";
-						$logger .= echo 'An error has occurred: '.$exception->title.' - '.$exception->detail."\r\n\r\n";
-					}
+					// try {
+					// 	$response = $twpw_custommc_mcapi->ping->get();
+					// 	$logger .= $output."\r\n\r\n";
+					// } catch (Exception $e) {
+					// 	$logger .= $e->getMessage(). "\n";
+					// }
 
-					// $response = $mailchimp->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
-				  //     "email_address" => $useremail,
-				  //     "status_if_new" => "subscribed",
-				  //                 "merge_fields" => [
-				  //                         "FNAME" => "Test",
-				  //                         "LNAME" => "User"
-				  //                 ]
-				  //         ]
-				  // );
+					$response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
+				      "email_address" => $useremail,
+				      "status_if_new" => "subscribed",
+				                  "merge_fields" => [
+				                          "FNAME" => "Test",
+				                          "LNAME" => "User"
+				                  ]
+				          ]
+				  );
+
+					$logger .= $response;
 
 					if( $logging ) {
 						$logfile = fopen( LOGPATH."cjltest.log", "a" );
