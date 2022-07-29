@@ -372,12 +372,19 @@ class twpw_custom_mc {
 						$tagtags = array();
 						$tagtags["tags"] = $inttags;
 
-						$tt1 = '"tags" => [';
-						foreach ( $tags as $k) {
-							$tt1 .= '["name" => "'.$k["name"].'", "status" => "'.$k["status"].'"],';
-						}
-						$tt1 .= "],";
+						// $tt1 = '"tags" => [';
+						// foreach ( $tags as $k) {
+						// 	$tt1 .= '["name" => "'.$k["name"].'", "status" => "'.$k["status"].'"],';
+						// }
+						// $tt1 .= "],";
 
+
+						$tt1 = array();
+						foreach ( $tags as $k ) {
+							$tt1[tags][]["name"] => $k["name"];
+							$tt1[tags][]["status"] => $k["status"];
+						}
+						
 						$logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
 						$logger .= $tt1;
 						$logger .= "\r\n";
@@ -387,17 +394,17 @@ class twpw_custom_mc {
 						$output1 .= $tt1;
 						$output1 .= ']);';
 
-						// $response1 = $output1;
-	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-						// 	$tt1
-						// ]);
-
+						$response1 = $output1;
 	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-							"tags" => [
-								["name" => "eclass 1", "status" => "active"],
-							  ["name" => "WasPaused", "status" => "active"],
-							],
+							$tt1
 						]);
+
+	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+						// 	"tags" => [
+						// 		["name" => "eclass 1", "status" => "active"],
+						// 	  ["name" => "WasPaused", "status" => "active"],
+						// 	],
+						// ]);
 
 						$logger .= var_export( $response1, true );
 						$logger .= "\r\n\r\n";
