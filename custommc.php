@@ -380,6 +380,7 @@ class twpw_custom_mc {
 					} catch (Exception $e) {
 						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
+						$exception = (string) $e->getResponse()->getBody();
 					}
 
 					if( $logging ) {
