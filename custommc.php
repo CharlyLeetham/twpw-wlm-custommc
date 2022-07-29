@@ -353,7 +353,6 @@ class twpw_custom_mc {
  									 	'LNAME' => $lastname
                   ]
 						  ]);
- 					 	$logger .= var_export( $response, true )."\r\n\r\n";
 					} catch (Exception $e) {
 						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
@@ -365,16 +364,24 @@ class twpw_custom_mc {
 					// Now Add the tags
 
 					try {
+
+						$logger .= '$mailchimp->lists->updateListMemberTags('.$listid.', .'$subemailhash.', [
+						"tags" => ['.
+								$tags;
+						'.],
+					]);'."\r\n\r\n";
 	  				$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
 						"tags" => [
 								$tags
 							],
 						]);
+
+						$logger .= $var_export( $response1, true );
 					} catch (Exception $e) {
 						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
 					}
-					
+
 					if( $logging ) {
 						$logfile = fopen( LOGPATH."cjltest.log", "a" );
 						fwrite( $logfile, $logger );
