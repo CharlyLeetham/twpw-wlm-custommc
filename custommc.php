@@ -236,6 +236,7 @@ class twpw_custom_mc {
 				$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
 				$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
 				$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
+
 				$groupings = array(); // create groupings array
 				if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
 					foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
@@ -324,24 +325,6 @@ class twpw_custom_mc {
 
 					$subemailhash = md5( $useremail );
 
-					// $output = '$mailchimp->lists->setListMember('.$mclistid.', '.$subemailhash.', [
-					//     "email_address" => '.$useremail.',
-					//     "status_if_new" => "subscribed",
-					// 		"merge_fields" => [
-					// 			"FNAME" => "Test",
-					// 			"LNAME" => "User"
-					// 		]
-					// 	]
-					// );';
-					// $logger .= $output."\r\n\r\n";
-
-					// try {
-					// 	$response = $twpw_custommc_mcapi->ping->get();
-					// 	$logger .= $output."\r\n\r\n";
-					// } catch (Exception $e) {
-					// 	$logger .= $e->getMessage(). "\n";
-					// }
-
 					try {
 							$response = $twpw_custommc_mcapi->ping->get();
 							$logger .= var_export ( $response, true )."\r\n";
@@ -354,30 +337,35 @@ class twpw_custom_mc {
                   ]
 						  ]);
 					} catch (Exception $e) {
-						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
-						// $exception = (string) $e->getResponse()->getBody();
-						// $exception = json_decode($exception);
-						// $logger .= $exception."\r\n";
+						$exception = (string) $e->getResponse()->getBody();
+						$logger .= var_export ($exception, true );
+						$logger .= "\r\n\r\n";
 					}
+
+					// Add interest groups. Split out because I was having trouble with the array being formatted to send as part of the call.
+
+					try {
+
+						/*
+						'interests' => array(
+		'INTEREST ID' => true, // add interest
+		'INTEREST ID' => false, // remove interest
+		'INTEREST ID' => false
+			)
+			*/
+						$logger1 .= var_export ( $groupings, true)."\r\n\r\n";
+					} catch (Exception $e) {
+						$logger .= $e->getMessage(). "\n";
+						$exception = (string) $e->getResponse()->getBody();
+						$logger .= var_export ($exception, true );
+						$logger .= "\r\n\r\n";
+					}
+
 
 					// Now Add the tags
 
 					try {
-
-						foreach ( $tags as $t ) {
-							$inttags[] = array ("name" => $t["name"],"status" => $t["status"]);
-						}
-
-						$tagtags = array();
-						$tagtags["tags"] = $inttags;
-
-						// $tt1 = '"tags" => [';
-						// foreach ( $tags as $k) {
-						// 	$tt1 .= '["name" => "'.$k["name"].'", "status" => "'.$k["status"].'"],';
-						// }
-						// $tt1 .= "],";
-
 
 						/** This should work, but when used in the api call, it's just not adding the tags.
 						$tt1 = array();
@@ -395,52 +383,29 @@ class twpw_custom_mc {
 							$tt1
 						]);
 
-So we're going to do something a bit different to kludge it.
+						So we're going to do something a bit different to kludge it.
 **/
-					foreach ( $tags as $k ) {
-							$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-								"tags" => [
-									["name" => $k["name"], "status" => $k["status"] ]
-								]
-							]);
-							$logger .= 'Tag = '.$k["name"].' Status = '.$k["status"].' '.var_export( $response1, true );
-							$logger .= "\r\n\r\n";
-					}
-	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-						// 	"tags" => [
-						// 		["name" => "eclass 1", "status" => "active"],
-						// 	  ["name" => "WasPaused", "status" => "active"],
-						// 	],
-						// ]);
-
+						foreach ( $tags as $k ) {
+								$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+									"tags" => [
+										["name" => $k["name"], "status" => $k["status"] ]
+									]
+								]);
+								$logger .= 'Tag = '.$k["name"].' Status = '.$k["status"].' '.var_export( $response1, true );
+								$logger .= "\r\n\r\n";
+						}
 
 					} catch (Exception $e) {
-						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
 						$exception = (string) $e->getResponse()->getBody();
 						$logger .= var_export ($exception, true );
+						$logger .= "\r\n\r\n";
 					}
 
 					if( $logging ) {
-						$logfile = fopen( LOGPATH."cjltest.log", "a" );
-						fwrite( $logfile, $logger );
-						fclose( $logfile );
-					}
-/*
-					$result = $mailchimp->call( '/lists/subscribe', array(
-						'apikey' => $mcapikey,
-						'id' => $mclistid,
-						'email' => array('email' => $useremail),
-						'merge_vars' => $merge_vars,
-						'tags' => $mctag,
-						'email_type' => $email_type,
-						'double_optin' => $double_optin,
-						'update_existing' => $update_existing,
-						'replace_interests' => $replace_interests,
-						'send_welcome' => $send_welcome
-					));
-*/
-					if ( $logging ) {
+						// $logfile = fopen( LOGPATH."cjltest.log", "a" );
+						// fwrite( $logfile, $logger );
+						// fclose( $logfile );
 						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
 						// $response = var_export( $response, true );
 						// $logger .= echo $response;
@@ -450,20 +415,6 @@ So we're going to do something a bit different to kludge it.
 						}
 						$logger .= ' '.$logger1;
 						$logger .= "\n\r---\n\r";
-					}
-				} else {
-					if ( $debug ) {
-						echo 'Call made: $mailchimp->call( /lists/subscribe, '. $myarr .')';
-						echo "\r\n";
-					}
-
-					if ( $logging ) {
-						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added as test '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
-						if ( $groupings ) {
-							$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
-						}
-						$logger .= ' '.$logger1;
-						$logger .= "\r\n---\r\n";
 					}
 				}
 
