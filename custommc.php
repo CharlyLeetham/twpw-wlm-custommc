@@ -379,8 +379,8 @@ class twpw_custom_mc {
 							$tagstuff .= '"status" => '.$t["status"].'],'."\r\n";
 						}
 
-						// $tags = '"tags" => ['.$tagstuff.']';
-						// $logger .= var_export ( $tagstuff, true );
+						$tags = '"tags" => ['.$tagstuff.']';
+						$logger .= var_export ( $tags, true );
 	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 							// $tags
 						// ]);
