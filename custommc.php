@@ -367,12 +367,12 @@ class twpw_custom_mc {
 
 						$logger .= '$mailchimp->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
 						$logger .= '"tags" => ['."\r\n";
-						$logger .=		$tags ."\r\n";
+						$logger .=		var_export ($tags, true)."\r\n";
 						$logger .= '.],'. "\r\v";
 					  $logger .= ']);'."\r\n\r\n";
 	  				$response1 = $mailchimp->lists->updateListMemberTags($mclistid, $subemailhash, [
 						"tags" => [
-								$tag;
+								$tags;
 							],
 						]);
 
