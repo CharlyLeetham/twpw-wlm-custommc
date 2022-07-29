@@ -326,8 +326,17 @@ class twpw_custom_mc {
 					// );';
 					// $logger .= $output."\r\n\r\n";
 
-					$response = $mailchimp->ping->get();
-					$logger .= $output."\r\n\r\n";
+					try {
+						$response = $mailchimp->ping->get();
+						$logger .= $output."\r\n\r\n";
+					} catch (Exception $e) {
+						$exception = (string) $e->getResponse()->getBody();
+						$exception = json_decode($exception);
+						$logger .= var_export( $exception )."\r\n\r\n";
+
+
+						$logger .= echo 'An error has occurred: '.$exception->title.' - '.$exception->detail."\r\n\r\n";
+					}
 
 					// $response = $mailchimp->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
 				  //     "email_address" => $useremail,
