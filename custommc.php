@@ -374,7 +374,7 @@ class twpw_custom_mc {
 
 						$tags = '"tags" => ['."\r\n";
 						$tags .= $tagstuff;
-						$tags .= ']'."\r\n";
+						$tags .= '],'."\r\n";
 						$logger .= $tags;
 
 						$logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
