@@ -342,8 +342,10 @@ class twpw_custom_mc {
 					// 	$logger .= $e->getMessage(). "\n";
 					// }
 
+$email = "hd+28072201@askcharlyleetham.com";
+$mdhash = md5($email);
 					try {
-						$response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
+						$response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", $mdhash, [
 					      "email_address" => "hd+28072201@askcharlyleetham.com",
 					      "status_if_new" => "subscribed",
 					                  "merge_fields" => [
