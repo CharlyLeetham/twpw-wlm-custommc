@@ -374,12 +374,13 @@ class twpw_custom_mc {
 
 						$tt1 = '"tags" => [';
 						foreach ( $tags as $k) {
-							$tt1 .= '             ["name" => "'.$k["name"].'", "status" => "'.$k["status"].'"],';
+							$tt1 .= '["name" => "'.$k["name"].'", "status" => "'.$k["status"].'"],';
 						}
 						$tt1 .= "],";
 
 						$logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
 						$logger .= $tt1;
+						$logger .= ".\r\n";
 						$logger .= ']);'."\r\n\r\n";
 
 						$output1 = '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', [';
