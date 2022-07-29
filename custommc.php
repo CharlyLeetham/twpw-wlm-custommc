@@ -374,10 +374,10 @@ class twpw_custom_mc {
 						$logger .= '],'. "\r\n";
 					  $logger .= ']);'."\r\n\r\n";
 
-						// foreach ( $tags as $t ) {
-						// 	$tagstuff .= '["name" => '.$t["name"].','."\r\n";
-						// 	$tagstuff .= '"status" => '.$t["status"].'],'."\r\n";
-						// }
+						foreach ( $tags as $t ) {
+							$tagstuff .= '["name" => '.$t["name"].','."\r\n";
+							$tagstuff .= '"status" => '.$t["status"].'],'."\r\n";
+						}
 
 						// $tags = '"tags" => ['.$tagstuff.']';
 						// $logger .= var_export ( $tagstuff, true );
@@ -385,7 +385,7 @@ class twpw_custom_mc {
 							// $tags
 						// ]);
 
-						$logger .= $var_export( $response1, true );
+						// $logger .= $var_export( $response1, true );
 					} catch (Exception $e) {
 						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
