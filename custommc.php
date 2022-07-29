@@ -345,17 +345,16 @@ class twpw_custom_mc {
 					try {
 							$response = $twpw_custommc_mcapi->ping->get();
 							$logger .= var_export ( $response, true );
-						// $response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", $mdhash, [
-					  //     "email_address" => "hd+28072201@askcharlyleetham.com",
-					  //     "status_if_new" => "subscribed",
-					  //                 "merge_fields" => [
-					  //                         "FNAME" => "Test",
-					  //                         "LNAME" => "User"
-					  //                 ]
-					  //         ]
-					  // );
- 					 	// $logger .= $response."\r\n\r\n";
-						// $logger .= "Hello World";
+							$response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", $mdhash, [
+						      "email_address" => "hd+28072201@askcharlyleetham.com",
+						      "status_if_new" => "subscribed",
+						                  "merge_fields" => [
+						                          "FNAME" => "Test",
+						                          "LNAME" => "User"
+						                  ]
+						          ]
+						  );
+ 					 	$logger .= var_export( $response, true )."\r\n\r\n";
 					} catch (Exception $e) {
 						// $logger .= $e."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
