@@ -381,6 +381,7 @@ class twpw_custom_mc {
 						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
 						$exception = (string) $e->getResponse()->getBody();
+						$logger .= var_export ($exception, true );
 					}
 
 					if( $logging ) {
