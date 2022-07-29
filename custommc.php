@@ -315,7 +315,7 @@ class twpw_custom_mc {
 
 					$subemailhash = md5( $useremail );
 
-					$output = echo $mclistid.', '.$subemailhash;
+					$output = $mclistid.', '.$subemailhash;
 					// $output .= ', [
 					//     "email_address" => '.$useremail.',
 					//     "status_if_new" => "subscribed",
