@@ -348,11 +348,11 @@ class twpw_custom_mc {
 							$response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
 						      "email_address" => $useremail,
 						      "status_if_new" => "subscribed",
-						                  "merge_fields" => [
-																		$merge_vars
-						                  ]
-						          ]
-						  );
+                  "merge_fields" => [
+										'FNAME' => $firstname,
+ 									 	'LNAME' => $lastname
+                  ]
+						  ]);
  					 	$logger .= var_export( $response, true )."\r\n\r\n";
 					} catch (Exception $e) {
 						$logger .= var_export( $e )."\r\n\r\n";
