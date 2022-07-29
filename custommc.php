@@ -342,15 +342,20 @@ class twpw_custom_mc {
 					// 	$logger .= $e->getMessage(). "\n";
 					// }
 
-					$response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
-				      "email_address" => $useremail,
-				      "status_if_new" => "subscribed",
-				                  "merge_fields" => [
-				                          "FNAME" => "Test",
-				                          "LNAME" => "User"
-				                  ]
-				          ]
-				  );
+					try {
+						$response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
+					      "email_address" => $useremail,
+					      "status_if_new" => "subscribed",
+					                  "merge_fields" => [
+					                          "FNAME" => "Test",
+					                          "LNAME" => "User"
+					                  ]
+					          ]
+					  );
+ 					 	$logger .= $output."\r\n\r\n";
+					} catch (Exception $e) {
+						$logger .= $e->getMessage(). "\n";
+					}
 
 					$logger .= $response;
 
