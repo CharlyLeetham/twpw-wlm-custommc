@@ -344,7 +344,7 @@ class twpw_custom_mc {
 
 					try {
 							$response = $twpw_custommc_mcapi->ping->get();
-							$logger .= $response;
+							$logger .= var_export ( $response, true );
 						// $response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", $mdhash, [
 					  //     "email_address" => "hd+28072201@askcharlyleetham.com",
 					  //     "status_if_new" => "subscribed",
