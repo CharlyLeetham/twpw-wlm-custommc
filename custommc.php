@@ -400,7 +400,7 @@ So we're going to do something a bit different to kludge it.
 					foreach ( $tags as $k ) {
 							$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 								"tags" => [
-									["name" => $k.name, "status" => $k.status ]
+									["name" => $k.name, "status" => "active" ]
 								]
 							]);
 							$logger .= 'Tag = '.$k.name.' Status = '.$k.status.' '.var_export( $response1, true );
