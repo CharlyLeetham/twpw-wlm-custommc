@@ -343,6 +343,8 @@ class twpw_custom_mc {
 						$logger .= "\r\n\r\n";
 					}
 
+
+
 					// Add interest groups. Split out because I was having trouble with the array being formatted to send as part of the call.
 
 					try {
@@ -354,6 +356,7 @@ class twpw_custom_mc {
 		'INTEREST ID' => false
 			)
 			*/
+						$logger1 .= "Interest Groups"."\r\n\r\n";
 						$logger1 .= var_export ( $groupings, true)."\r\n\r\n";
 					} catch (Exception $e) {
 						$logger .= $e->getMessage(). "\n";
@@ -362,6 +365,11 @@ class twpw_custom_mc {
 						$logger .= "\r\n\r\n";
 					}
 
+					if( $logging ) {
+						$logfile = fopen( LOGPATH."cjltest.log", "a" );
+						fwrite( $logfile, $logger );
+						fclose( $logfile );
+					}
 
 					// Now Add the tags
 
