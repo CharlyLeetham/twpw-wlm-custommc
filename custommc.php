@@ -330,7 +330,7 @@ class twpw_custom_mc {
 						$response = $mailchimp->ping->get();
 						$logger .= $output."\r\n\r\n";
 					} catch (Exception $e) {
-						$logger .= $e->getMessage(), "\n";
+						$logger .= $e->getMessage(). "\n";
 						// $exception = (string) $e->getResponse()->getBody();
 						// $exception = json_decode($exception);
 						// $logger .= var_export( $exception, true )."\r\n\r\n";
