@@ -315,7 +315,7 @@ class twpw_custom_mc {
 
 					$subemailhash = md5( $useremail );
 					try {
-						$output = echo $mclistid.', .'$subemailhash.', [
+						$output = echo $mclistid.', '.$subemailhash.', [
 						    "email_address" => '.$useremail.',
 						    "status_if_new" => "subscribed",
 								"merge_fields" => [
@@ -332,15 +332,15 @@ class twpw_custom_mc {
 							fclose( $logfile );
 						}
 
-						$response = $mailchimp->lists->setListMember( $mclistid, $subemailhash, [
-						    "email_address" => $useremail,
-						    "status_if_new" => "subscribed",
-								"merge_fields" => [
-									"FNAME" => "Test",
-									"LNAME" => "User"
-								]
-							]
-						);
+						// $response = $mailchimp->lists->setListMember( $mclistid, $subemailhash, [
+						//     "email_address" => $useremail,
+						//     "status_if_new" => "subscribed",
+						// 		"merge_fields" => [
+						// 			"FNAME" => "Test",
+						// 			"LNAME" => "User"
+						// 		]
+						// 	]
+						// );
 					} catch (Exception $e) {
 						$exception = (string) $e->getResponse()->getBody();
 						$exception = json_decode($exception);
