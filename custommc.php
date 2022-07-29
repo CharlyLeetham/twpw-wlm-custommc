@@ -369,7 +369,7 @@ class twpw_custom_mc {
 							$inttags[] = array ("name" => $t["name"],"status" => $t["status"]);
 						}
 
-						$tagtag["tags"] = $inttags;
+						$tagtag["tags"][] => $inttags;
 
 						$logger .= var_export( $tagtags, true );
 
