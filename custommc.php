@@ -359,7 +359,7 @@ $mdhash = md5($email);
  					 	// $logger .= $response."\r\n\r\n";
 						// $logger .= "Hello World";
 					} catch (Exception $e) {
-						$logger .= $e."\r\n\r\n";
+						// $logger .= $e."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
 						// $exception = (string) $e->getResponse()->getBody();
 						// $exception = json_decode($exception);
