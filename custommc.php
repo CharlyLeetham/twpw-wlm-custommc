@@ -379,6 +379,7 @@ class twpw_custom_mc {
 						// $tt1 .= "],";
 
 
+						/** This should work, but when used in the api call, it's just not adding the tags.
 						$tt1 = array();
 						foreach ( $tags as $k ) {
 							$tt1[tags][]["name"] = $k["name"];
@@ -390,11 +391,19 @@ class twpw_custom_mc {
 						$logger .= "\r\n";
 						$logger .= ']);'."\r\n\r\n";
 
-						$response1 = $output1;
 	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 							$tt1
 						]);
 
+So we're going to do something a bit different to kludge it.
+**/
+					foreach ( $tags as $k ) {
+							$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+								"tags" => ["name" => $k.name, "status" => $k.status ]
+							]);
+							$logger .= var_export( $response1, true );
+							$logger .= "\r\n\r\n";
+					}
 	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 						// 	"tags" => [
 						// 		["name" => "eclass 1", "status" => "active"],
@@ -402,8 +411,7 @@ class twpw_custom_mc {
 						// 	],
 						// ]);
 
-						$logger .= var_export( $response1, true );
-						$logger .= "\r\n\r\n";
+
 					} catch (Exception $e) {
 						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
