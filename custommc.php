@@ -372,7 +372,7 @@ class twpw_custom_mc {
 						$tagtags = array();
 						$tagtags["tags"] = $inttags;
 
-						$tt1 .= "tags => ["." \r\n";
+						$tt1 .= '"tags" => ['." \r\n";
 						foreach ( $tags as $k) {
 							$tt1 .= '             ["'.$k["name"].'" => "'.$k["status"].'"],'."\r\n";
 						}
