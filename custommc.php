@@ -365,22 +365,11 @@ class twpw_custom_mc {
 
 					try {
 
-						// $payload = array( 'tags' =>
-						//     array(
-						//         array('name' => 'upgraded', 'status' => 'active' ),
-						//     ),
-						// );
-
 						foreach ( $tags as $t ) {
-							$inttags["tags"][] = array ("name" => '"'.$t["name"].'"',"status" => '"'.$t["status"].'"');
+							$inttags["tags"][] = array ("name" => $t["name"],"status" => $t["status"]);
 						}
 
 						$logger .= var_export( $inttags, true );
-
-						// foreach ( $tags as $t ) {
-						// 	$tagstuff .= '["name" => '.'"'.$t["name"].'",'."\r\n";
-						// 	$tagstuff .= '"status" => '.'"'.$t["status"].'"],'."\r\n";
-						// }
 
 						// array_merge($first, $second);
 
