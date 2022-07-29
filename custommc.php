@@ -372,20 +372,22 @@ class twpw_custom_mc {
 						$tagtags = array();
 						$tagtags["tags"] = $inttags;
 
-						$tt1 .= '"tags" => ['." \r\n";
+						$tt1 = '"tags" => [';
 						foreach ( $tags as $k) {
-							$tt1 .= '             ["name" => "'.$k["name"].'", "status" => "'.$k["status"].'"],'."\r\n";
+							$tt1 .= '             ["name" => "'.$k["name"].'", "status" => "'.$k["status"].'"],';
 						}
-						$tt1 .= "],"."\r\n";
+						$tt1 .= "],";
 
-
-						array_merge($first, $second);
 						$logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
 						$logger .= $tt1;
 						$logger .= ']);'."\r\n\r\n";
 
+						$output1 = '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', [';
+						$output1 .= $tt1;
+						$output1 .= ']);';
+
 	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-							echo $tt1
+							$tt1
 						]);
 
 						// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
