@@ -362,42 +362,24 @@ class twpw_custom_mc {
 						// $logger .= $exception."\r\n";
 					}
 
-					// $logger .= $response;
+					// Now Add the tags
 
+					try {
+	  				$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
+						"tags" => [
+								$tags
+							],
+						]);
+					} catch (Exception $e) {
+						$logger .= var_export( $e )."\r\n\r\n";
+						$logger .= $e->getMessage(). "\n";
+					}
+					
 					if( $logging ) {
 						$logfile = fopen( LOGPATH."cjltest.log", "a" );
 						fwrite( $logfile, $logger );
 						fclose( $logfile );
 					}
-
-					// try {
-
-
-						// $response = $mailchimp->lists->setListMember( $mclistid, $subemailhash, [
-						//     "email_address" => $useremail,
-						//     "status_if_new" => "subscribed",
-						// 		"merge_fields" => [
-						// 			"FNAME" => "Test",
-						// 			"LNAME" => "User"
-						// 		]
-						// 	]
-						// );
-					// } catch (Exception $e) {
-					// 	$exception = (string) $e->getResponse()->getBody();
-					// 	$exception = json_decode($exception);
-					// 	$logger .= var_export( $exception )."\r\n\r\n";
-
-
-						// $logger .= echo 'An error has occurred: '.$exception->title.' - '.$exception->detail."\r\n\r\n";
-					// }
-
-
-					// $response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
-					// "tags" => [
-					// 		$tags
-					// 	],
-					// ]);
-
 /*
 					$result = $mailchimp->call( '/lists/subscribe', array(
 						'apikey' => $mcapikey,
