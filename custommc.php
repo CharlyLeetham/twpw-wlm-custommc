@@ -332,8 +332,8 @@ class twpw_custom_mc {
 					} catch (Exception $e) {
 						$exception = (string) $e->getResponse()->getBody();
 						$exception = json_decode($exception);
-						// $logger .= var_export( $exception )."\r\n\r\n";
-						$logger .= echo 'An error has occurred: '.$exception->title.' - '.$exception->detail."\r\n\r\n";
+						$logger .= var_export( $exception, true )."\r\n\r\n";
+						// $logger .= echo 'An error has occurred: '.$exception->title.' - '.$exception->detail."\r\n\r\n";
 					}
 
 					// $response = $mailchimp->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
