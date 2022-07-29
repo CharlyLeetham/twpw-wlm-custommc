@@ -315,6 +315,16 @@ class twpw_custom_mc {
 
 					$subemailhash = md5( $useremail );
 					try {
+						$output = echo $mclistid.', .'$subemailhash.', [
+						    "email_address" => '.$useremail.',
+						    "status_if_new" => "subscribed",
+								"merge_fields" => [
+									"FNAME" => "Test",
+									"LNAME" => "User"
+								]
+							]
+						);'
+						$logger .= $output."\r\n\r\n";
 						$response = $mailchimp->lists->setListMember( $mclistid, $subemailhash, [
 						    "email_address" => $useremail,
 						    "status_if_new" => "subscribed",
@@ -328,6 +338,12 @@ class twpw_custom_mc {
 						$exception = (string) $e->getResponse()->getBody();
 						$exception = json_decode($exception);
 						$logger .= var_export( $exception )."\r\n\r\n";
+
+						if( $logging ) {
+							$logfile = fopen( LOGPATH."cjltest.log", "a" );
+							fwrite( $logfile, $logger );
+							fclose( $logfile );
+						}
 						// $logger .= echo 'An error has occurred: '.$exception->title.' - '.$exception->detail."\r\n\r\n";
 					}
 
