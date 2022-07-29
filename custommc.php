@@ -380,14 +380,14 @@ class twpw_custom_mc {
 						}
 
 						$tags = '"tags" => ['."\r\n";
-						$tags .= $tagstuff."\r\n";
+						$tags .= $tagstuff;
 						$tags .= ']'."\r\n";
 						$logger .= var_export ( $tags, true );
-	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-							// $tags
-						// ]);
+	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+							$tags
+						]);
 
-						// $logger .= $var_export( $response1, true );
+						$logger .= $var_export( $response1, true );
 					} catch (Exception $e) {
 						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
