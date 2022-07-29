@@ -380,9 +380,9 @@ class twpw_custom_mc {
 						$logger .= var_export($tagtags, true). "\r\n";
 						$logger .= ']);'."\r\n\r\n";
 
-	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-						// 	"tags" => $inttags
-						// ]);
+	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+							$tagtags
+						]);
 
 						$logger .= "\r\n\r\n";
 						$logger .= var_export( $response1, true );
