@@ -369,22 +369,19 @@ class twpw_custom_mc {
 							$inttags[] = array ("name" => $t["name"],"status" => $t["status"]);
 						}
 
-						$logger .= var_export( $inttags, true );
+						$tagtag["tags"] = $inttags;
+
+						$logger .= var_export( $tagtags, true );
 
 						// array_merge($first, $second);
 
-						$tags = '"tags" => ['."\r\n";
-						$tags .= $tagstuff;
-						$tags .= '],'."\r\n";
-						$logger .= $tags;
-
 						$logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
-						$logger .= '"tags" =>' . var_export($inttags, true). "\r\n";
+						$logger .= var_export($tagtags, true). "\r\n";
 						$logger .= ']);'."\r\n\r\n";
 
-	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-							"tags" => $inttags
-						]);
+	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+						// 	"tags" => $inttags
+						// ]);
 
 						$logger .= "\r\n\r\n";
 						$logger .= var_export( $response1, true );
