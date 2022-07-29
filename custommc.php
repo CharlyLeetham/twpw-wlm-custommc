@@ -367,8 +367,10 @@ class twpw_custom_mc {
 
 						$logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
 						$logger .= '"tags" => ['."\r\n";
-						$logger .=		var_export ($tags, true)."\r\n";
-						$logger .= '.],'. "\r\v";
+						foreach ( $tags as $t ) {
+							$logger .= '["name" => '.$t["name"].','."\r\n";
+							$logger .= '"status" => '.$t["status"].'],'."\r\n";
+						$logger .= '.],'. "\r\n";
 					  $logger .= ']);'."\r\n\r\n";
 	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 						"tags" => [
