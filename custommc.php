@@ -390,7 +390,7 @@ class twpw_custom_mc {
 								"status" => active],
 								["name" => WasPaused,
 								"status" => active],
-								],
+								]
 						]);
 
 						$logger .= "\r\n\r\n";
