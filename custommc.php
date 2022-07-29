@@ -345,12 +345,11 @@ class twpw_custom_mc {
 					try {
 							$response = $twpw_custommc_mcapi->ping->get();
 							$logger .= var_export ( $response, true )."\r\n";
-							$response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", $subemailhash, [
+							$response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
 						      "email_address" => $useremail,
 						      "status_if_new" => "subscribed",
 						                  "merge_fields" => [
-						                          "FNAME" => "Test",
-						                          "LNAME" => "User"
+																		$merge_vars
 						                  ]
 						          ]
 						  );
