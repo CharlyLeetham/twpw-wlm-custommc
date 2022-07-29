@@ -365,12 +365,25 @@ class twpw_custom_mc {
 
 					try {
 
+						$payload = array( 'tags' =>
+						    array(
+						        array('name' => 'upgraded', 'status' => 'active' ),
+						    ),
+						);
 
+						$tagarr = array ( "tags" =>
+							array (
+								foreach ( $tags as $t ) {
+									array ("name" => .'"'.$t["name"].'"',"status" => .'"'.$t["status"].'"'),
+								}
+							),
+						);
 
 						foreach ( $tags as $t ) {
 							$tagstuff .= '["name" => '.'"'.$t["name"].'",'."\r\n";
 							$tagstuff .= '"status" => '.'"'.$t["status"].'"],'."\r\n";
 						}
+
 
 						$tags = '"tags" => ['."\r\n";
 						$tags .= $tagstuff;
@@ -382,7 +395,7 @@ class twpw_custom_mc {
 						$logger .= ']);'."\r\n\r\n";
 
 	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-							$tags
+							$tagarr
 						]);
 
 						$logger .= "\r\n\r\n";
