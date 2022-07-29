@@ -326,6 +326,12 @@ class twpw_custom_mc {
 					$subemailhash = md5( $useremail );
 
 					try {
+
+						$merge_vars = array (
+											 'FNAME' => $firstname,
+											 'LNAME' => $lastname,
+											 'GROUPINGS' => $groupings,
+											);
 							$response = $twpw_custommc_mcapi->ping->get();
 							$logger .= var_export ( $response, true )."\r\n";
 							$response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
