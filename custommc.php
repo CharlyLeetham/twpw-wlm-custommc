@@ -374,10 +374,10 @@ class twpw_custom_mc {
 						$logger .= '],'. "\r\n";
 					  $logger .= ']);'."\r\n\r\n";
 
-						foreach ( $tags as $t ) {
-							$tagstuff .= '["name" => '.$t["name"].','."\r\n";
-							$tagstuff .= '"status" => '.$t["status"].'],'."\r\n";
-						}
+						// foreach ( $tags as $t ) {
+						// 	$tagstuff .= '["name" => '.$t["name"].','."\r\n";
+						// 	$tagstuff .= '"status" => '.$t["status"].'],'."\r\n";
+						// }
 
 						$tags = '"tags" => ['.$tagstuff.']';
 						$logger .= var_export ( $tags, true );
