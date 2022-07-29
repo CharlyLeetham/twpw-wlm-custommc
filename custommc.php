@@ -381,10 +381,10 @@ class twpw_custom_mc {
 
 						$tt1 = array();
 						foreach ( $tags as $k ) {
-							$tt1[tags][]["name"] => $k["name"];
-							$tt1[tags][]["status"] => $k["status"];
+							$tt1[tags][]["name"] = $k["name"];
+							$tt1[tags][]["status"] = $k["status"];
 						}
-						
+
 						$logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
 						$logger .= $tt1;
 						$logger .= "\r\n";
