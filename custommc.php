@@ -386,10 +386,10 @@ class twpw_custom_mc {
 
 	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 							"tags" => [
-								["name" => eclass 1,
-								"status" => active],
-								["name" => WasPaused,
-								"status" => active],
+								["name" => "eclass 1",
+								"status" => "active"],
+								["name" => "WasPaused",
+								"status" => "active"],
 								]
 						]);
 
