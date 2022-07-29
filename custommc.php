@@ -355,9 +355,9 @@ class twpw_custom_mc {
  					 	$logger .= $response."\r\n\r\n";
 					} catch (Exception $e) {
 						$logger .= $e->getMessage(). "\n";
-						$exception = (string) $e->getResponse()->getBody();
+						// $exception = (string) $e->getResponse()->getBody();
 						// $exception = json_decode($exception);
-						$logger .= $exception."\r\n";
+						// $logger .= $exception."\r\n";
 					}
 
 					$logger .= $response;
