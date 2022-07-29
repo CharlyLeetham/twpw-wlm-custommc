@@ -380,8 +380,9 @@ class twpw_custom_mc {
 						foreach ( $tagtags as $key => $value) {
 							$logger .= '"'.$key.'" =>';
 							foreach ( $value as $v ) {
-								$logger .= '["name" => '.$v["name"].', "value" => '.$v["status"].']'."\r\n";
+								$logger .= '["name" => "'.$v["name"].'", "value" => ""'.$v["status"].'"]'."\r\n";
 							}
+							$logger .= "],"."\r\n";
 						}
 						// $logger .= "\r\n\r\n";
 						$logger .= ']);'."\r\n\r\n";
