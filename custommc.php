@@ -388,16 +388,8 @@ class twpw_custom_mc {
 							$tt1
 						]);
 
-						// foreach ( $tagstags as $key => $value) {
-						// 	$logger .= '"'.$key.'" =>';
-						// 	foreach ( $value as $v ) {
-						// 		$logger .= '["name" => "'.$v["name"].'", "value" => "'.$v["status"].'"]'."\r\n";
-						// 	}
-						// 	$logger .= "],"."\r\n";
-						// }
-
-						$logger .= "\r\n\r\n";
 						$logger .= var_export( $response1, true );
+						$logger .= "\r\n\r\n";
 					} catch (Exception $e) {
 						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
