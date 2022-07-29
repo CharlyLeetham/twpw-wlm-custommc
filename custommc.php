@@ -315,16 +315,16 @@ class twpw_custom_mc {
 
 					$subemailhash = md5( $useremail );
 
-					$output = '$mailchimp->lists->setListMember('.$mclistid.', '.$subemailhash.', [
-					    "email_address" => '.$useremail.',
-					    "status_if_new" => "subscribed",
-							"merge_fields" => [
-								"FNAME" => "Test",
-								"LNAME" => "User"
-							]
-						]
-					);';
-					$logger .= $output."\r\n\r\n";
+					// $output = '$mailchimp->lists->setListMember('.$mclistid.', '.$subemailhash.', [
+					//     "email_address" => '.$useremail.',
+					//     "status_if_new" => "subscribed",
+					// 		"merge_fields" => [
+					// 			"FNAME" => "Test",
+					// 			"LNAME" => "User"
+					// 		]
+					// 	]
+					// );';
+					// $logger .= $output."\r\n\r\n";
 
 					$response = $mailchimp->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
 				      "email_address" => $useremail,
