@@ -388,6 +388,7 @@ class twpw_custom_mc {
 							$tags
 						]);
 
+						$logger .= "\r\n\r\n";
 						$logger .= var_export( $response1, true );
 					} catch (Exception $e) {
 						$logger .= var_export( $e )."\r\n\r\n";
