@@ -366,7 +366,7 @@ class twpw_custom_mc {
 					try {
 
 						foreach ( $tags as $t ) {
-							$inttags["tags"][] = array ("name" => $t["name"],"status" => $t["status"]);
+							$inttags[] = array ("name" => $t["name"],"status" => $t["status"]);
 						}
 
 						$logger .= var_export( $inttags, true );
@@ -383,7 +383,7 @@ class twpw_custom_mc {
 						$logger .= ']);'."\r\n\r\n";
 
 	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-							$inttags
+							"tags" => $inttags
 						]);
 
 						$logger .= "\r\n\r\n";
