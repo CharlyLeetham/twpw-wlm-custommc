@@ -356,7 +356,7 @@ class twpw_custom_mc {
 					} catch (Exception $e) {
 						$logger .= $e->getMessage(). "\n";
 						$exception = (string) $e->getResponse()->getBody();
-						$exception = json_decode($exception);
+						// $exception = json_decode($exception);
 						$logger .= $exception."\r\n";
 					}
 
