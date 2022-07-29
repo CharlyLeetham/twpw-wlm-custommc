@@ -403,7 +403,7 @@ So we're going to do something a bit different to kludge it.
 									["name" => $k.name, "status" => $k.status ]
 								]
 							]);
-							$logger .= var_export( $response1, true );
+							$logger .= 'Tag = '.$k.name.' Status = '.$k.status.' '.var_export( $response1, true );
 							$logger .= "\r\n\r\n";
 					}
 	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
