@@ -345,6 +345,8 @@ class twpw_custom_mc {
 $email = "hd+28072201@askcharlyleetham.com";
 $mdhash = md5($email);
 					try {
+							$response = $mailchimp->ping->get();
+							$logger .= $response;
 						// $response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", $mdhash, [
 					  //     "email_address" => "hd+28072201@askcharlyleetham.com",
 					  //     "status_if_new" => "subscribed",
@@ -355,15 +357,16 @@ $mdhash = md5($email);
 					  //         ]
 					  // );
  					 	// $logger .= $response."\r\n\r\n";
-						$logger .= "Hello World";
+						// $logger .= "Hello World";
 					} catch (Exception $e) {
+						$logger .= $e."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
 						// $exception = (string) $e->getResponse()->getBody();
 						// $exception = json_decode($exception);
 						// $logger .= $exception."\r\n";
 					}
 
-					$logger .= $response;
+					// $logger .= $response;
 
 					if( $logging ) {
 						$logfile = fopen( LOGPATH."cjltest.log", "a" );
