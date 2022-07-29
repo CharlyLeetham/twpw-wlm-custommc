@@ -374,7 +374,7 @@ class twpw_custom_mc {
 
 						$tt1 .= '"tags" => ['." \r\n";
 						foreach ( $tags as $k) {
-							$tt1 .= '             ["name =>" "'.$k["name"].'", "status" => "'.$k["status"].'"],'."\r\n";
+							$tt1 .= '             ["name" => "'.$k["name"].'", "status" => "'.$k["status"].'"],'."\r\n";
 						}
 						$tt1 .= "],"."\r\n";
 
