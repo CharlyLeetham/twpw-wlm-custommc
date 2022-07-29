@@ -323,7 +323,7 @@ class twpw_custom_mc {
 									"LNAME" => "User"
 								]
 							]
-						);'
+						);';
 						$logger .= $output."\r\n\r\n";
 
 						if( $logging ) {
@@ -331,7 +331,7 @@ class twpw_custom_mc {
 							fwrite( $logfile, $logger );
 							fclose( $logfile );
 						}
-						
+
 						$response = $mailchimp->lists->setListMember( $mclistid, $subemailhash, [
 						    "email_address" => $useremail,
 						    "status_if_new" => "subscribed",
