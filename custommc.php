@@ -342,8 +342,6 @@ class twpw_custom_mc {
 					// 	$logger .= $e->getMessage(). "\n";
 					// }
 
-$email = "hd+28072201@askcharlyleetham.com";
-$mdhash = md5($email);
 					try {
 							$response = $twpw_custommc_mcapi->ping->get();
 							$logger .= $response;
