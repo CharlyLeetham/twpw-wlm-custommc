@@ -374,16 +374,16 @@ class twpw_custom_mc {
 
 						$tt1 .= "tags => ["." \r\n";
 						foreach ( $tags as $k) {
-							$tt1 .= '"'.$k["name"].'" => "'.$k["status"].'"]'."\r\n";
+							$tt1 .= '             ["'.$k["name"].'" => "'.$k["status"].'"]'."\r\n";
 						}
 						$tt1 .= "],"."\r\n";
 
 
 						// array_merge($first, $second);
-						$logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
-						$logger .= "       ".$tt1;
-						// $logger .= "\r\n\r\n";
-						$logger .= ']);'."\r\n\r\n";
+						// $logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
+						// $logger .= "       ".$tt1;
+						// // $logger .= "\r\n\r\n";
+						// $logger .= ']);'."\r\n\r\n";
 
 	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 						// 	$tagtags
@@ -398,7 +398,7 @@ class twpw_custom_mc {
 						// }
 
 						$logger .= "\r\n\r\n";
-						$logger .= var_export( $response1, true );
+						// $logger .= var_export( $response1, true );
 					} catch (Exception $e) {
 						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
