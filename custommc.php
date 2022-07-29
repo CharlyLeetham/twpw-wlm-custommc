@@ -313,6 +313,15 @@ class twpw_custom_mc {
 
 				if ( $live ) {
 
+					$settings = get_option("twpw_custommc");
+					$api_key = $settings['mcapikey'];
+					$dc = $settings['mcdc'];
+					$twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();
+					$twpw_custommc_mcapi->setConfig([
+							'apiKey' => $api_key,
+							'server' => $dc
+					]);
+
 					$subemailhash = md5( $useremail );
 
 					// $output = '$mailchimp->lists->setListMember('.$mclistid.', '.$subemailhash.', [
