@@ -254,9 +254,9 @@ if ( $_GET['add'] ) {
 
 }
 
-if ($_GET['addtest']) {
-	$mailchimp->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
-      "email_address" => hd+28072201@askcharlyleetham.com,
+if ( $_GET['addtest'] ) {
+	$response = $mailchimp->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
+      "email_address" => "hd+28072201@askcharlyleetham.com",
       "status_if_new" => "subscribed",
                   "merge_fields" => [
                           "FNAME" => "Test",
