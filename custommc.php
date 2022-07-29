@@ -378,10 +378,12 @@ class twpw_custom_mc {
 							$tagstuff .= '["name" => '.$t["name"].','."\r\n";
 							$tagstuff .= '"status" => '.$t["status"].'],'."\r\n";
 						}
+
 						$tags = '"tags" => ['.$tagstuff.']';
-	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-							$tags
-						]);
+						$logger .= var_export ( $tags, true );
+	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+							// $tags
+						// ]);
 
 						$logger .= $var_export( $response1, true );
 					} catch (Exception $e) {
