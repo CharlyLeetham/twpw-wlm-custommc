@@ -399,7 +399,9 @@ So we're going to do something a bit different to kludge it.
 **/
 					foreach ( $tags as $k ) {
 							$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-								"tags" => ["name" => $k.name, "status" => $k.status ]
+								"tags" => [
+									["name" => $k.name, "status" => $k.status ]
+								]
 							]);
 							$logger .= var_export( $response1, true );
 							$logger .= "\r\n\r\n";
