@@ -344,9 +344,9 @@ class twpw_custom_mc {
 
 					try {
 							$response = $twpw_custommc_mcapi->ping->get();
-							$logger .= var_export ( $response, true );
-							$response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", $mdhash, [
-						      "email_address" => "hd+28072201@askcharlyleetham.com",
+							$logger .= var_export ( $response, true )."\r\n";
+							$response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", $subemailhash, [
+						      "email_address" => $useremail,
 						      "status_if_new" => "subscribed",
 						                  "merge_fields" => [
 						                          "FNAME" => "Test",
@@ -356,7 +356,7 @@ class twpw_custom_mc {
 						  );
  					 	$logger .= var_export( $response, true )."\r\n\r\n";
 					} catch (Exception $e) {
-						// $logger .= $e."\r\n\r\n";
+						$logger .= var_export( $e )."\r\n\r\n";
 						$logger .= $e->getMessage(). "\n";
 						// $exception = (string) $e->getResponse()->getBody();
 						// $exception = json_decode($exception);
