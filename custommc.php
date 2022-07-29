@@ -345,7 +345,7 @@ class twpw_custom_mc {
 $email = "hd+28072201@askcharlyleetham.com";
 $mdhash = md5($email);
 					try {
-							$response = $mailchimp->ping->get();
+							$response = $twpw_custommc_mcapi->ping->get();
 							$logger .= $response;
 						// $response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", $mdhash, [
 					  //     "email_address" => "hd+28072201@askcharlyleetham.com",
