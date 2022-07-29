@@ -384,15 +384,15 @@ class twpw_custom_mc {
 						$logger .= $tt1;
 						$logger .= ']);'."\r\n\r\n";
 
-	  				// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-						// 	$tt1
-						// ]);
-
-						$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
-							"tags" => [
-							             ["name" => "eclass 2", "status" => "active"],
-							],
+	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+							echo $tt1
 						]);
+
+						// $response1 = $twpw_custommc_mcapi->lists->updateListMemberTags("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
+						// 	"tags" => [
+						// 	             ["name" => "eclass 2", "status" => "active"],
+						// 	],
+						// ]);
 
 
 						$logger .= var_export( $response1, true );
