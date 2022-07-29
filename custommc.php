@@ -344,7 +344,7 @@ class twpw_custom_mc {
 
 					try {
 						$response = $twpw_custommc_mcapi->lists->setListMember("9f47bd4d97", "e31206c0d38f9e1461c5a5ac12cab0c8", [
-					      "email_address" => (string)$useremail,
+					      "email_address" => "hd+28072202@askcharlyleetham.com",
 					      "status_if_new" => "subscribed",
 					                  "merge_fields" => [
 					                          "FNAME" => "Test",
