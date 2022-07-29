@@ -356,8 +356,9 @@ class twpw_custom_mc {
 		'INTEREST ID' => false
 			)
 			*/
-						$logger1 .= "Interest Groups"."\r\n\r\n";
-						$logger1 .= var_export ( $groupings, true)."\r\n\r\n";
+						$logger .= "Interest Groups"."\r\n\r\n";
+						$logger .= var_export ( $groupings, true)."\r\n\r\n";
+
 					} catch (Exception $e) {
 						$logger .= $e->getMessage(). "\n";
 						$exception = (string) $e->getResponse()->getBody();
