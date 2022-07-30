@@ -235,7 +235,7 @@ class twpw_custom_mc {
 				// 	}
 				// }
 
-				$groupings = twpw_custom_mc::acl_get_mem_groups( $levid );
+				$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid );
 
 				if ( $logging ) {
 					$logger .= "Groups for export \r\n\r\n";
@@ -796,9 +796,9 @@ class twpw_custom_mc {
 
 	}
 
-	public function acl_get_mem_groups ( $levid = NULL ) {
+	public function acl_get_mem_groups ( $levid = NULL, $listid = NULL ) {
 
-	  if ( !levid ) { return; }
+	  if ( !levid || !listid ) { return; }
 
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
 
