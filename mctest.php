@@ -234,9 +234,8 @@ if ( $_GET['add'] ) {
 		echo '</pre>';
 	}
 
-
+/*
 	try {
-		echo 'herehehrehehereh';
 			$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
 	    "tags" => [
 					["name" => "Test Tag",
@@ -255,6 +254,7 @@ if ( $_GET['add'] ) {
 		echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
 		echo '</pre>';
 	}
+*/
 
 }
 
