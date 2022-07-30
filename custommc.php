@@ -798,13 +798,11 @@ class twpw_custom_mc {
 
 	public function acl_get_mem_groups ( $levid = NULL, $listid = NULL ) {
 
-		if ( $logging ) {
 			$logger .= "We get here \r\n\r\n";
 			// $logger .= var_export( $catarr, true );
 			$logfile = fopen( LOGPATH."cjltest.log", "a" );
 			fwrite( $logfile, $logger );
 			fclose( $logfile );
-		}
 
 	  if ( !$levid || !$listid ) { return; }
 
