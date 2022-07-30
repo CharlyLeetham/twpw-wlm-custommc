@@ -826,20 +826,17 @@ class twpw_custom_mc {
 		$catnum = 0;
 
 		foreach ($mccats as $k) {
+			$newcatarr = array();
 			$catarr[$k->title]['id'] = $k->id;
 			$catarr[$k->title]['title'] = $k->title;
 			$interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
 			$ia = $interests->interests;
-			$intnum = 0;
 			foreach ( $ia as $v ) {
-				$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
-				$catarr[$k->title]['groups'][$intnum]['id'] = $v->id;
-				$catarr[$k->title]['groups'][$intnum]['catid'] = $v->category_id;
-				$intnum++;
+				$newcat[] = array ( "name" => $v->name, "id" => $v->id );
 			}
 		}
 
-		foreach ( $catarr as $k->title => $v ) {
+		foreach ( $newcatarr as $k => $v ) {
 			$mycat .= var_export ( $k, true).' '.var_export( $v, true ). "\r\n";
 		}
 
