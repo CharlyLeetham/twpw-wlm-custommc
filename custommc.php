@@ -769,7 +769,7 @@ class twpw_custom_mc {
 
 		/* this function will modify a Mailchimp entry for a given user. It can be called by either the Add Level or Remove Level action hooks */
 
-		if ( !action || !$listid || !$levid || !$user ) { return; }
+		if ( !$action || !$listid || !$levid || !$user ) { return; }
 
 		/* Get the settings and setup the Mailchimp API */
 
@@ -788,7 +788,7 @@ class twpw_custom_mc {
 		$firstname = $user->user_firstname;
 		$lastname = $user->user_lastname;
 		$useremail = $user->user_email;
-		$subemailhas = md5 ( $useremail );
+		$subemailhash = md5 ( $useremail );
 
 		try {
 			$response = $twpw_custommc_mcapi->lists->setListMember( $listid, $subemailhash, [
@@ -798,17 +798,10 @@ class twpw_custom_mc {
 					"interests" => $groupings,
 				]
 			);
-
-			echo '<pre>';
-					echo 'Result: <br />';
-					var_dump ( $response );
-					echo '<br />';
-			echo '</pre>';
-
 		} catch (Exception $e) {
 			$logger .= $e->getMessage(). "\n";
-			$exception = (string) $e->getResponse()->getBody();
-			$logger .= var_export ($exception, true );
+			// $exception = (string) $e->getResponse()->getBody();
+			// $logger .= var_export ($exception, true );
 			$logger .= "\r\n\r\n";
 		}
 
