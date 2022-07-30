@@ -162,13 +162,6 @@ class twpw_custom_mc {
 			'server' => $dc
 		]);
 
-		if ( $debug ) {
-			echo '$mailchimp:';
-			echo var_export( $mailchimp, true );
-			echo "\r\n";
-		}
-
-		require_once( dirname(__FILE__) . '/includes/acl_general_functions.php' );
 
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
 
@@ -803,7 +796,24 @@ class twpw_custom_mc {
 
 	}
 
-}
+	public function acl_get_groups ( $levid = NULL ) {
+
+	  if ( !levid ) { return; }
+
+	  $settings = get_option("twpw_custommc");
+
+	  $groupings = array(); // create groupings array
+	  if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
+	    foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
+	      $groupings[$group] = true;
+	    }
+	  }
+
+	  return $groupings;
+
+	}
+
+} /* End of Class */
 
 if ( !isset ($twpw_custom_mc) ){
 	//setup our extension class
