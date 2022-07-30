@@ -258,7 +258,7 @@ class twpw_custom_mc {
 					$logger .= "Settings - Groups \r\n";
 					$logger .= var_export ( $settings[$levid]['mcgroup'], true );
 					$logger .= "\r\n\r\n  Groups Array\r\n";
-					$logger .= var_export( $groups, true ) . "\r\n\r\n";
+					$logger .= var_export( $groupings, true ) . "\r\n\r\n";
 					$logfile = fopen( LOGPATH."cjltest.log", "a" );
 					fwrite( $logfile, $logger );
 					fclose( $logfile );
