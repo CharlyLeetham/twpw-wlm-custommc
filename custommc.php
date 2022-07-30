@@ -798,14 +798,13 @@ class twpw_custom_mc {
 
 	public function acl_get_mem_groups ( $levid = NULL, $listid = NULL ) {
 
-		$logging = true;
 
-		$logger .= "\r\n We get here \r\n\r\n";
-		$logger .= var_export( $levid, true )."\r\n";
-		$logger .= var_export( $listid, true )."\r\n";
-		$logfile = fopen( LOGPATH."cjltest.log", "a" );
-		fwrite( $logfile, $logger );
-		fclose( $logfile );
+		$logging = get_option("twpw_custommc_logging");
+		if ( $logging == "yes") {
+			$logging = true;
+		} else {
+			$logging = false;
+		}
 
 	  if ( !$levid || !$listid ) { return; }
 
@@ -840,9 +839,12 @@ class twpw_custom_mc {
 			}
 		}
 
+		foreach ( $catarr as $k => $v ) {
+			$logger .= var_export ( $k, true).' '.var_export( $v, true ). "\r\n";
+		}
+
 		if ( $logging ) {
 			$logger .= "Full MC LISTS \r\n\r\n";
-			$logger .= var_export( $catarr, true );
 			$logfile = fopen( LOGPATH."cjltest.log", "a" );
 			fwrite( $logfile, $logger );
 			fclose( $logfile );
