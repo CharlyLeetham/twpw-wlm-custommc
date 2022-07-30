@@ -301,7 +301,7 @@ class twpw_custom_mc {
 					//
 					// $subemailhash = md5( $useremail );
 
-					$userchange = twpw_custom_mc::acl_change_user_mc ( 'add', $levid, $mclistid, $id, $groupings, $tags, $merge_vals );
+					$userchange = twpw_custom_mc::acl_change_user_mc ( 'add', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
 
 					$logger = var_export ( $userchange, true )."\r\n";
 
