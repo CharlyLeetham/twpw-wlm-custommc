@@ -854,7 +854,7 @@ class twpw_custom_mc {
 	  if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
 			$mygroups = $settings[$levid]['mcgroup'];
 			foreach ( $newcatarr[] as $k => $v ) {
-				if ( in_array ( $v["id"] , $mygroups )) {
+				if ( in_array ( $v->id , $mygroups )) {
 					$groupings[$v["id"]] = true;
 				} else {
 					$groupings[$v["id"]] = false;
