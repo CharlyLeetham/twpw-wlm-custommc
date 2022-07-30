@@ -264,7 +264,6 @@ class twpw_custom_mc {
 				$merge_vars = array (
 									 'FNAME' => $firstname,
 									 'LNAME' => $lastname,
-									 'interests' => $groupings,
 									);
 				// For PDT ONLY
 				$merge_vars['JOINED'] = current_time('Y-m-d');
@@ -317,7 +316,6 @@ class twpw_custom_mc {
 						$merge_vars = array (
 											 'FNAME' => $firstname,
 											 'LNAME' => $lastname,
-											 'interests' => $groupings,
 											);
 
 						if( $logging ) {
@@ -337,7 +335,8 @@ class twpw_custom_mc {
 							$response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
 						      "email_address" => $useremail,
 						      "status_if_new" => "subscribed",
-                  "merge_fields" => $merge_vars
+                  "merge_fields" => $merge_vars,
+									"interests" => $groupings,
 						  ]);
 
 							// $response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
