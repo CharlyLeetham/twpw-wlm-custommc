@@ -798,11 +798,17 @@ class twpw_custom_mc {
 
 	public function acl_get_mem_groups ( $levid = NULL, $listid = NULL ) {
 
+		if ( $logging ) {
+			$logger .= "We get here \r\n\r\n";
+			// $logger .= var_export( $catarr, true );
+			$logfile = fopen( LOGPATH."cjltest.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );
+		}
+
 	  if ( !$levid || !$listid ) { return; }
 
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
-
-		global $twpw_custommc_mcapi;
 
 	  $settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
