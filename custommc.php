@@ -348,39 +348,39 @@ class twpw_custom_mc {
 					// 	$logger .= var_export ($exception, true );
 					// 	$logger .= "\r\n\r\n";
 					// }
-
+					//
 					// if( $logging ) {
 					// 	$logfile = fopen( LOGPATH."cjltest.log", "a" );
 					// 	fwrite( $logfile, $logger );
 					// 	fclose( $logfile );
 					// }
 					// Now Add the tags
-
-				// 	try {
-				//
-  			// 		$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-				// 			"tags" => $tags
-				// 		]);
-				//
-				//
-				// 	} catch (Exception $e) {
-				// 		$logger .= $e->getMessage(). "\n";
-				// 		$exception = (string) $e->getResponse()->getBody();
-				// 		$logger .= var_export ($exception, true );
-				// 		$logger .= "\r\n\r\n";
-				// 	}
-				//
-				// 	if( $logging ) {
-				//
-				// 		$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
-				//
-				// 		if ( $groupings ) {
-				// 			$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
-				// 		}
-				//
-				// 		$logger .= "\n\r---\n\r";
-				// 	}
-				// }
+					//
+					// try {
+					//
+  				// 	$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+					// 		"tags" => $tags
+					// 	]);
+					//
+					//
+					// } catch (Exception $e) {
+					// 	$logger .= $e->getMessage(). "\n";
+					// 	$exception = (string) $e->getResponse()->getBody();
+					// 	$logger .= var_export ($exception, true );
+					// 	$logger .= "\r\n\r\n";
+					// }
+					//
+					// if( $logging ) {
+					//
+					// 	$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
+					//
+					// 	if ( $groupings ) {
+					// 		$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
+					// 	}
+					//
+					// 	$logger .= "\n\r---\n\r";
+					// }
+				} /* End live testing */
 
 				if( $logging ) {
 					$logfile = fopen( LOGPATH."approvemember.log", "a" );
