@@ -319,6 +319,8 @@ class twpw_custom_mc {
 											 'LNAME' => $lastname,
 											);
 
+							$logger .= var_export ( $groupings, true )."\r\n";
+
 							$response = $twpw_custommc_mcapi->ping->get();
 							$logger .= var_export ( $response, true )."\r\n";
 							$response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
@@ -327,6 +329,7 @@ class twpw_custom_mc {
                   "merge_fields" => $merge_vars,
 									"interests" => $groupings,
 						  ]);
+
 
 
 							if( $logging ) {
