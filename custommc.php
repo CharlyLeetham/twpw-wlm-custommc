@@ -153,8 +153,6 @@ class twpw_custom_mc {
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 
-		/*if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );*/
-
 		/*$mailchimp = new Mailchimp( $api_key );*/
 
 		require_once('mailchimp/vendor/autoload.php');
@@ -337,14 +335,6 @@ class twpw_custom_mc {
 								$logger .= var_export( $response, true ) . "\r\n\r\n";
 							}
 
-							// $response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
-						  //     "email_address" => $useremail,
-						  //     "status_if_new" => "subscribed",
-              //     "merge_fields" => [
-							// 			'FNAME' => $firstname,
- 							// 		 	'LNAME' => $lastname
-              //     ]
-						  // ]);
 					} catch (Exception $e) {
 						$logger .= $e->getMessage(). "\n";
 						$exception = (string) $e->getResponse()->getBody();
