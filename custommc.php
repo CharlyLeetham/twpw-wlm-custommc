@@ -191,6 +191,7 @@ class twpw_custom_mc {
 		$useremail = $user->user_email;
 		$wlmaction = $_POST['WishListMemberAction'];
 		$levelaction = $_POST['level_action'];
+		$memactoin = "add";
 
 		foreach( $levels as $k => $levid ) {
 
@@ -222,7 +223,7 @@ class twpw_custom_mc {
 					echo "\r\n\r\n";
 				}
 
-				$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid );
+				$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
 
 				if ( $logging ) {
 					$logger .= "Groups for export \r\n\r\n";
