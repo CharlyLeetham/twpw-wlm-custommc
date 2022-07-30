@@ -516,6 +516,11 @@ class twpw_custom_mc {
 				]
 			);
 			$logger = "\r\n".'Response:'."\r\n".var_export( $response, true )."\r\n\r\n";
+
+			$logfile = fopen( dirname( __FILE__ ) . "/logs/apicalllog.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );
+			
 		} catch (Exception $e) {
 			$logger = "\r\n"."Something went wrong"."\r\n";
 			$exception = (string) $e->getResponse()->getBody();
@@ -525,7 +530,7 @@ class twpw_custom_mc {
 				$logfile = fopen( dirname( __FILE__ ) . "/logs/apicalllog.log", "a" );
 				fwrite( $logfile, $logger );
 				fclose( $logfile );
-			
+
 		}
 
 		try {
