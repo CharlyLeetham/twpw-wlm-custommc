@@ -191,7 +191,7 @@ class twpw_custom_mc {
 		$useremail = $user->user_email;
 		$wlmaction = $_POST['WishListMemberAction'];
 		$levelaction = $_POST['level_action'];
-		$memactoin = "add";
+		$memaction = "add";
 
 		foreach( $levels as $k => $levid ) {
 
@@ -291,6 +291,7 @@ class twpw_custom_mc {
 				if ( $live ) {
 
 					if ( $logging ) {
+
 						$logger = "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
 						$logger .= "Groups for export \r\n\r\n";
 						$logger .= var_export( $groupings, true );
