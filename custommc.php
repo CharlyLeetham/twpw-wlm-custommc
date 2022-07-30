@@ -93,6 +93,14 @@ class twpw_custom_mc {
 		/* Get the settings for this plugin */
 		$settings = get_option("twpw_custommc");
 
+		/* Get the User details */
+		//get the user object so we can grab their details to add to Mailchimp
+		$user = get_user_by( 'id', $user );
+		$firstname = $user->user_firstname;
+		$lastname = $user->user_lastname;
+		$useremail = $user->user_email;
+		$subemailhash = md5 ( $useremail );
+
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
 
 		if ( $debug ) {
@@ -260,6 +268,13 @@ class twpw_custom_mc {
 		/* Get the settings for this plugin */
 		$settings = get_option("twpw_custommc");
 
+		/* Get the User details */
+		//get the user object so we can grab their details to add to Mailchimp
+		$user = get_user_by( 'id', $user );
+		$firstname = $user->user_firstname;
+		$lastname = $user->user_lastname;
+		$useremail = $user->user_email;
+		$subemailhash = md5 ( $useremail );
 
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
 
@@ -474,8 +489,6 @@ class twpw_custom_mc {
 		/* Get the User details */
 		//get the user object so we can grab their details to add to Mailchimp
 		$user = get_user_by( 'id', $user );
-		$firstname = $user->user_firstname;
-		$lastname = $user->user_lastname;
 		$useremail = $user->user_email;
 		$subemailhash = md5 ( $useremail );
 
