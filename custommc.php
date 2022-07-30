@@ -339,6 +339,14 @@ class twpw_custom_mc {
 									"interests" => $groupings,
 						  ]);
 
+
+							if( $logging ) {
+								$logger .= var_export( $response, true ) . "\r\n\r\n";
+								$logfile = fopen( LOGPATH."cjltest.log", "a" );
+								fwrite( $logfile, $logger );
+								fclose( $logfile );
+							}
+
 							// $response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
 						  //     "email_address" => $useremail,
 						  //     "status_if_new" => "subscribed",
@@ -376,6 +384,7 @@ class twpw_custom_mc {
 						if ( $groupings ) {
 							$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
 						}
+
 						$logger .= "\n\r---\n\r";
 					}
 				}
