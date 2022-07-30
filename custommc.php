@@ -390,12 +390,11 @@ class twpw_custom_mc {
 	public function acl_get_interest_groups( $listid, $levelid=NULL, $ajax=null ) {
 
 		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-		$logger = "here\r\n\r\n";
-		$logfile = fopen( LOGPATH."cjltest.log", "a" );
-		fwrite( $logfile, $logger );
-		fclose( $logfile );
 
 			$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+			$settings = get_option("twpw_custommc");
+			$api_key = $settings['mcapikey'];
+			$dc = $settings['mcdc'];
       $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
       $mccats = $response1->categories;
       $catarr = array();
@@ -417,7 +416,7 @@ class twpw_custom_mc {
 		  $interests = json_decode( $response1 );
 			$ia = $interests->interests;
 
-				$logger = var_export( $interests, true );
+				$logger = var_export( $response1, true );
 				$logfile = fopen( LOGPATH."cjltest.log", "a" );
 				fwrite( $logfile, $logger );
 				fclose( $logfile );
