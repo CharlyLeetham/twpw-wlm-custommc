@@ -791,7 +791,7 @@ class twpw_custom_mc {
 		$subemailhas = md5 ( $useremail );
 
 		try {
-			$response = $mailchimp->lists->setListMember( $listid, $subemailhash, [
+			$response = $twpw_custommc_mcapi->lists->setListMember( $listid, $subemailhash, [
 			    "email_address" => $email,
 			    "status_if_new" => "subscribed",
 					"merge_fields" => $merge_vals,
@@ -815,7 +815,7 @@ class twpw_custom_mc {
 		}
 
 		try {
-				$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
+				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($listid, $subemailhash, [
 		    "tags" => $tags,
 				]);
 				echo '<pre>';
