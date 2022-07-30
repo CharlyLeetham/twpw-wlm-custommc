@@ -301,6 +301,12 @@ if ( $_GET['remove'] ) {
 			]
 		);
 
+		echo '<pre>';
+				echo 'Result: <br />';
+				var_dump ( $response );
+				echo '<br />;'
+		echo '</pre>';
+
 	} catch (Exception $e) {
 		echo '<pre>';
 		$exception = (string) $e->getResponse()->getBody();
