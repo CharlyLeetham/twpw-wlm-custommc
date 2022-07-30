@@ -544,9 +544,8 @@ if ( $display ) { ?>
 						<strong>Version 2a</strong> - Tidy up.<br />
 						<strong>Version 2.01</strong> - Clean up the code being output to the screen.<br />
 						<strong>Version 2.02</strong> - Rewrite to stop people being moved after being added<br />
-						<strong>Version 2.03</strong> - Adding a class. Removed WooCommerce Support. Added more detailed logging.<br />
+						<strong>Version 2.03</strong> - Adding a class, removed WooCommerce support. upgrading to Mailchimp 3.0 api, adding support for mailchimp tags.<br />
 				<h3 style="border-bottom: 1px solid #000; width: 75%;">Known Issues</h3>
-				<p>1 October 2020: Wishlistmember wishlistmember_remove_user_levels action fires when user is added. Reported to Wishlist Products</p>';
 			}
 		}
 
