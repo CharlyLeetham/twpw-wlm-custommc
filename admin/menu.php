@@ -585,7 +585,7 @@ if ( $display ) { ?>
 			// 	}
 			// }
 			$mclists = twpw_custom_mc::acl_get_interest_groups( $listid, $_POST['levelid'] );
-			$mclists = $catarr;
+			// $mclists = $catarr;
 			echo '<select multiple="multiple" name="twpw_custommc['.$_POST['levelid'].'][mcgroup][]" class="mclist">';
 				foreach ( $mclists as $mclist ) {
 					echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
