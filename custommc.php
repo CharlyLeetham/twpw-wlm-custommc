@@ -792,7 +792,7 @@ class twpw_custom_mc {
 
 		try {
 			$response = $twpw_custommc_mcapi->lists->setListMember( $listid, $subemailhash, [
-			    "email_address" => $email,
+			    "email_address" => $useremail,
 			    "status_if_new" => "subscribed",
 					"merge_fields" => $merge_vals,
 					"interests" => $groupings,
