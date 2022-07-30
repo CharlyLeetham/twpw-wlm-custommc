@@ -225,15 +225,6 @@ class twpw_custom_mc {
 
 				$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
 
-				if ( $logging ) {
-					$logger .= "Groups for export \r\n\r\n";
-					$logger .= var_export( $groupings, true );
-					$logfile = fopen( LOGPATH."cjltest.log", "a" );
-					fwrite( $logfile, $logger );
-					fclose( $logfile );
-				}
-
-
 				$tags = array(); // create a tag
 				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
 					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
@@ -289,20 +280,17 @@ class twpw_custom_mc {
 				}
 
 				if ( $live ) {
+					$userchange = twpw_custom_mc::acl_change_user_mc ( 'add', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
 
 					if ( $logging ) {
-
 						$logger = "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
 						$logger .= "Groups for export \r\n\r\n";
-						$logger .= var_export( $groupings, true );
+						$logger .= var_export( $groupings, true )."\r\n\r\n";
+						$logger = var_export ( $userchange, true )."\r\n\r\n";
 						$logfile = fopen( LOGPATH."cjltest.log", "a" );
 						fwrite( $logfile, $logger );
 						fclose( $logfile );
 					}
-					die();
-					$userchange = twpw_custom_mc::acl_change_user_mc ( 'add', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
-
-					$logger = var_export ( $userchange, true )."\r\n";
 
 					if( $logging ) {
 						$logfile = fopen( LOGPATH."cjltest.log", "a" );
@@ -449,16 +437,6 @@ class twpw_custom_mc {
 					}
 
 					$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
-
-					if ( $logging ) {
-						$logger = "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
-						$logger .= "Groups for export \r\n\r\n";
-						$logger .= var_export( $groupings, true );
-						$logfile = fopen( LOGPATH."cjltest.log", "a" );
-						fwrite( $logfile, $logger );
-						fclose( $logfile );
-					}
-
 
 					$tags = array(); // create a tag
 					if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
