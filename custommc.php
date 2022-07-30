@@ -852,13 +852,30 @@ class twpw_custom_mc {
 
 	  $groupings = array(); // create groupings array
 	  if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
-	    foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
-				if ( in_array( $group, $newcatarr ) ) {
-					$groupings[$group] = true;
+			$mygroups = $settings[$levid]['mcgroup'];
+			foreach ( $newcatarr[] as $k => $v ) {
+				if ( in_array ( $v["id"] , $mygroups )) {
+					$groupings[$v["id"]] = true;
 				} else {
-					$groupings[$group] = false;
+					$groupings[$v["id"]] = false;
 				}
-	    }
+
+			}
+
+			if ( $logging ) {
+				$logger = "Full Groupings? Maybe \r\n\r\n";
+				$logger .= $groupings;
+				$logfile = fopen( LOGPATH."cjltest.log", "a" );
+				fwrite( $logfile, $logger );
+				fclose( $logfile );
+			}
+	    // foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
+			// 	if ( in_array( $group, $newcatarr ) ) {
+			// 		$groupings[$group] = true;
+			// 	} else {
+			// 		$groupings[$group] = false;
+			// 	}
+	    // }
 	  }
 
 	  return $groupings;
