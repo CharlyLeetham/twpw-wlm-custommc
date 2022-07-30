@@ -239,29 +239,9 @@ class twpw_custom_mc {
 
 				$groupings = array(); // create groupings array
 				if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
-					// foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
-					// 	$group = explode('::',$group); // divide the group as top id and bottom name
-					// 	$groups[$group[0]][] = $group[1];
-					// }
 					foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
 						$groupings[] = array( $group => "true");
 					}
-					// foreach($groups as $group_id => $group) {
-					// 	$groupings[] = array('id'=>$group_id, 'groups' => $group);
-					// }
-				}
-
-
-
-				if( $logging ) {
-					echo "Groups for export \r\n\r\n";
-					$logger .= "Settings - Groups \r\n";
-					$logger .= var_export ( $settings[$levid]['mcgroup'], true );
-					$logger .= "\r\n\r\n  Groups Array\r\n";
-					$logger .= var_export( $groupings, true ) . "\r\n\r\n";
-					$logfile = fopen( LOGPATH."cjltest.log", "a" );
-					fwrite( $logfile, $logger );
-					fclose( $logfile );
 				}
 
 				$tags = array(); // create a tag
@@ -339,6 +319,19 @@ class twpw_custom_mc {
 											 'LNAME' => $lastname,
 											 'interests' => $groupings,
 											);
+
+						if( $logging ) {
+							echo "Groups for export \r\n\r\n";
+							// $logger .= "Settings - Groups \r\n";
+							// $logger .= var_export ( $settings[$levid]['mcgroup'], true );
+							$logger .= "\r\n\r\n  Groups Array\r\n";
+							$logger .= var_export( $groupings, true ) . "\r\n\r\n";
+							$logger .= "\r\n\r\n  Merge Vars\r\n";
+							$logger .= var_export( $merge_vars, true ) . "\r\n\r\n";
+							$logfile = fopen( LOGPATH."cjltest.log", "a" );
+							fwrite( $logfile, $logger );
+							fclose( $logfile );
+						}
 							$response = $twpw_custommc_mcapi->ping->get();
 							$logger .= var_export ( $response, true )."\r\n";
 							$response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
