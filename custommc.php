@@ -798,7 +798,7 @@ class twpw_custom_mc {
 
 	public function acl_get_mem_groups ( $levid = NULL, $listid = NULL ) {
 
-	  if ( !levid || !listid ) { return; }
+	  if ( !$levid || !$listid ) { return; }
 
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
 
