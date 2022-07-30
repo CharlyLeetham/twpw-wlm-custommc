@@ -821,7 +821,7 @@ class twpw_custom_mc {
 					if ( $memaction == 'add' ) {
 						$groupings[$v["id"]] = true;
 					} elseif ($memaction == 'remove') {
-						$groupings[$v["id"]] = true;
+						$groupings[$v["id"]] = false;
 					}
 				} else {
 					$groupings[$v["id"]] = false;
