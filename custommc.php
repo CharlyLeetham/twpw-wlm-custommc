@@ -52,69 +52,6 @@ class twpw_custom_mc {
 		echo "<link rel='stylesheet' type='text/css' href='$url' />\n";
 	}
 
-	function acl_wlm_test( $id, $levels ) {
-		ob_start();
-		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-		date_default_timezone_set("US/Hawaii");
-		$logging = get_option("twpw_custommc_logging");
-		if ( $logging == "yes") {
-			$logging = true;
-		} else {
-			$logging = false;
-		}
-
-		$debug = get_option("twpw_custommc_listdebug");
-		if ( $debug == "yes") {
-			$debug = true;
-		} else {
-			$debug = false;
-		}
-
-		if ( !$debug ) {
-			return;
-		}
-
-		$live = get_option("twpw_custommc_livetest");
-		if ( $live == "yes") {
-			$live = true;
-		} else {
-			$live = false;
-		}
-
-		$logger = '';
-		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-
-		/* Setup Logging */
-		if (!file_exists(dirname( __FILE__ ).'/logs')) {
-			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
-		}
-		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-		/* End logging setup */
-
-		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
-
-		$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
-		$logger .= "User ID: " .$id;
-		$logger .= "\r\n\r\n";
-		$logger .= 'Post: ';
-		$postexp = var_export( $_POST, true );
-		$logger .= $postexp;
-		$logger .= "\r\n\r\n";
-		$logger .= 'Added by: ';
-		$logger .= $_POST['WishListMemberAction'];
-		$logger .= "\r\n\r\n";
-		$userdata = get_user_meta( $id );
-		$userexp = var_export ( $userdata, true);
-		$logger .= 'User Array: '.$userexp;
-		$logger .= "\r\n\r\n";
-		$logger .= "***  ***  ***\r\n\r\n";
-
-		$logfile = fopen( LOGPATH."moving.log", "a" );
-		fwrite( $logfile, $logger );
-		fclose( $logfile );
-	}
-
 	function acl_wlm_approve_user( $id, $levels ) {
 
 		ob_start();
@@ -150,18 +87,11 @@ class twpw_custom_mc {
 
 		$logger = '';
 
+		/*Initialise the Mailchmip API */
+		$twpw_custommc_mcapi = twpw_custommc_createMCAPI();
+
+		/* Get the settings for this plugin */
 		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-
-		/*$mailchimp = new Mailchimp( $api_key );*/
-
-		require_once('mailchimp/vendor/autoload.php');
-		$mailchimp = new \MailchimpMarketing\ApiClient();
-		$mailchimp->setConfig([
-			'apiKey' => $mcapikey,
-			'server' => $dc
-		]);
-
 
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
 
@@ -184,11 +114,13 @@ class twpw_custom_mc {
 			echo $sett."\r\n\r\n";
 		}
 
-		//get the user object so we can grab their details to add to Mailchimp
-		$user = get_user_by( 'id', $id );
-		$firstname = $user->user_firstname;
-		$lastname = $user->user_lastname;
-		$useremail = $user->user_email;
+		if ( $logging ) {
+			$logger = "Add Member Action triggered \r\n";
+			$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n";
+		  $logger .= "User ID: " .$id."\r\n\r\n";
+		}
+
+		//set our actions
 		$wlmaction = $_POST['WishListMemberAction'];
 		$levelaction = $_POST['level_action'];
 		$memaction = "add";
@@ -212,7 +144,7 @@ class twpw_custom_mc {
 				}
 
 				if ( $logging ) {
-					$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not added to Mailchimp.'."\r\n";
+					$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not added to Mailchimp.'."\r\n";
 					$logfile = fopen( LOGPATH."approvemember.log", "a" );
 					fwrite( $logfile, $logger );
 					fclose( $logfile );
@@ -225,21 +157,10 @@ class twpw_custom_mc {
 
 				$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
 
-				$tags = array(); // create a tag
-				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
-					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
-						$tags[] = array ( 'name' => $tag, 'status' => 'active');
-					}
-				}
-
-				if ( $debug ) {
-					echo "Tags for export \r\n\r\n";
-					$tagexp = var_export( $tags, true );
-					echo $tagexp."\r\n\r\n";
-				}
+				$tags = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
 
 				// Setup the array to send to Mailchimp
-				global $wpdb;
+				global $wpdb; //is thi needed?
 
 				$merge_vars = array (
 									 'FNAME' => $firstname,
@@ -261,43 +182,8 @@ class twpw_custom_mc {
 					$logger1 = 'join date not updated from '.$previous_join_date[0];
 				}
 
-				$email_type = 'html';
-
-
-				if ( $debug ) {
-					$myarray = array(
-						'apikey' => $mcapikey,
-						'id' => $mclistid,
-						'email' => array('email' => $useremail),
-						'merge_vars' => $merge_vars,
-						'interests' => $groupings,
-						'tags' => $tags,
-						'email_type' => $email_type,
-					);
-					$myarr = var_export ( $myarray, true );
-					echo 'Mailchimp settings: '."\r\n\r\n";
-					echo $myarr."\r\n";
-				}
-
 				if ( $live ) {
 					$userchange = twpw_custom_mc::acl_change_user_mc ( 'add', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
-
-					if ( $logging ) {
-						$logger = "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
-						$logger .= "Groups for export \r\n\r\n";
-						$logger .= var_export( $groupings, true )."\r\n\r\n";
-						$logger = var_export ( $userchange, true )."\r\n\r\n";
-						$logfile = fopen( LOGPATH."cjltest.log", "a" );
-						fwrite( $logfile, $logger );
-						fclose( $logfile );
-					}
-
-					if( $logging ) {
-						$logfile = fopen( LOGPATH."cjltest.log", "a" );
-						fwrite( $logfile, $logger );
-						fclose( $logfile );
-					}
-
 					/*
 					add - the action, add or remove a users
 					$levid - WLM level
@@ -306,23 +192,32 @@ class twpw_custom_mc {
 					$tags - Tags for the member
 					$merge_vals - Merge_vals needed by mailchimp.
 					*/
+
+					if ( $logging ) {
+						$logger .= "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
+						$logger .= "Groups for export \r\n\r\n";
+						$logger .= var_export( $groupings, true )."\r\n\r\n";
+						$logger = var_export ( $userchange, true )."\r\n\r\n";
+					}
 				} /* End live function */
 
-				if( $logging ) {
-					$logfile = fopen( LOGPATH."approvemember.log", "a" );
-					fwrite( $logfile, $logger );
-					fclose( $logfile );
-				}
 
-				if ( $debug ) {
-					$logfile = fopen( LOGPATH."mcapplog.log", "a" );
-					$out =ob_get_clean();
-					fwrite( $logfile, $out );
-					fclose( $logfile );
-				}
+			} /*If there is no list / list tested */
+
+			if( $logging ) {
+				$logfile = fopen( LOGPATH."approvemember.log", "a" );
+				fwrite( $logfile, $logger );
+				fclose( $logfile );
 			}
-		}
-	}
+
+			if ( $debug ) {
+				$logfile = fopen( LOGPATH."mcapplog.log", "a" );
+				$out = ob_get_clean();
+				fwrite( $logfile, $out );
+				fclose( $logfile );
+			}
+		} /* List loop */
+	} /* End Approve Member */
 
 	function acl_wlm_unapprove_user( $id, $levels ) {
 
@@ -358,224 +253,105 @@ class twpw_custom_mc {
 		}
 
 		$logger = '';
-		require_once('mailchimp/vendor/autoload.php');
+
+		/*Initialise the Mailchmip API */
+		$twpw_custommc_mcapi = twpw_custommc_createMCAPI();
+
+		/* Get the settings for this plugin */
 		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-		$dc = $settings['mcdc'];
 
-		$mailchimp = new \MailchimpMarketing\ApiClient();
-		$mailchimp->setConfig([
-				'apiKey' => $api_key,
-				'server' => $dc
-		]);
 
-		try {
-				$response = $mailchimp->ping->get();
-		} catch (Exception $e) {
-				$exception = (string) $e->getResponse()->getBody();
-				$exception = json_decode($exception);
-				if ( $debug ){
-					echo 'An error has occurred+++: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
-				}
-		} finally {
+		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
 
-			$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
+		if ( $debug ) {
+			echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
+			echo "User ID: " .$id;
+			echo "\r\n\r\n";
+			echo 'Post: ';
+			$postexp = var_export( $_POST, true );
+			echo $postexp;
+			echo "\r\n\r\n";
+			$levexp = var_export( $levels, true );
+			echo 'Levels: '.$levexp;
+			echo "\r\n\r\n";
+			$levexp = var_export ( $wlmlevels, true );
+			echo 'WLM Levels: '.$levexp;
+			echo "\r\n\r\n";
+		}
 
-			if ( $debug ) {
-				echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
-				echo "User ID: " .$id;
-				echo "\r\n\r\n";
-				echo 'Post: ';
-				$postexp = var_export( $_POST, true );
-				echo $postexp;
-				echo "\r\n\r\n";
-				$levexp = var_export( $levels, true );
-				echo 'Levels: '.$levexp;
-				echo "\r\n\r\n";
-				$levexp = var_export ( $wlmlevels, true );
-				echo 'WLM Levels: '.$levexp;
-				echo "\r\n\r\n";
-				$sett = var_export ( $settings, true );
+		//Setting our actions for testing
+		$wlmaction = $_POST['WishListMemberAction'];
+		$levelaction = $_POST['level_action'];
+		$memaction = "remove";
+
+		foreach( $levels as $k => $levid ) {
+			if ( ( $settings[$levid]['mclistid'] ) ) {
+				$mclistid = $settings[$levid]['mclistid'];
+			} else {
+				$mclistid = false;
 			}
 
-			//get the user object so we can grab their details to add to Mailchimp
-			$user = get_user_by( 'id', $id );
-			$firstname = $user->user_firstname;
-			$lastname = $user->user_lastname;
-			$useremail = $user->user_email;
-			$wlmaction = $_POST['WishListMemberAction'];
-			$levelaction = $_POST['level_action'];
-			$memaction = "remove";
-
-			foreach( $levels as $k => $levid ) {
-				if ( ( $settings[$levid]['mclistid'] ) ) {
-					$mclistid = $settings[$levid]['mclistid'];
-				} else {
-					$mclistid = false;
+			if ( $mclistid == false ) {
+				if ( $debug ) {
+					echo "No List";
+					echo "\r\n\r\n";
 				}
 
-				if ( $mclistid == false ) {
-					if ( $debug ) {
-						echo "No List";
-						echo "\r\n\r\n";
-						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-						$out =ob_get_clean();
-						fwrite( $logfile, $out );
-						fclose( $logfile );
-					}
+				if ( $logging ) {
+					$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not removed from Mailchimp.'."\r\n";
+				}
+			} else {
+				if ( $debug ) {
+					echo "List: " . $mclistid;
+					echo "\r\n\r\n";
+				}
 
-					if ( $logging ) {
-						$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not removed from Mailchimp.'."\r\n";
-						$logfile = fopen( LOGPATH."removemember.log", "a" );
-						fwrite( $logfile, $logger );
-						fclose( $logfile );
-					}
-				} else {
-					if ( $debug ) {
-						echo "List: " . $mclistid;
-						echo "\r\n\r\n";
-					}
+				$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
+				$tags = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
 
-					$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
-
-					$tags = array(); // create a tag
-					if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
-						foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
-							$tags[] = array ( 'name' => $tag, 'status' => 'active');
-						}
-					}
-
-					if ( $debug ) {
-						echo "Tags for export \r\n\r\n";
-						$tagexp = var_export( $tags, true );
-						echo $tagexp."\r\n\r\n";
-					}
-
-					// Setup the array to send to Mailchimp
-					global $wpdb; // is this needeD?
+				// Setup the array to send to Mailchimp
+				global $wpdb; // is this needeD?
 
 
-					// For PDT ONLY
-					$merge_vars['JOINED'] = current_time('Y-m-d');
-					$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
-					if ( !empty ( $previous_join_date ) ) {
-						echo 'join date of '.$merge_vars['JOINED'].' still set'."\r\n\r\n";
-						$logger1 = 'join date of '.$merge_vars['JOINED'].' still set';
-					}
+				// For PDT ONLY
+				$merge_vars['JOINED'] = current_time('Y-m-d');
+				$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
+				if ( !empty ( $previous_join_date ) ) {
+					echo 'join date of '.$merge_vars['JOINED'].' still set'."\r\n\r\n";
+					$logger .= 'join date of '.$merge_vars['JOINED'].' still set';
+				}
 
-					$email_type = 'html';
-					$update_existing = TRUE;
-					$replace_interests = TRUE;
-					$delete_member = FALSE;
-					$emailmd5 = md5( $useremail );
+				if ( $live ) {
 
-					if ( $debug ) {
-
-					}
-
-
-
-					if ( $live ) {
-
-
-						if ( $logging ) {
-							$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') removed from Mailchimp.'."\r\n\r\n";
-							$logger .= "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
-							$logger .= "Interest Groups: \r\n";
-							$logger .= var_export( $groupings, true )."\r\n\r\n";
-							$logger .= "Tags: \r\n";
-							$logger .= var_export( $tags, true )."\r\n\r\n";
-							$logfile = fopen( LOGPATH."cjltest.log", "a" );
-							fwrite( $logfile, $logger );
-							fclose( $logfile );
-						}
-
-						$userchange = twpw_custom_mc::acl_change_user_mc ( 'remove', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
-
-						if( $logging ) {
-							$logger = "User Change ran: \r\n";
-							$logger .= var_export ( $userchange, true )."\r\n";
-							$logfile = fopen( LOGPATH."cjltest.log", "a" );
-							fwrite( $logfile, $logger );
-							fclose( $logfile );
-						}
-
-						/*
-						add - the action, add or remove a users
-						$levid - WLM level
-						$mclistid - the Mailchimp we're adding to.
-						$groupings - the Interest groups
-						$tags - Tags for the member
-						$merge_vals - Merge_vals needed by mailchimp.
-						*/
-
-						if ( $debug ) {
-							$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-							$out =ob_get_clean();
-							fwrite( $logfile, $out );
-							fclose( $logfile );
-						}
-
-						if ( $mailchimp->errorCode ){
-
-							if ( $debug ) {
-								echo "Unable to load listUnsubscribe()!\n\r";
-								echo "\tCode=".$mailchimp->errorCode."\n\r";
-								echo "\tMsg=".$mailchimp->errorMessage."\n\r";
-								echo "\r\n";
-								$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-								$out =ob_get_clean();
-								fwrite( $logfile, $out );
-								fclose( $logfile );
-							}
-
-							if ( $logging ) {
-								$logger .= "Unable to load listUnsubscribe()!\n\r";
-								$logger .= "\tCode=".$mailchimp->errorCode."\n\r";
-								$logger .= "\tMsg=".$mailchimp->errorMessage."\n\r";
-							}
-
-						} else {
-							if ( $logging ) {
-								$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Removed '.$firstname .'('.$id.') for Level: '.$levid.' from Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
-								if ( $groupings ) {
-									$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
-								}
-								$logger .= ' '.$logger1;
-								$logger .= "\n\r---\n\r";
-							}
-						}
-					} else {
-						if ( $debug ) {
-							echo 'Call made: $mailchimp->call( /lists/unsubscribe, '. $myarr .')';
-							echo "\r\n";
-						}
-
-						if ( $logging ) {
-							$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Removed as test '.$firstname .'('.$id.') for Level: '.$levid.' from Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
-							if ( $groupings ) {
-								$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
-							}
-							$logger .= ' '.$logger1;
-							$logger .= "\r\n---\r\n";
-						}
-					}
+					$userchange = twpw_custom_mc::acl_change_user_mc ( 'remove', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
+					/*
+					add - the action, add or remove a users
+					$levid - WLM level
+					$mclistid - the Mailchimp we're adding to.
+					$groupings - the Interest groups
+					$tags - Tags for the member
+					$merge_vars - Merge_vars needed by mailchimp.
+					*/
 
 					if( $logging ) {
-						$logfile = fopen( LOGPATH."removemember.log", "a" );
-						fwrite( $logfile, $logger );
-						fclose( $logfile );
-					}
-
-					if ( $debug ) {
-						$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-						$out =ob_get_clean();
-						fwrite( $logfile, $out );
-						fclose( $logfile );
+						$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') removed from Mailchimp.'."\r\n\r\n";
 					}
 				}
+			} /* there was something to do with the list */
+
+			if( $logging ) {
+				$logfile = fopen( LOGPATH."removemember.log", "a" );
+				fwrite( $logfile, $logger );
+				fclose( $logfile );
 			}
-		} // finally
+
+			if ( $debug ) {
+				$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+				$out =ob_get_clean();
+				fwrite( $logfile, $out );
+				fclose( $logfile );
+			}
+		} /* list loop */
 	}
 
 
@@ -638,8 +414,6 @@ class twpw_custom_mc {
 	public function acl_get_tags( $listid, $levelid, $ajax=null ) {
 		global $twpw_custommc_mcapi;
 		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-		$dc = $settings['mcdc'];
 
 		$data = array (
 			"count" => 1000
@@ -679,15 +453,8 @@ class twpw_custom_mc {
 		if ( !$action || !$listid || !$levid || !$user ) { return; }
 
 		/* Get the settings and setup the Mailchimp API */
-
+		global $twpw_custommc_mcapi;
 		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-		$dc = $settings['mcdc'];
-		$twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();
-		$twpw_custommc_mcapi->setConfig([
-				'apiKey' => $api_key,
-				'server' => $dc
-		]);
 
 		/* Get the User details */
 		//get the user object so we can grab their details to add to Mailchimp
@@ -707,25 +474,16 @@ class twpw_custom_mc {
 			);
 			$logger = "\r\n".'Response:'."\r\n".var_export( $response, true )."\r\n\r\n";
 		} catch (Exception $e) {
-			// $logger .= $e->getMessage(). "\n";
 			$logger = "\r\n"."Something went wrong"."\r\n";
 			$exception = (string) $e->getResponse()->getBody();
 			$logger .= var_export ($exception, true );
 			$logger .= "\r\n\r\n";
 		}
 
-		$logfile = fopen( LOGPATH."cjltest.log", "a" );
-		fwrite( $logfile, $logger );
-		fclose( $logfile );
-
 		try {
 				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($listid, $subemailhash, [
 		    "tags" => $tags,
 				]);
-				echo '<pre>';
-						echo 'Result: <br />';
-						var_dump ( $response1 );
-				echo '</pre>';
 		} catch (Exception $e) {
 			$logger .= $e->getMessage(). "\n";
 			$exception = (string) $e->getResponse()->getBody();
@@ -735,9 +493,6 @@ class twpw_custom_mc {
 	}
 
 	public function twpw_custommc_createMCAPI() {
-		global $twpw_custommc_mcapi;
-		$acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
-		if (isset($twpw_custommc_mcapi)) return;
 		require_once( $acl_plugin_dir.'/mailchimp/vendor/autoload.php');
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
@@ -748,11 +503,14 @@ class twpw_custom_mc {
 				'server' => $dc
 		]);
 
+		return $twpw_custommc_mcapi;
+
 	}
 
 	public function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
-		if( $request_type == 'GET' )
+		if( $request_type == 'GET' ) {
 			$url .= '?' . http_build_query($data);
+		}
 
 		$mch = curl_init();
 		$headers = array(
@@ -788,15 +546,8 @@ class twpw_custom_mc {
 	  if ( !$levid || !$listid || !$memaction ) { return; }
 
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
-
+		global $twpw_custommc_mcapi;
 	  $settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-		$dc = $settings['mcdc'];
-		$twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();
-		$twpw_custommc_mcapi->setConfig([
-				'apiKey' => $api_key,
-				'server' => $dc
-		]);
 
 		$response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
 		$mccats = $response1->categories;
@@ -833,6 +584,35 @@ class twpw_custom_mc {
 
 	}
 
+	public function acl_get_mem_tags ( $levid = NULL, $listid = NULL, $memaction = NULL ) {
+
+		$logging = get_option("twpw_custommc_logging");
+		if ( $logging == "yes") {
+			$logging = true;
+		} else {
+			$logging = false;
+		}
+
+	  if ( !$levid || !$listid || !$memaction ) { return; }
+
+		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
+
+	  $settings = get_option("twpw_custommc");
+		global $twpw_custommc_mcapi;
+
+		$tags = array(); // create a tag
+		if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
+			foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
+				if ( $memaction == "add" ) {
+					$tags[] = array ( 'name' => $tag, 'status' => 'active');
+				} elseif ( $memaction == "remove" ) {
+					$tags[] = array ( 'name' => $tag, 'status' => 'inactive');
+				}
+			}
+		}
+	  return $tags;
+	}
+
 } /* End of Class */
 
 if ( !isset ($twpw_custom_mc) ){
@@ -843,15 +623,6 @@ if ( !isset ($twpw_custom_mc) ){
 
 register_activation_hook ( __FILE__, array(&$twpw_custom_mc, 'twpw_custom_mc_activate' ) );
 add_action('admin_head', array (&$twpw_custom_mc, 'twpw_custommc_admin_register_head' ) );
-
-add_action ( 'wishlistmember_approve_user_levels', array( &$twpw_custom_mc, 'acl_wlm_test' ), 30, 2 );
-add_action ( 'wishlistmember_add_user_levels', array( &$twpw_custom_mc, 'acl_wlm_test' ), 30, 2 );
-// add_action ( 'wishlistmember_remove_user_levels', array( &$twpw_custom_mc, 'acl_wlm_test' ), 30, 2 );
-add_action ( 'wishlistmember_unapprove_user_levels', array( &$twpw_custom_mc, 'acl_wlm_test' ), 30, 2 );
-add_action ( 'wishlistmember_unconfirm_user_levels', array( &$twpw_custom_mc, 'acl_wlm_test' ), 30, 2 );
-add_action ( 'wishlistmember_confirm_user_levels', array( &$twpw_custom_mc, 'acl_wlm_test' ), 30, 2 );
-add_action ( 'wishlistmember_cancel_user_levels', array( &$twpw_custom_mc, 'acl_wlm_test' ), 30, 2 );
-add_action ( 'wishlistmember_uncancel_user_levels', array( &$twpw_custom_mc, 'acl_wlm_test' ), 30, 2 );
 
 add_action ( 'wishlistmember_approve_user_levels', array( &$twpw_custom_mc, 'acl_wlm_approve_user' ), 30, 2 );
 add_action ( 'wishlistmember_add_user_levels', array( &$twpw_custom_mc, 'acl_wlm_approve_user' ), 30, 2 );
