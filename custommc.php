@@ -389,6 +389,7 @@ class twpw_custom_mc {
 
 	public function acl_get_interest_groups( $listid, $levelid=NULL, $ajax=null ) {
 
+		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
 		$logger = "here\r\n\r\n";
 		$logfile = fopen( LOGPATH."cjltest.log", "a" );
 		fwrite( $logfile, $logger );
