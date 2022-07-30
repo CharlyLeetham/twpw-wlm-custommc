@@ -62,13 +62,11 @@ class twpw_custom_mc {
 			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
 		}
 
-		if( $logging ) {
 			$logger = "File open \r\n";
 			$logfile = fopen( LOGPATH."approvemember.log", "a" );
 			fwrite( $logfile, $logger );
 			fclose( $logfile );
-		}
-
+			
 		/* End logging setup */
 
 		date_default_timezone_set("US/Hawaii");
