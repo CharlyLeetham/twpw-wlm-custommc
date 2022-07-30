@@ -556,7 +556,7 @@ if ( $display ) { ?>
 			// $acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
 			// if (isset($twpw_custommc_mcapi)) return;
 			// require_once( $acl_plugin_dir.'/mailchimp/vendor/autoload.php');
-			// $settings = get_option("twpw_custommc");
+			$settings = get_option("twpw_custommc");
 			// $api_key = $settings['mcapikey'];
 			// $dc = $settings['mcdc'];
 			// $twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();

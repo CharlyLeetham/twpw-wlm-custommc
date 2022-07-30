@@ -388,18 +388,15 @@ class twpw_custom_mc {
 	}
 
 	public function acl_get_interest_groups( $listid, $levelid=NULL, $ajax=null ) {
-
-		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-
-			$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
-			$settings = get_option("twpw_custommc");
-			$api_key = $settings['mcapikey'];
-			$dc = $settings['mcdc'];
-      $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
-      $mccats = $response1->categories;
-      $catarr = array();
-      $intarr = array();
-      $catnum = 0;
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+		$settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
+    $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
+    $mccats = $response1->categories;
+    $catarr = array();
+    $intarr = array();
+    $catnum = 0;
 
 
 
@@ -415,12 +412,6 @@ class twpw_custom_mc {
 			$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
 		  $interests = json_decode( $response1 );
 			$ia = $interests->interests;
-
-				$logger = var_export( $response1, true );
-				$logfile = fopen( LOGPATH."cjltest.log", "a" );
-				fwrite( $logfile, $logger );
-				fclose( $logfile );
-
 			$intnum = 0;
 			foreach ( $ia as $v ) {
 				$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
