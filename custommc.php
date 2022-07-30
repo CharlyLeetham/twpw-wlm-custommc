@@ -346,12 +346,11 @@ class twpw_custom_mc {
 						$logger .= "\r\n\r\n";
 					}
 
-					$logging = false;
-					if( $logging ) {
-						$logfile = fopen( LOGPATH."cjltest.log", "a" );
-						fwrite( $logfile, $logger );
-						fclose( $logfile );
-					}
+					// if( $logging ) {
+					// 	$logfile = fopen( LOGPATH."cjltest.log", "a" );
+					// 	fwrite( $logfile, $logger );
+					// 	fclose( $logfile );
+					// }
 					// Now Add the tags
 
 					try {
