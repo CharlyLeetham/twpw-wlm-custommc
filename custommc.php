@@ -72,12 +72,7 @@ class twpw_custom_mc {
 			$logging = false;
 		}
 
-		$logger = "File open \r\n";
-		$logger .= "Logging: ".var_export ( $logging, true)."\r\n";
-		$logfile = fopen( LOGPATH."approvemember.log", "a" );
-		fwrite( $logfile, $logger );
-		fclose( $logfile );
-
+		$logger = '';
 		$debug = get_option("twpw_custommc_listdebug");
 		if ( $debug == "yes") {
 			$debug = true;
@@ -282,7 +277,7 @@ class twpw_custom_mc {
 
 		/* Get the User details */
 		//get the user object so we can grab their details to add to Mailchimp
-		$user = get_user_by( 'id', $user );
+		$user = get_user_by( 'id', $id );
 		$firstname = $user->user_firstname;
 		$lastname = $user->user_lastname;
 		$useremail = $user->user_email;
@@ -515,22 +510,11 @@ class twpw_custom_mc {
 					"interests" => $groupings,
 				]
 			);
-			$logger = "\r\n".'Response:'."\r\n".var_export( $response, true )."\r\n\r\n";
-
-			$logfile = fopen( dirname( __FILE__ ) . "/logs/apicalllog.log", "a" );
-			fwrite( $logfile, $logger );
-			fclose( $logfile );
-
 		} catch (Exception $e) {
 			$logger = "\r\n"."Something went wrong"."\r\n";
 			$exception = (string) $e->getResponse()->getBody();
 			$logger .= var_export ($exception, true );
 			$logger .= "\r\n\r\n";
-
-				$logfile = fopen( dirname( __FILE__ ) . "/logs/apicalllog.log", "a" );
-				fwrite( $logfile, $logger );
-				fclose( $logfile );
-
 		}
 
 		try {
