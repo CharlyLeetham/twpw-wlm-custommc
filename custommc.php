@@ -252,6 +252,7 @@ class twpw_custom_mc {
 
 				if( $logging ) {
 					echo "Groups for export \r\n\r\n";
+					$logger .= var_export ( $settings[$levid]['mcgroup'], true );
 					$logger .= var_export( $groups, true );
 					$logfile = fopen( LOGPATH."cjltest.log", "a" );
 					fwrite( $logfile, $logger );
@@ -358,6 +359,7 @@ class twpw_custom_mc {
 					// Now Add the tags
 
 					try {
+
   					$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 							"tags" => $tags
 						]);
@@ -371,17 +373,12 @@ class twpw_custom_mc {
 					}
 
 					if( $logging ) {
-						// $logfile = fopen( LOGPATH."cjltest.log", "a" );
-						// fwrite( $logfile, $logger );
-						// fclose( $logfile );
+
 						$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) Added '.$firstname .'('.$id.') for Level: '.$levid.' to Mailchimp List: '.$mclistid. 'by '.$wlmaction.' ('.$levelaction.')'."\r\n";
-						// $response = var_export( $response, true );
-						// $logger .= echo $response;
-						// $logger .= "\r\n\r\n"
+
 						if ( $groupings ) {
 							$logger .= 'for groups: '.var_export( $groupings, true )."\r\n";
 						}
-						$logger .= ' '.$logger1;
 						$logger .= "\n\r---\n\r";
 					}
 				}
@@ -737,7 +734,7 @@ class twpw_custom_mc {
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		$dc = $settings['mcdc'];
-		// $response1 = $twpw_custommc_mcapi->lists->tagSearch($listid);
+
 		$data = array (
 			"count" => 1000
 		);
