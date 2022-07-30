@@ -304,7 +304,7 @@ if ( $_GET['remove'] ) {
 		echo '<pre>';
 				echo 'Result: <br />';
 				var_dump ( $response );
-				echo '<br />;'
+				echo '<br />';
 		echo '</pre>';
 
 	} catch (Exception $e) {
