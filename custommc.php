@@ -98,15 +98,15 @@ class twpw_custom_mc {
 		/* Get the settings for this plugin */
 		$settings = get_option("twpw_custommc");
 
+		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
+
 		/* Get the User details */
 		//get the user object so we can grab their details to add to Mailchimp
 		$user = get_user_by( 'id', $user );
 		$firstname = $user->user_firstname;
 		$lastname = $user->user_lastname;
 		$useremail = $user->user_email;
-		$subemailhash = md5 ( $useremail );
-
-		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
+		$subemailhash = md5 ( $useremail );		
 
 		if ( $debug ) {
 			echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
@@ -520,7 +520,7 @@ class twpw_custom_mc {
 			$logfile = fopen( dirname( __FILE__ ) . "/logs/apicalllog.log", "a" );
 			fwrite( $logfile, $logger );
 			fclose( $logfile );
-			
+
 		} catch (Exception $e) {
 			$logger = "\r\n"."Something went wrong"."\r\n";
 			$exception = (string) $e->getResponse()->getBody();
