@@ -1,6 +1,6 @@
 <?php
 
-function acl_get_groups ( $levid = NULL ) {
+public function acl_get_groups ( $levid = NULL ) {
 
   if ( !levid ) { return; }
 
