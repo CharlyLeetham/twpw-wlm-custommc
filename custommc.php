@@ -56,11 +56,12 @@ class twpw_custom_mc {
 
 		ob_start();
 		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+
 		/* Setup Logging */
 		if (!file_exists(dirname( __FILE__ ).'/logs')) {
 			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
 		}
-		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+
 		/* End logging setup */
 
 		date_default_timezone_set("US/Hawaii");
@@ -206,6 +207,12 @@ class twpw_custom_mc {
 						$logger .= "Groups for export \r\n\r\n";
 						$logger .= var_export( $groupings, true )."\r\n\r\n";
 						$logger = var_export ( $userchange, true )."\r\n\r\n";
+					}
+
+					if( $logging ) {
+						$logfile = fopen( LOGPATH."approvemember.log", "a" );
+						fwrite( $logfile, $logger );
+						fclose( $logfile );
 					}
 				} /* End live function */
 
