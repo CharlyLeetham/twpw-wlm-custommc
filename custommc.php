@@ -351,6 +351,12 @@ class twpw_custom_mc {
 						$logger .= var_export ($exception, true );
 						$logger .= "\r\n\r\n";
 					}
+
+					if( $logging ) {
+						$logfile = fopen( LOGPATH."cjltest.log", "a" );
+						fwrite( $logfile, $logger );
+						fclose( $logfile );
+					}
 					// Now Add the tags
 
 					try {
