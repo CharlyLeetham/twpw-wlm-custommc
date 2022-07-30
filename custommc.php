@@ -358,24 +358,25 @@ class twpw_custom_mc {
 	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 							"tags" => $tags
 						]);
+						
+						/**		So we're going to do something a bit different to kludge it. **/
+							// 	foreach ( $tags as $k ) {
+							// 			$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+							// 				"tags" => [
+							// 					["name" => $k["name"], "status" => $k["status"] ]
+							// 				]
+							// 			]);
+							// 			$logger .= 'Tag = '.$k["name"].' Status = '.$k["status"].' '.var_export( $response1, true );
+							// 			$logger .= "\r\n\r\n";
+							// 	}
+							//
 
-				/**		So we're going to do something a bit different to kludge it. **/
-					// 	foreach ( $tags as $k ) {
-					// 			$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-					// 				"tags" => [
-					// 					["name" => $k["name"], "status" => $k["status"] ]
-					// 				]
-					// 			]);
-					// 			$logger .= 'Tag = '.$k["name"].' Status = '.$k["status"].' '.var_export( $response1, true );
-					// 			$logger .= "\r\n\r\n";
-					// 	}
-					//
-					// } catch (Exception $e) {
-					// 	$logger .= $e->getMessage(). "\n";
-					// 	$exception = (string) $e->getResponse()->getBody();
-					// 	$logger .= var_export ($exception, true );
-					// 	$logger .= "\r\n\r\n";
-					// }
+					} catch (Exception $e) {
+						$logger .= $e->getMessage(). "\n";
+						$exception = (string) $e->getResponse()->getBody();
+						$logger .= var_export ($exception, true );
+						$logger .= "\r\n\r\n";
+					}
 
 					if( $logging ) {
 						// $logfile = fopen( LOGPATH."cjltest.log", "a" );
