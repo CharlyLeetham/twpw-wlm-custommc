@@ -840,13 +840,13 @@ class twpw_custom_mc {
 		}
 
 		foreach ( $catarr as $k->title => $v ) {
-			$logger .= var_export ( $k, true).' '.var_export( $v, true ). "\r\n";
+			$mycat .= var_export ( $k, true).' '.var_export( $v, true ). "\r\n";
 		}
 
 		if ( $logging ) {
 			$logger .= "Full MC LISTS \r\n\r\n";
 			$logfile = fopen( LOGPATH."cjltest.log", "a" );
-			fwrite( $logfile, $logger );
+			fwrite( $logfile, $mycat );
 			fclose( $logfile );
 		}
 
