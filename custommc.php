@@ -800,7 +800,8 @@ class twpw_custom_mc {
 			);
 			$logger = "\r\n".'Response:'."\r\n".var_export( $response, true )."\r\n\r\n";
 		} catch (Exception $e) {
-			$logger .= $e->getMessage(). "\n";
+			// $logger .= $e->getMessage(). "\n";
+			$logger = "\r\n"."Something went wrong"."\r\n";
 			$exception = (string) $e->getResponse()->getBody();
 			$logger .= var_export ($exception, true );
 			$logger .= "\r\n\r\n";
