@@ -102,11 +102,11 @@ class twpw_custom_mc {
 
 		/* Get the User details */
 		//get the user object so we can grab their details to add to Mailchimp
-		$user = get_user_by( 'id', $user );
+		$user = get_user_by( 'id', $id );
 		$firstname = $user->user_firstname;
 		$lastname = $user->user_lastname;
 		$useremail = $user->user_email;
-		$subemailhash = md5 ( $useremail );		
+		$subemailhash = md5 ( $useremail );
 
 		if ( $debug ) {
 			echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
