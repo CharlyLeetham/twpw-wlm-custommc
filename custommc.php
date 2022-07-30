@@ -440,13 +440,6 @@ class twpw_custom_mc {
 	  $response1 = json_decode( $response1 );
 		$mclists = $response1->tags;
 
-define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
-$out = var_export ( $mclists, true )."\r\n";
-$logfile = fopen( LOGPATH."cjltest.log", "a" );
-fwrite( $logfile, $out );
-fclose( $logfile );
-
-
 		$mailchimptags = '<select multiple="multiple" class="mctag" name="twpw_custommc['.$levelid.'][mctag][]">';
 		foreach ( $mclists as $list1 ) {
 			$mailchimptags.='<option value="'.$list1->name.'"';
