@@ -297,6 +297,7 @@ if ( $_GET['remove'] ) {
 				"interests" => [
 					"1e6ead23f9" => false,
 					"9bb27af522" => false,
+					'8cbcc41495' => false,
 				],
 			]
 		);
@@ -320,7 +321,7 @@ if ( $_GET['remove'] ) {
 			$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
 	    "tags" => [
 					["name" => "WasPaused",
-					"status" => "inactive"].
+					"status" => "inactive"],
 					["name" => "eclass 1",
 					"status" => "inactive"]
 				],
