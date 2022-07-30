@@ -307,7 +307,7 @@ class twpw_custom_mc {
 				}
 
 				$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
-				$tags = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
+				$tags = twpw_custom_mc::acl_get_mem_tags( $levid, $mclistid, $memaction );
 
 				// Setup the array to send to Mailchimp
 				global $wpdb; // is this needeD?
