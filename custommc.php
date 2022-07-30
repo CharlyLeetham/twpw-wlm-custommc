@@ -238,8 +238,8 @@ class twpw_custom_mc {
 				$groupings = twpw_custom_mc::acl_get_groups( $levid );
 
 				if ( $logging ) {
-					echo "Groups for export \r\n\r\n";
-					$tagexp = var_export( $groupings, true );
+					$logger .= "Groups for export \r\n\r\n";
+					$logger .= var_export( $groupings, true );
 					$logfile = fopen( LOGPATH."cjltest.log", "a" );
 					fwrite( $logfile, $logger );
 					fclose( $logfile );
