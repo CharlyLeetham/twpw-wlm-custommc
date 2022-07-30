@@ -88,7 +88,7 @@ class twpw_custom_mc {
 		$logger = '';
 
 		/*Initialise the Mailchmip API */
-		$twpw_custommc_mcapi = twpw_custommc_createMCAPI();
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 
 		/* Get the settings for this plugin */
 		$settings = get_option("twpw_custommc");
@@ -255,7 +255,7 @@ class twpw_custom_mc {
 		$logger = '';
 
 		/*Initialise the Mailchmip API */
-		$twpw_custommc_mcapi = twpw_custommc_createMCAPI();
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 
 		/* Get the settings for this plugin */
 		$settings = get_option("twpw_custommc");
