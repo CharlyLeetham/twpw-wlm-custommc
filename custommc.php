@@ -39,8 +39,6 @@ class twpw_custom_mc {
 		if ( is_admin() ) {
 			require_once( dirname(__FILE__) . '/admin/menu.php' );
 		}
-
-		require_once( dirname(__FILE__) . '/includes/acl_general_functions.php' );
 	}
 
 
@@ -170,7 +168,7 @@ class twpw_custom_mc {
 			echo "\r\n";
 		}
 
-
+		require_once( dirname(__FILE__) . '/includes/acl_general_functions.php' );
 
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
 
