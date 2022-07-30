@@ -62,11 +62,6 @@ class twpw_custom_mc {
 			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
 		}
 
-			$logger = "File open \r\n";
-			$logfile = fopen( LOGPATH."approvemember.log", "a" );
-			fwrite( $logfile, $logger );
-			fclose( $logfile );
-			
 		/* End logging setup */
 
 		date_default_timezone_set("US/Hawaii");
@@ -76,6 +71,12 @@ class twpw_custom_mc {
 		} else {
 			$logging = false;
 		}
+
+		$logger = "File open \r\n";
+		$logger .= "Logging: ".var_export ( $logging, true)."\r\n";
+		$logfile = fopen( LOGPATH."approvemember.log", "a" );
+		fwrite( $logfile, $logger );
+		fclose( $logfile );
 
 		$debug = get_option("twpw_custommc_listdebug");
 		if ( $debug == "yes") {
