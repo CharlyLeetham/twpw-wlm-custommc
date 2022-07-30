@@ -839,7 +839,7 @@ class twpw_custom_mc {
 			}
 		}
 
-		foreach ( $catarr as $k => $v ) {
+		foreach ( $catarr as $k["title"] => $v ) {
 			$logger .= var_export ( $k, true).' '.var_export( $v, true ). "\r\n";
 		}
 
