@@ -341,6 +341,7 @@ class twpw_custom_mc {
 
 
 							if( $logging ) {
+								$logger .= "Add member response \r\n";
 								$logger .= var_export( $response, true ) . "\r\n\r\n";
 								$logfile = fopen( LOGPATH."cjltest.log", "a" );
 								fwrite( $logfile, $logger );
