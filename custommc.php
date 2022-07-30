@@ -207,16 +207,11 @@ class twpw_custom_mc {
 					$merge_vals - Merge_vals needed by mailchimp.
 					*/
 
-$logger .= "Logging: ".var_export ( $logging, true)."\r\n";
-$logfile = fopen( LOGPATH."approvemember.log", "a" );
-fwrite( $logfile, $logger );
-fclose( $logfile );
-
 					if ( $logging ) {
 						$logger .= "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
 						$logger .= "Groups for export \r\n\r\n";
 						$logger .= var_export( $groupings, true )."\r\n\r\n";
-						$logger = var_export ( $userchange, true )."\r\n\r\n";
+						$logger .= var_export ( $userchange, true )."\r\n\r\n";
 					}
 
 					if( $logging ) {
@@ -497,7 +492,10 @@ fclose( $logfile );
 
 		/* this function will modify a Mailchimp entry for a given user. It can be called by either the Add Level or Remove Level action hooks */
 
-		if ( !$action || !$listid || !$levid || !$user ) { return; }
+		if ( !$action || !$listid || !$levid || !$user ) {
+			$ret = "Something isn't set: \r\n";
+			$ret = "Action: ".var_export ( $action, true)." listid: ".var_export( $action, true )." levid: ". var_export( $levid, true )." user: ". var_export ( $user, true )."\r\n";
+			return $ret; }
 
 		/* Get the settings and setup the Mailchimp API */
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
@@ -523,6 +521,11 @@ fclose( $logfile );
 			$exception = (string) $e->getResponse()->getBody();
 			$logger .= var_export ($exception, true );
 			$logger .= "\r\n\r\n";
+
+				$logfile = fopen( LOGPATH."apicalllog.log", "a" );
+				fwrite( $logfile, $logger );
+				fclose( $logfile );
+			
 		}
 
 		try {
