@@ -418,7 +418,7 @@ class twpw_custom_mc {
 		return $catarr;
 	}
 
-	public function acl_get_tags( $listid, $levelid, $ajax=null ) {
+	public function acl_get_tags( $listid, $levelid=NULL, $ajax=null ) {
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
