@@ -290,6 +290,7 @@ class twpw_custom_mc {
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'merge_vars' => $merge_vars,
+						'interests' => $groupsings,
 						'tags' => $tags,
 						'email_type' => $email_type,
 					);
@@ -318,18 +319,6 @@ class twpw_custom_mc {
 											 'LNAME' => $lastname,
 											);
 
-						if( $logging ) {
-							echo "Groups for export \r\n\r\n";
-							// $logger .= "Settings - Groups \r\n";
-							// $logger .= var_export ( $settings[$levid]['mcgroup'], true );
-							$logger .= "\r\n\r\n  Groups Array\r\n";
-							$logger .= var_export( $groupings, true ) . "\r\n\r\n";
-							$logger .= "\r\n\r\n  Merge Vars\r\n";
-							$logger .= var_export( $merge_vars, true ) . "\r\n\r\n";
-							$logfile = fopen( LOGPATH."cjltest.log", "a" );
-							fwrite( $logfile, $logger );
-							fclose( $logfile );
-						}
 							$response = $twpw_custommc_mcapi->ping->get();
 							$logger .= var_export ( $response, true )."\r\n";
 							$response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
