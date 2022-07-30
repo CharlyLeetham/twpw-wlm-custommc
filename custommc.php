@@ -284,7 +284,7 @@ class twpw_custom_mc {
 				$merge_vars = array (
 									 'FNAME' => $firstname,
 									 'LNAME' => $lastname,
-									 'GROUPINGS' => $groupings,
+									 'interests' => $groupings,
 									);
 				// For PDT ONLY
 				$merge_vars['JOINED'] = current_time('Y-m-d');
@@ -337,7 +337,7 @@ class twpw_custom_mc {
 						$merge_vars = array (
 											 'FNAME' => $firstname,
 											 'LNAME' => $lastname,
-											 'GROUPINGS' => $groupings,
+											 'interests' => $groupings,
 											);
 							$response = $twpw_custommc_mcapi->ping->get();
 							$logger .= var_export ( $response, true )."\r\n";
