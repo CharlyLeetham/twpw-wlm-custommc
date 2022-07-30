@@ -249,19 +249,10 @@ class twpw_custom_mc {
 				}
 
 				$tags = array(); // create a tag
-				if ( $debug ) {
-					echo "Any tags? \r\n\r\n";
-					$tagexp = var_export( $settings[$levid]['mctag'], true );
-					echo $tagexp."\r\n\r\n";
-				}
 
 				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
 					foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
-						echo $tag."\r\n\r\n";
-						$tags[] = [
-							"name" => $tag,
-							"status" => "active"
-						];
+						$tags[] = array ( 'name' => $tag, 'status' => 'active');
 					}
 				}
 
@@ -276,9 +267,9 @@ class twpw_custom_mc {
 
 				$merge_vars = array (
 									 'FNAME' => $firstname,
-									 'LNAME' => $lastname
+									 'LNAME' => $lastname,
+									 'GROUPINGS' => $groupings,
 									);
-
 				// For PDT ONLY
 				$merge_vars['JOINED'] = current_time('Y-m-d');
 				$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
@@ -337,85 +328,54 @@ class twpw_custom_mc {
 							$response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
 						      "email_address" => $useremail,
 						      "status_if_new" => "subscribed",
-                  "merge_fields" => [
-										'FNAME' => $firstname,
- 									 	'LNAME' => $lastname
-                  ]
+                  "merge_fields" => $merge_vars
 						  ]);
+
+							// $response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [
+						  //     "email_address" => $useremail,
+						  //     "status_if_new" => "subscribed",
+              //     "merge_fields" => [
+							// 			'FNAME' => $firstname,
+ 							// 		 	'LNAME' => $lastname
+              //     ]
+						  // ]);
 					} catch (Exception $e) {
 						$logger .= $e->getMessage(). "\n";
 						$exception = (string) $e->getResponse()->getBody();
 						$logger .= var_export ($exception, true );
 						$logger .= "\r\n\r\n";
 					}
-
-
-
-					// Add interest groups. Split out because I was having trouble with the array being formatted to send as part of the call.
-
-					try {
-
-						/*
-						'interests' => array(
-		'INTEREST ID' => true, // add interest
-		'INTEREST ID' => false, // remove interest
-		'INTEREST ID' => false
-			)
-			*/
-						$logger .= "Interest Groups"."\r\n\r\n";
-						$logger .= var_export ( $groupings, true)."\r\n\r\n";
-
-					} catch (Exception $e) {
-						$logger .= $e->getMessage(). "\n";
-						$exception = (string) $e->getResponse()->getBody();
-						$logger .= var_export ($exception, true );
-						$logger .= "\r\n\r\n";
-					}
-
-					if( $logging ) {
-						$logfile = fopen( LOGPATH."cjltest.log", "a" );
-						fwrite( $logfile, $logger );
-						fclose( $logfile );
-					}
-
 					// Now Add the tags
 
 					try {
 
-						/** This should work, but when used in the api call, it's just not adding the tags.
-						$tt1 = array();
-						foreach ( $tags as $k ) {
-							$tt1[tags][]["name"] = $k["name"];
-							$tt1[tags][]["status"] = $k["status"];
-						}
+						/** This should work, but when used in the api call, it's just not adding the tags. **/
 
-						$logger .= '$twpw_custommc_mcapi->lists->updateListMemberTags('.$mclistid.', '.$subemailhash.', ['."\r\n";
-						$logger .= var_export ( $tt1, true);
-						$logger .= "\r\n";
-						$logger .= ']);'."\r\n\r\n";
+						$merge_vars = array (
+											 'tags' => $tags,
+											);
 
 	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-							$tt1
+							"tags" => $tags
 						]);
 
-						So we're going to do something a bit different to kludge it.
-**/
-						foreach ( $tags as $k ) {
-								$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-									"tags" => [
-										["name" => $k["name"], "status" => $k["status"] ]
-									]
-								]);
-								$logger .= 'Tag = '.$k["name"].' Status = '.$k["status"].' '.var_export( $response1, true );
-								$logger .= "\r\n\r\n";
-						}
-
-					} catch (Exception $e) {
-						$logger .= $e->getMessage(). "\n";
-						$exception = (string) $e->getResponse()->getBody();
-						$logger .= var_export ($exception, true );
-						$logger .= "\r\n\r\n";
-					}
+				/**		So we're going to do something a bit different to kludge it. **/
+					// 	foreach ( $tags as $k ) {
+					// 			$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+					// 				"tags" => [
+					// 					["name" => $k["name"], "status" => $k["status"] ]
+					// 				]
+					// 			]);
+					// 			$logger .= 'Tag = '.$k["name"].' Status = '.$k["status"].' '.var_export( $response1, true );
+					// 			$logger .= "\r\n\r\n";
+					// 	}
+					//
+					// } catch (Exception $e) {
+					// 	$logger .= $e->getMessage(). "\n";
+					// 	$exception = (string) $e->getResponse()->getBody();
+					// 	$logger .= var_export ($exception, true );
+					// 	$logger .= "\r\n\r\n";
+					// }
 
 					if( $logging ) {
 						// $logfile = fopen( LOGPATH."cjltest.log", "a" );
