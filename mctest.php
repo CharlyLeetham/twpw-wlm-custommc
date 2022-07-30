@@ -221,6 +221,7 @@ if ( $_GET['add'] ) {
 				],
 				"interests" => [
 					"1e6ead23f9" => true,
+					"9bb27af522" => true,
 				],
 			]
 		);
