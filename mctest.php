@@ -220,7 +220,7 @@ if ( $_GET['add'] ) {
 					"LNAME" => "User"
 				],
 				"interests" => [
-					["1e6ead23f9" => true]
+					"1e6ead23f9" => true,
 				],
 			]
 		);
