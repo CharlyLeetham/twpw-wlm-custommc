@@ -284,6 +284,58 @@ if ( $_GET['addtest'] ) {
 }
 
 
+if ( $_GET['remove'] ) {
+
+	try {
+		$response = $mailchimp->lists->setListMember( $listid, $subemailhash, [
+		    "email_address" => $email,
+		    "status_if_new" => "subscribed",
+				"merge_fields" => [
+					"FNAME" => "Test",
+					"LNAME" => "User"
+				],
+				"interests" => [
+					"1e6ead23f9" => false,
+					"9bb27af522" => false,
+				],
+			]
+		);
+
+	} catch (Exception $e) {
+		echo '<pre>';
+		$exception = (string) $e->getResponse()->getBody();
+		$exception = json_decode($exception);
+		echo var_export( $exception ).'<br />';
+		echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
+		echo '</pre>';
+	}
+
+	try {
+			$response1 = $mailchimp->lists->updateListMemberTags($listid, $subemailhash, [
+	    "tags" => [
+					["name" => "WasPaused",
+					"status" => "inactive"].
+					["name" => "eclass 1",
+					"status" => "inactive"]
+				],
+			]);
+			echo '<pre>';
+					echo 'Result: <br />';
+					var_dump ( $response1 );
+			echo '</pre>';
+	} catch (Exception $e) {
+		echo '<pre>';
+		$exception = (string) $e->getResponse()->getBody();
+		$exception = json_decode($exception);
+		echo var_export( $exception ).'<br />';
+		echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
+		echo '</pre>';
+	}
+
+
+}
+
+
 
 function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
 	if( $request_type == 'GET' )
