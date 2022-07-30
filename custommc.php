@@ -388,6 +388,12 @@ class twpw_custom_mc {
 	}
 
 	public function acl_get_interest_groups( $listid, $levelid=NULL, $ajax=null ) {
+
+		$logger = "here\r\n\r\n";
+		$logfile = fopen( LOGPATH."cjltest.log", "a" );
+		fwrite( $logfile, $logger );
+		fclose( $logfile );
+
 			$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
       $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
       $mccats = $response1->categories;
@@ -395,10 +401,7 @@ class twpw_custom_mc {
       $intarr = array();
       $catnum = 0;
 
-			$logger = "here\r\n\r\n";
-			$logfile = fopen( LOGPATH."cjltest.log", "a" );
-			fwrite( $logfile, $logger );
-			fclose( $logfile );
+
 
 		foreach ($mccats as $k) {
 			$catarr[$k->title]['id'] = $k->id;
