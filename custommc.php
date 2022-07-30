@@ -841,9 +841,10 @@ class twpw_custom_mc {
 		}
 
 		if ( $logging ) {
-			$logger .= "Full MC LISTS \r\n\r\n";
+			$logger = "Full MC LISTS \r\n\r\n";
+			$logger .= $mycat;
 			$logfile = fopen( LOGPATH."cjltest.log", "a" );
-			fwrite( $logfile, $mycat );
+			fwrite( $logfile, $logger );
 			fclose( $logfile );
 		}
 
