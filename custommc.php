@@ -798,12 +798,17 @@ class twpw_custom_mc {
 					"interests" => $groupings,
 				]
 			);
+			$logger = "\r\n".'Response:'."\r\n".var_export( $response, true )."\r\n\r\n";
 		} catch (Exception $e) {
 			$logger .= $e->getMessage(). "\n";
 			// $exception = (string) $e->getResponse()->getBody();
 			// $logger .= var_export ($exception, true );
 			$logger .= "\r\n\r\n";
 		}
+
+		$logfile = fopen( LOGPATH."acltest.log", "a" );
+		fwrite( $logfile, $logger );
+		fclose( $logfile );
 
 		try {
 				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($listid, $subemailhash, [
