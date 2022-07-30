@@ -406,6 +406,7 @@ class twpw_custom_mc {
 			$useremail = $user->user_email;
 			$wlmaction = $_POST['WishListMemberAction'];
 			$levelaction = $_POST['level_action'];
+			$memaction = "remove";
 
 			foreach( $levels as $k => $levid ) {
 				if ( ( $settings[$levid]['mclistid'] ) ) {
@@ -436,15 +437,10 @@ class twpw_custom_mc {
 						echo "\r\n\r\n";
 					}
 
-					$double_optin = (empty($settings[$levid]['dblopt']))?true:false;
-					$unsub = (empty($settings[$level]['unsub']))?false:true;
-					$send_welcome = (empty($settings[$levid]['sendwel']))?false:true;
-					$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
-					$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
-
-					$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid );
+					$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
 
 					if ( $logging ) {
+						$logger = "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
 						$logger .= "Groups for export \r\n\r\n";
 						$logger .= var_export( $groupings, true );
 						$logfile = fopen( LOGPATH."cjltest.log", "a" );
@@ -495,6 +491,7 @@ class twpw_custom_mc {
 
 						if ( $logging ) {
 							$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') removed from Mailchimp.'."\r\n\r\n";
+							$logger .= "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
 							$logger .= "Interest Groups: \r\n";
 							$logger .= var_export( $groupings, true )."\r\n\r\n";
 							$logger .= "Tags: \r\n";
@@ -790,7 +787,7 @@ class twpw_custom_mc {
 
 	}
 
-	public function acl_get_mem_groups ( $levid = NULL, $listid = NULL ) {
+	public function acl_get_mem_groups ( $levid = NULL, $listid = NULL, $memaction = NULL ) {
 
 		$logging = get_option("twpw_custommc_logging");
 		if ( $logging == "yes") {
@@ -799,7 +796,7 @@ class twpw_custom_mc {
 			$logging = false;
 		}
 
-	  if ( !$levid || !$listid ) { return; }
+	  if ( !$levid || !$listid || !$memaction ) { return; }
 
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
 
@@ -832,11 +829,14 @@ class twpw_custom_mc {
 			$mygroups = $settings[$levid]['mcgroup'];
 			foreach ( $newcatarr as $k => $v ) {
 				if ( in_array ( $v["id"] , $mygroups )) {
-					$groupings[$v["id"]] = true;
+					if ( $memaction == 'add' ) {
+						$groupings[$v["id"]] = true;
+					} elseif ($memaction == 'remove') {
+						$groupings[$v["id"]] = true;
+					}
 				} else {
 					$groupings[$v["id"]] = false;
 				}
-
 			}
 	  }
 
