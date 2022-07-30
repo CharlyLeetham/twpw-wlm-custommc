@@ -92,8 +92,6 @@ class twpw_custom_mc {
 			$live = false;
 		}
 
-		$logger = '';
-
 		/*Initialise the Mailchmip API */
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 
@@ -130,7 +128,7 @@ class twpw_custom_mc {
 		}
 
 		if ( $logging ) {
-			$logger = "Add Member Action triggered \r\n";
+			$logger .= "Add Member Action triggered \r\n";
 			$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n";
 		  $logger .= "User ID: " .$id."\r\n\r\n";
 		}
@@ -164,6 +162,7 @@ class twpw_custom_mc {
 					fwrite( $logfile, $logger );
 					fclose( $logfile );
 				}
+
 			} else {
 				if ( $debug ) {
 					echo "List: " . $mclistid;
@@ -187,14 +186,14 @@ class twpw_custom_mc {
 				if ( empty ( $previous_join_date ) ) {
 					add_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
 					echo 'join date of '.$merge_vars['JOINED'].' added'."\r\n\r\n";
-					$logger1 = 'join date of '.$merge_vars['JOINED'].' added';
+					$logger .= 'join date of '.$merge_vars['JOINED'].' added';
 				} elseif ( $settings[$level[$levid]]['update_join_date'] == 'yes' ) {
 					update_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
 					echo 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n";
-					$logger1 = 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];
+					$logger .= 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];
 				} else {
 					echo 'join date not updated from '.$previous_join_date[0]."\r\n";
-					$logger1 = 'join date not updated from '.$previous_join_date[0];
+					$logger .= 'join date not updated from '.$previous_join_date[0];
 				}
 
 				if ( $live ) {
@@ -207,6 +206,11 @@ class twpw_custom_mc {
 					$tags - Tags for the member
 					$merge_vals - Merge_vals needed by mailchimp.
 					*/
+
+$logger .= "Logging: ".var_export ( $logging, true)."\r\n";
+$logfile = fopen( LOGPATH."approvemember.log", "a" );
+fwrite( $logfile, $logger );
+fclose( $logfile );
 
 					if ( $logging ) {
 						$logger .= "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
