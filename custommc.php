@@ -414,7 +414,8 @@ class twpw_custom_mc {
 	public function acl_get_tags( $listid, $levelid, $ajax=null ) {
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];		
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
 
 		$data = array (
 			"count" => 1000
@@ -509,6 +510,7 @@ class twpw_custom_mc {
 	}
 
 	public function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
+
 		if( $request_type == 'GET' ) {
 			$url .= '?' . http_build_query($data);
 		}
