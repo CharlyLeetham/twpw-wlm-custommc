@@ -522,7 +522,7 @@ class twpw_custom_mc {
 			$logger .= var_export ($exception, true );
 			$logger .= "\r\n\r\n";
 
-				$logfile = fopen( LOGPATH."apicalllog.log", "a" );
+				$logfile = fopen( dirname( __FILE__ ) . "/logs/apicalllog.log", "a" );
 				fwrite( $logfile, $logger );
 				fclose( $logfile );
 			
