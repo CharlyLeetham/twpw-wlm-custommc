@@ -442,24 +442,6 @@ class twpw_custom_mc {
 					$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
 					$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
 
-					// $interestgroups = $this->acl_get_interest_groups( $mailchimp, $mclistid );
-
-					// $groupings = array(); // create groupings array
-					// if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
-					// 	foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
-					// 		$group = explode('::',$group); // divide the group as top id and bottom name
-					// 		$groups[$group[0]][] = $group[1];
-					// 	}
-					// 	foreach($groups as $group_id => $group) {
-					// 		$groupings[] = array('id'=>$group_id, 'groups' => $group);
-					// 	}
-					// }
-					//
-					// if ( $debug ) {
-					// 	echo 'Groupings: '.var_export( $groupings, true )."\r\n";
-					// }
-
-
 					$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid );
 
 					if ( $logging ) {
@@ -503,63 +485,30 @@ class twpw_custom_mc {
 					$emailmd5 = md5( $useremail );
 
 					if ( $debug ) {
-						echo '$mailchimp->patch(\'lists/mclistid/members/\'. $emailmd5, ['."\r\n";
-						echo '\'status\' => \'subscribed\','."\r\n";
-						echo '\'merge_fields\' => array ('."\r\n";
-						echo '\'FNAME\' => '.$firstname .','."\r\n";
-						echo '\'LNAME\' => '.$lastname .','."\r\n";
-						echo '),'."\r\n";
-						echo '\'interests\' => array('."\r\n";
-						$inum = 0;
-						$interestgroup = array();
-						foreach ( $groupings[$inum]['group_id'] as $k => $v ) {
-							echo 'Key: '.$k.' Value: '.$v."\r\n";
-							echo $k .' =>  false,' . "\r\n";
-							$inum ++;
-						}
-						echo '),'."\r\n";
-						echo ']);'."\r\n";
+
 					}
 
 
 
 					if ( $live ) {
 
-						$mcstring = '';
-						$inum = 0;
-						$interestgroup = array();
-						foreach ( $groupings[$inum]['groups'] as $k => $v ) {
-							$mcstring .= $v .' =>  false,' . "\r\n";
-							$inum ++;
-						}
 
-						// try {
-						// 	echo 'Here: '."\r\n";
-						// 	$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-						// 	$out =ob_get_clean();
-						// 	fwrite( $logfile, $out );
-						// 	fclose( $logfile );
-						// 	$result = $mailchimp->lists->updateListMember($mclistid, $emailmd5, [ 'status' => 'subscribed', 'merge_fields' => array('FNAME' => $firstname,'LNAME' => $lastname)]);
-						// 	echo var_export ( $result, true)."\r\n";
-						// 	$logfile = fopen( LOGPATH."mcremlog.log", "a" );
-						// 	$out =ob_get_clean();
-						// 	fwrite( $logfile, $out );
-						// 	fclose( $logfile );
-						// } catch (Exception $e) {
-						// 	// $exception = (string) $e->getResponse()->getBody();
-						// 	// $exception = json_decode($exception);
-						// 	if ( $debug ){
-						// 		// echo 'An error has occurred: '.$exception->title.' - '.$exception->detail. "\r\n\r\n";
-						// 		echo 'An error has occurred---: ';
-						// 		var_export ( $e, true). "\r\n\r\n";
-						// 	}
-						// }
+						if ( $logging ) {
+							$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') removed from Mailchimp.'."\r\n\r\n";
+							$logger .= "Interest Groups: \r\n";
+							$logger .= var_export ( $groupings )."\r\n\r\n";
+							$logger .= "Tags: \r\n";
+							$logger .= var_export ( $tags )."\r\n\r\n";
+							$logfile = fopen( LOGPATH."cjltest.log", "a" );
+							fwrite( $logfile, $logger );
+							fclose( $logfile );
+						}
 
 						$userchange = twpw_custom_mc::acl_change_user_mc ( 'remove', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
 
-						$logger = var_export ( $userchange, true )."\r\n";
-	
 						if( $logging ) {
+							$logger = "User Change ran: \r\n";
+							$logger. = var_export ( $userchange, true )."\r\n";
 							$logfile = fopen( LOGPATH."cjltest.log", "a" );
 							fwrite( $logfile, $logger );
 							fclose( $logfile );
