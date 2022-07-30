@@ -856,7 +856,7 @@ class twpw_custom_mc {
 				if ( in_array( $group, $newcatarr ) ) {
 					$groupings[$group] = true;
 				} else {
-					groupings[$group] = false;
+					$groupings[$group] = false;
 				}
 	    }
 	  }
