@@ -584,7 +584,7 @@ if ( $display ) { ?>
 			// 		$intnum++;
 			// 	}
 			// }
-			echo twpw_custom_mc::acl_get_interest_groups( $listid, $_POST['levelid'] );
+			$mclists = twpw_custom_mc::acl_get_interest_groups( $listid, $_POST['levelid'] );
 			$mclists = $catarr;
 			echo '<select multiple="multiple" name="twpw_custommc['.$_POST['levelid'].'][mcgroup][]" class="mclist">';
 				foreach ( $mclists as $mclist ) {
