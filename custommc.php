@@ -832,7 +832,7 @@ class twpw_custom_mc {
 			$interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
 			$ia = $interests->interests;
 			foreach ( $ia as $v ) {
-				$newcat[] = array ( "name" => $v->name, "id" => $v->id );
+				$newcatarr[] = array ( "name" => $v->name, "id" => $v->id );
 			}
 		}
 
