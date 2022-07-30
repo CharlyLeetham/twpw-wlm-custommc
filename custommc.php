@@ -408,12 +408,11 @@ class twpw_custom_mc {
 		  $interests = json_decode( $response1 );
 			$ia = $interests->interests;
 
-			if( $logging ) {
 				$logger = var_export( $ia, true );
 				$logfile = fopen( LOGPATH."cjltest.log", "a" );
 				fwrite( $logfile, $logger );
 				fclose( $logfile );
-			}
+
 			$intnum = 0;
 			foreach ( $ia as $v ) {
 				$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
