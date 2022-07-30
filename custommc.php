@@ -496,9 +496,9 @@ class twpw_custom_mc {
 						if ( $logging ) {
 							$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') removed from Mailchimp.'."\r\n\r\n";
 							$logger .= "Interest Groups: \r\n";
-							$logger .= var_export( $groupings )."\r\n\r\n";
+							$logger .= var_export( $groupings, true )."\r\n\r\n";
 							$logger .= "Tags: \r\n";
-							$logger .= var_export( $tags )."\r\n\r\n";
+							$logger .= var_export( $tags, true )."\r\n\r\n";
 							$logfile = fopen( LOGPATH."cjltest.log", "a" );
 							fwrite( $logfile, $logger );
 							fclose( $logfile );
