@@ -508,7 +508,7 @@ class twpw_custom_mc {
 
 						if( $logging ) {
 							$logger = "User Change ran: \r\n";
-							$logger. = var_export ( $userchange, true )."\r\n";
+							$logger .= var_export ( $userchange, true )."\r\n";
 							$logfile = fopen( LOGPATH."cjltest.log", "a" );
 							fwrite( $logfile, $logger );
 							fclose( $logfile );
