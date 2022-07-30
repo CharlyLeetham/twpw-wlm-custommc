@@ -37,8 +37,10 @@ class twpw_custom_mc {
 
 	public static function init() {
 		if ( is_admin() ) {
-			require_once(dirname(__FILE__) . '/admin/menu.php');
+			require_once( dirname(__FILE__) . '/admin/menu.php' );
 		}
+
+		require_once( dirname(__FILE__) . '/includes/acl_general_functions.php' );
 	}
 
 
@@ -235,12 +237,23 @@ class twpw_custom_mc {
 				$send_goodbye = (empty($settings[$levid]['sendbye']))?false:true;
 				$send_notify = (empty($settings[$levid]['sendnotify']))?false:true;
 
-				$groupings = array(); // create groupings array
-				if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
-					foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
-						$groupings[$group] = true;
-					}
+				// $groupings = array(); // create groupings array
+				// if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
+				// 	foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
+				// 		$groupings[$group] = true;
+				// 	}
+				// }
+
+				$groupings = twpw_custom_mc::acl_get_groups( $levid );
+
+				if ( $logging ) {
+					echo "Groups for export \r\n\r\n";
+					$tagexp = var_export( $groupings, true );
+					$logfile = fopen( LOGPATH."cjltest.log", "a" );
+					fwrite( $logfile, $logger );
+					fclose( $logfile );
 				}
+
 
 				$tags = array(); // create a tag
 
