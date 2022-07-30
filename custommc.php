@@ -239,13 +239,16 @@ class twpw_custom_mc {
 
 				$groupings = array(); // create groupings array
 				if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
+					// foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
+					// 	$group = explode('::',$group); // divide the group as top id and bottom name
+					// 	$groups[$group[0]][] = $group[1];
+					// }
 					foreach( $settings[$levid]['mcgroup'] as $group ) { // go through each group that's been set
-						$group = explode('::',$group); // divide the group as top id and bottom name
-						$groups[$group[0]][] = $group[1];
+						$groupings[] = array( $group => "true");
 					}
-					foreach($groups as $group_id => $group) {
-						$groupings[] = array('id'=>$group_id, 'groups' => $group);
-					}
+					// foreach($groups as $group_id => $group) {
+					// 	$groupings[] = array('id'=>$group_id, 'groups' => $group);
+					// }
 				}
 
 
