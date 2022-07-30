@@ -289,7 +289,7 @@ class twpw_custom_mc {
 				}
 
 				if ( $live ) {
-
+					die();
 					$userchange = twpw_custom_mc::acl_change_user_mc ( 'add', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
 
 					$logger = var_export ( $userchange, true )."\r\n";
