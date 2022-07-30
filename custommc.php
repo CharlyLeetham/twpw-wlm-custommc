@@ -357,7 +357,7 @@ class twpw_custom_mc {
 
 	public function get_mailchimp_lists( $mclistid,$wlmlevelid ) {
 		//Setup the mailchimp api
-		global $twpw_custommc_mcapi;
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		if (($api_key <> "")) {
@@ -388,7 +388,7 @@ class twpw_custom_mc {
 	}
 
 	public function acl_get_interest_groups( $listid, $ajax=null ) {
-			global $twpw_custommc_mcapi;
+			$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
       $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
       $mccats = $response1->categories;
       $catarr = array();
@@ -412,7 +412,7 @@ class twpw_custom_mc {
 	}
 
 	public function acl_get_tags( $listid, $levelid, $ajax=null ) {
-		global $twpw_custommc_mcapi;
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 		$settings = get_option("twpw_custommc");
 
 		$data = array (
@@ -453,7 +453,7 @@ class twpw_custom_mc {
 		if ( !$action || !$listid || !$levid || !$user ) { return; }
 
 		/* Get the settings and setup the Mailchimp API */
-		global $twpw_custommc_mcapi;
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 		$settings = get_option("twpw_custommc");
 
 		/* Get the User details */
@@ -546,7 +546,7 @@ class twpw_custom_mc {
 	  if ( !$levid || !$listid || !$memaction ) { return; }
 
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
-		global $twpw_custommc_mcapi;
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 	  $settings = get_option("twpw_custommc");
 
 		$response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
@@ -598,7 +598,7 @@ class twpw_custom_mc {
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
 
 	  $settings = get_option("twpw_custommc");
-		global $twpw_custommc_mcapi;
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 
 		$tags = array(); // create a tag
 		if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
