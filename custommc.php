@@ -784,7 +784,7 @@ class twpw_custom_mc {
 
 		/* Get the User details */
 		//get the user object so we can grab their details to add to Mailchimp
-		$user = get_user_by( 'id', $id );
+		$user = get_user_by( 'id', $user );
 		$firstname = $user->user_firstname;
 		$lastname = $user->user_lastname;
 		$useremail = $user->user_email;
