@@ -248,6 +248,16 @@ class twpw_custom_mc {
 					}
 				}
 
+
+
+				if( $logging ) {
+					echo "Groups for export \r\n\r\n";
+					$logger .= var_export( $groups, true );
+					$logfile = fopen( LOGPATH."cjltest.log", "a" );
+					fwrite( $logfile, $logger );
+					fclose( $logfile );
+				}
+
 				$tags = array(); // create a tag
 
 				if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
@@ -348,28 +358,10 @@ class twpw_custom_mc {
 					// Now Add the tags
 
 					try {
-
-						/** This should work, but when used in the api call, it's just not adding the tags. **/
-
-						$merge_vars = array (
-											 'tags' => $tags,
-											);
-
-	  				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
+  					$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
 							"tags" => $tags
 						]);
-						
-						/**		So we're going to do something a bit different to kludge it. **/
-							// 	foreach ( $tags as $k ) {
-							// 			$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($mclistid, $subemailhash, [
-							// 				"tags" => [
-							// 					["name" => $k["name"], "status" => $k["status"] ]
-							// 				]
-							// 			]);
-							// 			$logger .= 'Tag = '.$k["name"].' Status = '.$k["status"].' '.var_export( $response1, true );
-							// 			$logger .= "\r\n\r\n";
-							// 	}
-							//
+
 
 					} catch (Exception $e) {
 						$logger .= $e->getMessage(). "\n";
