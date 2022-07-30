@@ -64,7 +64,7 @@ try {
 if ( !$_GET ['email'] ) {
 	// $email = "helpdesk+test113@askcharlyleetham.com";
 	$email = "hd+28072201@askcharlyleetham.com";
-	$subemailhash = md5('$email);
+	$subemailhash = md5($email);
 } else {
 	$email = $_GET['email'];
 	$emailcoded = htmlentities( $_GET['email'] );
