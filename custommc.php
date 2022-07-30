@@ -289,6 +289,15 @@ class twpw_custom_mc {
 				}
 
 				if ( $live ) {
+
+					if ( $logging ) {
+						$logger = "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
+						$logger .= "Groups for export \r\n\r\n";
+						$logger .= var_export( $groupings, true );
+						$logfile = fopen( LOGPATH."cjltest.log", "a" );
+						fwrite( $logfile, $logger );
+						fclose( $logfile );
+					}
 					die();
 					$userchange = twpw_custom_mc::acl_change_user_mc ( 'add', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
 
