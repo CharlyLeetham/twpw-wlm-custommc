@@ -290,7 +290,7 @@ class twpw_custom_mc {
 						'id' => $mclistid,
 						'email' => array('email' => $useremail),
 						'merge_vars' => $merge_vars,
-						'interests' => $groupsings,
+						'interests' => $groupings,
 						'tags' => $tags,
 						'email_type' => $email_type,
 					);
@@ -335,9 +335,6 @@ class twpw_custom_mc {
 							if( $logging ) {
 								$logger .= "Add member response \r\n";
 								$logger .= var_export( $response, true ) . "\r\n\r\n";
-								$logfile = fopen( LOGPATH."cjltest.log", "a" );
-								fwrite( $logfile, $logger );
-								fclose( $logfile );
 							}
 
 							// $response = $twpw_custommc_mcapi->lists->setListMember($mclistid, $subemailhash, [

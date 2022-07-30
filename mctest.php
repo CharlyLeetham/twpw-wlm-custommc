@@ -62,7 +62,8 @@ try {
 }
 
 if ( !$_GET ['email'] ) {
-	$email = "helpdesk+test113@askcharlyleetham.com";
+	// $email = "helpdesk+test113@askcharlyleetham.com";
+	$email = "hd+28072201@askcharlyleetham.com";
 	$subemailhash = md5('helpdesk+test113@askcharlyleetham.com');
 } else {
 	$email = $_GET['email'];
@@ -217,7 +218,10 @@ if ( $_GET['add'] ) {
 				"merge_fields" => [
 					"FNAME" => "Test",
 					"LNAME" => "User"
-				]
+				],
+				"interests" => [
+					["1e6ead23f9" => true]
+				],
 			]
 		);
 
