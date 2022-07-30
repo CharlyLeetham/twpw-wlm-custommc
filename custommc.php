@@ -395,6 +395,11 @@ class twpw_custom_mc {
       $intarr = array();
       $catnum = 0;
 
+			$logger = "here\r\n\r\n";
+			$logfile = fopen( LOGPATH."cjltest.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );
+
 		foreach ($mccats as $k) {
 			$catarr[$k->title]['id'] = $k->id;
 			$catarr[$k->title]['title'] = $k->title;
@@ -408,7 +413,7 @@ class twpw_custom_mc {
 		  $interests = json_decode( $response1 );
 			$ia = $interests->interests;
 
-				$logger = var_export( $ia, true );
+				$logger = var_export( $interests, true );
 				$logfile = fopen( LOGPATH."cjltest.log", "a" );
 				fwrite( $logfile, $logger );
 				fclose( $logfile );
