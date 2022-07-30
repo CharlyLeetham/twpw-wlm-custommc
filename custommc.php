@@ -16,7 +16,7 @@ Version 1.3 - Fixed Sequential Add
 Version 2a - Tidy up.
 Version 2.01 - Clean up the code being output to the screen.
 Version 2.02 - Rewrite to stop people being moved after being added
-Version 2.03 - Adding a class
+Version 2.03 - Adding a class, removed WooCommerce support. upgrading to Mailchimp 3.0 api, adding support for mailchimp tags.
 */
 
 
@@ -387,7 +387,7 @@ class twpw_custom_mc {
 		return $mailchimplists;
 	}
 
-	public function acl_get_interest_groups( $listid, $ajax=null ) {
+	public function acl_get_interest_groups( $listid, $levelid, $ajax=null ) {
 			$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
       $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
       $mccats = $response1->categories;
@@ -398,7 +398,14 @@ class twpw_custom_mc {
 		foreach ($mccats as $k) {
 			$catarr[$k->title]['id'] = $k->id;
 			$catarr[$k->title]['title'] = $k->title;
-			$interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
+			$data = array (
+				"count" => 1000
+			);
+			$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid.'/interest-categories/'.$k->id.'/interests';
+			// $interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
+			$request_type = "GET";
+			$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
+		  $interests = json_decode( $response1 );
 			$ia = $interests->interests;
 			$intnum = 0;
 			foreach ( $ia as $v ) {
