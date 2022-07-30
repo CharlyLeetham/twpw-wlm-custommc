@@ -806,12 +806,10 @@ class twpw_custom_mc {
 			echo '</pre>';
 
 		} catch (Exception $e) {
-			echo '<pre>';
+			$logger .= $e->getMessage(). "\n";
 			$exception = (string) $e->getResponse()->getBody();
-			$exception = json_decode($exception);
-			echo var_export( $exception ).'<br />';
-			echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
-			echo '</pre>';
+			$logger .= var_export ($exception, true );
+			$logger .= "\r\n\r\n";
 		}
 
 		try {
@@ -823,12 +821,10 @@ class twpw_custom_mc {
 						var_dump ( $response1 );
 				echo '</pre>';
 		} catch (Exception $e) {
-			echo '<pre>';
+			$logger .= $e->getMessage(). "\n";
 			$exception = (string) $e->getResponse()->getBody();
-			$exception = json_decode($exception);
-			echo var_export( $exception ).'<br />';
-			echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
-			echo '</pre>';
+			$logger .= var_export ($exception, true );
+			$logger .= "\r\n\r\n";
 		}
 	}
 
