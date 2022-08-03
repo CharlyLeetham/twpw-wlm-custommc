@@ -491,9 +491,11 @@ class twpw_custom_mc {
 		$logger = "\r\n"."Groupings: ". var_export( $groupings, true )."\r\n";
 		$logger .= "\r\n\r\n";
 
-		$logfile = fopen( LOGPATH."acladdmember.log", "a" );
-		fwrite( $logfile, $logger );
-		fclose( $logfile );
+		if ( $logger ) {
+			$logfile = fopen( LOGPATH."acladdmember.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );
+		}
 
 		if ( !$action || !$listid || !$levid || !$user ) {
 			$ret = "Something isn't set: \r\n";
@@ -609,6 +611,16 @@ class twpw_custom_mc {
 				$newcatarr[] = array ( "name" => $v->name, "id" => $v->id );
 			}
 		}
+
+		$logger = "\r\n"."New Catt: ". var_export( $newcatarr, true )."\r\n";
+		$logger .= "\r\n\r\n";
+		$logger .= "MCGroup: ". var_export( $settings[$levid]['mcgroup'], export)."\r\n\r\n";
+
+		// if ( $logger ) {
+			$logfile = fopen( LOGPATH."aclgroups.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );
+		// }
 
 	  $groupings = array(); // create groupings array
 	  if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
