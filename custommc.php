@@ -487,6 +487,14 @@ class twpw_custom_mc {
 
 		/* this function will modify a Mailchimp entry for a given user. It can be called by either the Add Level or Remove Level action hooks */
 
+
+		$logger = "\r\n"."Groupings: ". var_export( $groupings, true )."\r\n";
+		$logger .= "\r\n\r\n";
+
+		$logfile = fopen( LOGPATH."acladdmember.log", "a" );
+		fwrite( $logfile, $logger );
+		fclose( $logfile );
+
 		if ( !$action || !$listid || !$levid || !$user ) {
 			$ret = "Something isn't set: \r\n";
 			$ret = "Action: ".var_export ( $action, true)." listid: ".var_export( $action, true )." levid: ". var_export( $levid, true )." user: ". var_export ( $user, true )."\r\n";
@@ -580,16 +588,6 @@ class twpw_custom_mc {
 		} else {
 			$logging = false;
 		}
-
-		$logger = "\r\n"."Levid: ".$levid."\r\n";
-		$logger .= "\r\n"."Listid: ".$listid."\r\n";
-		$logger .= "\r\n"."Memaction: ".$memaction."\r\n";
-		$logger .= "\r\n\r\n";
-
-		$logfile = fopen( LOGPATH."aclgroups.log", "a" );
-		$out = ob_get_clean();
-		fwrite( $logfile, $logger );
-		fclose( $logfile );
 
 	  if ( !$levid || !$listid || !$memaction ) { return; }
 
