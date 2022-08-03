@@ -605,7 +605,14 @@ class twpw_custom_mc {
 			$newcatarr = array();
 			$catarr[$k->title]['id'] = $k->id;
 			$catarr[$k->title]['title'] = $k->title;
-			$interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
+
+			$data = array (
+				"count" => 1000
+			);
+			$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid.'/interest-categories/'.$k->id.'/interests';
+			$request_type = "GET";
+			$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
+		  $interests = json_decode( $response1 );
 			$ia = $interests->interests;
 			foreach ( $ia as $v ) {
 				$newcatarr[] = array ( "name" => $v->name, "id" => $v->id );
