@@ -581,6 +581,16 @@ class twpw_custom_mc {
 			$logging = false;
 		}
 
+		$logger = "\r\n"."Levid: ".$levid."\r\n";
+		$logger .= "\r\n"."Listid: ".$listid."\r\n";
+		$logger .= "\r\n"."Memaction: ".$memaction."\r\n";
+		$logger .= "\r\n\r\n";
+
+		$logfile = fopen( LOGPATH."aclgroups.log", "a" );
+		$out = ob_get_clean();
+		fwrite( $logfile, $logger );
+		fclose( $logfile );
+
 	  if ( !$levid || !$listid || !$memaction ) { return; }
 
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
@@ -630,18 +640,6 @@ class twpw_custom_mc {
 		} else {
 			$logging = false;
 		}
-
-
-
-		$logger = "\r\n"."Levid: ".$levid."\r\n";
-		$logger .= "\r\n"."Listid: ".$listid."\r\n";
-		$logger .= "\r\n"."Memaction: ".$memaction."\r\n";
-		$logger .= "\r\n\r\n";
-
-		$logfile = fopen( LOGPATH."acltags.log", "a" );
-		$out = ob_get_clean();
-		fwrite( $logfile, $logger );
-		fclose( $logfile );
 
 	  if ( !$levid || !$listid || !$memaction ) { return; }
 
