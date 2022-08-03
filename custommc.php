@@ -596,6 +596,8 @@ class twpw_custom_mc {
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 	  $settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
 
 		$response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
 		$mccats = $response1->categories;
