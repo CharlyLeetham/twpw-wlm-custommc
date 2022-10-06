@@ -147,24 +147,34 @@ if ( $_GET['lists'] ) {
 }
 
 if ( $_GET['mergevals'] ) {
-	echo '******here';
 	try {
-		$response1 = $mailchimp->lists->getListMergeFields($listid, "MERGE4");
-		vardump($response1);
-		$listarr = array();
-		$listnum = 0;
-		echo '<pre>';
-		echo var_export( $response1, true ).'<br />';
-		$mclists = $response1->merge_fields;
-		foreach ( $mclists as $list1 ) {
-			echo 'Field: '.$list1->tag.'<br />';
-			echo 'Name: '.$list1->name.'<br />';
+		$data = array (
+			"count" => 1000
+		);
+
+		$url = $url."/merge-fields/";
+
+		$request_type = "GET";
+
+		$response1 = json_decode( acl_mc_curl_connect( $url, $request_type, $mcapikey, $data ) );
+		echo var_export($response1, true);
+
+		// $response1 = $mailchimp->lists->getListMergeFields($listid, "MERGE4");
+		// vardump($response1);
+		// $listarr = array();
+		// $listnum = 0;
+		// echo '<pre>';
+		// echo var_export( $response1, true ).'<br />';
+		// $mclists = $response1->merge_fields;
+		// foreach ( $mclists as $list1 ) {
+		// 	echo 'Field: '.$list1->tag.'<br />';
+		// 	echo 'Name: '.$list1->name.'<br />';
 			// if ( $list1->id == $listid ){
 				// echo 'List: '.$list1->id.' - Name: '.$list1->name.'<br />';
 			// echo 'ID: '.$list1[0]['id'].'<br />';
 			// echo 'name: '.$list1->name.'<br />';
-		}
-		echo '</pre>';
+		// }
+		// echo '</pre>';
 	} catch (Exception $e) {
         	echo '<pre>';
 	        $exception = (string) $e->getResponse()->getBody();
