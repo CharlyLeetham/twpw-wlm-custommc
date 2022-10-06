@@ -493,9 +493,8 @@ class twpw_custom_mc {
 	  $response1 = json_decode( $response1 );
 		$mclists = $response1->options;
 		$mclists = var_export( $mclists, true);
-		return $mclists;
 
-		$mailchimptags = '<select multiple="multiple" class="mcworkflow" name="twpw_custommc['.$levelid.'][mcworkflow][]">';
+		$mailchimptags = '<select class="mcworkflow" name="twpw_custommc['.$levelid.'][mcworkflow][]">';
 		foreach ( $mclists as $list1 ) {
 			$mailchimptags.='<option value="'.$list1.'"';
 			$list1->name = (string)$list1;
