@@ -147,6 +147,7 @@ if ( $_GET['lists'] ) {
 }
 
 if ( $_GET['mergevals'] ) {
+	echo '******here';
 	try {
 		$response1 = $mailchimp->lists->getListMergeFields($listid);
 		vardump($response1);
