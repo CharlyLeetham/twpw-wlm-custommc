@@ -14,7 +14,7 @@
 
 
 $mcapikey = $_GET['apikey'];
-$mandrillkey = $_GET['mandrillkey'];
+// $mandrillkey = $_GET['mandrillkey'];
 
 if ( !$_GET['listid'] ){
 	$listid = 'c580a5bbc9';
@@ -29,7 +29,7 @@ if ( !$_GET['dc'] ) {
 }
 
 require_once('mailchimp/vendor/autoload.php');
-require_once('includes/mctransaction/vendor/autoload.php');
+// require_once('includes/mctransaction/vendor/autoload.php');
 
 $url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid;
 
