@@ -485,7 +485,7 @@ class twpw_custom_mc {
 		$data = array (
 			"count" => 1000
 		);
-		$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/merge-fields/";
+		$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/merge-fields/4";
 
 		$request_type = "GET";
 
