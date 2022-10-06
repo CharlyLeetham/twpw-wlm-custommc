@@ -257,7 +257,7 @@ function twpwcustommclists() {
 
 						if ( !empty ($settings[$level['id']]['mcworkflow'] ) ) {
 							echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
-					</td>
+					?></td>
 
 					<!-- List all Mailchimp Workflows -->
 					<td class="wflisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>"><?php
