@@ -485,13 +485,13 @@ class twpw_custom_mc {
 		$data = array (
 			"count" => 1000
 		);
-		$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/merge-fields/merge4";
+		$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/merge-fields/";
 
 		$request_type = "GET";
 
 		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
 	  $response1 = json_decode( $response1 );
-		$mclists = $response1->options;
+		// $mclists = $response1->options;
 		$mclists = var_export( $mclists, true);
 		return $mclists;
 
