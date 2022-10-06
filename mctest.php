@@ -39,8 +39,8 @@ $mailchimp->setConfig([
 	'server' => $dc
 ]);
 
-$mctransaction = new MailchimpTransactional\ApiClient();
-$mctransaction->setApiKey( $mandrillkey );
+// $mctransaction = new MailchimpTransactional\ApiClient();
+// $mctransaction->setApiKey( $mandrillkey );
 
 
 
