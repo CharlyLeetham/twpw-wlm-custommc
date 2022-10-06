@@ -492,6 +492,7 @@ class twpw_custom_mc {
 		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
 	  $response1 = json_decode( $response1 );
 		$mclists = $response1->options;
+		var_dump $mclists;
 
 		$mailchimptags = '<select multiple="multiple" class="mcworkflow" name="twpw_custommc['.$levelid.'][mcworkflow][]">';
 		foreach ( $mclists as $list1 ) {
@@ -504,7 +505,7 @@ class twpw_custom_mc {
 		}
 		$mailchimptags .= '</select>';
 		return $mailchimptags;
-	}	
+	}
 
 	public function acl_change_user_mc ( $action=NULL, $levid=NULL, $listid=NULL, $user=NULL, array $groupings, array $tags, array $merge_vals ) {
 
