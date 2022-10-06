@@ -147,7 +147,7 @@ if ( $_GET['lists'] ) {
 }
 
 if ( $_GET['mergevals'] ) {
-	try {
+	// try {
 		echo 'here****';
 		$data = array (
 			"count" => 1000
@@ -158,6 +158,7 @@ if ( $_GET['mergevals'] ) {
 		$request_type = "GET";
 
 		$response1 = json_decode( acl_mc_curl_connect( $url, $request_type, $mcapikey, $data ) );
+
 		echo var_export($response1, true);
 
 		// $response1 = $mailchimp->lists->getListMergeFields($listid, "MERGE4");
@@ -176,16 +177,16 @@ if ( $_GET['mergevals'] ) {
 			// echo 'name: '.$list1->name.'<br />';
 		// }
 		// echo '</pre>';
-	} catch (Exception $e) {
-        	echo '<pre>';
-	        $exception = (string) $e->getResponse()->getBody();
-        	$exception = json_decode($exception);
-		echo var_export( $exception ).'<br />';
-        	echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
-        	echo '</pre>';
-	} finally {
+	// } catch (Exception $e) {
+        	// echo '<pre>';
+	        // $exception = (string) $e->getResponse()->getBody();
+        	// $exception = json_decode($exception);
+					// echo var_export( $exception ).'<br />';
+        	// echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
+        	// echo '</pre>';
+	// } finally {
 
-	}
+	// }
 }
 
 if ( $_GET['tags'] ) {
