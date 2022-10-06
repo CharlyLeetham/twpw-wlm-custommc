@@ -149,6 +149,7 @@ if ( $_GET['lists'] ) {
 if ( $_GET['mergevals'] ) {
 	try {
 		$response1 = $mailchimp->lists->getListMergeFields($listid);
+		echo 'here';
 		$listarr = array();
 		$listnum = 0;
 		echo '<pre>';
