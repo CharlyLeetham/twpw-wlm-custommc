@@ -148,6 +148,7 @@ if ( $_GET['lists'] ) {
 
 if ( $_GET['mergevals'] ) {
 	try {
+		echo 'here****';
 		$data = array (
 			"count" => 1000
 		);
