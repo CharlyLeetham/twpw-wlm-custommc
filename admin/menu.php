@@ -571,7 +571,6 @@ if ( $display ) { ?>
 						<strong>Version 2.01</strong> - Clean up the code being output to the screen.<br />
 						<strong>Version 2.02</strong> - Rewrite to stop people being moved after being added<br />
 						<strong>Version 2.03</strong> - Adding a class, removed WooCommerce support. upgrading to Mailchimp 3.0 api, adding support for mailchimp tags.<br />
-						<strong>Version 2.04</strong> - Added Workflow support.<br />
 				<h3 style="border-bottom: 1px solid #000; width: 75%;">Known Issues</h3>';
 			}
 		}
@@ -653,22 +652,8 @@ if ( $display ) { ?>
 	  wp_die();
 	}
 
-	function twpw_get_workflow() {
-	  $listid =  $_POST['mclistid'];
-
-	  if ( !empty( $listid ) ) {
-
-			echo twpw_custom_mc::acl_get_workflow( $listid, $_POST['levelid'] );
-
-	  } else {
-	    echo '';
-	  }
-	  wp_die();
-	}
-
 
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
 	add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
-	// add_action( 'wp_ajax_twpw_custommc_workflow', 'twpw_get_workflow' );
 
 ?>
