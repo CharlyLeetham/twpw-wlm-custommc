@@ -236,6 +236,41 @@ function twpwcustommclists() {
 						echo twpw_custom_mc::get_mailchimp_lists( $settings[$level['id']]['mclistid'],$level['id'] )
 					?></td>
 
+					<!-- List Workflows for Mailchimp List selected -->
+					<td class="workflow gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>">
+						<?php
+
+						if ( $debug == 'yes' ) {
+							$logger .= var_export ( $level, true );
+							$logger .= "\r\n***\r\n";
+							$logger .= var_export( $settings[$level['id']], true );
+							$logger .= "\r\n***\r\n";
+							$logger .= var_export ( $settings[$level['id']]['mcworkflow'], true );
+							$logger .= "\r\n***\r\n";
+							$logger .= var_export ( $settings[$level['id']]['mclistid'], true );
+							$logger .= "\r\n***\r\n";
+						}
+
+						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
+							$settings[$level['id']]['mcworkflow'] ='';
+						}
+
+						if ( !empty ($settings[$level['id']]['mcworkflow'] ) ) {
+							echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
+					</td>
+
+					<!-- List all Mailchimp Workflows -->
+					<td class="wflisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>"><?php
+
+					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
+						$settings[$level['id']]['mcworkflow'] ='';
+					}
+
+					if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
+						echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
+					}
+					?></td>
+
 					<!-- List groups for Mailchimp List selected -->
 					<td class="grouplisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>">
 						<?php
@@ -279,40 +314,7 @@ function twpwcustommclists() {
 						?>
 					</td>
 
-					<!-- List Workflows for Mailchimp List selected -->
-					<td class="workflow gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>">
-						<?php
 
-						if ( $debug == 'yes' ) {
-							$logger .= var_export ( $level, true );
-							$logger .= "\r\n***\r\n";
-							$logger .= var_export( $settings[$level['id']], true );
-							$logger .= "\r\n***\r\n";
-							$logger .= var_export ( $settings[$level['id']]['mcworkflow'], true );
-							$logger .= "\r\n***\r\n";
-							$logger .= var_export ( $settings[$level['id']]['mclistid'], true );
-							$logger .= "\r\n***\r\n";
-						}
-
-						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-							$settings[$level['id']]['mcworkflow'] ='';
-						}
-
-						if ( !empty ($settings[$level['id']]['mcworkflow'] ) ) {
-							echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
-					</td>
-
-					<!-- List all Mailchimp Workflows -->
-					<td class="wflisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>"><?php
-
-					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-						$settings[$level['id']]['mcworkflow'] ='';
-					}
-
-					if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
-						echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
-					}
-					?></td>
 <?php
 $display = false;
 if ( $display ) { ?>
