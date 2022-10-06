@@ -425,7 +425,6 @@ if ( $display ) { ?>
 				var cure_val = $(this).val();
 				var groupobject=$(this).parent().next("td.grouplisting");
 				var tagobject=$(this).parent().closest('tr').find('td.taglisting ');
-				var wfobject=$(this).parent().closest('tr').find('td.workflow ');
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
 					action:"twpw_custommc_ig",
 					mclistid: $(this).val(),
@@ -466,28 +465,6 @@ if ( $display ) { ?>
 				var groupobject=$(this).parent().("tr .taglisting");
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
 					action:"twpw_custommc_tag",
-					mclistid: $(this).val(),
-					levelid: groupobject.attr('levelid')
-				},
-				function(msg) {
-					msg = msg.trim();
-					groupobject.html(msg);
-					<?php
-					if ( $debug == 'yes' ) {
-							echo "console.log(msg);";
-						} ?>
-				});
-			});
-		})( jQuery );
-	</script>
-
-	<script type="text/javascript">
-		( function($) {
-
-			$("select.mclistid").change(function() {
-				var groupobject=$(this).parent().("tr .workflow");
-				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
-					action:"twpw_custommc_workflow",
 					mclistid: $(this).val(),
 					levelid: groupobject.attr('levelid')
 				},
@@ -692,6 +669,6 @@ if ( $display ) { ?>
 
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
 	add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
-	add_action( 'wp_ajax_twpw_custommc_workflow', 'twpw_get_workflow' );
+	// add_action( 'wp_ajax_twpw_custommc_workflow', 'twpw_get_workflow' );
 
 ?>
