@@ -257,20 +257,8 @@ function twpwcustommclists() {
 
 						if ( !empty ($settings[$level['id']]['mcworkflow'] ) ) {
 							echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
-						}
-					?></td>
-
-					<!-- List all Mailchimp Workflows -->
-					<td class="wflisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>"><?php
-
-					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-						$settings[$level['id']]['mcworkflow'] ='';
-					}
-
-					if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
-						echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
-					}
-					?></td>
+						} ?>
+					</td>
 
 					<!-- List groups for Mailchimp List selected -->
 					<td class="grouplisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>">
@@ -315,7 +303,17 @@ function twpwcustommclists() {
 						?>
 					</td>
 
+					<!-- List all Mailchimp Tags -->
+					<td class="taglisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>"><?php
 
+					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
+						$settings[$level['id']]['mctags'] ='';
+					}
+
+					if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
+						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
+					}
+					?></td>
 <?php
 $display = false;
 if ( $display ) { ?>
