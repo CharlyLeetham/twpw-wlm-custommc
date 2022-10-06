@@ -492,8 +492,8 @@ class twpw_custom_mc {
 		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
 	  $response1 = json_decode( $response1 );
 		$mclists = $response1->options;
-		$mclists = var_export( $mclists, true);
-
+		$mclists1 = var_export( $mclists, true);
+		$mailchimptags = '<pre>'.echo $mclists1.'</pre>';
 		$mailchimptags = '<select class="mcworkflow" name="twpw_custommc['.$levelid.'][mcworkflow][]">';
 		foreach ( $mclists as $list1 ) {
 			$mailchimptags.='<option value="'.$list1.'"';
