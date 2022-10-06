@@ -178,6 +178,7 @@ class twpw_custom_mc {
 									);
 				// For PDT ONLY
 				$merge_vars['JOINED'] = current_time('Y-m-d');
+				$merge_vars['TRIGGER'] = $settings[$levid]['mcworkflow'];
 				$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
 				if ( empty ( $previous_join_date ) ) {
 					add_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
