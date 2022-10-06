@@ -147,7 +147,7 @@ if ( $_GET['lists'] ) {
 }
 
 if ( $_GET['mergevals'] ) {
-	// try {
+	try {
 		echo 'here****';
 		$data = array (
 			"count" => 1000
@@ -177,16 +177,16 @@ if ( $_GET['mergevals'] ) {
 			// echo 'name: '.$list1->name.'<br />';
 		// }
 		// echo '</pre>';
-	// } catch (Exception $e) {
-        	// echo '<pre>';
-	        // $exception = (string) $e->getResponse()->getBody();
-        	// $exception = json_decode($exception);
-					// echo var_export( $exception ).'<br />';
-        	// echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
-        	// echo '</pre>';
-	// } finally {
+	} catch (Exception $e) {
+        	echo '<pre>';
+	        $exception = (string) $e->getResponse()->getBody();
+        	$exception = json_decode($exception);
+					echo var_export( $exception ).'<br />';
+        	echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
+        	echo '</pre>';
+	} finally {
 
-	// }
+	}
 }
 
 if ( $_GET['tags'] ) {
