@@ -255,7 +255,7 @@ function twpwcustommclists() {
 							$settings[$level['id']]['mcworkflow'] ='';
 						}
 
-						if ( !empty ($settings[$level['id']]['mcworkflow'] ) ) {
+						if ( !empty ($settings[$level['id']]['mclistid'] ) ) {
 							echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
 						}
 						?>
