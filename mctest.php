@@ -46,9 +46,9 @@ $mailchimp->setConfig([
 
 try {
 	$response = $mailchimp->ping->get();
-	$response = $mctransaction->users->ping();
+	// $response = $mctransaction->users->ping();
 	echo 'code ran';
-	//echo var_export( $response, true);
+	echo var_export( $response, true);
 	echo '<br />';
 } catch (Exception $e) {
 	echo '<pre>';
