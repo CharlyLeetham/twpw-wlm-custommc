@@ -3,7 +3,7 @@
 Plugin Name: TWPW Custom MC signup
 Plugin URI: http://askcharlyleetham.com
 Description: Mailchimp Signup
-Version: 2.03
+Version: 2.04
 Author: Morgan & Charly Leetham
 Author URI: http://thewpwarrior.com
 License: GPL
@@ -17,6 +17,7 @@ Version 2a - Tidy up.
 Version 2.01 - Clean up the code being output to the screen.
 Version 2.02 - Rewrite to stop people being moved after being added
 Version 2.03 - Adding a class, removed WooCommerce support. upgrading to Mailchimp 3.0 api, adding support for mailchimp tags.
+Version 2.04 - Added support for Mailchimp Workflow
 */
 
 
@@ -474,6 +475,36 @@ class twpw_custom_mc {
 		$mailchimptags .= '</select>';
 		return $mailchimptags;
 	}
+
+	public function acl_get_workflow( $listid, $levelid=NULL, $ajax=null ) {
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+		$settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
+
+		$data = array (
+			"count" => 1000
+		);
+		$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/merge-fields/merge4";
+
+		$request_type = "GET";
+
+		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
+	  $response1 = json_decode( $response1 );
+		$mclists = $response1->options;
+
+		$mailchimptags = '<select multiple="multiple" class="mcworkflow" name="twpw_custommc['.$levelid.'][mcworkflow][]">';
+		foreach ( $mclists as $list1 ) {
+			$mailchimptags.='<option value="'.$list1.'"';
+			$list1->name = (string)$list1;
+			if( in_array( $list1, $settings[$levelid]['mcworkflow'] ) ) {
+				$mailchimptags.=' selected="yes" ';
+			}
+			$mailchimptags.='>'.$list1.'</option>';
+		}
+		$mailchimptags .= '</select>';
+		return $mailchimptags;
+	}	
 
 	public function acl_change_user_mc ( $action=NULL, $levid=NULL, $listid=NULL, $user=NULL, array $groupings, array $tags, array $merge_vals ) {
 

@@ -204,6 +204,7 @@ function twpwcustommclists() {
 			<tr>
 				<td><strong>Membership Level</strong></td>
 				<td><strong>Mailchimp List</strong></td>
+				<td><strong>Mailchimp Workflow</strong></td>
 				<td><strong>Interest Group</strong></td>
 				<td><strong>Tags</strong></td>
 				<!-- <td><strong>Update Join Date?</strong></td> -->
@@ -278,15 +279,38 @@ function twpwcustommclists() {
 						?>
 					</td>
 
-					<!-- List all Mailchimp Tags -->
-					<td class="taglisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>"><?php
+					<!-- List Workflows for Mailchimp List selected -->
+					<td class="workflow gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>">
+						<?php
+
+						if ( $debug == 'yes' ) {
+							$logger .= var_export ( $level, true );
+							$logger .= "\r\n***\r\n";
+							$logger .= var_export( $settings[$level['id']], true );
+							$logger .= "\r\n***\r\n";
+							$logger .= var_export ( $settings[$level['id']]['mcworkflow'], true );
+							$logger .= "\r\n***\r\n";
+							$logger .= var_export ( $settings[$level['id']]['mclistid'], true );
+							$logger .= "\r\n***\r\n";
+						}
+
+						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
+							$settings[$level['id']]['mcworkflow'] ='';
+						}
+
+						if ( !empty ($settings[$level['id']]['mcworkflow'] ) ) {
+							echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
+					</td>
+
+					<!-- List all Mailchimp Workflows -->
+					<td class="wflisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>"><?php
 
 					if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-						$settings[$level['id']]['mctags'] ='';
+						$settings[$level['id']]['mcworkflow'] ='';
 					}
 
 					if ( !empty( $settings[$level['id']]['mclistid'] ) ) {
-						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
+						echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
 					}
 					?></td>
 <?php
