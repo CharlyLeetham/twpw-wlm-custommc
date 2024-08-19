@@ -293,7 +293,7 @@ global $twpw_custommc_mcapi;
 		(function($){
 			$("select.mclistid").change(function() {
 				var groupobject=$(this).parent().next("td.grouplisting");
-				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
+				$.post("<?php echo admin_url('admin-ajax.php'); ?>",{
 					action:"twpw_custommc_ig",
 					mclistid: $(this).val(),
 					levelid: groupobject.attr('levelid')
