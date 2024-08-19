@@ -461,11 +461,7 @@ if ( $display ) { ?>
 							levelid: groupobject.attr('levelid') // Ensure this is correct
 						},
 						function(workflow_msg) {
-							workflow_msg = workflow_msg.trim();
-
-							// Add a console.log statement before updating wfobject
-							console.log("wfobject element:", wfobject); // Verify wfobject							
-
+							workflow_msg = workflow_msg.trim();	
 							wfobject.html(workflow_msg); // Update wfobject
 						});
 
