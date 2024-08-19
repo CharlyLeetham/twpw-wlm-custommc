@@ -462,7 +462,7 @@ if ( $display ) { ?>
 		( function($) {
 
 			$("select.mclistid").change(function() {
-				var groupobject=$(this).parent().("tr.taglisting");
+				var groupobject = $(this).closest("tr.taglisting");
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
 					action:"twpw_custommc_tag",
 					mclistid: $(this).val(),
