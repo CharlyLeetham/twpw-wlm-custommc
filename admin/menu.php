@@ -147,7 +147,10 @@ global $twpw_custommc_mcapi;
 		update_option('twpw_custommc', $newsettings);
 	}
 
-			twpw_custommc_createMCAPI();  // initialise the Mailchimp api
+			//twpw_custommc_createMCAPI();  // initialise the Mailchimp api
+
+			$twpw_instance = new twpw_custom_mc();
+			$twpw_instance->twpw_custommc_createMCAPI();  // initialise the Mailchimp API			
 	
 	if($error_occured){echo '<div align="center" style="font-weight: bold; font-size: 16px; color: #FF0000; margin-bottom: 10px;">Your changes have not been saved. Please scroll down to see the error message(s).</div>';} else {if(isset($_POST["submit"])){echo '<div align="center" style="font-weight: bold; font-size: 16px; color: #FF0000; margin-bottom: 10px;">Your changes have been saved!</div>';}} ?>
 
@@ -379,7 +382,9 @@ global $twpw_custommc_mcapi;
 		}
 		
 	function twpw_get_interest_groups() {
-		twpw_custommc_createMCAPI();
+		$twpw_instance = new twpw_custom_mc();
+		$twpw_instance->twpw_custommc_createMCAPI();  // initialise the Mailchimp API
+		//twpw_custommc_createMCAPI();
 		global $twpw_custommc_mcapi;
 		try {
 			$mclists = $twpw_custommc_mcapi->call('/lists/interest-groupings',array('id'=>$_POST['mclistid']));

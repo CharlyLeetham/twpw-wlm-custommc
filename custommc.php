@@ -391,7 +391,9 @@ function twpw_create_merge_vars_feilds($level_id,$settings) {
 //Create the cell and table for the merge vars; and the row for the meger headings ?>
 <td><table><tr>
 <?php
-	twpw_custommc_createMCAPI();
+	//twpw_custommc_createMCAPI();
+	$twpw_instance = new twpw_custom_mc();
+	$twpw_instance->twpw_custommc_createMCAPI();  // initialise the Mailchimp API	
 	global $twpw_custommc_mcapi;
 		$mc_merge_vars = $twpw_custommc_mcapi->call('/lists/merge-vars',array('id'=>array($settings[$level_id]['mclistid'])));
 	$mc_merge_vars = $mc_merge_vars['data'][0]['merge_vars'];
