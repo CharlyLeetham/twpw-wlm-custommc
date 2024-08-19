@@ -418,7 +418,8 @@ if ( $display ) { ?>
 		</p>
 	</form>
 
-	<script type="text/javascript">
+
+		<script type="text/javascript">
 		( function($) {
 			$("select.mclistid").change(function() {
 
@@ -426,51 +427,54 @@ if ( $display ) { ?>
 				var wfobject = $(this).parent().nextAll("td.mcworkflow").first();
 				var groupobject = $(this).parent().nextAll("td.grouplisting").first();
 				var tagobject = $(this).parent().nextAll("td.taglisting").first();				
-				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
-					action:"twpw_custommc_ig",
-					mclistid: $(this).val(),
+
+				// First AJAX call for group object and tag object
+				$.post("<?php echo admin_url('admin-ajax.php'); ?>", {
+					action: "twpw_custommc_ig",
+					mclistid: cure_val,
 					levelid: groupobject.attr('levelid')
 				},
 				function(msg) {
 					msg = msg.trim();
-					if(msg === ''){
+					if (msg === '') {
 						groupobject.html(msg);
 						tagobject.html(msg);
-						wfobject.hmtl(msg);
+						wfobject.html(msg); // Ensure this does not stop the chain
+					} else {
+						groupobject.html(msg); // Update groupobject
 
-					}else{
-						$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
-							action:"twpw_custommc_tag",
+						// Second AJAX call for tag object
+						$.post("<?php echo admin_url('admin-ajax.php'); ?>", {
+							action: "twpw_custommc_tag",
 							mclistid: cure_val,
 							levelid: groupobject.attr('levelid')
 						},
 						function(tag_msg) {
 							tag_msg = tag_msg.trim();
-							groupobject.html(msg);
-							tagobject.html(tag_msg);
+							tagobject.html(tag_msg); // Update tagobject
 						});
 
-						// Call to twpw_get_workflows
+						// Third AJAX call for workflows
 						$.post("<?php echo admin_url('admin-ajax.php'); ?>", {
 							action: "twpw_custommc_workflows",
 							mclistid: cure_val,
-							levelid: wfobject.attr('levelid')
+							levelid: groupobject.attr('levelid') // Ensure this is correct
 						},
 						function(workflow_msg) {
 							workflow_msg = workflow_msg.trim();
-							wfobject.html(workflow_msg);
+							wfobject.html(workflow_msg); // Update wfobject
 						});
 
-						//groupobject.html(msg);
-						<?php if ( $debug == 'yes' ) {
-							echo "console.log(msg);";
-						} ?>
+						<?php if ( $debug == 'yes' ) : ?>
+							console.log("msg:", msg);
+						<?php endif; ?>
 					}
-
 				});
 			});
 		})( jQuery );
-	</script>
+		</script>
+
+
 
 
 	<?php
