@@ -417,11 +417,11 @@ class twpw_custom_mc {
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		$dc = $settings['mcdc'];
-    $response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
-    $mccats = $response1->categories;
-    $catarr = array();
-    $intarr = array();
-    $catnum = 0;
+		$response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
+		$mccats = $response1->categories;
+		$catarr = array();
+		$intarr = array();
+		$catnum = 0;
 
 
 

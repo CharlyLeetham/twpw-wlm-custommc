@@ -423,9 +423,7 @@ if ( $display ) { ?>
 			$("select.mclistid").change(function() {
 
 				var cure_val = $(this).val();
-				/*var groupobject=$(this).parent().next("td.grouplisting");
-				var tagobject=$(this).parent().closest('tr').find('td.taglisting ');*/
-
+				var wfobject = $(this).parent().nextAll("td.mcworkflow").first();
 				var groupobject = $(this).parent().nextAll("td.grouplisting").first();
 				var tagobject = $(this).parent().nextAll("td.taglisting").first();				
 				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
@@ -438,6 +436,7 @@ if ( $display ) { ?>
 					if(msg === ''){
 						groupobject.html(msg);
 						tagobject.html(msg);
+						wfobject.hmtl(msg);
 
 					}else{
 						$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
@@ -450,6 +449,18 @@ if ( $display ) { ?>
 							groupobject.html(msg);
 							tagobject.html(tag_msg);
 						});
+
+						// Call to twpw_get_workflows
+						$.post("<?php echo admin_url('admin-ajax.php'); ?>", {
+							action: "twpw_custommc_workflows",
+							mclistid: cure_val,
+							levelid: wfobject.attr('levelid')
+						},
+						function(workflow_msg) {
+							workflow_msg = workflow_msg.trim();
+							wfobject.html(workflow_msg);
+						});
+
 						//groupobject.html(msg);
 						<?php if ( $debug == 'yes' ) {
 							echo "console.log(msg);";
@@ -635,8 +646,30 @@ if ( $display ) { ?>
 	  wp_die();
 	}
 
+	function twpw_get_workflows() {
+		$listid =  $_POST['mclistid'];
+  
+		if ( !empty( $listid ) ) {
+  
+			  echo twpw_custom_mc::acl_get_workflow( $listid, $_POST['levelid'] );
+  
+		  // echo '<select multiple="multiple" class="mctag" name="twpw_custommc['.$_POST['levelid'].'][mctag][]">';
+		  // foreach ( $mclists as $list1 ) {
+		  //   echo '<option value="'.$list1->id.'"';
+			// if( in_array( $list1->id, $settings[$_POST['levelid']]['mctag'] ) ) {
+		  //     echo ' selected="yes" ';
+		  //   }
+		  //   echo '>'.$list1->name.'</option>';
+		  // }
+		  // echo '</select>';
+		} else {
+		  echo '';
+		}
+		wp_die();
+	  }
+  
 
 	add_action( 'wp_ajax_twpw_custommc_ig', 'twpw_get_interest_groups' );
 	add_action( 'wp_ajax_twpw_custommc_tag', 'twpw_get_tags' );
-
+	add_action( 'wp_ajax_twpw_custommc_workflows', 'twpw_get_workflows' );
 ?>
