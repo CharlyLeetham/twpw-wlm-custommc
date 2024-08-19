@@ -424,7 +424,7 @@ if ( $display ) { ?>
 			$("select.mclistid").change(function() {
 
 				var cure_val = $(this).val();
-				var wfobject = $(this).parent().nextAll("td.mcworkflow").first();
+				var wfobject = $(this).parent().nextAll("td.workflow").first();
 				var groupobject = $(this).parent().nextAll("td.grouplisting").first();
 				var tagobject = $(this).parent().nextAll("td.taglisting").first();				
 
@@ -462,6 +462,10 @@ if ( $display ) { ?>
 						},
 						function(workflow_msg) {
 							workflow_msg = workflow_msg.trim();
+
+							// Add a console.log statement before updating wfobject
+							console.log("wfobject element:", wfobject); // Verify wfobject							
+
 							wfobject.html(workflow_msg); // Update wfobject
 						});
 
