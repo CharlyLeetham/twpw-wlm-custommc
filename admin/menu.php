@@ -7,7 +7,7 @@ function twpw_admin_menu() {
 	$firstmenu="wp_twpw_admin";
 
 	if(!defined('TWPWTOPMENU')){
-		add_menu_page('TWPW Plugins', 'TWPW Plugins', 8, 'WPTWPW', $firstMenu, '' );
+		add_menu_page('TWPW Plugins', 'TWPW Plugins', 8, 'WPTWPW', $firstmenu, '' );
 		define('TWPWTOPMENU','WPTWPW');
 	}
 	
