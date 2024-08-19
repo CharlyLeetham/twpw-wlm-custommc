@@ -458,27 +458,7 @@ if ( $display ) { ?>
 		})( jQuery );
 	</script>
 
-	<script type="text/javascript">
-		( function($) {
 
-			$("select.mclistid").change(function() {
-				var groupobject = $(this).closest("tr.taglisting");
-				$.post("<?php echo admin_url("admin-ajax.php"); ?>",{
-					action:"twpw_custommc_tag",
-					mclistid: $(this).val(),
-					levelid: groupobject.attr('levelid')
-				},
-				function(msg) {
-					msg = msg.trim();
-					groupobject.html(msg);
-					<?php
-					if ( $debug == 'yes' ) {
-							echo "console.log(msg);";
-						} ?>
-				});
-			});
-		})( jQuery );
-	</script>
 	<?php
 
 		if ( $debug == 'yes' ) {
