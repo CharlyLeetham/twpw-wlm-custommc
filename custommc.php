@@ -511,10 +511,10 @@ class twpw_custom_mc {
 		if ( $logging ) {
 			$logger .= "MC Lists \r\n";
 			$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n";
-			$logger .= "$response1: ";
+			$logger .= "response1: ";
 			$logger .= var_export( $response1, true );
 			$logger .= "\r\n\r\n";
-			$logger .= "$mclists: ";
+			$logger .= "mclists: ";
 			$logger .= var_export( $mclists, true );
 			$logger .= "\r\n\r\n";			
 		}
@@ -532,6 +532,20 @@ class twpw_custom_mc {
 			$mailchimptags.='>'.$list1.'</option>';
 		}
 		$mailchimptags .= '</select>';
+
+		if( $logging ) {
+			$logfile = fopen( LOGPATH."removemember.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );
+		}
+
+		if ( $debug ) {
+			$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+			$out =ob_get_clean();
+			fwrite( $logfile, $out );
+			fclose( $logfile );
+		}
+
 		return $mailchimptags;
 	}
 
