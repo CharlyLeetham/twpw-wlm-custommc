@@ -484,6 +484,13 @@ class twpw_custom_mc {
 		$api_key = $settings['mcapikey'];
 		$dc = $settings['mcdc'];
 
+		$logging = get_option("twpw_custommc_logging");
+			if ( $logging == "yes") {
+			$logging = true;
+			} else {
+			$logging = false;
+		}
+
 		$data = array (
 			"count" => 1000
 		);
