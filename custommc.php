@@ -502,9 +502,9 @@ class twpw_custom_mc {
 	    $response1 = json_decode( $response1 );
 		$mclists = $response1->options->choices;
 
-		error_log ( "$logging: " . var_export( $logging, true ) );
-		error_log ( "$response1: " . var_export( $response1, true ) );
-		error_log ( "$mclists: " . var_export( $mclists, true ) );
+		error_log ( "logging: " . var_export( $logging, true ) );
+		error_log ( "response1: " . var_export( $response1, true ) );
+		error_log ( "mclists: " . var_export( $mclists, true ) );
 
 		if ( $logging ) {
 			$logger .= "MC Lists \r\n";
