@@ -574,7 +574,7 @@ class twpw_custom_mc {
 		}
 	}
 
-	public function twpw_custommc_createMCAPI() {
+	public static function twpw_custommc_createMCAPI() {
 		require_once( dirname(__FILE__) . '/mailchimp/vendor/autoload.php' );
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
