@@ -92,7 +92,7 @@ class twpw_custom_mc {
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 
 		/* Get the settings for this plugin */
-		$settings = get_option("twpw_custommc");
+		$settings = (array) get_option("twpw_custommc");
 
 		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
 
@@ -276,7 +276,7 @@ class twpw_custom_mc {
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 
 		/* Get the settings for this plugin */
-		$settings = get_option("twpw_custommc");
+		$settings = (array) get_option("twpw_custommc");
 
 		/* Get the User details */
 		//get the user object so we can grab their details to add to Mailchimp
@@ -380,137 +380,236 @@ class twpw_custom_mc {
 	}
 
 
-	public static function get_mailchimp_lists( $mclistid,$wlmlevelid ) {
-		//Setup the mailchimp api
+	public static function get_mailchimp_lists( $mclistid, $wlmlevelid ) {
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
-		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-		if (($api_key <> "")) {
+		$settings = (array) get_option( 'twpw_custommc' );
+		$api_key = isset( $settings['mcapikey'] ) ? trim( $settings['mcapikey'] ) : '';
 
-			try {
-					$list_info= $twpw_custommc_mcapi->lists->getAllLists();
-			} catch (Exception $e) {
-					$exception = (string) $e->getResponse()->getBody();
-					$exception = json_decode($exception);
-					if ( $debug ){
-						$mailchimplists = 'An error has occurred***: '.$exception->title.' - '.$exception->detail.'<br />';
-					}
-			} finally {
-				$alllists = $list_info->lists;
-				$mailchimplists = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mclistid]">
-								<option value="0">No list</option>';
-								foreach ($alllists as $list1) {
-									$mailchimplists.='<option value="'.$list1->id.'"';
-										if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
-									$mailchimplists.='>'.$list1->name.'</option>';
-								}
-				$mailchimplists .= '</select>';
-			}
-		} else {
-			$mailchimplists.= 'Please enter your mailchimp API before continuing<br>';
+		if ( $api_key === '' ) {
+			return 'Please enter your Mailchimp API before continuing<br />';
 		}
+
+		$alllists = array();
+
+		try {
+			$list_info = $twpw_custommc_mcapi->lists->getAllLists();
+			if ( isset( $list_info->lists ) && is_array( $list_info->lists ) ) {
+				$alllists = $list_info->lists;
+			}
+		} catch ( Exception $e ) {
+			$exception = (string) $e->getResponse()->getBody();
+			$exception = json_decode( $exception );
+			$title = isset( $exception->title ) ? $exception->title : 'Unknown error';
+			$detail = isset( $exception->detail ) ? $exception->detail : '';
+			return 'An error has occurred: ' . esc_html( $title . ( $detail ? ' - ' . $detail : '' ) ) . '<br />';
+		}
+
+		$mailchimplists = '<select class="mclistid" name="twpw_custommc[' . $wlmlevelid . '][mclistid]">';
+		$mailchimplists .= '<option value="0">No list</option>';
+
+		foreach ( $alllists as $list1 ) {
+			if ( is_object( $list1 ) ) {
+				$list_id = isset( $list1->id ) ? (string) $list1->id : '';
+				$list_name = isset( $list1->name ) ? (string) $list1->name : $list_id;
+			} else {
+				$list_id = (string) $list1;
+				$list_name = $list_id;
+			}
+
+			if ( $list_id === '' ) {
+				continue;
+			}
+
+			$selected_attr = ( (string) $mclistid === $list_id ) ? ' selected="selected"' : '';
+			$mailchimplists .= '<option value="' . esc_attr( $list_id ) . '"' . $selected_attr . '>' . esc_html( $list_name ) . '</option>';
+		}
+
+		$mailchimplists .= '</select>';
+
 		return $mailchimplists;
 	}
 
-	public static function acl_get_interest_groups( $listid, $levelid=NULL, $ajax=null ) {
+	public static function acl_get_interest_groups( $listid, $levelid = NULL, $ajax = null ) {
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
-		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-		$dc = $settings['mcdc'];
-		$response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
-		$mccats = $response1->categories;
+		$settings = (array) get_option( 'twpw_custommc' );
+		$api_key = isset( $settings['mcapikey'] ) ? trim( $settings['mcapikey'] ) : '';
+		$dc = isset( $settings['mcdc'] ) ? trim( $settings['mcdc'] ) : '';
+
+		if ( empty( $listid ) || $api_key === '' || $dc === '' ) {
+			return array();
+		}
+
+		try {
+			$response1 = $twpw_custommc_mcapi->lists->getListInterestCategories( $listid );
+		} catch ( Exception $e ) {
+			return array();
+		}
+
+		$mccats = array();
+		if ( isset( $response1->categories ) && is_array( $response1->categories ) ) {
+			$mccats = $response1->categories;
+		}
+
 		$catarr = array();
-		$intarr = array();
-		$catnum = 0;
 
+		foreach ( $mccats as $category ) {
+			if ( ! is_object( $category ) || empty( $category->id ) ) {
+				continue;
+			}
 
+			$cat_id = (string) $category->id;
+			$title = isset( $category->title ) && $category->title !== '' ? (string) $category->title : $cat_id;
 
-		foreach ($mccats as $k) {
-			$catarr[$k->title]['id'] = $k->id;
-			$catarr[$k->title]['title'] = $k->title;
-			$data = array (
-				"count" => 1000
+			$catarr[ $title ] = array(
+				'id' => $cat_id,
+				'title' => $title,
+				'groups' => array(),
 			);
-			$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid.'/interest-categories/'.$k->id.'/interests';
-			// $interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
-			$request_type = "GET";
-			$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
-		  $interests = json_decode( $response1 );
-			$ia = $interests->interests;
-			$intnum = 0;
-			foreach ( $ia as $v ) {
-				$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
-				$catarr[$k->title]['groups'][$intnum]['id'] = $v->id;
-				$catarr[$k->title]['groups'][$intnum]['catid'] = $v->category_id;
-				$intnum++;
+
+			$data = array(
+				'count' => 1000,
+			);
+
+			$url = 'https://' . $dc . '.api.mailchimp.com/3.0/lists/' . $listid . '/interest-categories/' . $cat_id . '/interests';
+			$response_raw = twpw_custom_mc::acl_mc_curl_connect( $url, 'GET', $api_key, $data );
+
+			if ( empty( $response_raw ) ) {
+				continue;
+			}
+
+			$response_json = json_decode( $response_raw );
+			$interests = array();
+
+			if ( isset( $response_json->interests ) && is_array( $response_json->interests ) ) {
+				$interests = $response_json->interests;
+			}
+
+			foreach ( $interests as $interest ) {
+				if ( ! is_object( $interest ) || empty( $interest->id ) ) {
+					continue;
+				}
+
+				$catarr[ $title ]['groups'][] = array(
+					'name' => isset( $interest->name ) ? (string) $interest->name : (string) $interest->id,
+					'id' => (string) $interest->id,
+				);
 			}
 		}
+
 		return $catarr;
 	}
 
-	public static function acl_get_tags( $listid, $levelid=NULL, $ajax=null ) {
-		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
-		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-		$dc = $settings['mcdc'];
+	public static function acl_get_tags( $listid, $levelid = NULL, $ajax = null ) {
+		$settings = (array) get_option( 'twpw_custommc' );
+		$api_key = isset( $settings['mcapikey'] ) ? trim( $settings['mcapikey'] ) : '';
+		$dc = isset( $settings['mcdc'] ) ? trim( $settings['mcdc'] ) : '';
 
-		$data = array (
-			"count" => 1000
-		);
-		$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/tag-search/";
-
-		$request_type = "GET";
-
-		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
-	  $response1 = json_decode( $response1 );
-		$mclists = $response1->tags;
-
-		$mailchimptags = '<select multiple="multiple" class="mctag" name="twpw_custommc['.$levelid.'][mctag][]">';
-		foreach ( $mclists as $list1 ) {
-			$mailchimptags.='<option value="'.$list1->name.'"';
-			$list1->name = (string)$list1->name;
-			if( in_array( $list1->name, $settings[$levelid]['mctag'] ) ) {
-				$mailchimptags.=' selected="yes" ';
-			}
-			$mailchimptags.='>'.$list1->name.'</option>';
+		if ( empty( $listid ) || $api_key === '' || $dc === '' ) {
+			return '';
 		}
+
+		$data = array(
+			'count' => 1000,
+		);
+		$url = 'https://' . $dc . '.api.mailchimp.com/3.0/lists/' . $listid . '/tag-search/';
+
+		$response_raw = twpw_custom_mc::acl_mc_curl_connect( $url, 'GET', $api_key, $data );
+
+		if ( empty( $response_raw ) ) {
+			return '';
+		}
+
+		$response1 = json_decode( $response_raw );
+		$mclists = array();
+
+		if ( isset( $response1->tags ) && is_array( $response1->tags ) ) {
+			$mclists = $response1->tags;
+		}
+
+		$selected_tags = array();
+		if ( $levelid !== NULL && ! empty( $settings[ $levelid ]['mctag'] ) ) {
+			$selected_tags = (array) $settings[ $levelid ]['mctag'];
+		}
+
+		$mailchimptags = '<select multiple="multiple" class="mctag" name="twpw_custommc[' . $levelid . '][mctag][]">';
+
+		foreach ( $mclists as $list1 ) {
+			if ( is_object( $list1 ) ) {
+				$tag_value = isset( $list1->name ) ? (string) $list1->name : ( isset( $list1->id ) ? (string) $list1->id : '' );
+				$tag_label = isset( $list1->name ) ? (string) $list1->name : $tag_value;
+			} else {
+				$tag_value = (string) $list1;
+				$tag_label = $tag_value;
+			}
+
+			if ( $tag_value === '' ) {
+				continue;
+			}
+
+			$selected_attr = in_array( $tag_value, $selected_tags, true ) ? ' selected="selected"' : '';
+			$mailchimptags .= '<option value="' . esc_attr( $tag_value ) . '"' . $selected_attr . '>' . esc_html( $tag_label ) . '</option>';
+		}
+
 		$mailchimptags .= '</select>';
 		return $mailchimptags;
 	}
 
-	public static function acl_get_workflow( $listid, $levelid=NULL, $ajax=null ) {
-		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
-		$settings = get_option("twpw_custommc");
-		$api_key = $settings['mcapikey'];
-		$dc = $settings['mcdc'];
+	public static function acl_get_workflow( $listid, $levelid = NULL, $ajax = null ) {
+		$settings = (array) get_option( 'twpw_custommc' );
+		$api_key = isset( $settings['mcapikey'] ) ? trim( $settings['mcapikey'] ) : '';
+		$dc = isset( $settings['mcdc'] ) ? trim( $settings['mcdc'] ) : '';
 
-		$data = array (
-			"count" => 1000
-		);
-		$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/merge-fields/4";
-
-		$request_type = "GET";
-
-		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
-	  $response1 = json_decode( $response1 );
-		$mclists = $response1->options->choices;
-		// $mclists1 = var_export( $mclists, true);
-		// return $mclists1;
-		// $mailchimptags = '<pre>'.$mclists1.'</pre>';
-		$mailchimptags .= '<select class="mcworkflow" name="twpw_custommc['.$levelid.'][mcworkflow][]">';
-		foreach ( $mclists as $list1 ) {
-			$mailchimptags.='<option value="'.$list1.'"';
-			$list1->name = (string)$list1;
-			if( in_array( $list1, $settings[$levelid]['mcworkflow'] ) ) {
-				$mailchimptags.=' selected="yes" ';
-			}
-			$mailchimptags.='>'.$list1.'</option>';
+		if ( empty( $listid ) || $api_key === '' || $dc === '' ) {
+			return '';
 		}
+
+		$data = array(
+			'count' => 1000,
+		);
+		$url = 'https://' . $dc . '.api.mailchimp.com/3.0/lists/' . $listid . '/merge-fields/4';
+
+		$response_raw = twpw_custom_mc::acl_mc_curl_connect( $url, 'GET', $api_key, $data );
+
+		if ( empty( $response_raw ) ) {
+			return '';
+		}
+
+		$response1 = json_decode( $response_raw );
+		$mclists = array();
+
+		if ( isset( $response1->options->choices ) && is_array( $response1->options->choices ) ) {
+			$mclists = $response1->options->choices;
+		}
+
+		$selected_workflows = array();
+		if ( $levelid !== NULL && ! empty( $settings[ $levelid ]['mcworkflow'] ) ) {
+			$selected_workflows = (array) $settings[ $levelid ]['mcworkflow'];
+		}
+
+		$mailchimptags = '<select class="mcworkflow" name="twpw_custommc[' . $levelid . '][mcworkflow][]">';
+
+		foreach ( $mclists as $list1 ) {
+			if ( is_object( $list1 ) ) {
+				$label = isset( $list1->name ) ? (string) $list1->name : (string) $list1;
+				$value = isset( $list1->value ) ? (string) $list1->value : $label;
+			} else {
+				$label = (string) $list1;
+				$value = $label;
+			}
+
+			if ( $value === '' ) {
+				continue;
+			}
+
+			$selected_attr = in_array( $value, $selected_workflows, true ) ? ' selected="selected"' : '';
+			$mailchimptags .= '<option value="' . esc_attr( $value ) . '"' . $selected_attr . '>' . esc_html( $label ) . '</option>';
+		}
+
 		$mailchimptags .= '</select>';
 		return $mailchimptags;
 	}
 
-	public static function acl_change_user_mc ( $action=NULL, $levid=NULL, $listid=NULL, $user=NULL, array $groupings, array $tags, array $merge_vals ) {
+	public static function acl_change_user_mc ( $action, $levid, $listid, $user, array $groupings, array $tags, array $merge_vals ) {
 
 	/*
 	add - the action, add or remove a users
@@ -539,7 +638,7 @@ class twpw_custom_mc {
 
 		/* Get the settings and setup the Mailchimp API */
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
-		$settings = get_option("twpw_custommc");
+		$settings = (array) get_option("twpw_custommc");
 
 		/* Get the User details */
 		//get the user object so we can grab their details to add to Mailchimp
@@ -576,7 +675,7 @@ class twpw_custom_mc {
 
 	public static function twpw_custommc_createMCAPI() {
 		require_once( dirname(__FILE__) . '/mailchimp/vendor/autoload.php' );
-		$settings = get_option("twpw_custommc");
+		$settings = (array) get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		$dc = $settings['mcdc'];
 		$twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();
@@ -630,7 +729,7 @@ class twpw_custom_mc {
 
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
-	  $settings = get_option("twpw_custommc");
+	  $settings = (array) get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		$dc = $settings['mcdc'];
 
@@ -658,7 +757,7 @@ class twpw_custom_mc {
 
 		$logger = "\r\n"."New Catt: ". var_export( $newcatarr, true )."\r\n";
 		$logger .= "\r\n\r\n";
-		$logger .= "MCGroup: ". var_export( $settings[$levid]['mcgroup'], export)."\r\n\r\n";
+		$logger .= "MCGroup: ". var_export( $settings[$levid]['mcgroup'], true)."\r\n\r\n";
 
 		// if ( $logger ) {
 			$logfile = fopen( LOGPATH."aclgroups.log", "a" );
@@ -699,7 +798,7 @@ class twpw_custom_mc {
 
 		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
 
-	  $settings = get_option("twpw_custommc");
+	  $settings = (array) get_option("twpw_custommc");
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 
 		$tags = array(); // create a tag
@@ -737,3 +836,10 @@ add_action ( 'wishlistmember_unconfirm_user_levels', array( &$twpw_custom_mc, 'a
 add_action ( 'wishlistmember_cancel_user_levels', array( &$twpw_custom_mc, 'acl_wlm_unapprove_user' ), 30, 2 );
 
 ?>
+
+
+
+
+
+
+

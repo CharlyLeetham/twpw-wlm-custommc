@@ -216,7 +216,7 @@ function twpwcustommclists() {
 			</tr>
 
 			<?php
-			$settings = get_option('twpw_custommc',false);
+			$settings = (array) get_option('twpw_custommc', array());
 			if ( $debug == 'yes' ) {
 				$logger .= var_export( $settings, true );
 				$logger .= "\r\n";
