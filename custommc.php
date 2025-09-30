@@ -380,7 +380,7 @@ class twpw_custom_mc {
 	}
 
 
-	public function get_mailchimp_lists( $mclistid,$wlmlevelid ) {
+	public static function get_mailchimp_lists( $mclistid,$wlmlevelid ) {
 		//Setup the mailchimp api
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 		$settings = get_option("twpw_custommc");
@@ -412,7 +412,7 @@ class twpw_custom_mc {
 		return $mailchimplists;
 	}
 
-	public function acl_get_interest_groups( $listid, $levelid=NULL, $ajax=null ) {
+	public static function acl_get_interest_groups( $listid, $levelid=NULL, $ajax=null ) {
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
@@ -448,7 +448,7 @@ class twpw_custom_mc {
 		return $catarr;
 	}
 
-	public function acl_get_tags( $listid, $levelid=NULL, $ajax=null ) {
+	public static function acl_get_tags( $listid, $levelid=NULL, $ajax=null ) {
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
@@ -478,7 +478,7 @@ class twpw_custom_mc {
 		return $mailchimptags;
 	}
 
-	public function acl_get_workflow( $listid, $levelid=NULL, $ajax=null ) {
+	public static function acl_get_workflow( $listid, $levelid=NULL, $ajax=null ) {
 		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
@@ -510,7 +510,7 @@ class twpw_custom_mc {
 		return $mailchimptags;
 	}
 
-	public function acl_change_user_mc ( $action=NULL, $levid=NULL, $listid=NULL, $user=NULL, array $groupings, array $tags, array $merge_vals ) {
+	public static function acl_change_user_mc ( $action=NULL, $levid=NULL, $listid=NULL, $user=NULL, array $groupings, array $tags, array $merge_vals ) {
 
 	/*
 	add - the action, add or remove a users
@@ -589,7 +589,7 @@ class twpw_custom_mc {
 
 	}
 
-	public function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
+	public static function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
 
 		if( $request_type == 'GET' ) {
 			$url .= '?' . http_build_query($data);
@@ -617,7 +617,7 @@ class twpw_custom_mc {
 
 	}
 
-	public function acl_get_mem_groups ( $levid = NULL, $listid = NULL, $memaction = NULL ) {
+	public static function acl_get_mem_groups ( $levid = NULL, $listid = NULL, $memaction = NULL ) {
 
 		$logging = get_option("twpw_custommc_logging");
 		if ( $logging == "yes") {
@@ -686,7 +686,7 @@ class twpw_custom_mc {
 
 	}
 
-	public function acl_get_mem_tags ( $levid = NULL, $listid = NULL, $memaction = NULL ) {
+	public static function acl_get_mem_tags ( $levid = NULL, $listid = NULL, $memaction = NULL ) {
 
 		$logging = get_option("twpw_custommc_logging");
 		if ( $logging == "yes") {
