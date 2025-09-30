@@ -492,8 +492,20 @@ class twpw_custom_mc {
 		$request_type = "GET";
 
 		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
-	  $response1 = json_decode( $response1 );
+	    $response1 = json_decode( $response1 );
 		$mclists = $response1->options->choices;
+
+		if ( $logging ) {
+			$logger .= "MC Lists \r\n";
+			$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n";
+			$logger .= "$response1: ";
+			$logger .= var_export( $response1, true );
+			$logger .= "\r\n\r\n";
+			$logger .= "$mclists: ";
+			$logger .= var_export( $mclists, true );
+			$logger .= "\r\n\r\n";			
+		}
+
 		// $mclists1 = var_export( $mclists, true);
 		// return $mclists1;
 		// $mailchimptags = '<pre>'.$mclists1.'</pre>';
