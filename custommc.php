@@ -483,6 +483,7 @@ class twpw_custom_mc {
 		$settings = get_option("twpw_custommc");
 		$api_key = $settings['mcapikey'];
 		$dc = $settings['mcdc'];
+		$mailchimptags = "";
 
 		$logging = get_option("twpw_custommc_logging");
 			if ( $logging == "yes") {
@@ -524,6 +525,8 @@ class twpw_custom_mc {
 		// $mailchimptags = '<pre>'.$mclists1.'</pre>';
 		$mailchimptags .= '<select class="mcworkflow" name="twpw_custommc['.$levelid.'][mcworkflow][]">';
 		foreach ( $mclists as $list1 ) {
+			$logger .= "List1: " . var_export( $list1, true );
+			error_log ( "list1: " . var_export( $list1, true ) );
 			$mailchimptags.='<option value="'.$list1.'"';
 			$list1->name = (string)$list1;
 			if( in_array( $list1, $settings[$levelid]['mcworkflow'] ) ) {
