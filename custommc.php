@@ -491,6 +491,8 @@ class twpw_custom_mc {
 			$logging = false;
 		}
 
+		$logger = '';
+
 		$data = array (
 			"count" => 1000
 		);
