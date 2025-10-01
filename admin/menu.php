@@ -242,8 +242,12 @@ function twpwcustommclists() {
 					<td class="workflow gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>">
 						<?php
 
+						if ( ! isset( $settings[$level['id']] ) || ! is_array( $settings[$level['id']] ) ) {
+							$settings[$level['id']] = array();
+						}
+
 						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-							$settings[$level['id']]['mcworkflow'] ='';
+							$settings[$level['id']]['mcworkflow'] = array();
 						}
 
 						if ( $debug == 'yes' ) {						
@@ -270,9 +274,9 @@ function twpwcustommclists() {
 						<?php
 
 						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-							$settings[$level['id']]['mcgroup'] ='';
+							$settings[$level['id']]['mcgroup'] = array();
 						}
-												
+
 						if ( $debug == 'yes' ) {
 							$logger .= var_export ( $level, true );
 							$logger .= "\r\n***\r\n";
