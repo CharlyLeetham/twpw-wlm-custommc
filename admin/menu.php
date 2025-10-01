@@ -698,7 +698,7 @@ if ( $display ) { ?>
 		wp_die();
 	  }
 
-function new_twpwcustommclists() {
+function twpwcustommclists() {
 	global $twpw_custommc_mcapi;
 	$debug = get_option( 'twpw_custommc_debug', 'no' );
 	$logger = '';
