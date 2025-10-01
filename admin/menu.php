@@ -1033,7 +1033,7 @@ if ( $display ) { ?>
 				});
 			});
 		})( jQuery );
-		</script>
+		</script> 
 
 
 
