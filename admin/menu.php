@@ -159,9 +159,9 @@ function twpwcustommclists() {
 	<p>Here you can set the Mailchimp list for each level, whether to use double optin; send the welcome email; and unsubscribe from list when removed from level</p>
 
 	<?php
-	/* $count = 0;
+	$count = 0;
 	$err_msg = array();
-	$error_occured = false;	*/
+	$error_occured = false;
 
 	if( isset($_POST["submit"] ) ){
 
