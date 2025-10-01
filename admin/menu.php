@@ -421,6 +421,12 @@ if ( $display ) { ?>
 					}
 				}
 			}
+
+				if ( ! array_key_exists( $count, $err_msg ) ) {
+					$err_msg[$count] = '';
+				}
+
+			
 				if ( $err_msg[$count] != '' ) { ?>
 				<tr><td colspan="4" align="right"><span style="font-weight:bold; color:#FF0000;"><?php echo $err_msg[$count]; ?></span></td></tr>
 				<?php } ?>
