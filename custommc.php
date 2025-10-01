@@ -462,17 +462,20 @@ class twpw_custom_mc {
 		$request_type = "GET";
 
 		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
-	  $response1 = json_decode( $response1 );
+	    $response1 = json_decode( $response1 );
 		$mclists = $response1->tags;
 
 		$mailchimptags = '<select multiple="multiple" class="mctag" name="twpw_custommc['.$levelid.'][mctag][]">';
+
+		$selected_tags = (array) ($settings[$levelid]['mctag'] ?? array());
+
 		foreach ( $mclists as $list1 ) {
-			$mailchimptags.='<option value="'.$list1->name.'"';
-			$list1->name = (string)$list1->name;
-			if( in_array( $list1->name, $settings[$levelid]['mctag'] ) ) {
-				$mailchimptags.=' selected="yes" ';
+			$label = (string) $list1->name;
+			$mailchimptags .= '<option value="'.$label.'"';
+			if ( in_array( $label, $selected_tags, true ) ) {
+				$mailchimptags .= ' selected="yes" ';
 			}
-			$mailchimptags.='>'.$list1->name.'</option>';
+			$mailchimptags .= '>'.$label.'</option>';
 		}
 		$mailchimptags .= '</select>';
 		return $mailchimptags;
