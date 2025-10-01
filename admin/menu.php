@@ -395,6 +395,12 @@ if ( $display ) { ?>
 					?>
 						<tr class="twpwmergevals">
 							<?php
+
+							if ( ! isset( $settings[$level['id']] ) || ! is_array( $settings[$level['id']] ) ) {
+								$settings[$level['id']] = array();
+							}
+							
+							
 							foreach ( $mclists as $list1 ) {
 								if ( $settings[$level['id']][$list1->tag] === NULL ) {
 									if ( $list1->tag == 'FNAME' ) {
