@@ -698,7 +698,7 @@ if ( $display ) { ?>
 		wp_die();
 	  }
 
-function twpwcustommclists() {
+function new_twpwcustommclists() {
 	global $twpw_custommc_mcapi;
 	$debug = get_option( 'twpw_custommc_debug', 'no' );
 	$logger = '';
@@ -876,9 +876,96 @@ function twpwcustommclists() {
 						echo twpw_custom_mc::acl_get_tags( $settings[$level['id']]['mclistid'],$level['id'] );
 					}
 					?></td>
-					</tr>
 <?php
+$display = false;
+if ( $display ) { ?>
+					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][update_join_date]" value="yes"
+						<?php
+							if ( $settings[$level['id']]['update_join_date'] == 'yes' ) {
+								echo ' checked="checked" ';
+							}
+						?>
+					/>
+					</td>
 
+					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][dblopt]" value="yes"
+						<?php
+							if ( $settings[$level['id']]['dblopt'] == 'yes' ) {
+							 echo ' checked="checked" ';
+							}
+						?>
+					/>
+					</td>
+
+
+					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][sendwel]" value="yes"
+						<?php if ( $settings[$level['id']]['sendwel'] == 'yes' ) {
+								echo ' checked="checked" ';
+							}
+						?>
+					/></td>
+
+					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][unsub]" value="yes"
+						<?php if ( $settings[$level['id']]['unsub'] == 'yes' ) {
+								echo ' checked="checked" ';
+							}
+						 ?>
+					/></td>
+
+					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][sendbye]" value="yes"
+						<?php if ( $settings[$level['id']]['sendbye'] == 'yes' ) {
+								echo ' checked="checked" ';
+							}
+						?>
+					/></td>
+
+					<td><input type="checkbox" name="twpw_custommc[<?php echo $level['id']; ?>][sendnotify]" value="yes"
+						<?php if ( $settings[$level['id']]['sendnotify'] == 'yes' ) {
+							echo ' checked="checked" ';
+							}
+						?>
+					/></td>
+
+				</tr>
+				<?php
+
+				if ( $settings[$level['id']]['mclistid'] ) {
+					try {
+						$response1 = $twpw_custommc_mcapi->lists->getListMergeFields('c580a5bbc9');
+						$listarr = array();
+						$listnum = 0;
+					} catch (Exception $e) {
+							echo '<pre>';
+							$exception = (string) $e->getResponse()->getBody();
+							$exception = json_decode($exception);
+						echo var_export( $exception ).'<br />';
+							echo 'An error has occurred: '.$exception->title.' - '.$exception->detail;
+							echo '</pre>';
+					} finally {
+						$mclists = $response1->merge_fields;
+					?>
+						<tr class="twpwmergevals">
+							<?php
+							foreach ( $mclists as $list1 ) {
+								if ( $settings[$level['id']][$list1->tag] === NULL ) {
+									if ( $list1->tag == 'FNAME' ) {
+										$tag = 'FirstName';
+									} elseif ( $list1->tag == 'LNAME' ) {
+										$tag = 'LastName';
+									}
+								} else {
+									$tag = $settings[$level['id']][$list1->tag];
+								}
+							?>
+								<td ><?php echo $list1->name.' ('.$list1->tag.')'; ?></td><td><input type="text" size="10" name="twpw_custommc[<?php echo $level['id']; ?>][<?php echo $list1->tag; ?>]" value="<?php if ( $tag ) { echo $tag; } ?>" /></td>
+							<?php
+							}
+							?>
+						</tr>
+					<?php
+					}
+				}
+			}
 				if ( $err_msg[$count] != '' ) { ?>
 				<tr><td colspan="4" align="right"><span style="font-weight:bold; color:#FF0000;"><?php echo $err_msg[$count]; ?></span></td></tr>
 				<?php } ?>
