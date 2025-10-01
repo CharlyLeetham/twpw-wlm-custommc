@@ -515,10 +515,6 @@ class twpw_custom_mc {
 	    $response1 = json_decode( $response1 );
 		$mclists = $response1->options->choices;
 
-		error_log ( "logging: " . var_export( $logging, true ) );
-		error_log ( "response1: " . var_export( $response1, true ) );
-		error_log ( "mclists: " . var_export( $mclists, true ) );
-
 		if ( $logging ) {
 			$logger .= "MC Lists \r\n";
 			$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n";
@@ -536,7 +532,6 @@ class twpw_custom_mc {
 		$mailchimptags .= '<select class="mcworkflow" name="twpw_custommc['.$levelid.'][mcworkflow][]">';
 		foreach ( $mclists as $list1 ) {
 			$logger .= "List1: " . var_export( $list1, true );
-			error_log ( "list1: " . var_export( $list1, true ) );
 			$mailchimptags.='<option value="'.$list1.'"';
 			if( in_array( $list1, $settings[$levelid]['mcworkflow'] ) ) {
 				$mailchimptags.=' selected="yes" ';
