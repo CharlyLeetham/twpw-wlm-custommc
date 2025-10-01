@@ -425,6 +425,7 @@ if ( $display ) { ?>
 					}
 				}
 			}
+			echo '</tr>';
 
 				if ( ! array_key_exists( $count, $err_msg ) ) {
 					$err_msg[$count] = '';
