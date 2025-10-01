@@ -554,7 +554,7 @@ class twpw_custom_mc {
 		return $mailchimptags;
 	}
 
-	public static function acl_change_user_mc ( $action=NULL, $levid=NULL, $listid=NULL, $user=NULL, array $groupings, array $tags, array $merge_vals ) {
+	public static function acl_change_user_mc( $action=NULL, $levid=NULL, $listid=NULL, $user=NULL, array $groupings = array(), array $tags = array(), array $merge_vals = array() ) {
 
 	/*
 	add - the action, add or remove a users
