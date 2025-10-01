@@ -375,7 +375,7 @@ if ( $display ) { ?>
 						?>
 					/></td>
 
-				</tr>
+				<!-- </tr> -->
 				<?php
 
 				if ( $settings[$level['id']]['mclistid'] ) {
@@ -421,7 +421,9 @@ if ( $display ) { ?>
 					}
 				}
 			}
-
+			?>
+			</tr>			
+			<?php
 				if ( ! array_key_exists( $count, $err_msg ) ) {
 					$err_msg[$count] = '';
 				}
