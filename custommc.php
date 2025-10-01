@@ -702,7 +702,7 @@ class twpw_custom_mc {
 
 		$logger = "\r\n"."New Catt: ". var_export( $newcatarr, true )."\r\n";
 		$logger .= "\r\n\r\n";
-		$logger .= "MCGroup: ". var_export( $settings[$levid]['mcgroup'], export)."\r\n\r\n";
+		$logger .= "MCGroup: ". var_export( $settings[$levid]['mcgroup'], true)."\r\n\r\n";
 
 		// if ( $logger ) {
 			$logfile = fopen( LOGPATH."aclgroups.log", "a" );
