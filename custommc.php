@@ -495,6 +495,13 @@ class twpw_custom_mc {
 			$logging = false;
 		}
 
+		$debug = get_option("twpw_custommc_listdebug");
+		if ( $debug == "yes") {
+			$debug = true;
+		} else {
+			$debug = false;
+		}		
+
 		$logger = '';
 
 		$data = array (

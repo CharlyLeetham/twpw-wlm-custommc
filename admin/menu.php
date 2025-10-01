@@ -159,10 +159,11 @@ function twpwcustommclists() {
 	<p>Here you can set the Mailchimp list for each level, whether to use double optin; send the welcome email; and unsubscribe from list when removed from level</p>
 
 	<?php
+	$count = 0;
+	$err_msg = array();
+	$error_occured = false;	
+
 	if( isset($_POST["submit"] ) ){
-		$count = 0;
-		$err_msg = array();
-		$error_occured = false;
 
 		if ( $debug == 'yes' ) {
 			$logger .= 'Full settings: '.var_export( $_POST['twpw_custommc'], true )."\r\n";
@@ -192,6 +193,7 @@ function twpwcustommclists() {
 	if( $error_occured ){
 		echo '<div align="center" style="font-weight: bold; font-size: 16px; color: #FF0000; margin-bottom: 10px;">Your changes have not been saved. Please scroll down to see the error message(s).</div>';
 	} else {
+	
 		if ( isset($_POST["submit"] ) ) {
 			echo '<div align="center" style="font-weight: bold; font-size: 16px; color: #FF0000; margin-bottom: 10px;">Your changes have been saved!</div>';}
 		} ?>
@@ -240,7 +242,11 @@ function twpwcustommclists() {
 					<td class="workflow gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>">
 						<?php
 
-						if ( $debug == 'yes' ) {
+						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
+							$settings[$level['id']]['mcworkflow'] ='';
+						}
+
+						if ( $debug == 'yes' ) {						
 							$logger .= var_export ( $level, true );
 							$logger .= "\r\n***\r\n";
 							$logger .= var_export( $settings[$level['id']], true );
@@ -251,9 +257,7 @@ function twpwcustommclists() {
 							$logger .= "\r\n***\r\n";
 						}
 
-						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-							$settings[$level['id']]['mcworkflow'] ='';
-						}
+
 
 						if ( !empty ($settings[$level['id']]['mclistid'] ) ) {
 							echo twpw_custom_mc::acl_get_workflow( $settings[$level['id']]['mclistid'],$level['id'] );
@@ -265,6 +269,10 @@ function twpwcustommclists() {
 					<td class="grouplisting gl-<?php echo $level['id']; ?>" levelid="<?php echo $level['id']; ?>">
 						<?php
 
+						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
+							$settings[$level['id']]['mcgroup'] ='';
+						}
+												
 						if ( $debug == 'yes' ) {
 							$logger .= var_export ( $level, true );
 							$logger .= "\r\n***\r\n";
@@ -276,9 +284,7 @@ function twpwcustommclists() {
 							$logger .= "\r\n***\r\n";
 						}
 
-						if ( empty( $settings[$level['id']]['mclistid'] ) ) {
-							$settings[$level['id']]['mcgroup'] ='';
-						}
+
 
 						if ( !empty ($settings[$level['id']]['mclistid'] ) ) {
 							$mclists = twpw_custom_mc::acl_get_interest_groups( $settings[$level['id']]['mclistid'] );
