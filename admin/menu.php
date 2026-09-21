@@ -643,6 +643,7 @@ if ( $display ) { ?>
 				foreach ( $mclists as $mclist ) {
 					echo '<option disabled="disabled">** '.$mclist['title'].' **</option>';
 					foreach ( $mclist['groups'] as $group => $gvalue ) {
+						echo '<option value="'.$gvalue['id'].'" ';
 						$selected_groups = (array) ( $settings[$_POST['levelid']]['mcgroup'] ?? array() );
 						if ( in_array( $gvalue['id'], $selected_groups, true ) )
 							echo 'selected="selected" ';
