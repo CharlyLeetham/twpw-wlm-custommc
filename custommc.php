@@ -537,11 +537,12 @@ class twpw_custom_mc {
 		// $mclists1 = var_export( $mclists, true);
 		// return $mclists1;
 		// $mailchimptags = '<pre>'.$mclists1.'</pre>';
+		$selected_workflows = (array) ( $settings[$levelid]['mcworkflow'] ?? array() );
 		$mailchimptags .= '<select class="mcworkflow" name="twpw_custommc['.$levelid.'][mcworkflow][]">';
 		foreach ( $mclists as $list1 ) {
 			$logger .= "List1: " . var_export( $list1, true );
 			$mailchimptags.='<option value="'.$list1.'"';
-			if( in_array( $list1, $settings[$levelid]['mcworkflow'] ) ) {
+			if( in_array( $list1, $selected_workflows, true ) ) {
 				$mailchimptags.=' selected="yes" ';
 			}
 			$mailchimptags.='>'.$list1.'</option>';
