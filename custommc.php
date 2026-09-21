@@ -1,9 +1,9 @@
-<?php 
+<?php
 /*
 Plugin Name: TWPW Custom MC signup
 Plugin URI: http://askcharlyleetham.com
 Description: Mailchimp Signup
-Version: 2a
+Version: 2.04
 Author: Morgan & Charly Leetham
 Author URI: http://thewpwarrior.com
 License: GPL
@@ -13,491 +13,781 @@ Version 1.0 - Original Version
 Version 1.1 - Added WooCommerce support and Delete User support
 Version 1.2 - Added Mailchimp Group support
 Version 1.3 - Fixed Sequential Add
+Version 2a - Tidy up.
+Version 2.01 - Clean up the code being output to the screen.
+Version 2.02 - Rewrite to stop people being moved after being added
+Version 2.03 - Adding a class, removed WooCommerce support. upgrading to Mailchimp 3.0 api, adding support for mailchimp tags.
+Version 2.04 - Added support for Mailchimp Workflow
 */
 
-/* WP Version Check */
-global $wp_version;
 
-$exit_msg='Mailchimp Signup requires WordPress 3.3.1 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please upgrade!</a> You have version: '.$wp_version.'';
-if (version_compare($wp_version, "3.3.1","<"))
-{
-	exit ($exit_msg);
-}
+class twpw_custom_mc {
 
-require_once(dirname(__FILE__) . '/admin/menu.php');
+	public $acl_plugin_dir = WP_PLUGIN_DIR . '/twpw-wlm-custommc';
 
-/*	--------------------------------------------------
-	Load the admin stylesheet
- ----------------------------------------------------- */
-function twpw_custommc_admin_register_head() {
-	$siteurl = get_option('siteurl');
-	$url = $siteurl . '/wp-content/plugins/' . basename(dirname(__FILE__)) . '/admin/style.css';
-	
-	echo "<link rel='stylesheet' type='text/css' href='$url' />\n";
-}
+	function twpw_custom_mc_activate() {
+		/* WP Version Check */
+		global $wp_version;
 
-add_action('admin_head', 'twpw_custommc_admin_register_head');
-
-function showmcapi1($id,$levels) {
-	$debug=true;
-	ob_start();
-	$settings = get_option('twpw_custommc',false);
-	$mcapikey = $settings['mcapikey'];	
-	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
-	
-	if ($debug) {
-		echo "User ID: " .$id;
-		echo "\r\n\r\n";
-		echo "Levels: ";
-		var_dump($levels);
-		echo "\r\n\r\n";
+		$exit_msg='Mailchimp Signup requires WordPress 3.3.1 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please upgrade!</a> You have version: '.$wp_version.'';
+		if (version_compare($wp_version, "3.3.1","<"))
+		{
+			exit ($exit_msg);
+		}
 	}
-	
-	//get the user object so we can grab their details to add to Mailchimp
-	$user = get_user_by('id',$id);
-	$firstname = $user->user_firstname;
-	$lastname = $user->user_lastname;
-	$useremail = $user->user_email;
 
-	//Using the POST variable, find the level that the member was added to
-
-	foreach($levels as $level) {
-
-		if($_POST['wpm_membership_to']) {
-			$level = $_POST['wpm_membership_to'];
-			$no_repeat = true;
-		} elseif ($_POST['wpm_id']) {
-			$level = $_POST['wpm_id'];
-			$no_repeat = true;
+	public static function init() {
+		if ( is_admin() ) {
+			require_once( dirname(__FILE__) . '/admin/menu.php' );
 		}
-		
-		if ($debug) {
-			echo "\r\n\r\n";
-			echo "On Level: ".$level;
-			echo "\r\n\r\n";
-			echo "Repeat: ";
-			var_dump($no_repeat);
-		}
-	
-		/* Find the appropriate MC Settings from the database */
+	}
 
-		$mclistid = (empty($settings[$level]['mclistid']))?false:$settings[$level]['mclistid'];
-		if ($mclistid==false) { /*echo "No List";*/ break; } else { /*echo "List: " . $mclistid;*/ }
-		$double_optin = (empty($settings[$level]['dblopt']))?true:false;
-		$unsub = (empty($settings[$level]['unsub']))?false:true;
-		$send_welcome = (empty($settings[$level]['sendwel']))?false:true;
-		$send_goodbye = (empty($settings[$level]['sendbye']))?false:true;
-		$send_notify = (empty($settings[$level]['sendnotify']))?false:true;
-		$groupings = array(); // create groupings array
-		if( !empty( $settings[$level]['mcgroup'] ) ) { // if there are groups
-			foreach( $settings[$level]['mcgroup'] as $group ) { // go through each group that's been set
-				$group = explode('::',$group); // divide the group as top id and bottom name
-				$groups[$group[0]][] = $group[1]; 
-			}
-			foreach($groups as $group_id => $group) {
-				$groupings[] = array('id'=>$group_id, 'groups' => $group);
-			}
+
+	/*	--------------------------------------------------
+		Load the admin stylesheet
+	 ----------------------------------------------------- */
+	function twpw_custommc_admin_register_head() {
+		$siteurl = get_option('siteurl');
+		$url = $siteurl . '/wp-content/plugins/' . basename(dirname(__FILE__)) . '/admin/style.css';
+
+		echo "<link rel='stylesheet' type='text/css' href='$url' />\n";
+	}
+
+	function acl_wlm_approve_user( $id, $levels ) {
+
+		ob_start();
+		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+
+		/* Setup Logging */
+		if (!file_exists(dirname( __FILE__ ).'/logs')) {
+			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
 		}
-		// Setup the array to send to Mailchimp
-		global $wpdb;
-		$mailchimp = new Mailchimp ( $mcapikey );
-		$merge_vars = array (
-							 'FNAME' => $firstname,
-							 'LNAME' => $lastname,
-							 'GROUPINGS' => $groupings,
-							);
-		$merge_vars = array_merge($merge_vars, $settings[$level]['merge_vars']);
-		// For PDT ONLY
-		$merge_vars['JOINED'] = current_time('Y-m-d');
-		$email_type = 'html';
-		$update_existing = TRUE;
-		$replace_interests = TRUE;	
-		$delete_member = FALSE;
-		
+
+		/* End logging setup */
+
+		date_default_timezone_set("US/Hawaii");
+		$logging = get_option("twpw_custommc_logging");
+		if ( $logging == "yes") {
+			$logging = true;
+		} else {
+			$logging = false;
+		}
+
+		$logger = '';
+		$debug = get_option("twpw_custommc_listdebug");
+		if ( $debug == "yes") {
+			$debug = true;
+		} else {
+			$debug = false;
+		}
+
+		$live = get_option("twpw_custommc_livetest");
+		if ( $live == "yes") {
+			$live = true;
+		} else {
+			$live = false;
+		}
+
+		/*Initialise the Mailchmip API */
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+
+		/* Get the settings for this plugin */
+		$settings = get_option("twpw_custommc");
+
+		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
+
+		/* Get the User details */
+		//get the user object so we can grab their details to add to Mailchimp
+		$user = get_user_by( 'id', $id );
+		$firstname = $user->user_firstname;
+		$lastname = $user->user_lastname;
+		$useremail = $user->user_email;
+		$subemailhash = md5 ( $useremail );
+
 		if ( $debug ) {
+			echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
+			echo "User ID: " .$id;
 			echo "\r\n\r\n";
-			echo "Post: ";
-			var_dump($_POST);			
-		}
-
-		// Assign $action based on the WLM call used
-		if ($_POST['wpm_action']) {
-			$action = $_POST['wpm_action'];
-		} elseif ($_POST['action']) {
-			$action = $_POST['action'];
-		} else {
-			$action = 'wpm_add_membership';
-		}
-
-		if ($debug) {
+			echo 'Post: ';
+			$postexp = var_export( $_POST, true );
+			echo $postexp;
 			echo "\r\n\r\n";
-			echo "Action: ". $action;
+			$levexp = var_export( $levels, true );
+			echo 'Levels: '.$levexp;
+			echo "\r\n\r\n";
+			$levexp = var_export ( $wlmlevels, true );
+			echo 'WLM Levels: '.$levexp;
+			echo "\r\n\r\n";
+			$sett = var_export ( $settings, true );
+			echo 'TWPW CustomMC:';
+			echo $sett."\r\n\r\n";
 		}
-		//Add or Remove from Mailchimp list based on WLM action and Mailchimp settings
-		if ( $action=='wpm_add_membership' || $action == 'wpm_register' || $action=='wpm_change_membership' || $action=='admin_actions' ) {
-					
-			wp_mail('charly@askcharlyleetham.com','new test data',$useremail);
-			
-			if ( $debug ) {
-				$result = $mailchimp->call( '/lists/subscribe', array(
-					'apikey' => $mcapikey,
-					'id' => $mclistid,
-					'email' => array('email' => $useremail),
-					'merge_vars' => $merge_vars,
-					'email_type' => $email_type,
-					'double_optin' => $double_optin,
-					'update_existing' => $update_existing,
-					'replace_interests' => $replace_interests,
-					'send_welcome' => $send_welcome
-				));
-			}
-									
-			if ( $debug ) {
-				if ($mailchimp->errorCode){
-					echo "Unable to load listUnsubscribe()!\n";
-					echo "\tCode=".$mailchimp->errorCode."\n";
-					echo "\tMsg=".$mailchimp->errorMessage."\n";
-					$msg1 .= "Unable to load listUnsubscribe()!\n";
-					$msg1 .= "\tCode=".$mailchimp->errorCode."\n";
-					$msg1 .= "\tMsg=".$mailchimp->errorMessage."\n";					
-					
-				} else {
-					echo "\r\n\r\n";
-					echo 'Success';
-					$msg1 .= 'Success'."\n";					
-				}
-			}
-		} elseif ($action == 'wpm_del_membership' && $unsub == true) {
-			
-			$result = $mailchimp->call( '/lists/unsubscribe', array(
-				'apikey' => $mcapikey,
-				'id' => $mclistid,
-				'email' => array('email' => $useremail),
-				'delete_member' => $delete_member,
-				'send_goodbye' => $send_goodbye,
-				'send_notify' => $send_notify
-			));	
-			if ($debug) {
-				if ($mailchimp->errorCode){
-					echo "Unable to load listUnsubscribe()!\n";
-					echo "\tCode=".$mailchimp->errorCode."\n";
-					echo "\tMsg=".$mailchimp->errorMessage."\n";
-					$msg1 .= "Unable to load listUnsubscribe()!\n";
-					$msg1 .= "\tCode=".$mailchimp->errorCode."\n";
-					$msg1 .= "\tMsg=".$mailchimp->errorMessage."\n";					
-				} else {
-					echo "\r\n\r\n";
-					echo 'Success';					
-					$msg1 .= 'Success'."\n";
-				}
-			}
+
+		if ( $logging ) {
+			$logger .= "Add Member Action triggered \r\n";
+			$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n";
+		  $logger .= "User ID: " .$id."\r\n\r\n";
 		}
-		if($no_repeat) break; 
-		if( $debug ) {
-			wp_mail('charly@askcharlyleetham.com','test data',ob_get_clean());
-    		$logfile = fopen("/home/kaf2728/mcintlog.log", "w");
-            fwrite($logfile, $msg1);
-            fclose($logfile);
-		}
-	}
-	return $result;
-}
-add_action ('wishlistmember_remove_user_levels','showmcapi1',30,2);
-add_action ('wishlistmember_add_user_levels','showmcapi1',30,2);
 
+		//set our actions
+		$wlmaction = $_POST['WishListMemberAction'];
+		$levelaction = $_POST['level_action'];
+		$memaction = "add";
 
-function showmcapi2($id) {
+		foreach( $levels as $k => $levid ) {
 
-	//get the user object so we can grab their details to add to Mailchimp
-	/* Find the appropriate MC Settings from the database */
-	$debug=true;
-	$settings = get_option('twpw_custommc',false);
-	$mcapikey = $settings['mcapikey'];
-	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
-	$mailchimp = new Mailchimp ( $mcapikey );
-		
-	$wlmapi = twpw_verify_api();		
-	$user = get_user_by('id',$id);
-	$firstname = $user->user_firstname;
-	$lastname = $user->user_lastname;
-	$useremail = $user->user_email;
-
-	$levels = unserialize($wlmapi->get('/members/'.$id));
-	$levels = $levels['member'][0]['Levels'];
-	$levels = array_keys($levels);
-	
-	foreach ($levels as $level) {
-		$mclistid = (empty($settings[$level]['mclistid']))?false:$settings[$level]['mclistid'];
-			if ($mclistid==false) { break; }
-		$unsub = (empty($settings[$level]['unsub']))?false:true;
-		$send_goodbye = (empty($settings[$level]['sendbye']))?false:true;
-		$send_notify = (empty($settings[$level]['sendnotify']))?false:true;
-	
-		// Setup the array to send to Mailchimp
-		$merge_vars = array (
-							 'FNAME' => $firstname,
-							 'LNAME' => $lastname,
-							);									
-		$email_type = 'html';
-		$update_existing = TRUE;
-		$replace_interests = TRUE;	
-		$delete_member = FALSE;
-		
-		//echo $mcapikey.' '.$mclistid.' |'.$useremail.'| '.$delete_member.' '.$send_goodbye.' '.$send_notify;
-
-
-		$result = $mailchimp->call( '/lists/unsubscribe', array(
-			'apikey' => $mcapikey,
-			'id' => $mclistid,
-			'email' => array('email' => $useremail),
-			'delete_member' => $delete_member,
-			'send_goodbye' => $send_goodbye,
-			'send_notify' => $send_notify
-		));	
-		var_dump($result);
-		//die();
-		if ($debug) {
-			if ($mailchimp->errorCode){
-				echo "Unable to load listUnsubscribe()!\n";
-				echo "\tCode=".$mailchimp->errorCode."\n";
-				echo "\tMsg=".$mailchimp->errorMessage."\n";
+			if ( ( $settings[$levid]['mclistid'] ) ) {
+				$mclistid = $settings[$levid]['mclistid'];
 			} else {
-				echo 'Success';
+				$mclistid = false;
 			}
-			die();
-		}
-		
-	}
-	return $result;
 
-}
-//add_action( 'delete_user', 'showmcapi2' );
-
-//For Woo Commerce / WLM integration
-function showmcapi3($id,$levels) {
-	$debug=false;
-	$settings = get_option('twpw_custommc',false);
-	$mcapikey = $settings['mcapikey'];	if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );
-
-
-	$mailchimp = new Mailchimp ( $mcapikey );		
-
-	//get the user object so we can grab their details to add to Mailchimp
-	$user = get_user_by('id',$id);
-	$firstname = $user->user_firstname;
-	$lastname = $user->user_lastname;
-	$useremail = $user->user_email;
-	
-	
-	
-	/* Find the appropriate MC Settings from the database */
-
-	foreach ($levels as $level) {	
-		$mclistid = (empty($settings[$level]['mclistid']))?false:$settings[$level]['mclistid'];
-			if ($mclistid==false) { return; }
-		$double_optin = (empty($settings[$level]['dblopt']))?true:false;
-		$unsub = (empty($settings[$level]['unsub']))?false:true;
-		$send_welcome = (empty($settings[$level]['sendwel']))?false:true;
-		$send_goodbye = (empty($settings[$level]['sendbye']))?false:true;
-		$send_notify = (empty($settings[$level]['sendnotify']))?false:true;
-		
-		$groupings = array(); // create groupings array
-		if( !empty( $settings[$level]['mcgroup'] ) ) { // if there are groups
-			foreach( $settings[$level]['mcgroup'] as $group ) { // go through each group that's been set
-				$group = explode('::',$group); // divide the group as top id and bottom name
-				$groups[$group[0]][] = $group[1]; 
-			}
-			foreach($groups as $group_id => $group) {
-				$groupings[] = array('id'=>$group_id, 'groups' => implode(',',$group));
-			}
-		}
-		// Setup the array to send to Mailchimp
-		$merge_vars = array (
-							 'FNAME' => $firstname,
-							 'LNAME' => $lastname,
-							 'GROUPINGS' => $groupings,
-							);
-											
-		$email_type = 'html';
-		$update_existing = TRUE;
-		$replace_interests = TRUE;	 
-
-		$result = $mailchimp->call( '/lists/subscribe', array(
-			'apikey' => $mcapikey,
-			'id' => $mclistid,
-			'email' => array('email' => $useremail),
-			'merge_vars' => $merge_vars,
-			'email_type' => $email_type,
-			'double_optin' => $double_optin,
-			'update_existing' => $update_existing,
-			'replace_interests' => $replace_interests,
-			'send_welcome' => $send_welcome
-		));
-		$debug="on";
-		if ($debug == "on") {
-    		if ($mailchimp->errorCode){
-    			$msg1 = "Unable to load listUnsubscribe()!\n";
-    			$msg1 .= "\tCode=".$mailchimp->errorCode."\n";
-    			$msg1 .= "\tMsg=".$mailchimp->errorMessage."\n";
-    			/*die();*/
-    		} else {
-    			$msg1 = 'Success';
-    			/*die();*/
-    		}
-    		$logfile = fopen("/home/askcharl/mcintlog.log", "w");
-            fwrite($logfile, $msg1);
-            fclose($logfile);
-		}
-	}
-	return $result;
-}
-
-
-function get_mailchimp_lists($mclistid,$wlmlevelid) {
-	//Setup the mailchimp api
-	global $twpw_custommc_mcapi;
-	$settings = get_option("twpw_custommc");
-	$api_key = $settings['mcapikey'];
-	if (($api_key <> "")) {
-		$list_info = $twpw_custommc_mcapi->call('/lists/list',array(
-			'api_key' => $api_key,
-		));
-		$alllists = $list_info['data'];
-		$mailchimplists = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mclistid]">
-						<option value="0">No list</option>';
-						foreach ($alllists as $key=>$value) {
-							$mailchimplists.='<option value="'.$alllists[$key]['id'].'"';
-								if ($alllists[$key]['id'] == $mclistid) { $mailchimplists.=' selected="yes" '; }
-							$mailchimplists.='>'.$alllists[$key]['name'].'</option>';
-						}
-		$mailchimplists .= '</select>';
-	} else {
-		$mailchimplists.= 'Please enter your mailchimp API before continuing<br>';
-	}
-	return $mailchimplists;
-}
-
-
-function twpw_custommc_createMCAPI() {
-	global $twpw_custommc_mcapi;
-	if (isset($twpw_custommc_mcapi)) return;
- if ( !class_exists ( 'Mailchimp' ) ) require_once ( 'includes/Mailchimp.php' );		
-	$settings = get_option("twpw_custommc");
-	$api_key = $settings['mcapikey'];	
-	$twpw_custommc_mcapi = new Mailchimp ( $api_key );
-}
-
-function twpw_create_merge_vars_feilds($level_id,$settings) {
-//Create the cell and table for the merge vars; and the row for the meger headings ?>
-<td><table><tr>
-<?php
-	twpw_custommc_createMCAPI();
-	global $twpw_custommc_mcapi;
-		$mc_merge_vars = $twpw_custommc_mcapi->call('/lists/merge-vars',array('id'=>array($settings[$level_id]['mclistid'])));
-	$mc_merge_vars = $mc_merge_vars['data'][0]['merge_vars'];
-/**/
-	foreach($mc_merge_vars as $merge_var){
-		if(!in_array($merge_var['tag'],array('EMAIL','FNAME','LNAME'))) { ?>
-			<td><strong><?php echo $merge_var['name']; ?></strong></td>
-<?php
-		}
-	}
-	//Close the heading row, open the options row?>
-</tr><tr>
-	<?php
-	foreach($mc_merge_vars as $merge_var){
-		if(!in_array($merge_var['tag'],array('EMAIL','FNAME','LNAME'))) { ?>
-		<td>
-			<?php $feild_name = 'twpw_custommc['. $level_id .'][merge_vars]['.$merge_var['tag'].']'; ?>
-				<?php 
-				switch($merge_var['field_type']) {
-					case 'date':
-						//echo '<input type="date" name="'.$level_id.'::'.$feild_name.'" id="'.$level_id.'::'.$merge_var['tag'].'" value="'.$settings[$level_id]['merge_vars'][$merge_var['tag']].'" disabled="disabled"/>';
-						break;
-					case 'radio':
-						ob_start();
-						foreach($merge_var['choices'] as $key => $choices) {
-							if( $choices == $settings[$level_id]['merge_vars'][$merge_var['tag']] ) {
-								$checkthis = 'nocheckthis';
-								$optionfound = true;
-							} elseif (  $key == 0  ) {
-								$checkthis = 'checkthis';
-							}
-							echo '<input type="radio" name="'.$feild_name.'" id="'.$level_id.'::'.$merge_var['tag'].'::'.$key.'" value="'.$choices.'" '.$checkthis.'/>';
-							echo '<label for="'.$level_id.'::'.$merge_var['tag'].'::'.$key.'">'.$choices.'</label><br />';
-							$checkthis = '';
-						}
-						$output = ob_get_contents();
-						if( $optionfound ) {
-							$output = str_replace( array( 'nocheckthis','checkthis'), array( 'checked="checked" ',''), $output);
-						} else { 
-							$output = str_replace( array( 'checkthis'), array( 'checked="checked"'), $output);
-						
-						}
-						ob_end_clean();
-						echo $output;
-						$optionfound = false;
-						break;
-					default:
-						echo '<input type="text" name="'.$merge_var['tag'].'" id="'.$merge_var['tag'].'" />';
+			if ( $mclistid == false ) {
+				if ( $debug ) {
+					echo "No List";
+					echo "\r\n\r\n";
+					$logfile = fopen( LOGPATH."mcapplog.log", "a" );
+					$out =ob_get_clean();
+					fwrite( $logfile, $out );
+					fclose( $logfile );
 				}
-				?>
-		</td>
-<?php		}
-	}
-?>
-</tr></table></td>
-<?php	/**/
-}
 
-if (!function_exists('twpw_verify_api')) {
-	function twpw_verify_api() {
-	global $twpw_wlm_api;	
-	if (isset($twpw_wlm_api)) {
-		return $twpw_wlm_api;
-	}
-	global $wpdb;
-	$wlmapikey =  $wpdb->get_results("SELECT `option_value` FROM `{$wpdb->prefix}wlm_options` WHERE `option_name` = 'WLMAPIKey'",ARRAY_N);
-	$wlmapikey = $wlmapikey[0][0];
-	$wlmapiset = 'no';
-	if ($wlmapiset) {
-		$x = WP_PLUGIN_DIR.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__));
-		$x = $x.'/includes/wlmapiclass.php';
-		if (!file_exists(trim($x))) {
-			return 'No File';
+				if ( $logging ) {
+					$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not added to Mailchimp.'."\r\n";
+					$logfile = fopen( LOGPATH."approvemember.log", "a" );
+					fwrite( $logfile, $logger );
+					fclose( $logfile );
+				}
+
+			} else {
+				if ( $debug ) {
+					echo "List: " . $mclistid;
+					echo "\r\n\r\n";
+				}
+
+				$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
+
+				$tags = twpw_custom_mc::acl_get_mem_tags( $levid, $mclistid, $memaction );
+
+				// Setup the array to send to Mailchimp
+				global $wpdb; //is thi needed?
+
+				$merge_vars = array (
+									 'FNAME' => $firstname,
+									 'LNAME' => $lastname,
+									);
+				// For PDT ONLY
+				$merge_vars['JOINED'] = current_time('Y-m-d');
+				$merge_vars['TRIGGER'] = $settings[$levid]['mcworkflow'][0];
+				$logger .= 'Trigger: '.var_export( $settings[$levid]['mcworkflow'][0], true)."\r\n";
+				$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
+				if ( empty ( $previous_join_date ) ) {
+					add_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
+					echo 'join date of '.$merge_vars['JOINED'].' added'."\r\n\r\n";
+					$logger .= 'join date of '.$merge_vars['JOINED'].' added';
+				} elseif ( $settings[$level[$levid]]['update_join_date'] == 'yes' ) {
+					update_user_meta ( $id, 'wlm_join_date', $merge_vars['JOINED'] );
+					echo 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED']."\r\n";
+					$logger .= 'join date updated from '.$previous_join_date.' to: '.$merge_vars['JOINED'];
+				} else {
+					echo 'join date not updated from '.$previous_join_date[0]."\r\n";
+					$logger .= 'join date not updated from '.$previous_join_date[0];
+				}
+
+				if ( $live ) {
+					$userchange = twpw_custom_mc::acl_change_user_mc ( 'add', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
+					/*
+					add - the action, add or remove a users
+					$levid - WLM level
+					$mclistid - the Mailchimp we're adding to.
+					$groupings - the Interest groups
+					$tags - Tags for the member
+					$merge_vals - Merge_vals needed by mailchimp.
+					*/
+
+					if ( $logging ) {
+						$logger .= "Memaction: ".var_export( $memaction, true )."\r\n\r\n";
+						$logger .= "Groups for export \r\n\r\n";
+						$logger .= var_export( $groupings, true )."\r\n\r\n";
+						$logger .= var_export ( $userchange, true )."\r\n\r\n";
+					}
+
+					if( $logging ) {
+						$logfile = fopen( LOGPATH."approvemember.log", "a" );
+						fwrite( $logfile, $logger );
+						fclose( $logfile );
+					}
+				} /* End live function */
+
+
+			} /*If there is no list / list tested */
+
+			if( $logging ) {
+				$logfile = fopen( LOGPATH."approvemember.log", "a" );
+				fwrite( $logfile, $logger );
+				fclose( $logfile );
+			}
+
+			if ( $debug ) {
+				$logfile = fopen( LOGPATH."mcapplog.log", "a" );
+				$out = ob_get_clean();
+				fwrite( $logfile, $out );
+				fclose( $logfile );
+			}
+		} /* List loop */
+	} /* End Approve Member */
+
+	function acl_wlm_unapprove_user( $id, $levels ) {
+
+		ob_start();
+		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+		/* Setup Logging */
+		if (!file_exists(dirname( __FILE__ ).'/logs')) {
+			mkdir(dirname( __FILE__ ).'/logs', 0775, true);
+		}
+		define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+		/* End logging setup */
+		date_default_timezone_set("US/Hawaii");
+
+		$logging = get_option("twpw_custommc_logging");
+		if ( $logging == "yes") {
+			$logging = true;
 		} else {
-			/* include the class */
-			if (!class_exists('wlmapiclass')) {
-				include ($x);
+			$logging = false;
+		}
+
+		$debug = get_option("twpw_custommc_listdebug");
+		if ( $debug == "yes") {
+			$debug = true;
+		} else {
+			$debug = false;
+		}
+
+		$live = get_option("twpw_custommc_livetest");
+		if ( $live == "yes") {
+			$live = true;
+		} else {
+			$live = false;
+		}
+
+		$logger = '';
+
+		/*Initialise the Mailchmip API */
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+
+		/* Get the settings for this plugin */
+		$settings = get_option("twpw_custommc");
+
+		/* Get the User details */
+		//get the user object so we can grab their details to add to Mailchimp
+		$user = get_user_by( 'id', $id );
+		$firstname = $user->user_firstname;
+		$lastname = $user->user_lastname;
+		$useremail = $user->user_email;
+		$subemailhash = md5 ( $useremail );
+
+		$wlmlevels = wlmapi_get_member_levels($id); //Using the member ID, get the membership level details. We're going to use this information to find those that need approval.
+
+		if ( $debug ) {
+			echo 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n\r\n";
+			echo "User ID: " .$id;
+			echo "\r\n\r\n";
+			echo 'Post: ';
+			$postexp = var_export( $_POST, true );
+			echo $postexp;
+			echo "\r\n\r\n";
+			$levexp = var_export( $levels, true );
+			echo 'Levels: '.$levexp;
+			echo "\r\n\r\n";
+			$levexp = var_export ( $wlmlevels, true );
+			echo 'WLM Levels: '.$levexp;
+			echo "\r\n\r\n";
+		}
+
+		//Setting our actions for testing
+		$wlmaction = $_POST['WishListMemberAction'];
+		$levelaction = $_POST['level_action'];
+		$memaction = "remove";
+
+		foreach( $levels as $k => $levid ) {
+			if ( ( $settings[$levid]['mclistid'] ) ) {
+				$mclistid = $settings[$levid]['mclistid'];
+			} else {
+				$mclistid = false;
 			}
-			if (get_option('wlposturl')) {
-				$siteurl = get_option('wlposturl');
+
+			if ( $mclistid == false ) {
+				if ( $debug ) {
+					echo "No List";
+					echo "\r\n\r\n";
+				}
+
+				if ( $logging ) {
+					$logger .= date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') not removed from Mailchimp.'."\r\n";
+				}
 			} else {
-				$siteurl = get_bloginfo('url'); // get the site url 
-			}		
-			$siteurl = str_replace('https:','http:',$siteurl);
-			$siteurl = $siteurl.'/'; // append a / to the end of the url 
-			$twpw_wlm_api = new wlmapiclass($siteurl,$wlmapikey); // initialise the api
-			$twpw_wlm_api->return_format = 'php';			// set the return format to php	
-			$levelid = '/levels/';
-			$alllevels = $twpw_wlm_api->get($levelid);
-			$alllevels = unserialize($alllevels);
-			if ($alllevels['success'] === 0) {
-			// Check if the api is authenticated
-				return 'No Auth';
+				if ( $debug ) {
+					echo "List: " . $mclistid;
+					echo "\r\n\r\n";
+				}
+
+				$groupings = twpw_custom_mc::acl_get_mem_groups( $levid, $mclistid, $memaction );
+				$tags = twpw_custom_mc::acl_get_mem_tags( $levid, $mclistid, $memaction );
+
+				// Setup the array to send to Mailchimp
+				global $wpdb; // is this needeD?
+
+
+				// For PDT ONLY
+				$merge_vars['JOINED'] = current_time('Y-m-d');
+				$previous_join_date = get_user_meta( $id, 'wlm_join_date', false );
+				if ( !empty ( $previous_join_date ) ) {
+					echo 'join date of '.$merge_vars['JOINED'].' still set'."\r\n\r\n";
+					$logger .= 'join date of '.$merge_vars['JOINED'].' still set';
+				}
+
+				if ( $live ) {
+
+					$userchange = twpw_custom_mc::acl_change_user_mc ( 'remove', $levid, $mclistid, $id, $groupings, $tags, $merge_vars );
+					/*
+					add - the action, add or remove a users
+					$levid - WLM level
+					$mclistid - the Mailchimp we're adding to.
+					$groupings - the Interest groups
+					$tags - Tags for the member
+					$merge_vars - Merge_vars needed by mailchimp.
+					*/
+
+					if( $logging ) {
+						$logger = date("m/d/Y H:i:s"). '('. date ("O") .' GMT) '.$firstname.' '.$lastname.'('.$id.' '.$levid.') removed from Mailchimp.'."\r\n\r\n";
+					}
+				}
+			} /* there was something to do with the list */
+
+			if( $logging ) {
+				$logfile = fopen( LOGPATH."removemember.log", "a" );
+				fwrite( $logfile, $logger );
+				fclose( $logfile );
+			}
+
+			if ( $debug ) {
+				$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+				$out =ob_get_clean();
+				fwrite( $logfile, $out );
+				fclose( $logfile );
+			}
+		} /* list loop */
+	}
+
+
+	public static function get_mailchimp_lists( $mclistid,$wlmlevelid ) {
+		//Setup the mailchimp api
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+		$settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		if (($api_key <> "")) {
+
+			try {
+					$list_info= $twpw_custommc_mcapi->lists->getAllLists();
+			} catch (Exception $e) {
+					$exception = (string) $e->getResponse()->getBody();
+					$exception = json_decode($exception);
+					if ( $debug ){
+						$mailchimplists = 'An error has occurred***: '.$exception->title.' - '.$exception->detail.'<br />';
+					}
+			} finally {
+				$alllists = $list_info->lists;
+				$mailchimplists = '<select class="mclistid" name="twpw_custommc['.$wlmlevelid.'][mclistid]">
+								<option value="0">No list</option>';
+								foreach ($alllists as $list1) {
+									$mailchimplists.='<option value="'.$list1->id.'"';
+										if ($list1->id == $mclistid) { $mailchimplists.=' selected="yes" '; }
+									$mailchimplists.='>'.$list1->name.'</option>';
+								}
+				$mailchimplists .= '</select>';
+			}
+		} else {
+			$mailchimplists.= 'Please enter your mailchimp API before continuing<br>';
+		}
+		return $mailchimplists;
+	}
+
+	public static function acl_get_interest_groups( $listid, $levelid=NULL, $ajax=null ) {
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+		$settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
+		$response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
+		$mccats = $response1->categories;
+		$catarr = array();
+		$intarr = array();
+		$catnum = 0;
+
+
+
+		foreach ($mccats as $k) {
+			$catarr[$k->title]['id'] = $k->id;
+			$catarr[$k->title]['title'] = $k->title;
+			$data = array (
+				"count" => 1000
+			);
+			$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid.'/interest-categories/'.$k->id.'/interests';
+			// $interests = $twpw_custommc_mcapi->lists->listInterestCategoryInterests( $listid, $k->id );
+			$request_type = "GET";
+			$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
+		  $interests = json_decode( $response1 );
+			$ia = $interests->interests;
+			$intnum = 0;
+			foreach ( $ia as $v ) {
+				$catarr[$k->title]['groups'][$intnum]['name'] = $v->name;
+				$catarr[$k->title]['groups'][$intnum]['id'] = $v->id;
+				$catarr[$k->title]['groups'][$intnum]['catid'] = $v->category_id;
+				$intnum++;
+			}
+		}
+		return $catarr;
+	}
+
+	public static function acl_get_tags( $listid, $levelid=NULL, $ajax=null ) {
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+		$settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
+
+		$data = array (
+			"count" => 1000
+		);
+		$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/tag-search/";
+
+		$request_type = "GET";
+
+		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
+	    $response1 = json_decode( $response1 );
+		$mclists = $response1->tags;
+
+		$mailchimptags = '<select multiple="multiple" class="mctag" name="twpw_custommc['.$levelid.'][mctag][]">';
+
+		$selected_tags = (array) ($settings[$levelid]['mctag'] ?? array());
+
+		foreach ( $mclists as $list1 ) {
+			$label = (string) $list1->name;
+			$mailchimptags .= '<option value="'.$label.'"';
+			if ( in_array( $label, $selected_tags, true ) ) {
+				$mailchimptags .= ' selected="yes" ';
+			}
+			$mailchimptags .= '>'.$label.'</option>';
+		}
+		$mailchimptags .= '</select>';
+		return $mailchimptags;
+	}
+
+	public static function acl_get_workflow( $listid, $levelid=NULL, $ajax=null ) {
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+		$settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
+		$mailchimptags = "";
+
+		if ( ! defined( 'LOGPATH' ) ) {
+			define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+		}
+
+		if ( ! file_exists( LOGPATH ) ) {
+			mkdir( LOGPATH, 0775, true );
+		}
+
+		$logging = get_option("twpw_custommc_logging");
+			if ( $logging == "yes") {
+			$logging = true;
 			} else {
-				return $twpw_wlm_api;
-			} //end authentication test
-		} // (end file_exists)
-	} // End Function twpw_get_mem_levels
-}
+			$logging = false;
+		}
+
+		$debug = get_option("twpw_custommc_listdebug");
+		if ( $debug == "yes") {
+			$debug = true;
+		} else {
+			$debug = false;
+		}		
+
+		$logger = '';
+
+		$data = array (
+			"count" => 1000
+		);
+		$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid."/merge-fields/4";
+
+		$request_type = "GET";
+
+		$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
+	    $response1 = json_decode( $response1 );
+		$mclists = $response1->options->choices;
+
+		if ( $logging ) {
+			$logger .= "MC Lists \r\n";
+			$logger .= 'Date: '. date("m/d/Y H:i:s").' ('.date("O").') GMT'."\r\n";
+			$logger .= "response1: ";
+			$logger .= var_export( $response1, true );
+			$logger .= "\r\n\r\n";
+			$logger .= "mclists: ";
+			$logger .= var_export( $mclists, true );
+			$logger .= "\r\n\r\n";			
+		}
+
+		// $mclists1 = var_export( $mclists, true);
+		// return $mclists1;
+		// $mailchimptags = '<pre>'.$mclists1.'</pre>';
+		$mailchimptags .= '<select class="mcworkflow" name="twpw_custommc['.$levelid.'][mcworkflow][]">';
+		foreach ( $mclists as $list1 ) {
+			$logger .= "List1: " . var_export( $list1, true );
+			$mailchimptags.='<option value="'.$list1.'"';
+			if( in_array( $list1, $settings[$levelid]['mcworkflow'] ) ) {
+				$mailchimptags.=' selected="yes" ';
+			}
+			$mailchimptags.='>'.$list1.'</option>';
+		}
+		$mailchimptags .= '</select>';
+
+		if( $logging ) {
+			$logfile = fopen( LOGPATH."removemember.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );
+		}
+
+		if ( $debug ) {
+			$logfile = fopen( LOGPATH."mcremlog.log", "a" );
+			$out =ob_get_clean();
+			fwrite( $logfile, $out );
+			fclose( $logfile );
+		}
+
+		return $mailchimptags;
+	}
+
+	public static function acl_change_user_mc( $action=NULL, $levid=NULL, $listid=NULL, $user=NULL, array $groupings = array(), array $tags = array(), array $merge_vals = array() ) {
+
+	/*
+	add - the action, add or remove a users
+	$levid - WLM level
+	$mclistid - the Mailchimp we're adding to.
+	$groupings - the Interest groups
+	$tags - Tags for the member
+	$merge_vals - Merge_vals needed by mailchimp.
+
+		/* this function will modify a Mailchimp entry for a given user. It can be called by either the Add Level or Remove Level action hooks */
+
+
+		$logger = "\r\n"."Groupings: ". var_export( $groupings, true )."\r\n";
+		$logger .= "\r\n\r\n";
+
+		if ( $logger ) {
+			$logfile = fopen( LOGPATH."acladdmember.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );
+		}
+
+		if ( !$action || !$listid || !$levid || !$user ) {
+			$ret = "Something isn't set: \r\n";
+			$ret = "Action: ".var_export ( $action, true)." listid: ".var_export( $action, true )." levid: ". var_export( $levid, true )." user: ". var_export ( $user, true )."\r\n";
+			return $ret; }
+
+		/* Get the settings and setup the Mailchimp API */
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+		$settings = get_option("twpw_custommc");
+
+		/* Get the User details */
+		//get the user object so we can grab their details to add to Mailchimp
+		$user = get_user_by( 'id', $user );
+		$useremail = $user->user_email;
+		$subemailhash = md5 ( $useremail );
+
+		try {
+			$response = $twpw_custommc_mcapi->lists->setListMember( $listid, $subemailhash, [
+			    "email_address" => $useremail,
+			    "status_if_new" => "subscribed",
+					"merge_fields" => $merge_vals,
+					"interests" => $groupings,
+				]
+			);
+		} catch (Exception $e) {
+			$logger = "\r\n"."Something went wrong"."\r\n";
+			$exception = (string) $e->getResponse()->getBody();
+			$logger .= var_export ($exception, true );
+			$logger .= "\r\n\r\n";
+		}
+
+		try {
+				$response1 = $twpw_custommc_mcapi->lists->updateListMemberTags($listid, $subemailhash, [
+		    "tags" => $tags,
+				]);
+		} catch (Exception $e) {
+			$logger .= $e->getMessage(). "\n";
+			$exception = (string) $e->getResponse()->getBody();
+			$logger .= var_export ($exception, true );
+			$logger .= "\r\n\r\n";
+		}
+	}
+
+	public static function twpw_custommc_createMCAPI() {
+		require_once( dirname(__FILE__) . '/mailchimp/vendor/autoload.php' );
+		$settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
+		$twpw_custommc_mcapi = new \MailchimpMarketing\ApiClient();
+		$twpw_custommc_mcapi->setConfig([
+				'apiKey' => $api_key,
+				'server' => $dc
+		]);
+
+		return $twpw_custommc_mcapi;
+
+	}
+
+	public static function acl_mc_curl_connect( $url, $request_type, $api_key, $data = array() ) {
+
+		if( $request_type == 'GET' ) {
+			$url .= '?' . http_build_query($data);
+		}
+
+		$mch = curl_init();
+		$headers = array(
+			'Content-Type: application/json',
+			'Authorization: Basic '.base64_encode( 'user:'. $api_key )
+		);
+		curl_setopt($mch, CURLOPT_URL, $url );
+		curl_setopt($mch, CURLOPT_HTTPHEADER, $headers);
+		//curl_setopt($mch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+		curl_setopt($mch, CURLOPT_RETURNTRANSFER, true); // do not echo the result, write it into variable
+		curl_setopt($mch, CURLOPT_CUSTOMREQUEST, $request_type); // according to MailChimp API: POST/GET/PATCH/PUT/DELETE
+		curl_setopt($mch, CURLOPT_TIMEOUT, 10);
+		curl_setopt($mch, CURLOPT_SSL_VERIFYPEER, false); // certificate verification for TLS/SSL connection
+
+		if( $request_type != 'GET' ) {
+			curl_setopt($mch, CURLOPT_POST, true);
+			curl_setopt($mch, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
+		}
+
+		return curl_exec($mch);
+
+	}
+
+	public static function acl_get_mem_groups ( $levid = NULL, $listid = NULL, $memaction = NULL ) {
+
+		$logging = get_option("twpw_custommc_logging");
+		if ( $logging == "yes") {
+			$logging = true;
+		} else {
+			$logging = false;
+		}
+
+	  if ( !$levid || !$listid || !$memaction ) { return; }
+
+		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+	  $settings = get_option("twpw_custommc");
+		$api_key = $settings['mcapikey'];
+		$dc = $settings['mcdc'];
+
+		$response1 = $twpw_custommc_mcapi->lists->getListInterestCategories($listid);
+		$mccats = $response1->categories;
+		$catarr = array();
+
+		foreach ($mccats as $k) {
+			$newcatarr = array();
+			$catarr[$k->title]['id'] = $k->id;
+			$catarr[$k->title]['title'] = $k->title;
+
+			$data = array (
+				"count" => 1000
+			);
+			$url = 'https://'. $dc .'.api.mailchimp.com/3.0/lists/'. $listid.'/interest-categories/'.$k->id.'/interests';
+			$request_type = "GET";
+			$response1 = twpw_custom_mc::acl_mc_curl_connect( $url, $request_type, $api_key, $data );
+		  $interests = json_decode( $response1 );
+			$ia = $interests->interests;
+			foreach ( $ia as $v ) {
+				$newcatarr[] = array ( "name" => $v->name, "id" => $v->id );
+			}
+		}
+
+		$logger = "\r\n"."New Catt: ". var_export( $newcatarr, true )."\r\n";
+		$logger .= "\r\n\r\n";
+		$logger .= "MCGroup: ". var_export( $settings[$levid]['mcgroup'], true)."\r\n\r\n";
+
+		// if ( $logger ) {
+			$logfile = fopen( LOGPATH."aclgroups.log", "a" );
+			fwrite( $logfile, $logger );
+			fclose( $logfile );
+		// }
+
+	  $groupings = array(); // create groupings array
+	  if( !empty( $settings[$levid]['mcgroup'] ) ) { // if there are groups
+			$mygroups = $settings[$levid]['mcgroup'];
+			foreach ( $newcatarr as $k => $v ) {
+				if ( in_array ( $v["id"] , $mygroups )) {
+					if ( $memaction == 'add' ) {
+						$groupings[$v["id"]] = true;
+					} elseif ($memaction == 'remove') {
+						$groupings[$v["id"]] = false;
+					}
+				} else {
+					$groupings[$v["id"]] = false;
+				}
+			}
+	  }
+
+	  return $groupings;
+
+	}
+
+	public static function acl_get_mem_tags ( $levid = NULL, $listid = NULL, $memaction = NULL ) {
+
+		$logging = get_option("twpw_custommc_logging");
+		if ( $logging == "yes") {
+			$logging = true;
+		} else {
+			$logging = false;
+		}
+
+	  if ( !$levid || !$listid || !$memaction ) { return; }
+
+		/* Get all the Interest Groups from Mailchimp, so we can populate a full list when updating the member. This will take into consideratio being removed from levels as well. */
+
+	  $settings = get_option("twpw_custommc");
+		$twpw_custommc_mcapi = twpw_custom_mc::twpw_custommc_createMCAPI();
+
+		$tags = array(); // create a tag
+		if( !empty( $settings[$levid]['mctag'] ) ) { // if there are tag
+			foreach( $settings[$levid]['mctag'] as $tag ) { // go through each tag that's been set
+				if ( $memaction == "add" ) {
+					$tags[] = array ( 'name' => $tag, 'status' => 'active');
+				} elseif ( $memaction == "remove" ) {
+					$tags[] = array ( 'name' => $tag, 'status' => 'inactive');
+				}
+			}
+		}
+	  return $tags;
+	}
+
+} /* End of Class */
+
+if ( !isset ($twpw_custom_mc) ){
+	//setup our extension class
+	$twpw_custom_mc = new twpw_custom_mc;
+	twpw_custom_mc::init();
 }
 
-function gethere() {
-	var_dump($_POST);
-	die();
-}
-//add_action('init','gethere');
+register_activation_hook ( __FILE__, array(&$twpw_custom_mc, 'twpw_custom_mc_activate' ) );
+add_action('admin_head', array (&$twpw_custom_mc, 'twpw_custommc_admin_register_head' ) );
 
+add_action ( 'wishlistmember_approve_user_levels', array( &$twpw_custom_mc, 'acl_wlm_approve_user' ), 30, 2 );
+add_action ( 'wishlistmember_add_user_levels', array( &$twpw_custom_mc, 'acl_wlm_approve_user' ), 30, 2 );
+add_action ( 'wishlistmember_confirm_user_levels', array( &$twpw_custom_mc, 'acl_wlm_approve_user' ), 30, 2 );
+add_action ( 'wishlistmember_uncancel_user_levels', array( &$twpw_custom_mc, 'acl_wlm_approve_user' ), 30, 2 );
+
+add_action ( 'wishlistmember_remove_user_levels', array( &$twpw_custom_mc, 'acl_wlm_unapprove_user' ), 30, 2 );
+add_action ( 'wishlistmember_unapprove_user_levels', array( &$twpw_custom_mc, 'acl_wlm_unapprove_user' ), 30, 2 );
+add_action ( 'wishlistmember_unconfirm_user_levels', array( &$twpw_custom_mc, 'acl_wlm_unapprove_user' ), 30, 2 );
+add_action ( 'wishlistmember_cancel_user_levels', array( &$twpw_custom_mc, 'acl_wlm_unapprove_user' ), 30, 2 );
 
 ?>
