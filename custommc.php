@@ -488,6 +488,14 @@ class twpw_custom_mc {
 		$dc = $settings['mcdc'];
 		$mailchimptags = "";
 
+		if ( ! defined( 'LOGPATH' ) ) {
+			define( 'LOGPATH', dirname( __FILE__ ) . '/logs/' );
+		}
+
+		if ( ! file_exists( LOGPATH ) ) {
+			mkdir( LOGPATH, 0775, true );
+		}
+
 		$logging = get_option("twpw_custommc_logging");
 			if ( $logging == "yes") {
 			$logging = true;
